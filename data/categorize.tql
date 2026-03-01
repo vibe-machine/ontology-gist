@@ -1,0 +1,173 @@
+# gist Domain Categorization
+# Links TypeDoc entries to the gist domain
+# Must be loaded AFTER domains.tql and all TypeDoc files
+#
+# Uses match-insert to find existing TypeDoc and Domain entities
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Event";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Task";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Category";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Organization";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Person";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Aspect";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Magnitude";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Content";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "GeoLocation";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Collection";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Intention";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "TemporalRelation";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "isPartOf";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "isCategorizedBy";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "precedes";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "refersTo";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "hasParticipant";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "occursIn";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "hasGoal";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "ScheduledEvent";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Transaction";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Project";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Text";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "ID";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "Address";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "GovernmentOrganization";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "UnitOfMeasure";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;
+
+match
+  $dom isa Domain, has name "gist";
+  $doc isa TypeDoc, has typeLabel "UnitGroup";
+insert
+  (categorized: $doc, category: $dom) isa isCategorizedBy;

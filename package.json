@@ -1,0 +1,19 @@
+{
+  "name": "gist",
+  "displayName": "gist Upper Ontology",
+  "version": "14.0.0",
+  "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
+  "author": "Semantic Arts, Inc.",
+  "license": "CC-BY-SA-4.0",
+  "source": "https://github.com/semanticarts/gist",
+  "prefix": "gist",
+  "schemas": [
+    { "name": "gistCore", "file": "schema/gistCore.tql" }
+  ],
+  "data": [
+    "data/gistCore-typedoc.tql"
+  ],
+  "domains": "data/domains.tql",
+  "categorization": "data/categorize.tql",
+  "dependencies": []
+}

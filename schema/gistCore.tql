@@ -1,0 +1,754 @@
+# gistCore TypeQL Schema
+# Translated from gist v14.0.0 (https://w3id.org/semanticarts/ontology/gistCore)
+# TypeQL 3.x syntax
+#
+# Semantic gaps documented in: kg/docs/SEMANTIC_GAPS.md
+
+# =============================================================================
+# ATTRIBUTES (from owl:DatatypeProperty)
+# =============================================================================
+
+define
+
+# DateTime attributes
+attribute atDateTime value datetime;
+attribute startDateTime value datetime;
+attribute endDateTime value datetime;
+attribute actualStartDateTime value datetime;
+attribute actualEndDateTime value datetime;
+attribute plannedStartDateTime value datetime;
+attribute plannedEndDateTime value datetime;
+
+# Date precision variants
+attribute actualStartDate value datetime;
+attribute actualEndDate value datetime;
+attribute actualStartMinute value datetime;
+attribute actualEndMinute value datetime;
+attribute actualStartMicrosecond value datetime;
+attribute actualEndMicrosecond value datetime;
+attribute actualStartYear value datetime;
+attribute actualEndYear value datetime;
+
+attribute plannedStartDate value datetime;
+attribute plannedEndDate value datetime;
+attribute plannedStartMinute value datetime;
+attribute plannedEndMinute value datetime;
+attribute plannedStartYear value datetime;
+attribute plannedEndYear value datetime;
+
+# Life event dates
+attribute birthDate value datetime;
+attribute deathDate value datetime;
+
+# Recording/posting
+attribute isRecordedAt value datetime;
+
+# Text attributes
+attribute name value string;
+attribute description value string;
+attribute containedText value string;
+attribute encryptedText value string;
+attribute uniqueText value string;
+attribute idText value string;
+attribute symbol value string;
+
+# Numeric attributes
+attribute numericValue value double;
+attribute sequence value integer;
+
+# Geo attributes
+attribute latitude value double;
+attribute longitude value double;
+
+# Unit conversion attributes
+attribute conversionFactor value double;
+attribute conversionOffset value double;
+
+# Unit exponent attributes
+attribute exponentOfAmpere value double;
+attribute exponentOfBit value double;
+attribute exponentOfCandela value double;
+attribute exponentOfKelvin value double;
+attribute exponentOfKilogram value double;
+attribute exponentOfMeter value double;
+attribute exponentOfMole value double;
+attribute exponentOfNumber value double;
+attribute exponentOfOther value double;
+attribute exponentOfRadian value double;
+attribute exponentOfSecond value double;
+attribute exponentOfSteradian value double;
+attribute exponentOfUSDollar value double;
+
+# =============================================================================
+# RELATIONS (from owl:ObjectProperty)
+# =============================================================================
+
+# Core Part-Whole Relations
+relation isPartOf,
+    relates whole,
+    relates part;
+
+relation isDirectPartOf,
+    relates directWhole,
+    relates directPart;
+
+# Membership Relations
+relation isMemberOfCollection,
+    relates collection,
+    relates member;
+
+relation isMemberOfOrg,
+    relates organization,
+    relates orgMember;
+
+relation isMemberOfUnitGroup,
+    relates unitGroup,
+    relates unit;
+
+relation isFirstMemberOf,
+    relates orderedCollection,
+    relates firstMember;
+
+# Magnitude and Measurement Relations
+relation hasMagnitude,
+    relates magnitudeOwner,
+    relates magnitude;
+
+relation hasAspect,
+    relates aspectOwner,
+    relates aspect;
+
+relation hasUnitOfMeasure,
+    relates measureOwner,
+    relates unitOfMeasure;
+
+relation hasUnitGroup,
+    relates aspectType,
+    relates measuringUnitGroup;
+
+relation hasAccuracy,
+    relates accuracySubject,
+    relates accuracyValue;
+
+# Categorization Relations
+relation isCategorizedBy,
+    relates categorized,
+    relates category;
+
+relation isAllocatedByRel,
+    relates allocated,
+    relates allocator;
+
+relation isIdentifiedBy,
+    relates identified,
+    relates identifier;
+
+# Hierarchy Relations
+relation hasBroader,
+    relates narrower,
+    relates broader;
+
+relation hasDirectBroader,
+    relates directNarrower,
+    relates directBroader;
+
+relation hasUniqueBroader,
+    relates uniqueNarrower,
+    relates uniqueBroader;
+
+relation hasNavigationalParent,
+    relates navChild,
+    relates navParent;
+
+relation hasUniqueNavigationalParent,
+    relates uniqueNavChild,
+    relates uniqueNavParent;
+
+# Location Relations
+relation hasPhysicalLocation,
+    relates locatedItem,
+    relates physicalLocation;
+
+relation isGeoContainedIn,
+    relates geoContained,
+    relates geoContainer;
+
+relation occursIn,
+    relates occurringEvent,
+    relates eventLocation;
+
+# Participant Relations
+relation hasParticipant,
+    relates participatedEvent,
+    relates participant;
+
+relation hasParty,
+    relates agreement,
+    relates party;
+
+relation hasGiver,
+    relates givenItem,
+    relates giver;
+
+relation hasRecipient,
+    relates receivedItem,
+    relates recipient;
+
+relation hasIncumbent,
+    relates position,
+    relates incumbent;
+
+# Transfer Relations
+relation comesFromAgent,
+    relates transferredFromItem,
+    relates sourceAgent;
+
+relation goesToAgent,
+    relates transferredToItem,
+    relates targetAgent;
+
+relation comesFromPlace,
+    relates movedFromItem,
+    relates sourcePlace;
+
+relation goesToPlace,
+    relates movedToItem,
+    relates targetPlace;
+
+# Network Relations
+relation networkLinks,
+    relates linkingElement,
+    relates linkedNode;
+
+relation networkLinksFrom,
+    relates directedLink,
+    relates originNode;
+
+relation networkLinksTo,
+    relates incomingLink,
+    relates destinationNode;
+
+relation isConnectedTo,
+    relates connectedPeer1,
+    relates connectedPeer2;
+
+# Content Relations
+relation isAbout,
+    relates aboutContent,
+    relates subject;
+
+relation isExpressedIn,
+    relates expressedContent,
+    relates expressionLanguage;
+
+relation isRenderedOn,
+    relates renderedContent,
+    relates renderingMedium;
+
+relation refersTo,
+    relates referrer,
+    relates referent;
+
+# Governance Relations
+relation isGovernedBy,
+    relates governed,
+    relates governor;
+
+relation isUnderJurisdictionOf,
+    relates jurisdictionSubject,
+    relates jurisdiction;
+
+relation isRecognizedBy,
+    relates recognized,
+    relates recognizer;
+
+relation ownership,
+    relates owner,
+    relates owned;
+
+# Permission Relations
+relation allows,
+    relates permission,
+    relates allowedBehavior;
+
+relation prevents,
+    relates preventingIntention,
+    relates preventedBehavior;
+
+relation requires,
+    relates requirer,
+    relates required;
+
+# Conformance Relations
+relation conformsTo,
+    relates conformer,
+    relates specification;
+
+relation isBasedOn,
+    relates derived,
+    relates basis;
+
+relation contributesTo,
+    relates contributor,
+    relates targetSystem;
+
+# Production Relations
+relation isProducedBy,
+    relates product,
+    relates producer;
+
+relation isAffectedBy,
+    relates affected,
+    relates affector;
+
+relation isTriggeredBy,
+    relates triggered,
+    relates trigger;
+
+# Assignment Relations
+relation isAssignmentOf,
+    relates assignment,
+    relates assigned;
+
+relation isAssignmentTo,
+    relates assignmentRel,
+    relates assignmentTarget;
+
+# Biological Relations
+relation hasBiologicalParent,
+    relates biologicalChild,
+    relates biologicalParent;
+
+# Address Relation
+relation hasAddress,
+    relates addressee,
+    relates address;
+
+# Ordering Relations
+relation precedes,
+    relates predecessor,
+    relates successor;
+
+relation precedesDirectly,
+    relates directPredecessor,
+    relates directSuccessor;
+
+relation providesOrderFor,
+    relates orderingMember,
+    relates orderedItem;
+
+# Goal Relation
+relation hasGoal,
+    relates goalTask,
+    relates goal;
+
+# Substance Composition
+relation isMadeUpOf,
+    relates composedItem,
+    relates substanceComponent;
+
+# Offer Relations
+relation offersToProvide,
+    relates providingOffer,
+    relates provided;
+
+relation offersToReceive,
+    relates receivingOffer,
+    relates received;
+
+# Aspect Arithmetic Relations
+relation hasAddend,
+    relates compositeAspect,
+    relates addend;
+
+relation hasSubtrahend,
+    relates subtractingAspect,
+    relates subtrahend;
+
+relation hasMultiplier,
+    relates multiplyingAspect,
+    relates multiplier;
+
+relation hasDivisor,
+    relates dividingAspect,
+    relates divisor;
+
+# =============================================================================
+# ENTITIES (from owl:Class)
+# =============================================================================
+
+# Core Abstract Entities
+entity Aspect,
+    owns name,
+    owns description,
+    plays hasAspect:aspect,
+    plays hasUnitGroup:aspectType,
+    plays hasBroader:narrower,
+    plays hasBroader:broader,
+    plays hasAddend:compositeAspect,
+    plays hasAddend:addend,
+    plays hasSubtrahend:subtractingAspect,
+    plays hasSubtrahend:subtrahend,
+    plays hasMultiplier:multiplyingAspect,
+    plays hasMultiplier:multiplier,
+    plays hasDivisor:dividingAspect,
+    plays hasDivisor:divisor;
+
+entity Category,
+    owns name,
+    owns description,
+    plays isAllocatedByRel:allocated,
+    plays isCategorizedBy:category;
+
+entity Component,
+    owns name,
+    owns description;
+
+entity Composite,
+    owns name,
+    owns description;
+
+entity Content,
+    owns name,
+    owns description,
+    plays isAbout:aboutContent;
+
+entity Event,
+    owns name,
+    owns description,
+    owns actualStartDateTime,
+    owns actualEndDateTime,
+    owns plannedStartDateTime,
+    owns plannedEndDateTime,
+    owns actualStartDate,
+    owns actualEndDate,
+    owns actualStartMinute,
+    owns actualEndMinute,
+    owns actualStartMicrosecond,
+    owns actualEndMicrosecond,
+    owns actualStartYear,
+    owns actualEndYear,
+    owns plannedStartDate,
+    owns plannedEndDate,
+    owns plannedStartMinute,
+    owns plannedEndMinute,
+    owns plannedStartYear,
+    owns plannedEndYear,
+    plays hasParticipant:participatedEvent,
+    plays occursIn:occurringEvent,
+    plays isTriggeredBy:triggered,
+    plays isTriggeredBy:trigger;
+
+entity GeoLocation,
+    owns name,
+    owns description,
+    plays isGeoContainedIn:geoContained,
+    plays isGeoContainedIn:geoContainer,
+    plays hasPhysicalLocation:physicalLocation,
+    plays occursIn:eventLocation;
+
+entity IntellectualProperty,
+    owns name,
+    owns description,
+    plays isAllocatedByRel:allocator;
+
+entity Intention,
+    owns name,
+    owns description,
+    plays allows:permission,
+    plays prevents:preventingIntention,
+    plays conformsTo:conformer;
+
+entity Language,
+    owns name,
+    owns description,
+    plays isExpressedIn:expressionLanguage;
+
+entity Magnitude,
+    owns numericValue,
+    owns description,
+    plays hasMagnitude:magnitude,
+    plays hasAspect:aspectOwner,
+    plays hasUnitOfMeasure:measureOwner,
+    plays hasAccuracy:accuracySubject,
+    plays hasAccuracy:accuracyValue;
+
+entity Organization,
+    owns name,
+    owns description,
+    owns idText,
+    plays hasParty:party,
+    plays isMemberOfOrg:orgMember,
+    plays isMemberOfOrg:organization,
+    plays ownership:owner,
+    plays isAllocatedByRel:allocator,
+    plays isRecognizedBy:recognizer,
+    plays comesFromAgent:sourceAgent,
+    plays goesToAgent:targetAgent,
+    plays isGovernedBy:governor,
+    plays isGovernedBy:governed,
+    plays isProducedBy:producer;
+
+entity Person,
+    owns name,
+    owns description,
+    owns birthDate,
+    owns deathDate,
+    owns idText,
+    plays hasParty:party,
+    plays hasBiologicalParent:biologicalChild,
+    plays hasBiologicalParent:biologicalParent,
+    plays ownership:owner,
+    plays isAllocatedByRel:allocator,
+    plays isRecognizedBy:recognizer,
+    plays comesFromAgent:sourceAgent,
+    plays goesToAgent:targetAgent,
+    plays isProducedBy:producer;
+
+entity PhysicalIdentifiableItem,
+    owns name,
+    owns description,
+    plays hasMagnitude:magnitudeOwner,
+    plays isMadeUpOf:composedItem,
+    plays hasPhysicalLocation:locatedItem,
+    plays isPartOf:whole,
+    plays isPartOf:part,
+    plays isDirectPartOf:directWhole,
+    plays isDirectPartOf:directPart;
+
+entity PhysicalSubstance,
+    owns name,
+    owns description,
+    plays hasMagnitude:magnitudeOwner,
+    plays isMadeUpOf:substanceComponent;
+
+entity TimeInterval,
+    owns startDateTime,
+    owns endDateTime,
+    owns description,
+    plays hasMagnitude:magnitudeOwner;
+
+entity UnitOfMeasure,
+    owns name,
+    owns symbol,
+    owns conversionFactor,
+    owns conversionOffset,
+    owns exponentOfAmpere,
+    owns exponentOfBit,
+    owns exponentOfCandela,
+    owns exponentOfKelvin,
+    owns exponentOfKilogram,
+    owns exponentOfMeter,
+    owns exponentOfMole,
+    owns exponentOfNumber,
+    owns exponentOfOther,
+    owns exponentOfRadian,
+    owns exponentOfSecond,
+    owns exponentOfSteradian,
+    owns exponentOfUSDollar,
+    plays hasUnitOfMeasure:unitOfMeasure,
+    plays isMemberOfUnitGroup:unit;
+
+# Category Subclasses
+entity AddressUsageType sub Category;
+
+entity Behavior sub Category,
+    plays allows:allowedBehavior,
+    plays prevents:preventedBehavior;
+
+entity DegreeOfCommitment sub Category;
+entity Discipline sub Category;
+entity ElectronicAddressType sub Category;
+entity EquipmentType sub Category;
+entity GeneralMediaType sub Category;
+entity Medium sub Category,
+    plays isRenderedOn:renderingMedium;
+entity PhysicalActionType sub Category;
+entity PhysicalAddressType sub Category;
+entity ProductCategory sub Category;
+
+entity Tag sub Category,
+    owns containedText,
+    owns uniqueText;
+
+entity MediaType sub Category,
+    owns uniqueText;
+
+# Content Subclasses
+entity Address sub Content,
+    plays hasAddress:address,
+    plays refersTo:referrer,
+    plays comesFromPlace:sourcePlace,
+    plays goesToPlace:targetPlace;
+
+entity ContentExpression sub Content,
+    plays isExpressedIn:expressedContent,
+    plays isCategorizedBy:categorized;
+
+entity ID sub Content,
+    owns uniqueText,
+    plays isIdentifiedBy:identifier,
+    plays isAllocatedByRel:allocated;
+
+entity Text sub ContentExpression,
+    owns containedText;
+
+entity FormattedContent sub ContentExpression;
+
+entity RenderedContent sub Content,
+    plays isRenderedOn:renderedContent;
+
+entity ElectronicAddress sub Address;
+entity PhysicalAddress sub Address;
+
+entity Message sub ContentExpression;
+
+# Composite Subclasses
+entity Collection sub Composite,
+    plays isMemberOfCollection:collection;
+
+entity Network sub Composite,
+    plays isMemberOfCollection:collection;
+
+entity System sub Composite,
+    plays contributesTo:targetSystem;
+
+entity OrderedCollection sub Collection,
+    plays isFirstMemberOf:orderedCollection;
+
+entity UnitGroup sub Collection,
+    owns exponentOfAmpere,
+    owns exponentOfBit,
+    owns exponentOfCandela,
+    owns exponentOfKelvin,
+    owns exponentOfKilogram,
+    owns exponentOfMeter,
+    owns exponentOfMole,
+    owns exponentOfNumber,
+    owns exponentOfOther,
+    owns exponentOfRadian,
+    owns exponentOfSecond,
+    owns exponentOfSteradian,
+    owns exponentOfUSDollar,
+    plays hasUnitGroup:measuringUnitGroup,
+    plays isMemberOfUnitGroup:unitGroup;
+
+# Component Subclasses
+entity NetworkLink sub Component,
+    plays networkLinks:linkingElement,
+    plays networkLinksFrom:directedLink,
+    plays networkLinksTo:incomingLink,
+    plays isMemberOfCollection:member;
+
+entity NetworkNode sub Component,
+    plays networkLinks:linkedNode,
+    plays networkLinksFrom:originNode,
+    plays networkLinksTo:destinationNode,
+    plays isMemberOfCollection:member;
+
+entity OrderedMember sub Component,
+    owns sequence,
+    plays isMemberOfCollection:member,
+    plays isFirstMemberOf:firstMember,
+    plays precedesDirectly:directPredecessor,
+    plays precedesDirectly:directSuccessor,
+    plays providesOrderFor:orderingMember;
+
+# Event Subclasses
+entity ContemporaryEvent sub Event;
+entity ContingentEvent sub Event;
+entity Determination sub Event;
+entity HistoricalEvent sub Event;
+entity PhysicalEvent sub Event;
+entity ScheduledEvent sub Event;
+entity Transaction sub Event;
+
+# GeoLocation Subclasses
+entity GeoPoint sub GeoLocation,
+    owns latitude,
+    owns longitude;
+
+entity GeoRegion sub GeoLocation;
+entity GeoVolume sub GeoLocation;
+
+entity CountryGeoRegion sub GeoRegion;
+entity GovernedGeoRegion sub GeoRegion;
+
+entity GeoRoute sub OrderedCollection;
+
+# Intention Subclasses
+entity Commitment sub Intention,
+    plays hasGiver:givenItem,
+    plays hasRecipient:receivedItem,
+    plays isDirectPartOf:directPart;
+
+entity Function sub Intention;
+entity Permission sub Intention;
+entity Requirement sub Intention;
+entity Restriction sub Intention;
+
+entity Specification sub Intention,
+    plays conformsTo:specification,
+    plays isBasedOn:derived,
+    plays isBasedOn:basis;
+
+entity ContingentObligation sub Commitment;
+
+entity Offer sub ContingentObligation,
+    plays offersToProvide:providingOffer,
+    plays offersToReceive:receivingOffer;
+
+entity CatalogItem sub Specification;
+entity EventSpecification sub Specification;
+entity ProductSpecification sub Specification;
+entity ServiceSpecification sub Specification;
+entity Template sub Specification;
+
+entity BundledCatalogItem sub CatalogItem;
+entity TaskTemplate sub Template;
+entity SchemaMetaData sub Specification;
+
+# IntellectualProperty Subclasses
+entity ControlledVocabulary sub IntellectualProperty;
+entity KnowledgeConcept sub IntellectualProperty;
+
+# Organization Subclasses
+entity GovernmentOrganization sub Organization;
+entity IntergovernmentalOrganization sub Organization;
+
+entity CountryGovernment sub GovernmentOrganization;
+entity SubCountryGovernment sub GovernmentOrganization;
+
+# PhysicalIdentifiableItem Subclasses
+entity Equipment sub PhysicalIdentifiableItem;
+entity Landmark sub PhysicalIdentifiableItem;
+entity LivingThing sub PhysicalIdentifiableItem;
+
+entity Building sub Landmark;
+
+# Other Entities
+entity Agreement sub Intention,
+    plays hasParty:agreement,
+    plays isDirectPartOf:directWhole;
+
+entity Account sub Agreement;
+entity Contract sub Agreement;
+entity ContractTerm sub Specification;
+
+entity Assignment sub Event,
+    plays hasGiver:givenItem,
+    plays isAssignmentOf:assignment,
+    plays isAssignmentTo:assignmentRel;
+
+entity Project sub Event;
+
+entity Task sub Event,
+    plays hasGoal:goalTask;
+
+entity ScheduledTask sub Task;
+
+entity TemporalRelation,
+    owns startDateTime,
+    owns endDateTime,
+    owns description,
+    plays hasParticipant:participatedEvent;

@@ -1,0 +1,6 @@
+# gist Domain Definition
+insert
+
+$gist isa Domain,
+    has name "gist",
+    has description "Semantic Arts gist upper ontology - foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.";
