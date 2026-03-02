@@ -1,13 +1,3 @@
-# gistCore TypeQL Schema
-# Translated from gist v14.0.0 (https://w3id.org/semanticarts/ontology/gistCore)
-# TypeQL 3.x syntax
-#
-# Semantic gaps documented in: kg/docs/SEMANTIC_GAPS.md
-
-# =============================================================================
-# ATTRIBUTES (from owl:DatatypeProperty)
-# =============================================================================
-
 define
 
 # DateTime attributes

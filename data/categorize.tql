@@ -1,9 +1,3 @@
-# gist Domain Categorization
-# Links TypeDoc entries to the gist domain
-# Must be loaded AFTER domains.tql and all TypeDoc files
-#
-# Uses match-insert to find existing TypeDoc and Domain entities
-
 match
   $dom isa Domain, has name "gist";
   $doc isa TypeDoc, has typeLabel "Event";
