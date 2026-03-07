@@ -16,6 +16,9 @@ Current state:
 - `emit_structural.mjs` generates:
   - `schema/gistCore.tql`
   - `data/gistCore-domain-seeds.tql`
+  - `queries/gistCore-axioms.tql`
+  - `manifests/gist-v14.0.0.axiom-queries.json`
   - `manifests/gist-v14.0.0.translation-report.json`
 - `validate_bootstrap.mjs` verifies manifest checksums, deterministic regeneration, and stale checked-in artifacts
-- documentation and axiom-query generation are still separate follow-on steps
+- documentation, provenance, and axiom-query artifacts now ship as checked-in package outputs
+- some OWL cardinality-heavy axiom queries are emitted with explicit approximation warnings until exact count semantics are implemented

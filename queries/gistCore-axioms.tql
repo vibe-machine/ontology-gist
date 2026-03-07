@@ -1,0 +1,1721 @@
+# Provenance bootstrap
+# upstream-repo: https://github.com/semanticarts/gist
+# upstream-tag: v14.0.0
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+# source-artifacts:
+# - upstream/gist/v14.0.0/ontologies/gistCore.ttl
+# - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
+# - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
+# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
+# manifest: manifests/gist-v14.0.0.translation-manifest.json
+# generator: gist-structural-emitter/0.4.0
+
+# name: axiom::Account::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Account
+match
+  $candidate isa Account;
+  $candidate isa Agreement;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance";
+get $candidate;
+
+# name: axiom::Account::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Account
+match
+  $candidate isa Account;
+  not {
+    $candidate isa Agreement;
+    (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+    $hasmagnitude_1 isa Magnitude;
+    (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+    $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance";
+  };
+get $candidate;
+
+# name: axiom::Account::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Account
+match
+  $candidate isa Agreement;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance";
+  not {
+    $candidate isa Account;
+  };
+get $candidate;
+
+# name: axiom::Agreement::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Agreement
+# warning: isDirectPartOf min cardinality 2 is approximated as at-least-one existence
+match
+  $candidate isa Agreement;
+  $candidate isa Intention;
+  (hasPartySubject: $candidate, hasPartyObject: $hasparty_1) isa hasParty;
+  {
+    $hasparty_1 isa Organization;
+  } or {
+    $hasparty_1 isa Person;
+  };
+  (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_2) isa isDirectPartOf;
+  $isdirectpartof_2 isa Commitment;
+get $candidate;
+
+# name: axiom::Agreement::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Agreement
+# warning: isDirectPartOf min cardinality 2 is approximated as at-least-one existence
+match
+  $candidate isa Agreement;
+  not {
+    $candidate isa Intention;
+    (hasPartySubject: $candidate, hasPartyObject: $hasparty_1) isa hasParty;
+    {
+      $hasparty_1 isa Organization;
+    } or {
+      $hasparty_1 isa Person;
+    };
+    (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_2) isa isDirectPartOf;
+    $isdirectpartof_2 isa Commitment;
+  };
+get $candidate;
+
+# name: axiom::Agreement::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Agreement
+# warning: isDirectPartOf min cardinality 2 is approximated as at-least-one existence
+match
+  $candidate isa Intention;
+  (hasPartySubject: $candidate, hasPartyObject: $hasparty_1) isa hasParty;
+  {
+    $hasparty_1 isa Organization;
+  } or {
+    $hasparty_1 isa Person;
+  };
+  (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_2) isa isDirectPartOf;
+  $isdirectpartof_2 isa Commitment;
+  not {
+    $candidate isa Agreement;
+  };
+get $candidate;
+
+# name: axiom::Assignment::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Assignment
+match
+  $candidate isa Assignment;
+  $candidate isa TemporalRelation;
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+  (isAssignmentOfSubject: $candidate, isAssignmentOfObject: $isassignmentof_2) isa isAssignmentOf;
+  (isAssignmentToSubject: $candidate, isAssignmentToObject: $isassignmentto_3) isa isAssignmentTo;
+get $candidate;
+
+# name: axiom::Assignment::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Assignment
+match
+  $candidate isa Assignment;
+  not {
+    $candidate isa TemporalRelation;
+    (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+    (isAssignmentOfSubject: $candidate, isAssignmentOfObject: $isassignmentof_2) isa isAssignmentOf;
+    (isAssignmentToSubject: $candidate, isAssignmentToObject: $isassignmentto_3) isa isAssignmentTo;
+  };
+get $candidate;
+
+# name: axiom::Assignment::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Assignment
+match
+  $candidate isa TemporalRelation;
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+  (isAssignmentOfSubject: $candidate, isAssignmentOfObject: $isassignmentof_2) isa isAssignmentOf;
+  (isAssignmentToSubject: $candidate, isAssignmentToObject: $isassignmentto_3) isa isAssignmentTo;
+  not {
+    $candidate isa Assignment;
+  };
+get $candidate;
+
+# name: axiom::BundledCatalogItem::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem
+match
+  $candidate isa BundledCatalogItem;
+  $candidate isa CatalogItem;
+  (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_1) isa isDirectPartOf;
+  $isdirectpartof_1 isa CatalogItem;
+get $candidate;
+
+# name: axiom::BundledCatalogItem::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem
+match
+  $candidate isa BundledCatalogItem;
+  not {
+    $candidate isa CatalogItem;
+    (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_1) isa isDirectPartOf;
+    $isdirectpartof_1 isa CatalogItem;
+  };
+get $candidate;
+
+# name: axiom::BundledCatalogItem::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem
+match
+  $candidate isa CatalogItem;
+  (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_1) isa isDirectPartOf;
+  $isdirectpartof_1 isa CatalogItem;
+  not {
+    $candidate isa BundledCatalogItem;
+  };
+get $candidate;
+
+# name: axiom::Commitment::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Commitment
+match
+  $candidate isa Commitment;
+  $candidate isa Intention;
+  {
+    $candidate isa Requirement;
+  } or {
+    $candidate isa Restriction;
+  };
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+  {
+    $hasgiver_1 isa Organization;
+  } or {
+    $hasgiver_1 isa Person;
+  };
+  (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_2) isa isCategorizedBy;
+  $iscategorizedby_2 isa DegreeOfCommitment;
+get $candidate;
+
+# name: axiom::Commitment::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Commitment
+match
+  $candidate isa Commitment;
+  not {
+    $candidate isa Intention;
+    {
+      $candidate isa Requirement;
+    } or {
+      $candidate isa Restriction;
+    };
+    (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+    {
+      $hasgiver_1 isa Organization;
+    } or {
+      $hasgiver_1 isa Person;
+    };
+    (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_2) isa isCategorizedBy;
+    $iscategorizedby_2 isa DegreeOfCommitment;
+  };
+get $candidate;
+
+# name: axiom::Commitment::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Commitment
+match
+  $candidate isa Intention;
+  {
+    $candidate isa Requirement;
+  } or {
+    $candidate isa Restriction;
+  };
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+  {
+    $hasgiver_1 isa Organization;
+  } or {
+    $hasgiver_1 isa Person;
+  };
+  (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_2) isa isCategorizedBy;
+  $iscategorizedby_2 isa DegreeOfCommitment;
+  not {
+    $candidate isa Commitment;
+  };
+get $candidate;
+
+# name: axiom::ContemporaryEvent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent
+# warning: actualStartDateTime max cardinality 1 is not enforced in query form
+match
+  $candidate isa ContemporaryEvent;
+  $candidate isa Event;
+  $candidate has actualStartDateTime $actualstartdatetime_1;
+  $candidate has actualEndDateTime $actualenddatetime_2;
+get $candidate;
+
+# name: axiom::ContemporaryEvent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent
+# warning: actualStartDateTime max cardinality 1 is not enforced in query form
+match
+  $candidate isa ContemporaryEvent;
+  not {
+    $candidate isa Event;
+    $candidate has actualStartDateTime $actualstartdatetime_1;
+    $candidate has actualEndDateTime $actualenddatetime_2;
+  };
+get $candidate;
+
+# name: axiom::ContemporaryEvent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent
+# warning: actualStartDateTime max cardinality 1 is not enforced in query form
+match
+  $candidate isa Event;
+  $candidate has actualStartDateTime $actualstartdatetime_1;
+  $candidate has actualEndDateTime $actualenddatetime_2;
+  not {
+    $candidate isa ContemporaryEvent;
+  };
+get $candidate;
+
+# name: axiom::ContingentEvent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent
+match
+  $candidate isa ContingentEvent;
+  $candidate isa Event;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability";
+  (isTriggeredBySubject: $candidate, isTriggeredByObject: $istriggeredby_3) isa isTriggeredBy;
+  $istriggeredby_3 isa Event;
+get $candidate;
+
+# name: axiom::ContingentEvent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent
+match
+  $candidate isa ContingentEvent;
+  not {
+    $candidate isa Event;
+    (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+    $hasmagnitude_1 isa Magnitude;
+    (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+    $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability";
+    (isTriggeredBySubject: $candidate, isTriggeredByObject: $istriggeredby_3) isa isTriggeredBy;
+    $istriggeredby_3 isa Event;
+  };
+get $candidate;
+
+# name: axiom::ContingentEvent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent
+match
+  $candidate isa Event;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability";
+  (isTriggeredBySubject: $candidate, isTriggeredByObject: $istriggeredby_3) isa isTriggeredBy;
+  $istriggeredby_3 isa Event;
+  not {
+    $candidate isa ContingentEvent;
+  };
+get $candidate;
+
+# name: axiom::ContingentObligation::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation
+match
+  $candidate isa ContingentObligation;
+  $candidate isa Commitment;
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+  {
+    $hasgiver_1 isa Organization;
+  } or {
+    $hasgiver_1 isa Person;
+  };
+  (isTriggeredBySubject: $candidate, isTriggeredByObject: $istriggeredby_2) isa isTriggeredBy;
+  $istriggeredby_2 isa Event;
+get $candidate;
+
+# name: axiom::ContingentObligation::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation
+match
+  $candidate isa ContingentObligation;
+  not {
+    $candidate isa Commitment;
+    (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+    {
+      $hasgiver_1 isa Organization;
+    } or {
+      $hasgiver_1 isa Person;
+    };
+    (isTriggeredBySubject: $candidate, isTriggeredByObject: $istriggeredby_2) isa isTriggeredBy;
+    $istriggeredby_2 isa Event;
+  };
+get $candidate;
+
+# name: axiom::ContingentObligation::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation
+match
+  $candidate isa Commitment;
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_1) isa hasGiver;
+  {
+    $hasgiver_1 isa Organization;
+  } or {
+    $hasgiver_1 isa Person;
+  };
+  (isTriggeredBySubject: $candidate, isTriggeredByObject: $istriggeredby_2) isa isTriggeredBy;
+  $istriggeredby_2 isa Event;
+  not {
+    $candidate isa ContingentObligation;
+  };
+get $candidate;
+
+# name: axiom::Contract::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Contract
+match
+  $candidate isa Contract;
+  $candidate isa Agreement;
+  (isUnderJurisdictionOfSubject: $candidate, isUnderJurisdictionOfObject: $isunderjurisdictionof_1) isa isUnderJurisdictionOf;
+  $isunderjurisdictionof_1 isa GovernmentOrganization;
+get $candidate;
+
+# name: axiom::Contract::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Contract
+match
+  $candidate isa Contract;
+  not {
+    $candidate isa Agreement;
+    (isUnderJurisdictionOfSubject: $candidate, isUnderJurisdictionOfObject: $isunderjurisdictionof_1) isa isUnderJurisdictionOf;
+    $isunderjurisdictionof_1 isa GovernmentOrganization;
+  };
+get $candidate;
+
+# name: axiom::Contract::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Contract
+match
+  $candidate isa Agreement;
+  (isUnderJurisdictionOfSubject: $candidate, isUnderJurisdictionOfObject: $isunderjurisdictionof_1) isa isUnderJurisdictionOf;
+  $isunderjurisdictionof_1 isa GovernmentOrganization;
+  not {
+    $candidate isa Contract;
+  };
+get $candidate;
+
+# name: axiom::ControlledVocabulary::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary
+match
+  $candidate isa ControlledVocabulary;
+  $candidate isa Collection;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  {
+    $isgovernedby_1 isa Organization;
+  } or {
+    $isgovernedby_1 isa Person;
+  };
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_2) isa isMemberOf;
+  $ismemberof_2 isa Category;
+get $candidate;
+
+# name: axiom::ControlledVocabulary::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary
+match
+  $candidate isa ControlledVocabulary;
+  not {
+    $candidate isa Collection;
+    (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+    {
+      $isgovernedby_1 isa Organization;
+    } or {
+      $isgovernedby_1 isa Person;
+    };
+    (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_2) isa isMemberOf;
+    $ismemberof_2 isa Category;
+  };
+get $candidate;
+
+# name: axiom::ControlledVocabulary::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary
+match
+  $candidate isa Collection;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  {
+    $isgovernedby_1 isa Organization;
+  } or {
+    $isgovernedby_1 isa Person;
+  };
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_2) isa isMemberOf;
+  $ismemberof_2 isa Category;
+  not {
+    $candidate isa ControlledVocabulary;
+  };
+get $candidate;
+
+# name: axiom::CountryGeoRegion::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion
+match
+  $candidate isa CountryGeoRegion;
+  $candidate isa GovernedGeoRegion;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa CountryGovernment;
+get $candidate;
+
+# name: axiom::CountryGeoRegion::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion
+match
+  $candidate isa CountryGeoRegion;
+  not {
+    $candidate isa GovernedGeoRegion;
+    (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+    $isgovernedby_1 isa CountryGovernment;
+  };
+get $candidate;
+
+# name: axiom::CountryGeoRegion::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion
+match
+  $candidate isa GovernedGeoRegion;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa CountryGovernment;
+  not {
+    $candidate isa CountryGeoRegion;
+  };
+get $candidate;
+
+# name: axiom::CountryGovernment::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment
+match
+  $candidate isa CountryGovernment;
+  $candidate isa GovernmentOrganization;
+  (isGovernedByObject: $candidate, isGovernedBySubject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa CountryGeoRegion;
+get $candidate;
+
+# name: axiom::CountryGovernment::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment
+match
+  $candidate isa CountryGovernment;
+  not {
+    $candidate isa GovernmentOrganization;
+    (isGovernedByObject: $candidate, isGovernedBySubject: $isgovernedby_1) isa isGovernedBy;
+    $isgovernedby_1 isa CountryGeoRegion;
+  };
+get $candidate;
+
+# name: axiom::CountryGovernment::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment
+match
+  $candidate isa GovernmentOrganization;
+  (isGovernedByObject: $candidate, isGovernedBySubject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa CountryGeoRegion;
+  not {
+    $candidate isa CountryGovernment;
+  };
+get $candidate;
+
+# name: axiom::Equipment::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Equipment
+match
+  $candidate isa Equipment;
+  $candidate isa PhysicalIdentifiableItem;
+  (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_1) isa isCategorizedBy;
+  $iscategorizedby_1 isa EquipmentType;
+get $candidate;
+
+# name: axiom::Equipment::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Equipment
+match
+  $candidate isa Equipment;
+  not {
+    $candidate isa PhysicalIdentifiableItem;
+    (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_1) isa isCategorizedBy;
+    $iscategorizedby_1 isa EquipmentType;
+  };
+get $candidate;
+
+# name: axiom::Equipment::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Equipment
+match
+  $candidate isa PhysicalIdentifiableItem;
+  (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_1) isa isCategorizedBy;
+  $iscategorizedby_1 isa EquipmentType;
+  not {
+    $candidate isa Equipment;
+  };
+get $candidate;
+
+# name: axiom::FormattedContent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent
+match
+  $candidate isa FormattedContent;
+  $candidate isa ContentExpression;
+  (isExpressedInSubject: $candidate, isExpressedInObject: $isexpressedin_1) isa isExpressedIn;
+  $isexpressedin_1 isa MediaType;
+get $candidate;
+
+# name: axiom::FormattedContent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent
+match
+  $candidate isa FormattedContent;
+  not {
+    $candidate isa ContentExpression;
+    (isExpressedInSubject: $candidate, isExpressedInObject: $isexpressedin_1) isa isExpressedIn;
+    $isexpressedin_1 isa MediaType;
+  };
+get $candidate;
+
+# name: axiom::FormattedContent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent
+match
+  $candidate isa ContentExpression;
+  (isExpressedInSubject: $candidate, isExpressedInObject: $isexpressedin_1) isa isExpressedIn;
+  $isexpressedin_1 isa MediaType;
+  not {
+    $candidate isa FormattedContent;
+  };
+get $candidate;
+
+# name: axiom::GeoPoint::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint
+match
+  $candidate isa GeoPoint;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude";
+  $candidate has latitude $latitude_3;
+  $candidate has longitude $longitude_4;
+get $candidate;
+
+# name: axiom::GeoPoint::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint
+match
+  $candidate isa GeoPoint;
+  not {
+    (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+    $hasmagnitude_1 isa Magnitude;
+    (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+    $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude";
+    $candidate has latitude $latitude_3;
+    $candidate has longitude $longitude_4;
+  };
+get $candidate;
+
+# name: axiom::GeoPoint::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint
+match
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude";
+  $candidate has latitude $latitude_3;
+  $candidate has longitude $longitude_4;
+  not {
+    $candidate isa GeoPoint;
+  };
+get $candidate;
+
+# name: axiom::GeoRoute::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute
+match
+  $candidate isa GeoRoute;
+  $candidate isa OrderedCollection;
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+  $ismemberof_1 isa GeoPoint;
+get $candidate;
+
+# name: axiom::GeoRoute::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute
+match
+  $candidate isa GeoRoute;
+  not {
+    $candidate isa OrderedCollection;
+    (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+    $ismemberof_1 isa GeoPoint;
+  };
+get $candidate;
+
+# name: axiom::GeoRoute::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute
+match
+  $candidate isa OrderedCollection;
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+  $ismemberof_1 isa GeoPoint;
+  not {
+    $candidate isa GeoRoute;
+  };
+get $candidate;
+
+# name: axiom::GeoVolume::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume
+match
+  $candidate isa GeoVolume;
+  $candidate isa GeoLocation;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume";
+  (isGeoContainedInObject: $candidate, isGeoContainedInSubject: $isgeocontainedin_3) isa isGeoContainedIn;
+  $isgeocontainedin_3 isa GeoPoint;
+get $candidate;
+
+# name: axiom::GeoVolume::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume
+match
+  $candidate isa GeoVolume;
+  not {
+    $candidate isa GeoLocation;
+    (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+    $hasmagnitude_1 isa Magnitude;
+    (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+    $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume";
+    (isGeoContainedInObject: $candidate, isGeoContainedInSubject: $isgeocontainedin_3) isa isGeoContainedIn;
+    $isgeocontainedin_3 isa GeoPoint;
+  };
+get $candidate;
+
+# name: axiom::GeoVolume::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume
+match
+  $candidate isa GeoLocation;
+  (hasMagnitudeSubject: $candidate, hasMagnitudeObject: $hasmagnitude_1) isa hasMagnitude;
+  $hasmagnitude_1 isa Magnitude;
+  (hasAspectSubject: $hasmagnitude_1, hasAspectObject: $hasaspect_2) isa hasAspect;
+  $hasaspect_2 has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume";
+  (isGeoContainedInObject: $candidate, isGeoContainedInSubject: $isgeocontainedin_3) isa isGeoContainedIn;
+  $isgeocontainedin_3 isa GeoPoint;
+  not {
+    $candidate isa GeoVolume;
+  };
+get $candidate;
+
+# name: axiom::GovernedGeoRegion::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion
+match
+  $candidate isa GovernedGeoRegion;
+  $candidate isa GeoRegion;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa GovernmentOrganization;
+get $candidate;
+
+# name: axiom::GovernedGeoRegion::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion
+match
+  $candidate isa GovernedGeoRegion;
+  not {
+    $candidate isa GeoRegion;
+    (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+    $isgovernedby_1 isa GovernmentOrganization;
+  };
+get $candidate;
+
+# name: axiom::GovernedGeoRegion::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion
+match
+  $candidate isa GeoRegion;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa GovernmentOrganization;
+  not {
+    $candidate isa GovernedGeoRegion;
+  };
+get $candidate;
+
+# name: axiom::HistoricalEvent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent
+match
+  $candidate isa HistoricalEvent;
+  $candidate isa Event;
+  $candidate has actualEndDateTime $actualenddatetime_1;
+get $candidate;
+
+# name: axiom::HistoricalEvent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent
+match
+  $candidate isa HistoricalEvent;
+  not {
+    $candidate isa Event;
+    $candidate has actualEndDateTime $actualenddatetime_1;
+  };
+get $candidate;
+
+# name: axiom::HistoricalEvent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent
+match
+  $candidate isa Event;
+  $candidate has actualEndDateTime $actualenddatetime_1;
+  not {
+    $candidate isa HistoricalEvent;
+  };
+get $candidate;
+
+# name: axiom::ID::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ID
+match
+  $candidate isa ID;
+  $candidate isa Content;
+  (isAllocatedBySubject: $candidate, isAllocatedByObject: $isallocatedby_1) isa isAllocatedBy;
+  {
+    $isallocatedby_1 isa IntellectualProperty;
+  } or {
+    $isallocatedby_1 isa Organization;
+  } or {
+    $isallocatedby_1 isa Person;
+  };
+  $candidate has uniqueText $uniquetext_2;
+get $candidate;
+
+# name: axiom::ID::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ID
+match
+  $candidate isa ID;
+  not {
+    $candidate isa Content;
+    (isAllocatedBySubject: $candidate, isAllocatedByObject: $isallocatedby_1) isa isAllocatedBy;
+    {
+      $isallocatedby_1 isa IntellectualProperty;
+    } or {
+      $isallocatedby_1 isa Organization;
+    } or {
+      $isallocatedby_1 isa Person;
+    };
+    $candidate has uniqueText $uniquetext_2;
+  };
+get $candidate;
+
+# name: axiom::ID::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ID
+match
+  $candidate isa Content;
+  (isAllocatedBySubject: $candidate, isAllocatedByObject: $isallocatedby_1) isa isAllocatedBy;
+  {
+    $isallocatedby_1 isa IntellectualProperty;
+  } or {
+    $isallocatedby_1 isa Organization;
+  } or {
+    $isallocatedby_1 isa Person;
+  };
+  $candidate has uniqueText $uniquetext_2;
+  not {
+    $candidate isa ID;
+  };
+get $candidate;
+
+# name: axiom::IntergovernmentalOrganization::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization
+# warning: isMemberOf min cardinality 2 is approximated as at-least-one existence
+match
+  $candidate isa IntergovernmentalOrganization;
+  $candidate isa Organization;
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+  $ismemberof_1 isa GovernmentOrganization;
+get $candidate;
+
+# name: axiom::IntergovernmentalOrganization::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization
+# warning: isMemberOf min cardinality 2 is approximated as at-least-one existence
+match
+  $candidate isa IntergovernmentalOrganization;
+  not {
+    $candidate isa Organization;
+    (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+    $ismemberof_1 isa GovernmentOrganization;
+  };
+get $candidate;
+
+# name: axiom::IntergovernmentalOrganization::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization
+# warning: isMemberOf min cardinality 2 is approximated as at-least-one existence
+match
+  $candidate isa Organization;
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+  $ismemberof_1 isa GovernmentOrganization;
+  not {
+    $candidate isa IntergovernmentalOrganization;
+  };
+get $candidate;
+
+# name: axiom::LivingThing::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/LivingThing
+# warning: birthDate max cardinality 1 is not enforced in query form
+match
+  $candidate isa LivingThing;
+  $candidate isa PhysicalIdentifiableItem;
+  (hasBiologicalParentSubject: $candidate, hasBiologicalParentObject: $hasbiologicalparent_1) isa hasBiologicalParent;
+  $hasbiologicalparent_1 isa LivingThing;
+  $candidate has birthDate $birthdate_2;
+get $candidate;
+
+# name: axiom::LivingThing::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/LivingThing
+# warning: birthDate max cardinality 1 is not enforced in query form
+match
+  $candidate isa LivingThing;
+  not {
+    $candidate isa PhysicalIdentifiableItem;
+    (hasBiologicalParentSubject: $candidate, hasBiologicalParentObject: $hasbiologicalparent_1) isa hasBiologicalParent;
+    $hasbiologicalparent_1 isa LivingThing;
+    $candidate has birthDate $birthdate_2;
+  };
+get $candidate;
+
+# name: axiom::LivingThing::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/LivingThing
+# warning: birthDate max cardinality 1 is not enforced in query form
+match
+  $candidate isa PhysicalIdentifiableItem;
+  (hasBiologicalParentSubject: $candidate, hasBiologicalParentObject: $hasbiologicalparent_1) isa hasBiologicalParent;
+  $hasbiologicalparent_1 isa LivingThing;
+  $candidate has birthDate $birthdate_2;
+  not {
+    $candidate isa LivingThing;
+  };
+get $candidate;
+
+# name: axiom::Magnitude::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Magnitude
+match
+  $candidate isa Magnitude;
+  (hasAspectSubject: $candidate, hasAspectObject: $hasaspect_1) isa hasAspect;
+  $hasaspect_1 isa Aspect;
+  (hasUnitOfMeasureSubject: $candidate, hasUnitOfMeasureObject: $hasunitofmeasure_2) isa hasUnitOfMeasure;
+  $hasunitofmeasure_2 isa UnitOfMeasure;
+  $candidate has numericValue $numericvalue_3;
+get $candidate;
+
+# name: axiom::Magnitude::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Magnitude
+match
+  $candidate isa Magnitude;
+  not {
+    (hasAspectSubject: $candidate, hasAspectObject: $hasaspect_1) isa hasAspect;
+    $hasaspect_1 isa Aspect;
+    (hasUnitOfMeasureSubject: $candidate, hasUnitOfMeasureObject: $hasunitofmeasure_2) isa hasUnitOfMeasure;
+    $hasunitofmeasure_2 isa UnitOfMeasure;
+    $candidate has numericValue $numericvalue_3;
+  };
+get $candidate;
+
+# name: axiom::Magnitude::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Magnitude
+match
+  (hasAspectSubject: $candidate, hasAspectObject: $hasaspect_1) isa hasAspect;
+  $hasaspect_1 isa Aspect;
+  (hasUnitOfMeasureSubject: $candidate, hasUnitOfMeasureObject: $hasunitofmeasure_2) isa hasUnitOfMeasure;
+  $hasunitofmeasure_2 isa UnitOfMeasure;
+  $candidate has numericValue $numericvalue_3;
+  not {
+    $candidate isa Magnitude;
+  };
+get $candidate;
+
+# name: axiom::Message::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Message
+match
+  $candidate isa Message;
+  $candidate isa ContentExpression;
+  (comesFromAgentSubject: $candidate, comesFromAgentObject: $comesfromagent_1) isa comesFromAgent;
+  {
+    $comesfromagent_1 isa Organization;
+  } or {
+    $comesfromagent_1 isa Person;
+  };
+  (goesToAgentSubject: $candidate, goesToAgentObject: $goestoagent_2) isa goesToAgent;
+  {
+    $goestoagent_2 isa Organization;
+  } or {
+    $goestoagent_2 isa Person;
+  };
+get $candidate;
+
+# name: axiom::Message::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Message
+match
+  $candidate isa Message;
+  not {
+    $candidate isa ContentExpression;
+    (comesFromAgentSubject: $candidate, comesFromAgentObject: $comesfromagent_1) isa comesFromAgent;
+    {
+      $comesfromagent_1 isa Organization;
+    } or {
+      $comesfromagent_1 isa Person;
+    };
+    (goesToAgentSubject: $candidate, goesToAgentObject: $goestoagent_2) isa goesToAgent;
+    {
+      $goestoagent_2 isa Organization;
+    } or {
+      $goestoagent_2 isa Person;
+    };
+  };
+get $candidate;
+
+# name: axiom::Message::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Message
+match
+  $candidate isa ContentExpression;
+  (comesFromAgentSubject: $candidate, comesFromAgentObject: $comesfromagent_1) isa comesFromAgent;
+  {
+    $comesfromagent_1 isa Organization;
+  } or {
+    $comesfromagent_1 isa Person;
+  };
+  (goesToAgentSubject: $candidate, goesToAgentObject: $goestoagent_2) isa goesToAgent;
+  {
+    $goestoagent_2 isa Organization;
+  } or {
+    $goestoagent_2 isa Person;
+  };
+  not {
+    $candidate isa Message;
+  };
+get $candidate;
+
+# name: axiom::Network::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Network
+match
+  $candidate isa Network;
+  $candidate isa Composite;
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+  {
+    $ismemberof_1 isa NetworkLink;
+  } or {
+    $ismemberof_1 isa NetworkNode;
+  };
+get $candidate;
+
+# name: axiom::Network::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Network
+match
+  $candidate isa Network;
+  not {
+    $candidate isa Composite;
+    (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+    {
+      $ismemberof_1 isa NetworkLink;
+    } or {
+      $ismemberof_1 isa NetworkNode;
+    };
+  };
+get $candidate;
+
+# name: axiom::Network::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Network
+match
+  $candidate isa Composite;
+  (isMemberOfObject: $candidate, isMemberOfSubject: $ismemberof_1) isa isMemberOf;
+  {
+    $ismemberof_1 isa NetworkLink;
+  } or {
+    $ismemberof_1 isa NetworkNode;
+  };
+  not {
+    $candidate isa Network;
+  };
+get $candidate;
+
+# name: axiom::NetworkLink::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink
+match
+  $candidate isa NetworkLink;
+  $candidate isa Component;
+  (isMemberOfSubject: $candidate, isMemberOfObject: $ismemberof_1) isa isMemberOf;
+  $ismemberof_1 isa Network;
+  (linksRelSubject: $candidate, linksRelObject: $links_2) isa linksRel;
+  $links_2 isa NetworkNode;
+get $candidate;
+
+# name: axiom::NetworkLink::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink
+match
+  $candidate isa NetworkLink;
+  not {
+    $candidate isa Component;
+    (isMemberOfSubject: $candidate, isMemberOfObject: $ismemberof_1) isa isMemberOf;
+    $ismemberof_1 isa Network;
+    (linksRelSubject: $candidate, linksRelObject: $links_2) isa linksRel;
+    $links_2 isa NetworkNode;
+  };
+get $candidate;
+
+# name: axiom::NetworkLink::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink
+match
+  $candidate isa Component;
+  (isMemberOfSubject: $candidate, isMemberOfObject: $ismemberof_1) isa isMemberOf;
+  $ismemberof_1 isa Network;
+  (linksRelSubject: $candidate, linksRelObject: $links_2) isa linksRel;
+  $links_2 isa NetworkNode;
+  not {
+    $candidate isa NetworkLink;
+  };
+get $candidate;
+
+# name: axiom::Offer::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Offer
+match
+  $candidate isa Offer;
+  $candidate isa ContingentObligation;
+  (offersToProvideSubject: $candidate, offersToProvideObject: $offerstoprovide_1) isa offersToProvide;
+  (offersToReceiveSubject: $candidate, offersToReceiveObject: $offerstoreceive_2) isa offersToReceive;
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_3) isa hasGiver;
+  {
+    $hasgiver_3 isa Organization;
+  } or {
+    $hasgiver_3 isa Person;
+  };
+  $candidate has plannedEndDateTime $plannedenddatetime_4;
+  $candidate has plannedStartDateTime $plannedstartdatetime_5;
+get $candidate;
+
+# name: axiom::Offer::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Offer
+match
+  $candidate isa Offer;
+  not {
+    $candidate isa ContingentObligation;
+    (offersToProvideSubject: $candidate, offersToProvideObject: $offerstoprovide_1) isa offersToProvide;
+    (offersToReceiveSubject: $candidate, offersToReceiveObject: $offerstoreceive_2) isa offersToReceive;
+    (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_3) isa hasGiver;
+    {
+      $hasgiver_3 isa Organization;
+    } or {
+      $hasgiver_3 isa Person;
+    };
+    $candidate has plannedEndDateTime $plannedenddatetime_4;
+    $candidate has plannedStartDateTime $plannedstartdatetime_5;
+  };
+get $candidate;
+
+# name: axiom::Offer::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Offer
+match
+  $candidate isa ContingentObligation;
+  (offersToProvideSubject: $candidate, offersToProvideObject: $offerstoprovide_1) isa offersToProvide;
+  (offersToReceiveSubject: $candidate, offersToReceiveObject: $offerstoreceive_2) isa offersToReceive;
+  (hasGiverSubject: $candidate, hasGiverObject: $hasgiver_3) isa hasGiver;
+  {
+    $hasgiver_3 isa Organization;
+  } or {
+    $hasgiver_3 isa Person;
+  };
+  $candidate has plannedEndDateTime $plannedenddatetime_4;
+  $candidate has plannedStartDateTime $plannedstartdatetime_5;
+  not {
+    $candidate isa Offer;
+  };
+get $candidate;
+
+# name: axiom::OrderedCollection::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection
+match
+  $candidate isa OrderedCollection;
+  $candidate isa Collection;
+  {
+    (isFirstMemberOfObject: $candidate, isFirstMemberOfSubject: $isfirstmemberof_1) isa isFirstMemberOf;
+    $isfirstmemberof_1 isa OrderedMember;
+  };
+  not {
+    (isMemberOfObject: $candidate, isMemberOfSubject: $violating_ismemberof_2) isa isMemberOf;
+    not {
+        $violating_ismemberof_2 isa OrderedMember;
+    };
+  };
+get $candidate;
+
+# name: axiom::OrderedCollection::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection
+match
+  $candidate isa OrderedCollection;
+  not {
+    $candidate isa Collection;
+    {
+      (isFirstMemberOfObject: $candidate, isFirstMemberOfSubject: $isfirstmemberof_1) isa isFirstMemberOf;
+      $isfirstmemberof_1 isa OrderedMember;
+    };
+    not {
+      (isMemberOfObject: $candidate, isMemberOfSubject: $violating_ismemberof_2) isa isMemberOf;
+      not {
+          $violating_ismemberof_2 isa OrderedMember;
+      };
+    };
+  };
+get $candidate;
+
+# name: axiom::OrderedCollection::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection
+match
+  $candidate isa Collection;
+  {
+    (isFirstMemberOfObject: $candidate, isFirstMemberOfSubject: $isfirstmemberof_1) isa isFirstMemberOf;
+    $isfirstmemberof_1 isa OrderedMember;
+  };
+  not {
+    (isMemberOfObject: $candidate, isMemberOfSubject: $violating_ismemberof_2) isa isMemberOf;
+    not {
+        $violating_ismemberof_2 isa OrderedMember;
+    };
+  };
+  not {
+    $candidate isa OrderedCollection;
+  };
+get $candidate;
+
+# name: axiom::OrderedMember::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember
+# warning: isMemberOf max cardinality 1 is not enforced in query form
+match
+  $candidate isa OrderedMember;
+  $candidate isa Component;
+  {
+    (precedesDirectlySubject: $candidate, precedesDirectlyObject: $precedesdirectly_1) isa precedesDirectly;
+    $precedesdirectly_1 isa OrderedMember;
+  } or {
+    (precedesDirectlyObject: $candidate, precedesDirectlySubject: $precedesdirectly_2) isa precedesDirectly;
+    $precedesdirectly_2 isa OrderedMember;
+  } or {
+    $candidate has sequence $sequence_3;
+  };
+  (providesOrderForSubject: $candidate, providesOrderForObject: $providesorderfor_4) isa providesOrderFor;
+  not {
+    (isMemberOfSubject: $candidate, isMemberOfObject: $violating_ismemberof_5) isa isMemberOf;
+    not {
+        $violating_ismemberof_5 isa OrderedCollection;
+    };
+  };
+  (isMemberOfSubject: $candidate, isMemberOfObject: $ismemberof_6) isa isMemberOf;
+get $candidate;
+
+# name: axiom::OrderedMember::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember
+# warning: isMemberOf max cardinality 1 is not enforced in query form
+match
+  $candidate isa OrderedMember;
+  not {
+    $candidate isa Component;
+    {
+      (precedesDirectlySubject: $candidate, precedesDirectlyObject: $precedesdirectly_1) isa precedesDirectly;
+      $precedesdirectly_1 isa OrderedMember;
+    } or {
+      (precedesDirectlyObject: $candidate, precedesDirectlySubject: $precedesdirectly_2) isa precedesDirectly;
+      $precedesdirectly_2 isa OrderedMember;
+    } or {
+      $candidate has sequence $sequence_3;
+    };
+    (providesOrderForSubject: $candidate, providesOrderForObject: $providesorderfor_4) isa providesOrderFor;
+    not {
+      (isMemberOfSubject: $candidate, isMemberOfObject: $violating_ismemberof_5) isa isMemberOf;
+      not {
+          $violating_ismemberof_5 isa OrderedCollection;
+      };
+    };
+    (isMemberOfSubject: $candidate, isMemberOfObject: $ismemberof_6) isa isMemberOf;
+  };
+get $candidate;
+
+# name: axiom::OrderedMember::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember
+# warning: isMemberOf max cardinality 1 is not enforced in query form
+match
+  $candidate isa Component;
+  {
+    (precedesDirectlySubject: $candidate, precedesDirectlyObject: $precedesdirectly_1) isa precedesDirectly;
+    $precedesdirectly_1 isa OrderedMember;
+  } or {
+    (precedesDirectlyObject: $candidate, precedesDirectlySubject: $precedesdirectly_2) isa precedesDirectly;
+    $precedesdirectly_2 isa OrderedMember;
+  } or {
+    $candidate has sequence $sequence_3;
+  };
+  (providesOrderForSubject: $candidate, providesOrderForObject: $providesorderfor_4) isa providesOrderFor;
+  not {
+    (isMemberOfSubject: $candidate, isMemberOfObject: $violating_ismemberof_5) isa isMemberOf;
+    not {
+        $violating_ismemberof_5 isa OrderedCollection;
+    };
+  };
+  (isMemberOfSubject: $candidate, isMemberOfObject: $ismemberof_6) isa isMemberOf;
+  not {
+    $candidate isa OrderedMember;
+  };
+get $candidate;
+
+# name: axiom::Permission::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Permission
+match
+  $candidate isa Permission;
+  $candidate isa Intention;
+  (allowsSubject: $candidate, allowsObject: $allows_1) isa allows;
+  $allows_1 isa Behavior;
+get $candidate;
+
+# name: axiom::Permission::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Permission
+match
+  $candidate isa Permission;
+  not {
+    $candidate isa Intention;
+    (allowsSubject: $candidate, allowsObject: $allows_1) isa allows;
+    $allows_1 isa Behavior;
+  };
+get $candidate;
+
+# name: axiom::Permission::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Permission
+match
+  $candidate isa Intention;
+  (allowsSubject: $candidate, allowsObject: $allows_1) isa allows;
+  $allows_1 isa Behavior;
+  not {
+    $candidate isa Permission;
+  };
+get $candidate;
+
+# name: axiom::Person::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Person
+match
+  $candidate isa Person;
+  $candidate isa LivingThing;
+  (hasBiologicalParentSubject: $candidate, hasBiologicalParentObject: $hasbiologicalparent_1) isa hasBiologicalParent;
+  $hasbiologicalparent_1 isa Person;
+get $candidate;
+
+# name: axiom::Person::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Person
+match
+  $candidate isa Person;
+  not {
+    $candidate isa LivingThing;
+    (hasBiologicalParentSubject: $candidate, hasBiologicalParentObject: $hasbiologicalparent_1) isa hasBiologicalParent;
+    $hasbiologicalparent_1 isa Person;
+  };
+get $candidate;
+
+# name: axiom::Person::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Person
+match
+  $candidate isa LivingThing;
+  (hasBiologicalParentSubject: $candidate, hasBiologicalParentObject: $hasbiologicalparent_1) isa hasBiologicalParent;
+  $hasbiologicalparent_1 isa Person;
+  not {
+    $candidate isa Person;
+  };
+get $candidate;
+
+# name: axiom::PhysicalAddress::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress
+match
+  $candidate isa PhysicalAddress;
+  $candidate isa Address;
+  (refersToSubject: $candidate, refersToObject: $refersto_1) isa refersTo;
+  $refersto_1 isa GeoLocation;
+get $candidate;
+
+# name: axiom::PhysicalAddress::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress
+match
+  $candidate isa PhysicalAddress;
+  not {
+    $candidate isa Address;
+    (refersToSubject: $candidate, refersToObject: $refersto_1) isa refersTo;
+    $refersto_1 isa GeoLocation;
+  };
+get $candidate;
+
+# name: axiom::PhysicalAddress::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress
+match
+  $candidate isa Address;
+  (refersToSubject: $candidate, refersToObject: $refersto_1) isa refersTo;
+  $refersto_1 isa GeoLocation;
+  not {
+    $candidate isa PhysicalAddress;
+  };
+get $candidate;
+
+# name: axiom::PhysicalEvent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent
+match
+  $candidate isa PhysicalEvent;
+  $candidate isa Event;
+  (occursInSubject: $candidate, occursInObject: $occursin_1) isa occursIn;
+  $occursin_1 isa GeoLocation;
+get $candidate;
+
+# name: axiom::PhysicalEvent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent
+match
+  $candidate isa PhysicalEvent;
+  not {
+    $candidate isa Event;
+    (occursInSubject: $candidate, occursInObject: $occursin_1) isa occursIn;
+    $occursin_1 isa GeoLocation;
+  };
+get $candidate;
+
+# name: axiom::PhysicalEvent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent
+match
+  $candidate isa Event;
+  (occursInSubject: $candidate, occursInObject: $occursin_1) isa occursIn;
+  $occursin_1 isa GeoLocation;
+  not {
+    $candidate isa PhysicalEvent;
+  };
+get $candidate;
+
+# name: axiom::ProductSpecification::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification
+match
+  $candidate isa ProductSpecification;
+  $candidate isa CatalogItem;
+  (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_1) isa isCategorizedBy;
+  $iscategorizedby_1 isa ProductCategory;
+get $candidate;
+
+# name: axiom::ProductSpecification::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification
+match
+  $candidate isa ProductSpecification;
+  not {
+    $candidate isa CatalogItem;
+    (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_1) isa isCategorizedBy;
+    $iscategorizedby_1 isa ProductCategory;
+  };
+get $candidate;
+
+# name: axiom::ProductSpecification::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification
+match
+  $candidate isa CatalogItem;
+  (isCategorizedBySubject: $candidate, isCategorizedByObject: $iscategorizedby_1) isa isCategorizedBy;
+  $iscategorizedby_1 isa ProductCategory;
+  not {
+    $candidate isa ProductSpecification;
+  };
+get $candidate;
+
+# name: axiom::Project::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Project
+match
+  $candidate isa Project;
+  $candidate isa Task;
+  (isPartOfObject: $candidate, isPartOfSubject: $ispartof_1) isa isPartOf;
+  $ispartof_1 isa Task;
+get $candidate;
+
+# name: axiom::Project::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Project
+match
+  $candidate isa Project;
+  not {
+    $candidate isa Task;
+    (isPartOfObject: $candidate, isPartOfSubject: $ispartof_1) isa isPartOf;
+    $ispartof_1 isa Task;
+  };
+get $candidate;
+
+# name: axiom::Project::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Project
+match
+  $candidate isa Task;
+  (isPartOfObject: $candidate, isPartOfSubject: $ispartof_1) isa isPartOf;
+  $ispartof_1 isa Task;
+  not {
+    $candidate isa Project;
+  };
+get $candidate;
+
+# name: axiom::RenderedContent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent
+match
+  $candidate isa RenderedContent;
+  $candidate isa FormattedContent;
+  (isRenderedOnSubject: $candidate, isRenderedOnObject: $isrenderedon_1) isa isRenderedOn;
+  $isrenderedon_1 isa Medium;
+get $candidate;
+
+# name: axiom::RenderedContent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent
+match
+  $candidate isa RenderedContent;
+  not {
+    $candidate isa FormattedContent;
+    (isRenderedOnSubject: $candidate, isRenderedOnObject: $isrenderedon_1) isa isRenderedOn;
+    $isrenderedon_1 isa Medium;
+  };
+get $candidate;
+
+# name: axiom::RenderedContent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent
+match
+  $candidate isa FormattedContent;
+  (isRenderedOnSubject: $candidate, isRenderedOnObject: $isrenderedon_1) isa isRenderedOn;
+  $isrenderedon_1 isa Medium;
+  not {
+    $candidate isa RenderedContent;
+  };
+get $candidate;
+
+# name: axiom::Restriction::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Restriction
+match
+  $candidate isa Restriction;
+  $candidate isa Intention;
+  (preventsSubject: $candidate, preventsObject: $prevents_1) isa prevents;
+  $prevents_1 isa Behavior;
+get $candidate;
+
+# name: axiom::Restriction::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Restriction
+match
+  $candidate isa Restriction;
+  not {
+    $candidate isa Intention;
+    (preventsSubject: $candidate, preventsObject: $prevents_1) isa prevents;
+    $prevents_1 isa Behavior;
+  };
+get $candidate;
+
+# name: axiom::Restriction::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Restriction
+match
+  $candidate isa Intention;
+  (preventsSubject: $candidate, preventsObject: $prevents_1) isa prevents;
+  $prevents_1 isa Behavior;
+  not {
+    $candidate isa Restriction;
+  };
+get $candidate;
+
+# name: axiom::ScheduledEvent::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent
+match
+  $candidate isa ScheduledEvent;
+  $candidate isa Event;
+  $candidate has plannedStartDateTime $plannedstartdatetime_1;
+get $candidate;
+
+# name: axiom::ScheduledEvent::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent
+match
+  $candidate isa ScheduledEvent;
+  not {
+    $candidate isa Event;
+    $candidate has plannedStartDateTime $plannedstartdatetime_1;
+  };
+get $candidate;
+
+# name: axiom::ScheduledEvent::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent
+match
+  $candidate isa Event;
+  $candidate has plannedStartDateTime $plannedstartdatetime_1;
+  not {
+    $candidate isa ScheduledEvent;
+  };
+get $candidate;
+
+# name: axiom::ScheduledTask::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask
+match
+  $candidate isa ScheduledTask;
+  $candidate isa ScheduledEvent;
+  $candidate isa Task;
+get $candidate;
+
+# name: axiom::ScheduledTask::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask
+match
+  $candidate isa ScheduledTask;
+  not {
+    $candidate isa ScheduledEvent;
+    $candidate isa Task;
+  };
+get $candidate;
+
+# name: axiom::ScheduledTask::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask
+match
+  $candidate isa ScheduledEvent;
+  $candidate isa Task;
+  not {
+    $candidate isa ScheduledTask;
+  };
+get $candidate;
+
+# name: axiom::ServiceSpecification::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification
+match
+  $candidate isa ServiceSpecification;
+  $candidate isa CatalogItem;
+  (isBasedOnObject: $candidate, isBasedOnSubject: $isbasedon_1) isa isBasedOn;
+  $isbasedon_1 isa Event;
+get $candidate;
+
+# name: axiom::ServiceSpecification::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification
+match
+  $candidate isa ServiceSpecification;
+  not {
+    $candidate isa CatalogItem;
+    (isBasedOnObject: $candidate, isBasedOnSubject: $isbasedon_1) isa isBasedOn;
+    $isbasedon_1 isa Event;
+  };
+get $candidate;
+
+# name: axiom::ServiceSpecification::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification
+match
+  $candidate isa CatalogItem;
+  (isBasedOnObject: $candidate, isBasedOnSubject: $isbasedon_1) isa isBasedOn;
+  $isbasedon_1 isa Event;
+  not {
+    $candidate isa ServiceSpecification;
+  };
+get $candidate;
+
+# name: axiom::SubCountryGovernment::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment
+match
+  $candidate isa SubCountryGovernment;
+  $candidate isa GovernmentOrganization;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa CountryGovernment;
+  (isGovernedByObject: $candidate, isGovernedBySubject: $isgovernedby_2) isa isGovernedBy;
+  $isgovernedby_2 isa GeoRegion;
+get $candidate;
+
+# name: axiom::SubCountryGovernment::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment
+match
+  $candidate isa SubCountryGovernment;
+  not {
+    $candidate isa GovernmentOrganization;
+    (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+    $isgovernedby_1 isa CountryGovernment;
+    (isGovernedByObject: $candidate, isGovernedBySubject: $isgovernedby_2) isa isGovernedBy;
+    $isgovernedby_2 isa GeoRegion;
+  };
+get $candidate;
+
+# name: axiom::SubCountryGovernment::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment
+match
+  $candidate isa GovernmentOrganization;
+  (isGovernedBySubject: $candidate, isGovernedByObject: $isgovernedby_1) isa isGovernedBy;
+  $isgovernedby_1 isa CountryGovernment;
+  (isGovernedByObject: $candidate, isGovernedBySubject: $isgovernedby_2) isa isGovernedBy;
+  $isgovernedby_2 isa GeoRegion;
+  not {
+    $candidate isa SubCountryGovernment;
+  };
+get $candidate;
+
+# name: axiom::System::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/System
+match
+  $candidate isa System;
+  $candidate isa Composite;
+  (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_1) isa isDirectPartOf;
+  $isdirectpartof_1 isa Component;
+get $candidate;
+
+# name: axiom::System::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/System
+match
+  $candidate isa System;
+  not {
+    $candidate isa Composite;
+    (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_1) isa isDirectPartOf;
+    $isdirectpartof_1 isa Component;
+  };
+get $candidate;
+
+# name: axiom::System::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/System
+match
+  $candidate isa Composite;
+  (isDirectPartOfObject: $candidate, isDirectPartOfSubject: $isdirectpartof_1) isa isDirectPartOf;
+  $isdirectpartof_1 isa Component;
+  not {
+    $candidate isa System;
+  };
+get $candidate;
+
+# name: axiom::Task::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Task
+match
+  $candidate isa Task;
+  $candidate isa Event;
+  (hasGoalSubject: $candidate, hasGoalObject: $hasgoal_1) isa hasGoal;
+  $hasgoal_1 isa Intention;
+get $candidate;
+
+# name: axiom::Task::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Task
+match
+  $candidate isa Task;
+  not {
+    $candidate isa Event;
+    (hasGoalSubject: $candidate, hasGoalObject: $hasgoal_1) isa hasGoal;
+    $hasgoal_1 isa Intention;
+  };
+get $candidate;
+
+# name: axiom::Task::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Task
+match
+  $candidate isa Event;
+  (hasGoalSubject: $candidate, hasGoalObject: $hasgoal_1) isa hasGoal;
+  $hasgoal_1 isa Intention;
+  not {
+    $candidate isa Task;
+  };
+get $candidate;
+
+# name: axiom::TaskTemplate::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate
+match
+  $candidate isa TaskTemplate;
+  $candidate isa Template;
+  (hasGoalSubject: $candidate, hasGoalObject: $hasgoal_1) isa hasGoal;
+  $hasgoal_1 isa Intention;
+get $candidate;
+
+# name: axiom::TaskTemplate::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate
+match
+  $candidate isa TaskTemplate;
+  not {
+    $candidate isa Template;
+    (hasGoalSubject: $candidate, hasGoalObject: $hasgoal_1) isa hasGoal;
+    $hasgoal_1 isa Intention;
+  };
+get $candidate;
+
+# name: axiom::TaskTemplate::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate
+match
+  $candidate isa Template;
+  (hasGoalSubject: $candidate, hasGoalObject: $hasgoal_1) isa hasGoal;
+  $hasgoal_1 isa Intention;
+  not {
+    $candidate isa TaskTemplate;
+  };
+get $candidate;
+
+# name: axiom::Text::satisfies
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Text
+match
+  $candidate isa Text;
+  $candidate isa ContentExpression;
+  (isExpressedInSubject: $candidate, isExpressedInObject: $isexpressedin_1) isa isExpressedIn;
+  $isexpressedin_1 isa Language;
+  $candidate has containedText $containedtext_2;
+get $candidate;
+
+# name: axiom::Text::violation::equivalent-class-1
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Text
+match
+  $candidate isa Text;
+  not {
+    $candidate isa ContentExpression;
+    (isExpressedInSubject: $candidate, isExpressedInObject: $isexpressedin_1) isa isExpressedIn;
+    $isexpressedin_1 isa Language;
+    $candidate has containedText $containedtext_2;
+  };
+get $candidate;
+
+# name: axiom::Text::candidates
+# source-class: https://w3id.org/semanticarts/ns/ontology/gist/Text
+match
+  $candidate isa ContentExpression;
+  (isExpressedInSubject: $candidate, isExpressedInObject: $isexpressedin_1) isa isExpressedIn;
+  $isexpressedin_1 isa Language;
+  $candidate has containedText $containedtext_2;
+  not {
+    $candidate isa Text;
+  };
+get $candidate;

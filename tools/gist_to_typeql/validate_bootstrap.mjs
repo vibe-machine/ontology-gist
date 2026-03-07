@@ -129,6 +129,7 @@ async function main() {
   const manifest = await readJson("manifests/gist-v14.0.0.translation-manifest.json");
   const sourceInventory = await readJson("upstream/gist/v14.0.0/source-artifacts.json");
   const translationReport = await readJson("manifests/gist-v14.0.0.translation-report.json");
+  const axiomIndex = await readJson("manifests/gist-v14.0.0.axiom-queries.json");
 
   for (const relPath of pkg.assembly.loadOrder) {
     await fs.access(path.join(root, relPath));
@@ -146,7 +147,7 @@ async function main() {
     await fs.access(path.join(root, "upstream/gist/v14.0.0", file.path));
   }
 
-  const activeTqlFiles = [...pkg.schemas.map((schema) => schema.file), ...pkg.data];
+  const activeTqlFiles = [...pkg.schemas.map((schema) => schema.file), ...pkg.data, ...(pkg.queries ?? [])];
   for (const relPath of activeTqlFiles) {
     const text = await fs.readFile(path.join(root, relPath), "utf8");
     await assertCondition(text.includes("# manifest: manifests/gist-v14.0.0.translation-manifest.json"), `missing manifest header in ${relPath}`);
@@ -193,6 +194,16 @@ async function main() {
     "generated translation report is not deterministic"
   );
   await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "queries/gistCore-axioms.tql"))) ===
+      sha256(await fs.readFile(path.join(emitDir2, "queries/gistCore-axioms.tql"))),
+    "generated axiom query library is not deterministic"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.axiom-queries.json"))) ===
+      sha256(await fs.readFile(path.join(emitDir2, "manifests/gist-v14.0.0.axiom-queries.json"))),
+    "generated axiom query index is not deterministic"
+  );
+  await assertCondition(
     sha256(await fs.readFile(path.join(emitDir1, "schema/gistCore.tql"))) === sha256(await fs.readFile(path.join(root, "schema/gistCore.tql"))),
     "checked-in schema is stale; run npm run emit:structural"
   );
@@ -207,12 +218,31 @@ async function main() {
     "checked-in translation report is stale; run npm run emit:structural"
   );
   await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "queries/gistCore-axioms.tql"))) ===
+      sha256(await fs.readFile(path.join(root, "queries/gistCore-axioms.tql"))),
+    "checked-in axiom query library is stale; run npm run emit:structural"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.axiom-queries.json"))) ===
+      sha256(await fs.readFile(path.join(root, "manifests/gist-v14.0.0.axiom-queries.json"))),
+    "checked-in axiom query index is stale; run npm run emit:structural"
+  );
+  await assertCondition(
     translationReport.coverage?.queryableProvenanceSeedDataPending === false,
     "translation report must confirm that queryable provenance seed data is emitted"
   );
   await assertCondition(
     Array.isArray(translationReport.coverage?.equivalentClassAxiomsPending),
     "translation report must enumerate unresolved equivalent-class coverage"
+  );
+  await assertCondition(
+    Array.isArray(translationReport.coverage?.axiomQueryCoverage?.classesCovered),
+    "translation report must enumerate generated axiom-query coverage"
+  );
+  await assertCondition(Array.isArray(axiomIndex.queries) && axiomIndex.queries.length > 0, "axiom-query index must contain generated query definitions");
+  await assertCondition(
+    axiomIndex.queries.some((item) => item.name === "axiom::ContingentEvent::satisfies"),
+    "axiom-query index must contain representative ContingentEvent coverage"
   );
 
   const typedbTemp = await fs.mkdtemp(path.join(os.tmpdir(), "gist-typedb-validate-"));

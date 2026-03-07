@@ -31,8 +31,12 @@
     "data/gistCore-provenance.tql",
     "data/gistCore-schema-docs.tql"
   ],
+  "queries": [
+    "queries/gistCore-axioms.tql"
+  ],
   "manifests": [
-    "manifests/gist-v14.0.0.translation-manifest.json"
+    "manifests/gist-v14.0.0.translation-manifest.json",
+    "manifests/gist-v14.0.0.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
@@ -50,6 +54,8 @@
       "data/gistCore-domain-seeds.tql",
       "data/gistCore-provenance.tql",
       "data/gistCore-schema-docs.tql",
+      "queries/gistCore-axioms.tql",
+      "manifests/gist-v14.0.0.axiom-queries.json",
       "manifests/gist-v14.0.0.translation-manifest.json",
       "manifests/gist-v14.0.0.translation-report.json",
       "manifests/gist-v14.0.0.ir-summary.json"

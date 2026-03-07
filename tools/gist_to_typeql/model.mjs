@@ -27,6 +27,12 @@ export const OWL_ALL_VALUES_FROM = "http://www.w3.org/2002/07/owl#allValuesFrom"
 export const OWL_ON_CLASS = "http://www.w3.org/2002/07/owl#onClass";
 export const OWL_HAS_VALUE = "http://www.w3.org/2002/07/owl#hasValue";
 export const OWL_INVERSE_OF = "http://www.w3.org/2002/07/owl#inverseOf";
+export const OWL_MIN_QUALIFIED_CARDINALITY = "http://www.w3.org/2002/07/owl#minQualifiedCardinality";
+export const OWL_MAX_QUALIFIED_CARDINALITY = "http://www.w3.org/2002/07/owl#maxQualifiedCardinality";
+export const OWL_QUALIFIED_CARDINALITY = "http://www.w3.org/2002/07/owl#qualifiedCardinality";
+export const OWL_MIN_CARDINALITY = "http://www.w3.org/2002/07/owl#minCardinality";
+export const OWL_MAX_CARDINALITY = "http://www.w3.org/2002/07/owl#maxCardinality";
+export const OWL_CARDINALITY = "http://www.w3.org/2002/07/owl#cardinality";
 
 export const ANNOTATION_MAP = {
   "http://www.w3.org/2004/02/skos/core#prefLabel": "prefLabel",

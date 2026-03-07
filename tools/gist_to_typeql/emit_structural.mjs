@@ -4,11 +4,17 @@ import { fileURLToPath } from "node:url";
 
 import {
   OWL_ALL_VALUES_FROM,
+  OWL_CARDINALITY,
   OWL_HAS_VALUE,
   OWL_INTERSECTION_OF,
   OWL_INVERSE_OF,
+  OWL_MAX_CARDINALITY,
+  OWL_MAX_QUALIFIED_CARDINALITY,
+  OWL_MIN_CARDINALITY,
+  OWL_MIN_QUALIFIED_CARDINALITY,
   OWL_ON_CLASS,
   OWL_ON_PROPERTY,
+  OWL_QUALIFIED_CARDINALITY,
   OWL_RESTRICTION,
   OWL_SOME_VALUES_FROM,
   OWL_UNION_OF,
@@ -23,7 +29,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
 
 const MANIFEST_PATH = "manifests/gist-v14.0.0.translation-manifest.json";
-const GENERATOR = "gist-structural-emitter/0.3.0";
+const GENERATOR = "gist-structural-emitter/0.4.0";
 const RESERVED_IDENTIFIERS = new Set([
   "and",
   "attribute",
@@ -216,7 +222,13 @@ function parseExpression(model, term) {
       someValuesFrom: parseExpression(model, getBlankNodeObjects(model, nodeId, OWL_SOME_VALUES_FROM)[0]),
       allValuesFrom: parseExpression(model, getBlankNodeObjects(model, nodeId, OWL_ALL_VALUES_FROM)[0]),
       onClass: parseExpression(model, getBlankNodeObjects(model, nodeId, OWL_ON_CLASS)[0]),
-      hasValue: parseExpression(model, getBlankNodeObjects(model, nodeId, OWL_HAS_VALUE)[0])
+      hasValue: parseExpression(model, getBlankNodeObjects(model, nodeId, OWL_HAS_VALUE)[0]),
+      minQualifiedCardinality: Number.parseInt(getBlankNodeObjects(model, nodeId, OWL_MIN_QUALIFIED_CARDINALITY)[0]?.value ?? "", 10) || null,
+      maxQualifiedCardinality: Number.parseInt(getBlankNodeObjects(model, nodeId, OWL_MAX_QUALIFIED_CARDINALITY)[0]?.value ?? "", 10) || null,
+      qualifiedCardinality: Number.parseInt(getBlankNodeObjects(model, nodeId, OWL_QUALIFIED_CARDINALITY)[0]?.value ?? "", 10) || null,
+      minCardinality: Number.parseInt(getBlankNodeObjects(model, nodeId, OWL_MIN_CARDINALITY)[0]?.value ?? "", 10) || null,
+      maxCardinality: Number.parseInt(getBlankNodeObjects(model, nodeId, OWL_MAX_CARDINALITY)[0]?.value ?? "", 10) || null,
+      cardinality: Number.parseInt(getBlankNodeObjects(model, nodeId, OWL_CARDINALITY)[0]?.value ?? "", 10) || null
     };
   }
 
@@ -680,7 +692,293 @@ function renderProvenanceData(manifest) {
   return lines.join("\n");
 }
 
+function indentText(text, prefix = "  ") {
+  return text
+    .split("\n")
+    .map((line) => (line ? `${prefix}${line}` : line))
+    .join("\n");
+}
+
+function mergeWarnings(items) {
+  return uniqueSorted(items.flatMap((item) => item ?? []));
+}
+
+function buildAxiomQueryArtifacts(model, identifiers) {
+  const classIris = new Set(model.resources.classes.map((item) => item.iri));
+  const objectPropertyIris = new Set(model.resources.objectProperties.map((item) => item.iri));
+  const datatypePropertyIris = new Set(model.resources.datatypeProperties.map((item) => item.iri));
+  const instanceTypes = new Map(model.resources.instances.map((item) => [item.iri, item.types]));
+
+  function createContext() {
+    let counter = 0;
+    return {
+      nextVar(stem) {
+        counter += 1;
+        return `$${stem.replace(/[^A-Za-z0-9_]/g, "_")}_${counter}`;
+      }
+    };
+  }
+
+  function hasConcreteExpr(expr) {
+    return expr && expr.kind !== "unknown";
+  }
+
+  function cardinalitySummary(expr) {
+    const exact = expr.qualifiedCardinality ?? expr.cardinality ?? null;
+    const min = exact ?? expr.minQualifiedCardinality ?? expr.minCardinality ?? null;
+    const max = exact ?? expr.maxQualifiedCardinality ?? expr.maxCardinality ?? null;
+    const qualified = expr.qualifiedCardinality !== null || expr.minQualifiedCardinality !== null || expr.maxQualifiedCardinality !== null;
+    return { exact, min, max, qualified };
+  }
+
+  function compileExpression(expr, subjectVar, ctx) {
+    if (!expr || expr.kind === "unknown") return { clauses: [], warnings: [] };
+
+    if (expr.kind === "named") {
+      if (classIris.has(expr.iri)) {
+        return { clauses: [`${subjectVar} isa ${identifiers.entity(expr.iri)};`], warnings: [] };
+      }
+      if (expr.iri === "http://www.w3.org/2002/07/owl#Thing") {
+        return { clauses: [], warnings: [] };
+      }
+      if (instanceTypes.has(expr.iri)) {
+        return { clauses: [`${subjectVar} has sourceIRI ${tqlString(expr.iri)};`], warnings: [] };
+      }
+      if (expr.iri.startsWith("http://www.w3.org/2001/XMLSchema#")) {
+        return { clauses: [], warnings: [] };
+      }
+      return {
+        clauses: [`${subjectVar} has sourceIRI ${tqlString(expr.iri)};`],
+        warnings: [`named target ${expr.iri} treated as sourceIRI lookup`]
+      };
+    }
+
+    if (expr.kind === "intersection") {
+      const compiled = expr.members.map((member) => compileExpression(member, subjectVar, ctx));
+      return {
+        clauses: compiled.flatMap((item) => item.clauses),
+        warnings: mergeWarnings(compiled.map((item) => item.warnings))
+      };
+    }
+
+    if (expr.kind === "union") {
+      const compiled = expr.members.map((member) => compileExpression(member, subjectVar, ctx));
+      const nonEmpty = compiled.filter((item) => item.clauses.length > 0);
+      if (!nonEmpty.length) {
+        return { clauses: [], warnings: mergeWarnings(compiled.map((item) => item.warnings)) };
+      }
+      const clause = `${nonEmpty
+        .map((item) => `{\n${indentText(item.clauses.join("\n"))}\n}`)
+        .join(" or ")};`;
+      return {
+        clauses: [clause],
+        warnings: mergeWarnings(compiled.map((item) => item.warnings))
+      };
+    }
+
+    if (expr.kind === "restriction") {
+      if (!expr.property) {
+        return { clauses: [], warnings: ["restriction without onProperty was skipped"] };
+      }
+
+      const relationName = identifiers.relation(expr.property);
+      const attributeName = identifiers.attribute(expr.property);
+      const targetExpr = hasConcreteExpr(expr.someValuesFrom)
+        ? expr.someValuesFrom
+        : hasConcreteExpr(expr.onClass)
+          ? expr.onClass
+          : hasConcreteExpr(expr.hasValue)
+            ? expr.hasValue
+            : null;
+      const card = cardinalitySummary(expr);
+      const warnings = [];
+      const clauses = [];
+      const propertyLabel = iriLocalName(expr.property);
+
+      if (card.exact !== null && card.exact > 1) {
+        warnings.push(`${propertyLabel} exact cardinality ${card.exact} is approximated without upper-bound enforcement`);
+      } else if (card.min !== null && card.min > 1) {
+        warnings.push(`${propertyLabel} min cardinality ${card.min} is approximated as at-least-one existence`);
+      } else if (card.max !== null && card.max > 0) {
+        warnings.push(`${propertyLabel} max cardinality ${card.max} is not enforced in query form`);
+      } else if (card.exact === 1) {
+        warnings.push(`${propertyLabel} exact cardinality 1 is approximated as existence of one matching value`);
+      }
+
+      if (objectPropertyIris.has(expr.property)) {
+        const selfRole = `${relationName}${expr.inverse ? "Object" : "Subject"}`;
+        const otherRole = `${relationName}${expr.inverse ? "Subject" : "Object"}`;
+        const relationPattern = (targetVar) => `(${selfRole}: ${subjectVar}, ${otherRole}: ${targetVar}) isa ${relationName};`;
+
+        const addExistenceConstraint = target => {
+          const targetVar = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+          clauses.push(relationPattern(targetVar));
+          if (target) {
+            const compiledTarget = compileExpression(target, targetVar, ctx);
+            clauses.push(...compiledTarget.clauses);
+            warnings.push(...compiledTarget.warnings);
+          }
+        };
+
+        const addAbsenceConstraint = target => {
+          const targetVar = ctx.nextVar(`forbidden_${iriLocalName(expr.property).toLowerCase()}`);
+          const compiledTarget = target ? compileExpression(target, targetVar, ctx) : { clauses: [], warnings: [] };
+          warnings.push(...compiledTarget.warnings);
+          const block = [`${relationPattern(targetVar)}`, ...compiledTarget.clauses].join("\n");
+          clauses.push(`not {\n${indentText(block)}\n};`);
+        };
+
+        if (targetExpr || (card.min !== null && card.min > 0) || (card.exact !== null && card.exact > 0)) {
+          addExistenceConstraint(targetExpr);
+        }
+
+        if (hasConcreteExpr(expr.allValuesFrom)) {
+          const targetVar = ctx.nextVar(`violating_${iriLocalName(expr.property).toLowerCase()}`);
+          const compiledTarget = compileExpression(expr.allValuesFrom, targetVar, ctx);
+          warnings.push(...compiledTarget.warnings);
+          clauses.push(
+            `not {\n${indentText(
+              `${relationPattern(targetVar)}\nnot {\n${indentText(compiledTarget.clauses.join("\n"), "    ")}\n};`
+            )}\n};`
+          );
+        }
+
+        if ((card.max !== null && card.max === 0) || (card.exact !== null && card.exact === 0)) {
+          addAbsenceConstraint(targetExpr);
+        }
+      } else if (datatypePropertyIris.has(expr.property)) {
+        const literalVar = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+        const attributePattern = `${subjectVar} has ${attributeName} ${literalVar};`;
+        if (hasConcreteExpr(expr.hasValue) && expr.hasValue.kind === "literal") {
+          clauses.push(`${subjectVar} has ${attributeName} ${tqlString(expr.hasValue.value)};`);
+        } else if ((card.max !== null && card.max === 0) || (card.exact !== null && card.exact === 0)) {
+          clauses.push(`not {\n${indentText(attributePattern)}\n};`);
+        } else {
+          clauses.push(attributePattern);
+        }
+
+        if (hasConcreteExpr(expr.allValuesFrom) && expr.allValuesFrom.kind !== "named") {
+          warnings.push(`${propertyLabel} allValuesFrom on datatype property could not be enforced exactly`);
+        }
+      } else {
+        warnings.push(`restriction property ${expr.property} is not mapped into schema or attribute generation`);
+      }
+
+      return {
+        clauses,
+        warnings: mergeWarnings([warnings])
+      };
+    }
+
+    return {
+      clauses: [],
+      warnings: [`expression kind ${expr.kind} is not currently query-emitted`]
+    };
+  }
+
+  const queryEntries = [];
+  const queryLines = [
+    "# Provenance bootstrap",
+    "# upstream-repo: https://github.com/semanticarts/gist",
+    "# upstream-tag: v14.0.0",
+    "# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
+    "# source-artifacts:",
+    "# - upstream/gist/v14.0.0/ontologies/gistCore.ttl",
+    "# - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl",
+    "# - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl",
+    "# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl",
+    `# manifest: ${MANIFEST_PATH}`,
+    `# generator: ${GENERATOR}`,
+    ""
+  ];
+
+  const classesWithEquivalent = model.resources.classes
+    .filter((cls) => cls.equivalentClass.length > 0)
+    .sort((a, b) => iriLocalName(a.iri).localeCompare(iriLocalName(b.iri)));
+
+  for (const cls of classesWithEquivalent) {
+    const ctx = createContext();
+    const typeLabel = iriLocalName(cls.iri);
+    const entityName = identifiers.entity(cls.iri);
+    const compiled = cls.equivalentClass.map((term) => compileExpression(parseExpression(model, term), "$candidate", ctx));
+    const clauses = compiled.flatMap((item) => item.clauses);
+    const warnings = mergeWarnings(compiled.map((item) => item.warnings));
+
+    if (!clauses.length) continue;
+
+    const queryDefs = [
+      {
+        name: `axiom::${typeLabel}::satisfies`,
+        kind: "satisfies",
+        body: [`match`, `  $candidate isa ${entityName};`, ...clauses.flatMap((clause) => indentText(clause).split("\n")), `get $candidate;`]
+      },
+      {
+        name: `axiom::${typeLabel}::violation::equivalent-class-1`,
+        kind: "violation",
+        body: [
+          `match`,
+          `  $candidate isa ${entityName};`,
+          `  not {`,
+          indentText(clauses.join("\n"), "    "),
+          `  };`,
+          `get $candidate;`
+        ]
+      },
+      {
+        name: `axiom::${typeLabel}::candidates`,
+        kind: "candidates",
+        body: [
+          `match`,
+          ...clauses.flatMap((clause) => indentText(clause).split("\n")),
+          `  not {`,
+          `    $candidate isa ${entityName};`,
+          `  };`,
+          `get $candidate;`
+        ]
+      }
+    ];
+
+    for (const definition of queryDefs) {
+      queryLines.push(`# name: ${definition.name}`);
+      queryLines.push(`# source-class: ${cls.iri}`);
+      for (const warning of warnings) queryLines.push(`# warning: ${warning}`);
+      queryLines.push(...definition.body);
+      queryLines.push("");
+      queryEntries.push({
+        name: definition.name,
+        kind: definition.kind,
+        file: "queries/gistCore-axioms.tql",
+        marker: `# name: ${definition.name}`,
+        classIri: cls.iri,
+        typeLabel,
+        warnings
+      });
+    }
+  }
+
+  return {
+    library: `${queryLines.join("\n").trim()}\n`,
+    index: JSON.stringify(
+      {
+        package: "gist",
+        version: "14.0.0",
+        generatedBy: GENERATOR,
+        file: "queries/gistCore-axioms.tql",
+        queryCount: queryEntries.length,
+        queries: queryEntries
+      },
+      null,
+      2
+    ) + "\n",
+    summary: {
+      classesCovered: uniqueSorted(queryEntries.map((entry) => entry.classIri)),
+      warnings: uniqueSorted(queryEntries.flatMap((entry) => entry.warnings))
+    }
+  };
+}
+
 function renderReport(model, propertyInfo, entityDefinitions, identifiers) {
+  const axiomArtifacts = buildAxiomQueryArtifacts(model, identifiers);
   const renamedRelations = model.resources.objectProperties
     .map((property) => ({
       iri: property.iri,
@@ -731,8 +1029,13 @@ function renderReport(model, propertyInfo, entityDefinitions, identifiers) {
         .map((property) => property.iri),
       equivalentClassAxiomsPending: model.resources.classes
         .filter((cls) => cls.equivalentClass.length > 0)
+        .filter((cls) => !axiomArtifacts.summary.classesCovered.includes(cls.iri))
         .map((cls) => cls.iri),
       queryableProvenanceSeedDataPending: false,
+      axiomQueryCoverage: {
+        classesCovered: axiomArtifacts.summary.classesCovered,
+        approximations: axiomArtifacts.summary.warnings
+      },
       renamedIdentifiers: {
         relations: renamedRelations,
         attributes: renamedAttributes,
@@ -771,14 +1074,18 @@ async function main() {
   const identifiers = buildIdentifierMaps(model);
   const propertyInfo = inferPropertyTypes(model);
   const entityDefinitions = buildEntityDefinitions(model, propertyInfo, identifiers);
+  const axiomArtifacts = buildAxiomQueryArtifacts(model, identifiers);
 
   await fs.mkdir(path.join(outputRoot, "schema"), { recursive: true });
   await fs.mkdir(path.join(outputRoot, "data"), { recursive: true });
+  await fs.mkdir(path.join(outputRoot, "queries"), { recursive: true });
   await fs.mkdir(path.join(outputRoot, "manifests"), { recursive: true });
 
   await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), renderSchema(model, propertyInfo, entityDefinitions, identifiers), "utf8");
   await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), renderSeedData(model, identifiers), "utf8");
   await fs.writeFile(path.join(outputRoot, "data/gistCore-provenance.tql"), renderProvenanceData(manifest), "utf8");
+  await fs.writeFile(path.join(outputRoot, "queries/gistCore-axioms.tql"), axiomArtifacts.library, "utf8");
+  await fs.writeFile(path.join(outputRoot, "manifests/gist-v14.0.0.axiom-queries.json"), axiomArtifacts.index, "utf8");
   await fs.writeFile(
     path.join(outputRoot, "manifests/gist-v14.0.0.translation-report.json"),
     renderReport(model, propertyInfo, entityDefinitions, identifiers),

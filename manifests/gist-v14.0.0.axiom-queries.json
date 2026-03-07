@@ -1,0 +1,1254 @@
+{
+  "package": "gist",
+  "version": "14.0.0",
+  "generatedBy": "gist-structural-emitter/0.4.0",
+  "file": "queries/gistCore-axioms.tql",
+  "queryCount": 135,
+  "queries": [
+    {
+      "name": "axiom::Account::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Account::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+      "typeLabel": "Account",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Account::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Account::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+      "typeLabel": "Account",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Account::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Account::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+      "typeLabel": "Account",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Agreement::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Agreement::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+      "typeLabel": "Agreement",
+      "warnings": [
+        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence"
+      ]
+    },
+    {
+      "name": "axiom::Agreement::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Agreement::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+      "typeLabel": "Agreement",
+      "warnings": [
+        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence"
+      ]
+    },
+    {
+      "name": "axiom::Agreement::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Agreement::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+      "typeLabel": "Agreement",
+      "warnings": [
+        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence"
+      ]
+    },
+    {
+      "name": "axiom::Assignment::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Assignment::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+      "typeLabel": "Assignment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Assignment::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Assignment::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+      "typeLabel": "Assignment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Assignment::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Assignment::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+      "typeLabel": "Assignment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::BundledCatalogItem::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::BundledCatalogItem::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+      "typeLabel": "BundledCatalogItem",
+      "warnings": []
+    },
+    {
+      "name": "axiom::BundledCatalogItem::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::BundledCatalogItem::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+      "typeLabel": "BundledCatalogItem",
+      "warnings": []
+    },
+    {
+      "name": "axiom::BundledCatalogItem::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::BundledCatalogItem::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+      "typeLabel": "BundledCatalogItem",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Commitment::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Commitment::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+      "typeLabel": "Commitment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Commitment::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Commitment::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+      "typeLabel": "Commitment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Commitment::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Commitment::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+      "typeLabel": "Commitment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ContemporaryEvent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContemporaryEvent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+      "typeLabel": "ContemporaryEvent",
+      "warnings": [
+        "actualStartDateTime max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::ContemporaryEvent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContemporaryEvent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+      "typeLabel": "ContemporaryEvent",
+      "warnings": [
+        "actualStartDateTime max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::ContemporaryEvent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContemporaryEvent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+      "typeLabel": "ContemporaryEvent",
+      "warnings": [
+        "actualStartDateTime max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::ContingentEvent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContingentEvent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+      "typeLabel": "ContingentEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ContingentEvent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContingentEvent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+      "typeLabel": "ContingentEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ContingentEvent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContingentEvent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+      "typeLabel": "ContingentEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ContingentObligation::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContingentObligation::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+      "typeLabel": "ContingentObligation",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ContingentObligation::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContingentObligation::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+      "typeLabel": "ContingentObligation",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ContingentObligation::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ContingentObligation::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+      "typeLabel": "ContingentObligation",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Contract::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Contract::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
+      "typeLabel": "Contract",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Contract::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Contract::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
+      "typeLabel": "Contract",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Contract::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Contract::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
+      "typeLabel": "Contract",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ControlledVocabulary::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ControlledVocabulary::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+      "typeLabel": "ControlledVocabulary",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ControlledVocabulary::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ControlledVocabulary::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+      "typeLabel": "ControlledVocabulary",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ControlledVocabulary::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ControlledVocabulary::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+      "typeLabel": "ControlledVocabulary",
+      "warnings": []
+    },
+    {
+      "name": "axiom::CountryGeoRegion::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::CountryGeoRegion::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
+      "typeLabel": "CountryGeoRegion",
+      "warnings": []
+    },
+    {
+      "name": "axiom::CountryGeoRegion::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::CountryGeoRegion::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
+      "typeLabel": "CountryGeoRegion",
+      "warnings": []
+    },
+    {
+      "name": "axiom::CountryGeoRegion::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::CountryGeoRegion::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
+      "typeLabel": "CountryGeoRegion",
+      "warnings": []
+    },
+    {
+      "name": "axiom::CountryGovernment::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::CountryGovernment::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+      "typeLabel": "CountryGovernment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::CountryGovernment::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::CountryGovernment::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+      "typeLabel": "CountryGovernment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::CountryGovernment::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::CountryGovernment::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+      "typeLabel": "CountryGovernment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Equipment::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Equipment::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
+      "typeLabel": "Equipment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Equipment::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Equipment::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
+      "typeLabel": "Equipment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Equipment::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Equipment::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
+      "typeLabel": "Equipment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::FormattedContent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::FormattedContent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+      "typeLabel": "FormattedContent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::FormattedContent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::FormattedContent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+      "typeLabel": "FormattedContent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::FormattedContent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::FormattedContent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+      "typeLabel": "FormattedContent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoPoint::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoPoint::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+      "typeLabel": "GeoPoint",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoPoint::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoPoint::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+      "typeLabel": "GeoPoint",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoPoint::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoPoint::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+      "typeLabel": "GeoPoint",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoRoute::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoRoute::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+      "typeLabel": "GeoRoute",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoRoute::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoRoute::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+      "typeLabel": "GeoRoute",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoRoute::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoRoute::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+      "typeLabel": "GeoRoute",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoVolume::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoVolume::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+      "typeLabel": "GeoVolume",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoVolume::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoVolume::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+      "typeLabel": "GeoVolume",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GeoVolume::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GeoVolume::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+      "typeLabel": "GeoVolume",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GovernedGeoRegion::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GovernedGeoRegion::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+      "typeLabel": "GovernedGeoRegion",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GovernedGeoRegion::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GovernedGeoRegion::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+      "typeLabel": "GovernedGeoRegion",
+      "warnings": []
+    },
+    {
+      "name": "axiom::GovernedGeoRegion::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::GovernedGeoRegion::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+      "typeLabel": "GovernedGeoRegion",
+      "warnings": []
+    },
+    {
+      "name": "axiom::HistoricalEvent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::HistoricalEvent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+      "typeLabel": "HistoricalEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::HistoricalEvent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::HistoricalEvent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+      "typeLabel": "HistoricalEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::HistoricalEvent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::HistoricalEvent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+      "typeLabel": "HistoricalEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ID::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ID::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+      "typeLabel": "ID",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ID::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ID::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+      "typeLabel": "ID",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ID::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ID::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+      "typeLabel": "ID",
+      "warnings": []
+    },
+    {
+      "name": "axiom::IntergovernmentalOrganization::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::IntergovernmentalOrganization::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+      "typeLabel": "IntergovernmentalOrganization",
+      "warnings": [
+        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
+      ]
+    },
+    {
+      "name": "axiom::IntergovernmentalOrganization::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::IntergovernmentalOrganization::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+      "typeLabel": "IntergovernmentalOrganization",
+      "warnings": [
+        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
+      ]
+    },
+    {
+      "name": "axiom::IntergovernmentalOrganization::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::IntergovernmentalOrganization::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+      "typeLabel": "IntergovernmentalOrganization",
+      "warnings": [
+        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
+      ]
+    },
+    {
+      "name": "axiom::LivingThing::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::LivingThing::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+      "typeLabel": "LivingThing",
+      "warnings": [
+        "birthDate max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::LivingThing::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::LivingThing::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+      "typeLabel": "LivingThing",
+      "warnings": [
+        "birthDate max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::LivingThing::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::LivingThing::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+      "typeLabel": "LivingThing",
+      "warnings": [
+        "birthDate max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::Magnitude::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Magnitude::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+      "typeLabel": "Magnitude",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Magnitude::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Magnitude::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+      "typeLabel": "Magnitude",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Magnitude::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Magnitude::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+      "typeLabel": "Magnitude",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Message::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Message::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+      "typeLabel": "Message",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Message::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Message::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+      "typeLabel": "Message",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Message::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Message::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+      "typeLabel": "Message",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Network::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Network::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+      "typeLabel": "Network",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Network::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Network::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+      "typeLabel": "Network",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Network::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Network::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+      "typeLabel": "Network",
+      "warnings": []
+    },
+    {
+      "name": "axiom::NetworkLink::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::NetworkLink::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+      "typeLabel": "NetworkLink",
+      "warnings": []
+    },
+    {
+      "name": "axiom::NetworkLink::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::NetworkLink::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+      "typeLabel": "NetworkLink",
+      "warnings": []
+    },
+    {
+      "name": "axiom::NetworkLink::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::NetworkLink::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+      "typeLabel": "NetworkLink",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Offer::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Offer::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+      "typeLabel": "Offer",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Offer::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Offer::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+      "typeLabel": "Offer",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Offer::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Offer::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+      "typeLabel": "Offer",
+      "warnings": []
+    },
+    {
+      "name": "axiom::OrderedCollection::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::OrderedCollection::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+      "typeLabel": "OrderedCollection",
+      "warnings": []
+    },
+    {
+      "name": "axiom::OrderedCollection::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::OrderedCollection::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+      "typeLabel": "OrderedCollection",
+      "warnings": []
+    },
+    {
+      "name": "axiom::OrderedCollection::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::OrderedCollection::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+      "typeLabel": "OrderedCollection",
+      "warnings": []
+    },
+    {
+      "name": "axiom::OrderedMember::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::OrderedMember::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+      "typeLabel": "OrderedMember",
+      "warnings": [
+        "isMemberOf max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::OrderedMember::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::OrderedMember::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+      "typeLabel": "OrderedMember",
+      "warnings": [
+        "isMemberOf max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::OrderedMember::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::OrderedMember::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+      "typeLabel": "OrderedMember",
+      "warnings": [
+        "isMemberOf max cardinality 1 is not enforced in query form"
+      ]
+    },
+    {
+      "name": "axiom::Permission::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Permission::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+      "typeLabel": "Permission",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Permission::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Permission::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+      "typeLabel": "Permission",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Permission::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Permission::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+      "typeLabel": "Permission",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Person::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Person::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+      "typeLabel": "Person",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Person::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Person::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+      "typeLabel": "Person",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Person::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Person::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+      "typeLabel": "Person",
+      "warnings": []
+    },
+    {
+      "name": "axiom::PhysicalAddress::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::PhysicalAddress::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+      "typeLabel": "PhysicalAddress",
+      "warnings": []
+    },
+    {
+      "name": "axiom::PhysicalAddress::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::PhysicalAddress::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+      "typeLabel": "PhysicalAddress",
+      "warnings": []
+    },
+    {
+      "name": "axiom::PhysicalAddress::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::PhysicalAddress::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+      "typeLabel": "PhysicalAddress",
+      "warnings": []
+    },
+    {
+      "name": "axiom::PhysicalEvent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::PhysicalEvent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+      "typeLabel": "PhysicalEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::PhysicalEvent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::PhysicalEvent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+      "typeLabel": "PhysicalEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::PhysicalEvent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::PhysicalEvent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+      "typeLabel": "PhysicalEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ProductSpecification::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ProductSpecification::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+      "typeLabel": "ProductSpecification",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ProductSpecification::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ProductSpecification::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+      "typeLabel": "ProductSpecification",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ProductSpecification::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ProductSpecification::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+      "typeLabel": "ProductSpecification",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Project::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Project::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+      "typeLabel": "Project",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Project::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Project::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+      "typeLabel": "Project",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Project::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Project::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+      "typeLabel": "Project",
+      "warnings": []
+    },
+    {
+      "name": "axiom::RenderedContent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::RenderedContent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+      "typeLabel": "RenderedContent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::RenderedContent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::RenderedContent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+      "typeLabel": "RenderedContent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::RenderedContent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::RenderedContent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+      "typeLabel": "RenderedContent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Restriction::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Restriction::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+      "typeLabel": "Restriction",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Restriction::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Restriction::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+      "typeLabel": "Restriction",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Restriction::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Restriction::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+      "typeLabel": "Restriction",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ScheduledEvent::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ScheduledEvent::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+      "typeLabel": "ScheduledEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ScheduledEvent::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ScheduledEvent::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+      "typeLabel": "ScheduledEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ScheduledEvent::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ScheduledEvent::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+      "typeLabel": "ScheduledEvent",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ScheduledTask::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ScheduledTask::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+      "typeLabel": "ScheduledTask",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ScheduledTask::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ScheduledTask::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+      "typeLabel": "ScheduledTask",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ScheduledTask::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ScheduledTask::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+      "typeLabel": "ScheduledTask",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ServiceSpecification::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ServiceSpecification::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+      "typeLabel": "ServiceSpecification",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ServiceSpecification::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ServiceSpecification::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+      "typeLabel": "ServiceSpecification",
+      "warnings": []
+    },
+    {
+      "name": "axiom::ServiceSpecification::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::ServiceSpecification::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+      "typeLabel": "ServiceSpecification",
+      "warnings": []
+    },
+    {
+      "name": "axiom::SubCountryGovernment::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::SubCountryGovernment::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+      "typeLabel": "SubCountryGovernment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::SubCountryGovernment::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::SubCountryGovernment::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+      "typeLabel": "SubCountryGovernment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::SubCountryGovernment::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::SubCountryGovernment::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+      "typeLabel": "SubCountryGovernment",
+      "warnings": []
+    },
+    {
+      "name": "axiom::System::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::System::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/System",
+      "typeLabel": "System",
+      "warnings": []
+    },
+    {
+      "name": "axiom::System::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::System::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/System",
+      "typeLabel": "System",
+      "warnings": []
+    },
+    {
+      "name": "axiom::System::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::System::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/System",
+      "typeLabel": "System",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Task::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Task::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+      "typeLabel": "Task",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Task::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Task::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+      "typeLabel": "Task",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Task::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Task::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+      "typeLabel": "Task",
+      "warnings": []
+    },
+    {
+      "name": "axiom::TaskTemplate::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::TaskTemplate::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+      "typeLabel": "TaskTemplate",
+      "warnings": []
+    },
+    {
+      "name": "axiom::TaskTemplate::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::TaskTemplate::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+      "typeLabel": "TaskTemplate",
+      "warnings": []
+    },
+    {
+      "name": "axiom::TaskTemplate::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::TaskTemplate::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+      "typeLabel": "TaskTemplate",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Text::satisfies",
+      "kind": "satisfies",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Text::satisfies",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Text",
+      "typeLabel": "Text",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Text::violation::equivalent-class-1",
+      "kind": "violation",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Text::violation::equivalent-class-1",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Text",
+      "typeLabel": "Text",
+      "warnings": []
+    },
+    {
+      "name": "axiom::Text::candidates",
+      "kind": "candidates",
+      "file": "queries/gistCore-axioms.tql",
+      "marker": "# name: axiom::Text::candidates",
+      "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Text",
+      "typeLabel": "Text",
+      "warnings": []
+    }
+  ]
+}
