@@ -2,3 +2,8 @@
 # Dolt database files (added by bd init)
 .dolt/
 *.db
+
+# Local development and transient tooling directories
+.beads.partial-*/
+.idea/
+node_modules/
