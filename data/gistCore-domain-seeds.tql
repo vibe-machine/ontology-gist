@@ -1,0 +1,113 @@
+# Provenance bootstrap
+# upstream-repo: https://github.com/semanticarts/gist
+# upstream-tag: v14.0.0
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+# source-artifacts:
+# - upstream/gist/v14.0.0/ontologies/gistCore.ttl
+# - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
+# - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
+# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
+# manifest: manifests/gist-v14.0.0.translation-manifest.json
+# generator: gist-structural-emitter/0.3.0
+
+insert
+
+$i1 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude",
+  has name "altitude",
+  has description "The aspect altitude.";
+
+$i2 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_area",
+  has name "area",
+  has description "The aspect area.";
+
+$i3 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_duration",
+  has name "duration",
+  has description "The aspect duration.";
+
+$i4 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance",
+  has name "balance",
+  has description "The aspect financial balance.";
+
+$i5 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_mass",
+  has name "mass",
+  has description "The aspect mass.";
+
+$i6 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_monetary_value",
+  has name "monetary value",
+  has description "The aspect monetary value.";
+
+$i7 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability",
+  has name "probability",
+  has description "The aspect probability.";
+
+$i8 isa Aspect,
+  has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume",
+  has name "volume",
+  has description "The aspect volume.";
+
+$i9 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/json",
+  has name "JSON",
+  has uniqueText "application/json";
+
+$i10 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/ld+json",
+  has name "JSON-LD",
+  has uniqueText "application/ld+json";
+
+$i11 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/n-quads",
+  has name "N-Quads",
+  has uniqueText "application/n-quads";
+
+$i12 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/n-triples",
+  has name "N-Triples",
+  has uniqueText "application/n-triples";
+
+$i13 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/rdf+xml",
+  has name "RDF/XML",
+  has uniqueText "application/rdf+xml";
+
+$i14 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/sparql-results+json",
+  has name "SPARQL 1.1 Query Results JSON",
+  has uniqueText "application/sparql-results+json";
+
+$i15 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/sparql-results+xml",
+  has name "SPARQL 1.1 Query Results XML",
+  has uniqueText "application/sparql-results+xml";
+
+$i16 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/application/trig",
+  has name "TriG",
+  has uniqueText "application/trig";
+
+$i17 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/text/csv",
+  has name "CSV",
+  has uniqueText "text/csv";
+
+$i18 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/text/html",
+  has name "HTML",
+  has uniqueText "text/html";
+
+$i19 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/text/plain",
+  has name "Plain Text",
+  has uniqueText "text/plain";
+
+$i20 isa MediaType,
+  has sourceIRI "https://www.iana.org/assignments/media-types/text/turtle",
+  has name "Turtle",
+  has uniqueText "text/turtle";

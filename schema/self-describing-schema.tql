@@ -1,0 +1,61 @@
+# Provenance bootstrap
+# upstream-repo: https://github.com/semanticarts/gist
+# upstream-tag: v14.0.0
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+# source-artifacts:
+# - upstream/gist/v14.0.0/ontologies/gistCore.ttl
+# - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
+# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
+# manifest: manifests/gist-v14.0.0.translation-manifest.json
+# generator: bootstrap-manifest/0.2.0
+
+define
+
+attribute docKey, value string;
+attribute iri, value string;
+attribute typeLabel, value string;
+attribute kind, value string;
+
+attribute prefLabel, value string;
+attribute definition, value string;
+attribute scopeNote, value string;
+attribute example, value string;
+
+attribute editorialNote, value string;
+attribute altLabel, value string;
+attribute historyNote, value string;
+attribute seeAlso, value string;
+attribute domainIncludes, value string;
+attribute deprecated, value boolean;
+
+attribute moduleKey, value string;
+attribute moduleName, value string;
+attribute moduleKind, value string;
+
+entity SchemaModule,
+    owns moduleKey @key,
+    owns moduleName,
+    owns moduleKind;
+
+entity SchemaResource,
+    owns docKey @key,
+    owns iri,
+    owns typeLabel,
+    owns kind,
+    owns prefLabel,
+    owns definition,
+    owns scopeNote,
+    owns example,
+    owns editorialNote,
+    owns altLabel,
+    owns historyNote,
+    owns seeAlso,
+    owns domainIncludes,
+    owns deprecated @card(0..1);
+
+relation inModule,
+    relates resource,
+    relates module;
+
+SchemaResource plays inModule:resource;
+SchemaModule plays inModule:module;

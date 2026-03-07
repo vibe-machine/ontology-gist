@@ -1,0 +1,79 @@
+{
+  "$schema": "./translation-manifest.schema.json",
+  "manifestVersion": "1.0.0",
+  "package": {
+    "name": "gist",
+    "version": "14.0.0"
+  },
+  "upstream": {
+    "repoUrl": "https://github.com/semanticarts/gist",
+    "tag": "v14.0.0",
+    "commit": "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
+    "archiveUrl": "https://github.com/semanticarts/gist/archive/refs/tags/v14.0.0.tar.gz",
+    "sourceArtifacts": [
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistCore.ttl",
+        "sha256": "4fc4ce044544f4b1b4b65015bbb3a31788665c0bd7810e1075fefef00963d672"
+      },
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl",
+        "sha256": "270a859d195f6d5f0c76fccaf2ad17b1fbc62ee8c2f9280b4389b48a7d24eb20"
+      },
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl",
+        "sha256": "48ad0101e810b023b6731dff803ca5f6a03dbcdd8ce012cff4e0d104fc3cf64b"
+      },
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl",
+        "sha256": "9b41f18d17846b87be815b48e6e06631c0faea8244596ade9dbc5751cfd5cff5"
+      }
+    ]
+  },
+  "generator": {
+    "name": "gist-structural-emitter",
+    "version": "0.3.0",
+    "generatedAt": "2026-03-07T15:41:00Z"
+  },
+  "artifacts": [
+    {
+      "kind": "meta-schema",
+      "path": "schema/self-describing-schema.tql",
+      "sha256": "578d470f5f3ea865a40b34db719d82ae36e27aa5e22d2b69b3df0d56ddbdb36a"
+    },
+    {
+      "kind": "provenance-schema",
+      "path": "schema/package-provenance.tql",
+      "sha256": "2bc79ba4ba77c44cfb3e476f9ba2125b10c549ab88f6290f52bdf8249012fb65"
+    },
+    {
+      "kind": "schema",
+      "path": "schema/gistCore.tql",
+      "sha256": "c93b77dea8947771e63cfee0e88ee031c9988f73dbc99e1787e4323e19fa4786"
+    },
+    {
+      "kind": "domain-seeds",
+      "path": "data/gistCore-domain-seeds.tql",
+      "sha256": "11d166ad46161cfa0fd1c02975153463e85771b6eff5907fe6e30da03f139416"
+    },
+    {
+      "kind": "provenance-seeds",
+      "path": "data/gistCore-provenance.tql",
+      "sha256": "9c1a21f5da84d1074cfef003985ebc1f55a3838bd5d0a3a2160d95f1df9eaee2"
+    },
+    {
+      "kind": "documentation",
+      "path": "data/gistCore-schema-docs.tql",
+      "sha256": "25cd9450512c12bc24e273852804130014045f386ad01b6182d93aaad6f102db"
+    },
+    {
+      "kind": "ir-summary",
+      "path": "manifests/gist-v14.0.0.ir-summary.json",
+      "sha256": "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b"
+    },
+    {
+      "kind": "translation-report",
+      "path": "manifests/gist-v14.0.0.translation-report.json",
+      "sha256": "98a026d5fb24e7b1460d9fd36ebb3dd538f334ad5e34ec7bb36c554c6a928e0b"
+    }
+  ]
+}

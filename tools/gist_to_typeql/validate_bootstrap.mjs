@@ -1,0 +1,317 @@
+import crypto from "node:crypto";
+import fs from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import net from "node:net";
+import { spawn, spawnSync } from "node:child_process";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(__dirname, "..", "..");
+
+function sha256(buffer) {
+  return crypto.createHash("sha256").update(buffer).digest("hex");
+}
+
+async function readJson(relPath) {
+  return JSON.parse(await fs.readFile(path.join(root, relPath), "utf8"));
+}
+
+async function assertCondition(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+async function assertChecksum(relPath, expected) {
+  const actual = sha256(await fs.readFile(path.join(root, relPath)));
+  await assertCondition(actual === expected, `checksum mismatch for ${relPath}`);
+}
+
+async function getFreePort() {
+  return new Promise((resolve, reject) => {
+    const server = net.createServer();
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      server.close((error) => {
+        if (error) reject(error);
+        else resolve(address.port);
+      });
+    });
+    server.on("error", reject);
+  });
+}
+
+async function writeMergedQueryFile(keyword, relPaths, outPath) {
+  const chunks = [];
+  for (const relPath of relPaths) {
+    let text = await fs.readFile(path.join(root, relPath), "utf8");
+    text = text.replace(/^#.*\n/gm, "");
+    text = text.replace(new RegExp(`^\\s*${keyword}\\s*\\n`, "i"), "");
+    text = text.trim();
+    if (text) chunks.push(text);
+  }
+
+  const merged = `${keyword}\n\n${chunks.join("\n\n")}\n`;
+  await fs.writeFile(outPath, merged, "utf8");
+}
+
+async function startTypedbServer(tempRoot) {
+  const typedb = path.join(process.env.HOME ?? "", ".typedb", "typedb");
+  await fs.access(typedb);
+
+  const grpcPort = await getFreePort();
+  const httpPort = await getFreePort();
+  const args = [
+    "server",
+    "--server.address",
+    `127.0.0.1:${grpcPort}`,
+    "--server.http.address",
+    `127.0.0.1:${httpPort}`,
+    "--storage.data-directory",
+    path.join(tempRoot, "data"),
+    "--logging.directory",
+    path.join(tempRoot, "logs"),
+    "--diagnostics.reporting.metrics",
+    "false",
+    "--diagnostics.reporting.errors",
+    "false",
+    "--diagnostics.monitoring.enabled",
+    "false"
+  ];
+
+  const child = spawn(typedb, args, { cwd: tempRoot, stdio: ["ignore", "pipe", "pipe"] });
+
+  await new Promise((resolve, reject) => {
+    let output = "";
+    const timeout = setTimeout(() => {
+      reject(new Error(`TypeDB server did not become ready.\n${output}`));
+    }, 15000);
+
+    function onData(chunk) {
+      output += chunk.toString();
+      if (output.includes("Ready!")) {
+        clearTimeout(timeout);
+        resolve();
+      }
+    }
+
+    child.stdout.on("data", onData);
+    child.stderr.on("data", onData);
+    child.on("exit", (code) => {
+      clearTimeout(timeout);
+      reject(new Error(`TypeDB server exited early with code ${code}.\n${output}`));
+    });
+    child.on("error", (error) => {
+      clearTimeout(timeout);
+      reject(error);
+    });
+  });
+
+  return { child, grpcPort };
+}
+
+async function stopProcess(child) {
+  if (!child || child.exitCode !== null) return;
+  child.kill("SIGTERM");
+  await new Promise((resolve) => {
+    const timeout = setTimeout(() => {
+      if (child.exitCode === null) child.kill("SIGKILL");
+      resolve();
+    }, 5000);
+    child.on("exit", () => {
+      clearTimeout(timeout);
+      resolve();
+    });
+  });
+}
+
+async function main() {
+  const pkg = await readJson("package.json");
+  const manifest = await readJson("manifests/gist-v14.0.0.translation-manifest.json");
+  const sourceInventory = await readJson("upstream/gist/v14.0.0/source-artifacts.json");
+  const translationReport = await readJson("manifests/gist-v14.0.0.translation-report.json");
+
+  for (const relPath of pkg.assembly.loadOrder) {
+    await fs.access(path.join(root, relPath));
+  }
+
+  for (const artifact of manifest.upstream.sourceArtifacts) {
+    await assertChecksum(artifact.path, artifact.sha256);
+  }
+
+  for (const artifact of manifest.artifacts) {
+    await assertChecksum(artifact.path, artifact.sha256);
+  }
+
+  for (const file of sourceInventory.files) {
+    await fs.access(path.join(root, "upstream/gist/v14.0.0", file.path));
+  }
+
+  const activeTqlFiles = [...pkg.schemas.map((schema) => schema.file), ...pkg.data];
+  for (const relPath of activeTqlFiles) {
+    const text = await fs.readFile(path.join(root, relPath), "utf8");
+    await assertCondition(text.includes("# manifest: manifests/gist-v14.0.0.translation-manifest.json"), `missing manifest header in ${relPath}`);
+    await assertCondition(text.includes("# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08"), `missing upstream commit header in ${relPath}`);
+  }
+
+  const docsText = await fs.readFile(path.join(root, "data/gistCore-schema-docs.tql"), "utf8");
+  await assertCondition(docsText.includes("isa SchemaModule"), "SchemaModule seed missing");
+  await assertCondition(docsText.includes("isa SchemaResource"), "SchemaResource seed missing");
+  await assertCondition(docsText.includes("isa inModule"), "inModule seed missing");
+
+  const tmp1 = path.join(os.tmpdir(), `gist-ir-summary-1-${process.pid}.json`);
+  const tmp2 = path.join(os.tmpdir(), `gist-ir-summary-2-${process.pid}.json`);
+  const run1 = spawnSync("node", ["tools/gist_to_typeql/parse_gist.mjs", "--out", tmp1], { cwd: root, encoding: "utf8" });
+  const run2 = spawnSync("node", ["tools/gist_to_typeql/parse_gist.mjs", "--out", tmp2], { cwd: root, encoding: "utf8" });
+  await assertCondition(run1.status === 0, `parse run 1 failed: ${run1.stderr}`);
+  await assertCondition(run2.status === 0, `parse run 2 failed: ${run2.stderr}`);
+
+  const first = await fs.readFile(tmp1);
+  const second = await fs.readFile(tmp2);
+  await assertCondition(first.equals(second), "IR parser output is not deterministic");
+
+  const checkedIn = await fs.readFile(path.join(root, "manifests/gist-v14.0.0.ir-summary.json"));
+  await assertCondition(first.equals(checkedIn), "checked-in IR summary is stale; run npm run parse:ir");
+
+  const emitDir1 = await fs.mkdtemp(path.join(os.tmpdir(), "gist-emit-1-"));
+  const emitDir2 = await fs.mkdtemp(path.join(os.tmpdir(), "gist-emit-2-"));
+  const emit = spawnSync("node", ["tools/gist_to_typeql/emit_structural.mjs", "--out-dir", emitDir1], { cwd: root, encoding: "utf8" });
+  await assertCondition(emit.status === 0, `structural emitter failed: ${emit.stderr}`);
+  const emit2 = spawnSync("node", ["tools/gist_to_typeql/emit_structural.mjs", "--out-dir", emitDir2], { cwd: root, encoding: "utf8" });
+  await assertCondition(emit2.status === 0, `structural emitter second run failed: ${emit2.stderr}`);
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "schema/gistCore.tql"))) === sha256(await fs.readFile(path.join(emitDir2, "schema/gistCore.tql"))),
+    "generated schema is not deterministic"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "data/gistCore-domain-seeds.tql"))) ===
+      sha256(await fs.readFile(path.join(emitDir2, "data/gistCore-domain-seeds.tql"))),
+    "generated domain seeds are not deterministic"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.translation-report.json"))) ===
+      sha256(await fs.readFile(path.join(emitDir2, "manifests/gist-v14.0.0.translation-report.json"))),
+    "generated translation report is not deterministic"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "schema/gistCore.tql"))) === sha256(await fs.readFile(path.join(root, "schema/gistCore.tql"))),
+    "checked-in schema is stale; run npm run emit:structural"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "data/gistCore-domain-seeds.tql"))) ===
+      sha256(await fs.readFile(path.join(root, "data/gistCore-domain-seeds.tql"))),
+    "checked-in domain seeds are stale; run npm run emit:structural"
+  );
+  await assertCondition(
+    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.translation-report.json"))) ===
+      sha256(await fs.readFile(path.join(root, "manifests/gist-v14.0.0.translation-report.json"))),
+    "checked-in translation report is stale; run npm run emit:structural"
+  );
+  await assertCondition(
+    translationReport.coverage?.queryableProvenanceSeedDataPending === false,
+    "translation report must confirm that queryable provenance seed data is emitted"
+  );
+  await assertCondition(
+    Array.isArray(translationReport.coverage?.equivalentClassAxiomsPending),
+    "translation report must enumerate unresolved equivalent-class coverage"
+  );
+
+  const typedbTemp = await fs.mkdtemp(path.join(os.tmpdir(), "gist-typedb-validate-"));
+  const mergedSchema = path.join(typedbTemp, "merged-schema.tql");
+  const mergedData = path.join(typedbTemp, "merged-data.tql");
+  const scriptPath = path.join(typedbTemp, "load-script.tql");
+  await writeMergedQueryFile("define", pkg.schemas.map((schema) => schema.file), mergedSchema);
+  await writeMergedQueryFile("insert", pkg.data, mergedData);
+  await fs.writeFile(
+    scriptPath,
+    `database create-init gist_validate_${process.pid} ${mergedSchema} ${mergedData}\n\nexit\n`,
+    "utf8"
+  );
+
+  let typedbServer;
+  try {
+    typedbServer = await startTypedbServer(typedbTemp);
+    const load = spawnSync(
+      path.join(process.env.HOME ?? "", ".typedb", "typedb"),
+      [
+        "console",
+        `--address=127.0.0.1:${typedbServer.grpcPort}`,
+        "--username=admin",
+        "--password=password",
+        "--tls-disabled",
+        "--script",
+        scriptPath
+      ],
+      { cwd: root, encoding: "utf8" }
+    );
+    await assertCondition(load.status === 0, `TypeDB package load validation failed:\n${load.stdout}\n${load.stderr}`);
+
+    const queryScriptPath = path.join(typedbTemp, "query-script.tql");
+    await fs.writeFile(
+      queryScriptPath,
+      [
+        `transaction read gist_validate_${process.pid}`,
+        "",
+        'match',
+        '$m isa SchemaModule, has moduleKey "gist-core";',
+        'limit 1;',
+        "",
+        'match',
+        '$r isa SchemaResource, has typeLabel "Event";',
+        'limit 1;',
+        "",
+        'match',
+        '$mt isa MediaType, has uniqueText "application/json";',
+        'limit 1;',
+        "",
+        'match',
+        '$b isa OntologyPackageBuild, has packageName "gist", has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08";',
+        '$ga isa GeneratedArtifactRecord, has artifactPath "schema/gistCore.tql";',
+        '(build: $b, generatedArtifact: $ga) isa buildHasGeneratedArtifact;',
+        'limit 1;',
+        "",
+        'close',
+        "",
+        'exit',
+        ""
+      ].join("\n"),
+      "utf8"
+    );
+    const query = spawnSync(
+      path.join(process.env.HOME ?? "", ".typedb", "typedb"),
+      [
+        "console",
+        `--address=127.0.0.1:${typedbServer.grpcPort}`,
+        "--username=admin",
+        "--password=password",
+        "--tls-disabled",
+        "--script",
+        queryScriptPath
+      ],
+      { cwd: root, encoding: "utf8" }
+    );
+    await assertCondition(query.status === 0, `TypeDB query smoke test failed:\n${query.stdout}\n${query.stderr}`);
+    await assertCondition(
+      query.stdout.includes("$m") &&
+        query.stdout.includes("SchemaModule") &&
+        query.stdout.includes("$r") &&
+        query.stdout.includes("SchemaResource") &&
+        query.stdout.includes("$mt") &&
+        query.stdout.includes("MediaType") &&
+        query.stdout.includes("$b") &&
+        query.stdout.includes("OntologyPackageBuild") &&
+        query.stdout.includes("$ga") &&
+        query.stdout.includes("GeneratedArtifactRecord") &&
+        query.stdout.includes("Finished. Total answers: 1"),
+      `TypeDB query smoke test returned unexpected answer counts:\n${query.stdout}`
+    );
+  } finally {
+    await stopProcess(typedbServer?.child);
+  }
+
+  console.log("bootstrap validation ok");
+}
+
+main().catch((error) => {
+  console.error(error.message);
+  process.exitCode = 1;
+});

@@ -3,17 +3,82 @@
   "displayName": "gist Upper Ontology",
   "version": "14.0.0",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
+  "scripts": {
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v14.0.0.ir-summary.json",
+    "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
+    "validate:bootstrap": "node tools/gist_to_typeql/validate_bootstrap.mjs"
+  },
   "author": "Semantic Arts, Inc.",
   "license": "CC-BY-SA-4.0",
   "source": "https://github.com/semanticarts/gist",
   "prefix": "gist",
   "schemas": [
-    { "name": "gistCore", "file": "schema/gistCore.tql" }
+    {
+      "name": "self-describing-schema",
+      "file": "schema/self-describing-schema.tql"
+    },
+    {
+      "name": "package-provenance",
+      "file": "schema/package-provenance.tql"
+    },
+    {
+      "name": "gistCore",
+      "file": "schema/gistCore.tql"
+    }
   ],
   "data": [
-    "data/gistCore-typedoc.tql"
+    "data/gistCore-domain-seeds.tql",
+    "data/gistCore-provenance.tql",
+    "data/gistCore-schema-docs.tql"
   ],
-  "domains": "data/domains.tql",
-  "categorization": "data/categorize.tql",
-  "dependencies": []
+  "manifests": [
+    "manifests/gist-v14.0.0.translation-manifest.json"
+  ],
+  "assembly": {
+    "loadOrder": [
+      "schema/self-describing-schema.tql",
+      "schema/package-provenance.tql",
+      "schema/gistCore.tql",
+      "data/gistCore-domain-seeds.tql",
+      "data/gistCore-provenance.tql",
+      "data/gistCore-schema-docs.tql"
+    ],
+    "generatedArtifacts": [
+      "schema/self-describing-schema.tql",
+      "schema/package-provenance.tql",
+      "schema/gistCore.tql",
+      "data/gistCore-domain-seeds.tql",
+      "data/gistCore-provenance.tql",
+      "data/gistCore-schema-docs.tql",
+      "manifests/gist-v14.0.0.translation-manifest.json",
+      "manifests/gist-v14.0.0.translation-report.json",
+      "manifests/gist-v14.0.0.ir-summary.json"
+    ]
+  },
+  "upstream": {
+    "repo": "https://github.com/semanticarts/gist",
+    "tag": "v14.0.0",
+    "commit": "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
+    "sourceArtifacts": [
+      "upstream/gist/v14.0.0/ontologies/gistCore.ttl",
+      "upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl",
+      "upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl",
+      "upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl"
+    ]
+  },
+  "provenance": {
+    "manifest": "manifests/gist-v14.0.0.translation-manifest.json",
+    "status": "bootstrap"
+  },
+  "legacyDocumentation": {
+    "deprecatedFiles": [
+      "data/gistCore-typedoc.tql",
+      "data/domains.tql",
+      "data/categorize.tql"
+    ],
+    "status": "superseded-by-schema-resource"
+  },
+  "devDependencies": {
+    "n3": "^2.0.3"
+  }
 }

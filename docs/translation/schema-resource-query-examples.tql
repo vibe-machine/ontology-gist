@@ -1,0 +1,29 @@
+# Lookup a gist term by generated TypeQL label
+match
+  $r isa SchemaResource, has typeLabel "Event";
+fetch {
+  "docKey": $r.docKey,
+  "kind": $r.kind,
+  "prefLabel": $r.prefLabel,
+  "definition": $r.definition,
+  "scopeNotes": [ $r.scopeNote ]
+};
+
+# List resources in the gist-core module
+match
+  $m isa SchemaModule, has moduleKey "gist-core";
+  (resource: $r, module: $m) isa inModule;
+fetch {
+  "typeLabel": $r.typeLabel,
+  "kind": $r.kind,
+  "prefLabel": $r.prefLabel
+};
+
+# Fetch all relation docs
+match
+  $r isa SchemaResource, has kind "relation";
+fetch {
+  "typeLabel": $r.typeLabel,
+  "prefLabel": $r.prefLabel,
+  "definition": $r.definition
+};

@@ -1,0 +1,24 @@
+{
+  "repoUrl": "https://github.com/semanticarts/gist",
+  "tag": "v14.0.0",
+  "commit": "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
+  "archiveUrl": "https://github.com/semanticarts/gist/archive/refs/tags/v14.0.0.tar.gz",
+  "files": [
+    {
+      "path": "ontologies/gistCore.ttl",
+      "sha256": "4fc4ce044544f4b1b4b65015bbb3a31788665c0bd7810e1075fefef00963d672"
+    },
+    {
+      "path": "ontologies/gistMediaTypes.ttl",
+      "sha256": "270a859d195f6d5f0c76fccaf2ad17b1fbc62ee8c2f9280b4389b48a7d24eb20"
+    },
+    {
+      "path": "ontologies/gistPrefixDeclarations.ttl",
+      "sha256": "48ad0101e810b023b6731dff803ca5f6a03dbcdd8ce012cff4e0d104fc3cf64b"
+    },
+    {
+      "path": "ontologies/gistValidationAnnotations.ttl",
+      "sha256": "9b41f18d17846b87be815b48e6e06631c0faea8244596ade9dbc5751cfd5cff5"
+    }
+  ]
+}
