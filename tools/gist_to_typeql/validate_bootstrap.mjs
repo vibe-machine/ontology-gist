@@ -54,6 +54,36 @@ async function writeMergedQueryFile(keyword, relPaths, outPath) {
   await fs.writeFile(outPath, merged, "utf8");
 }
 
+function extractNamedQueries(text) {
+  const blocks = new Map();
+  let currentName = null;
+  let currentLines = [];
+
+  for (const line of text.split("\n")) {
+    if (line.startsWith("# name: ")) {
+      if (currentName) {
+        blocks.set(
+          currentName,
+          currentLines.filter((item) => !item.startsWith("#")).join("\n").trim()
+        );
+      }
+      currentName = line.slice("# name: ".length).trim();
+      currentLines = [];
+      continue;
+    }
+    if (currentName) currentLines.push(line);
+  }
+
+  if (currentName) {
+    blocks.set(
+      currentName,
+      currentLines.filter((item) => !item.startsWith("#")).join("\n").trim()
+    );
+  }
+
+  return blocks;
+}
+
 async function startTypedbServer(tempRoot) {
   const typedb = path.join(process.env.HOME ?? "", ".typedb", "typedb");
   await fs.access(typedb);
@@ -130,6 +160,7 @@ async function main() {
   const sourceInventory = await readJson("upstream/gist/v14.0.0/source-artifacts.json");
   const translationReport = await readJson("manifests/gist-v14.0.0.translation-report.json");
   const axiomIndex = await readJson("manifests/gist-v14.0.0.axiom-queries.json");
+  const axiomLibrary = await fs.readFile(path.join(root, "queries/gistCore-axioms.tql"), "utf8");
 
   for (const relPath of pkg.assembly.loadOrder) {
     await fs.access(path.join(root, relPath));
@@ -239,11 +270,17 @@ async function main() {
     Array.isArray(translationReport.coverage?.axiomQueryCoverage?.classesCovered),
     "translation report must enumerate generated axiom-query coverage"
   );
+  await assertCondition(
+    Array.isArray(translationReport.coverage?.axiomQueryCoverage?.approximations) &&
+      translationReport.coverage.axiomQueryCoverage.approximations.length === 0,
+    "translation report must not report remaining axiom-query approximations"
+  );
   await assertCondition(Array.isArray(axiomIndex.queries) && axiomIndex.queries.length > 0, "axiom-query index must contain generated query definitions");
   await assertCondition(
     axiomIndex.queries.some((item) => item.name === "axiom::ContingentEvent::satisfies"),
     "axiom-query index must contain representative ContingentEvent coverage"
   );
+  await assertCondition(!axiomLibrary.includes("# warning:"), "axiom query library must not contain approximation warnings");
 
   const typedbTemp = await fs.mkdtemp(path.join(os.tmpdir(), "gist-typedb-validate-"));
   const mergedSchema = path.join(typedbTemp, "merged-schema.tql");
@@ -333,6 +370,52 @@ async function main() {
         query.stdout.includes("GeneratedArtifactRecord") &&
         query.stdout.includes("Finished. Total answers: 1"),
       `TypeDB query smoke test returned unexpected answer counts:\n${query.stdout}`
+    );
+
+    const namedQueries = extractNamedQueries(axiomLibrary);
+    const representativeQueries = [
+      "axiom::Agreement::satisfies",
+      "axiom::ContemporaryEvent::satisfies",
+      "axiom::IntergovernmentalOrganization::satisfies",
+      "axiom::OrderedMember::satisfies"
+    ];
+    for (const queryName of representativeQueries) {
+      await assertCondition(namedQueries.has(queryName), `missing representative axiom query ${queryName}`);
+    }
+    const axiomQueryScriptPath = path.join(typedbTemp, "axiom-query-script.tql");
+    await fs.writeFile(
+      axiomQueryScriptPath,
+      [
+        `transaction read gist_validate_${process.pid}`,
+        "",
+        ...representativeQueries.flatMap((queryName) => [namedQueries.get(queryName), ""]),
+        "close",
+        "",
+        "exit",
+        ""
+      ].join("\n"),
+      "utf8"
+    );
+    const axiomQueryRun = spawnSync(
+      path.join(process.env.HOME ?? "", ".typedb", "typedb"),
+      [
+        "console",
+        `--address=127.0.0.1:${typedbServer.grpcPort}`,
+        "--username=admin",
+        "--password=password",
+        "--tls-disabled",
+        "--script",
+        axiomQueryScriptPath
+      ],
+      { cwd: root, encoding: "utf8" }
+    );
+    await assertCondition(
+      axiomQueryRun.status === 0,
+      `Representative axiom queries failed to compile or run:\n${axiomQueryRun.stdout}\n${axiomQueryRun.stderr}`
+    );
+    await assertCondition(
+      (axiomQueryRun.stdout.match(/Finished\. Total answers:/g) ?? []).length >= representativeQueries.length,
+      `Representative axiom query run did not execute every selected query:\n${axiomQueryRun.stdout}`
     );
   } finally {
     await stopProcess(typedbServer?.child);

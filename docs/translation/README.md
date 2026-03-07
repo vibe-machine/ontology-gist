@@ -13,8 +13,11 @@ Current repository boundaries:
 Authoritative design references:
 
 - `Design: TypeDB Schema Documentation & Provenance`
+  - https://www.notion.so/31bc633a07178161923fd6f322f0e5fb
 - `Design: Self-Describing Schema`
+  - https://www.notion.so/31cc633a07178180b139cb56c3c80268
 - `Gist-to-TypeDB Mapping Design`
+  - https://www.notion.so/31cc633a071781e79d50f0d8efbe91a1
 
 Current status:
 
@@ -31,3 +34,11 @@ Vendoring policy:
 - vendor only the exact source artifacts used by translation
 - keep repo URL, tag, commit, file paths, and sha256 values in manifest and staged inventory files
 - refresh staged source via `tools/gist_to_typeql/fetch_upstream.sh`
+
+In-repo translation references:
+
+- `mapping-summary.md`: concise statement of the implemented OWL/RDF -> TypeQL mapping rules
+- `semantic-gaps.md`: explicit list of places where gist semantics do not map one-to-one into current package artifacts
+- `package-assembly.md`: package load order, generated artifacts, validation flow, and downstream-consumer contract
+- `provenance-model.md`: manifest/header/queryable provenance contract
+- `schema-resource-query-examples.tql`: example documentation queries against the self-describing schema model

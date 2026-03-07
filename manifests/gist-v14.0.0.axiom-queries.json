@@ -1,7 +1,7 @@
 {
   "package": "gist",
   "version": "14.0.0",
-  "generatedBy": "gist-structural-emitter/0.4.0",
+  "generatedBy": "gist-structural-emitter/0.5.0",
   "file": "queries/gistCore-axioms.tql",
   "queryCount": 135,
   "queries": [
@@ -39,9 +39,7 @@
       "marker": "# name: axiom::Agreement::satisfies",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
       "typeLabel": "Agreement",
-      "warnings": [
-        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::Agreement::violation::equivalent-class-1",
@@ -50,9 +48,7 @@
       "marker": "# name: axiom::Agreement::violation::equivalent-class-1",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
       "typeLabel": "Agreement",
-      "warnings": [
-        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::Agreement::candidates",
@@ -61,9 +57,7 @@
       "marker": "# name: axiom::Agreement::candidates",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
       "typeLabel": "Agreement",
-      "warnings": [
-        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::Assignment::satisfies",
@@ -153,9 +147,7 @@
       "marker": "# name: axiom::ContemporaryEvent::satisfies",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
       "typeLabel": "ContemporaryEvent",
-      "warnings": [
-        "actualStartDateTime max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::ContemporaryEvent::violation::equivalent-class-1",
@@ -164,9 +156,7 @@
       "marker": "# name: axiom::ContemporaryEvent::violation::equivalent-class-1",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
       "typeLabel": "ContemporaryEvent",
-      "warnings": [
-        "actualStartDateTime max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::ContemporaryEvent::candidates",
@@ -175,9 +165,7 @@
       "marker": "# name: axiom::ContemporaryEvent::candidates",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
       "typeLabel": "ContemporaryEvent",
-      "warnings": [
-        "actualStartDateTime max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::ContingentEvent::satisfies",
@@ -564,9 +552,7 @@
       "marker": "# name: axiom::IntergovernmentalOrganization::satisfies",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
       "typeLabel": "IntergovernmentalOrganization",
-      "warnings": [
-        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::IntergovernmentalOrganization::violation::equivalent-class-1",
@@ -575,9 +561,7 @@
       "marker": "# name: axiom::IntergovernmentalOrganization::violation::equivalent-class-1",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
       "typeLabel": "IntergovernmentalOrganization",
-      "warnings": [
-        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::IntergovernmentalOrganization::candidates",
@@ -586,9 +570,7 @@
       "marker": "# name: axiom::IntergovernmentalOrganization::candidates",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
       "typeLabel": "IntergovernmentalOrganization",
-      "warnings": [
-        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::LivingThing::satisfies",
@@ -597,9 +579,7 @@
       "marker": "# name: axiom::LivingThing::satisfies",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
       "typeLabel": "LivingThing",
-      "warnings": [
-        "birthDate max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::LivingThing::violation::equivalent-class-1",
@@ -608,9 +588,7 @@
       "marker": "# name: axiom::LivingThing::violation::equivalent-class-1",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
       "typeLabel": "LivingThing",
-      "warnings": [
-        "birthDate max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::LivingThing::candidates",
@@ -619,9 +597,7 @@
       "marker": "# name: axiom::LivingThing::candidates",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
       "typeLabel": "LivingThing",
-      "warnings": [
-        "birthDate max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::Magnitude::satisfies",
@@ -792,9 +768,7 @@
       "marker": "# name: axiom::OrderedMember::satisfies",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
       "typeLabel": "OrderedMember",
-      "warnings": [
-        "isMemberOf max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::OrderedMember::violation::equivalent-class-1",
@@ -803,9 +777,7 @@
       "marker": "# name: axiom::OrderedMember::violation::equivalent-class-1",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
       "typeLabel": "OrderedMember",
-      "warnings": [
-        "isMemberOf max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::OrderedMember::candidates",
@@ -814,9 +786,7 @@
       "marker": "# name: axiom::OrderedMember::candidates",
       "classIri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
       "typeLabel": "OrderedMember",
-      "warnings": [
-        "isMemberOf max cardinality 1 is not enforced in query form"
-      ]
+      "warnings": []
     },
     {
       "name": "axiom::Permission::satisfies",

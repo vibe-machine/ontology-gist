@@ -1,7 +1,7 @@
 {
   "package": "gist",
   "version": "14.0.0",
-  "generatedBy": "gist-structural-emitter/0.4.0",
+  "generatedBy": "gist-structural-emitter/0.5.0",
   "summary": {
     "classes": 96,
     "objectProperties": 65,
@@ -15,28 +15,7 @@
     "multipleInheritance": "choose the deterministic first named superclass; preserve equivalent-class restrictions in the IR/report for later axiom-query generation"
   },
   "coverage": {
-    "classesWithoutNamedSupertype": [
-      "https://w3id.org/semanticarts/ns/ontology/gist/Aspect",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Category",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Component",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Content",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Event",
-      "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
-      "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
-      "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Language",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
-      "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
-      "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
-      "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
-      "https://w3id.org/semanticarts/ns/ontology/gist/Template",
-      "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
-      "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
-      "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
-    ],
+    "classesWithoutNamedSupertype": [],
     "propertiesWithoutDomainAfterInference": [
       "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
       "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
@@ -144,13 +123,7 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
         "https://w3id.org/semanticarts/ns/ontology/gist/Text"
       ],
-      "approximations": [
-        "actualStartDateTime max cardinality 1 is not enforced in query form",
-        "birthDate max cardinality 1 is not enforced in query form",
-        "isDirectPartOf min cardinality 2 is approximated as at-least-one existence",
-        "isMemberOf max cardinality 1 is not enforced in query form",
-        "isMemberOf min cardinality 2 is approximated as at-least-one existence"
-      ]
+      "approximations": []
     },
     "renamedIdentifiers": {
       "relations": [
@@ -215,7 +188,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Aspect",
       "typeLabel": "Aspect",
       "generatedLabel": "Aspect",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [
         "description",
         "name",
@@ -280,7 +253,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
       "typeLabel": "Category",
       "generatedLabel": "Category",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "isAllocatedBy:isAllocatedBySubject",
@@ -312,7 +285,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Component",
       "typeLabel": "Component",
       "generatedLabel": "Component",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "isDirectPartOf:isDirectPartOfSubject"
@@ -322,7 +295,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
       "typeLabel": "Composite",
       "generatedLabel": "Composite",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": []
     },
@@ -350,7 +323,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Content",
       "typeLabel": "Content",
       "generatedLabel": "Content",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "isAbout:isAboutSubject"
@@ -501,7 +474,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
       "typeLabel": "Event",
       "generatedLabel": "Event",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "isBasedOn:isBasedOnSubject",
@@ -548,7 +521,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
       "typeLabel": "GeoLocation",
       "generatedLabel": "GeoLocation",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "comesFromPlace:comesFromPlaceObject",
@@ -579,7 +552,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
       "typeLabel": "GeoRegion",
       "generatedLabel": "GeoRegion",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "hasMagnitude:hasMagnitudeSubject",
@@ -662,7 +635,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
       "typeLabel": "IntellectualProperty",
       "generatedLabel": "IntellectualProperty",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "isAllocatedBy:isAllocatedByObject"
@@ -672,7 +645,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
       "typeLabel": "Intention",
       "generatedLabel": "Intention",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "hasGoal:hasGoalObject",
@@ -712,7 +685,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Language",
       "typeLabel": "Language",
       "generatedLabel": "Language",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "isExpressedIn:isExpressedInObject"
@@ -735,7 +708,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
       "typeLabel": "Magnitude",
       "generatedLabel": "Magnitude",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [
         "numericValue"
       ],
@@ -871,12 +844,11 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
       "typeLabel": "Organization",
       "generatedLabel": "Organization",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "comesFromAgent:comesFromAgentObject",
         "goesToAgent:goesToAgentObject",
-        "hasGiver:hasGiverObject",
         "hasParty:hasPartyObject",
         "isAllocatedBy:isAllocatedByObject",
         "isGovernedBy:isGovernedByObject",
@@ -903,7 +875,6 @@
       "plays": [
         "comesFromAgent:comesFromAgentObject",
         "goesToAgent:goesToAgentObject",
-        "hasGiver:hasGiverObject",
         "hasParty:hasPartyObject",
         "isAllocatedBy:isAllocatedByObject",
         "isGovernedBy:isGovernedByObject",
@@ -951,7 +922,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
       "typeLabel": "PhysicalIdentifiableItem",
       "generatedLabel": "PhysicalIdentifiableItem",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "hasMagnitude:hasMagnitudeSubject",
@@ -962,7 +933,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
       "typeLabel": "PhysicalSubstance",
       "generatedLabel": "PhysicalSubstance",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": [
         "hasMagnitude:hasMagnitudeSubject",
@@ -1059,7 +1030,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
       "typeLabel": "SchemaMetaData",
       "generatedLabel": "SchemaMetaData",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": []
     },
@@ -1139,7 +1110,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Template",
       "typeLabel": "Template",
       "generatedLabel": "Template",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [],
       "plays": []
     },
@@ -1147,7 +1118,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
       "typeLabel": "TemporalRelation",
       "generatedLabel": "TemporalRelation",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [
         "actualStartDate",
         "actualStartDateTime",
@@ -1188,7 +1159,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
       "typeLabel": "TimeInterval",
       "generatedLabel": "TimeInterval",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [
         "actualEndDate",
         "actualEndDateTime",
@@ -1255,7 +1226,7 @@
       "iri": "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
       "typeLabel": "UnitOfMeasure",
       "generatedLabel": "UnitOfMeasure",
-      "supertype": null,
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
       "owns": [
         "conversionFactor",
         "conversionOffset",

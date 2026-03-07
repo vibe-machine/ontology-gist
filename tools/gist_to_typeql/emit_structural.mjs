@@ -29,7 +29,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
 
 const MANIFEST_PATH = "manifests/gist-v14.0.0.translation-manifest.json";
-const GENERATOR = "gist-structural-emitter/0.4.0";
+const GENERATOR = "gist-structural-emitter/0.5.0";
+const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
 const RESERVED_IDENTIFIERS = new Set([
   "and",
   "attribute",
@@ -140,6 +141,7 @@ function buildIdentifierMaps(model) {
   for (const cls of model.resources.classes) {
     entityNames.set(cls.iri, safeIdentifier(iriLocalName(cls.iri), "Type"));
   }
+  entityNames.set(SYNTHETIC_THING_IRI, "Thing");
   for (const prop of model.resources.objectProperties) {
     relationNames.set(prop.iri, safeIdentifier(iriLocalName(prop.iri), "Rel"));
   }
@@ -432,6 +434,13 @@ function buildEntityDefinitions(model, propertyInfo, identifiers) {
   const definitions = new Map();
   const seedInstanceOwners = new Map();
 
+  definitions.set(SYNTHETIC_THING_IRI, {
+    name: identifiers.entity(SYNTHETIC_THING_IRI),
+    supertype: null,
+    owns: new Set(),
+    plays: new Set()
+  });
+
   for (const instance of model.resources.instances) {
     for (const type of instance.types) {
       if (!seedInstanceOwners.has(type)) seedInstanceOwners.set(type, new Set());
@@ -453,7 +462,7 @@ function buildEntityDefinitions(model, propertyInfo, identifiers) {
   for (const cls of model.resources.classes) {
     definitions.set(cls.iri, {
       name: identifiers.entity(cls.iri),
-      supertype: choosePrimarySupertype(model, cls),
+      supertype: choosePrimarySupertype(model, cls) ?? SYNTHETIC_THING_IRI,
       owns: new Set(seedInstanceOwners.get(cls.iri) ?? []),
       plays: new Set()
     });
@@ -553,8 +562,13 @@ function renderSchema(model, propertyInfo, entityDefinitions, identifiers) {
     lines.push("");
   }
 
-  const classList = model.resources.classes
-    .slice()
+  const classList = [
+    {
+      iri: SYNTHETIC_THING_IRI,
+      annotations: { definition: ["Synthetic root used to anchor owl:Thing semantics for untyped role players."] }
+    },
+    ...model.resources.classes
+  ]
     .sort((a, b) => iriLocalName(a.iri).localeCompare(iriLocalName(b.iri)));
 
   for (const cls of classList) {
@@ -727,8 +741,15 @@ function buildAxiomQueryArtifacts(model, identifiers) {
     const exact = expr.qualifiedCardinality ?? expr.cardinality ?? null;
     const min = exact ?? expr.minQualifiedCardinality ?? expr.minCardinality ?? null;
     const max = exact ?? expr.maxQualifiedCardinality ?? expr.maxCardinality ?? null;
-    const qualified = expr.qualifiedCardinality !== null || expr.minQualifiedCardinality !== null || expr.maxQualifiedCardinality !== null;
-    return { exact, min, max, qualified };
+    return { exact, min, max };
+  }
+
+  function distinctConceptClause(leftVar, rightVar) {
+    return `not {\n${indentText(`${leftVar} is ${rightVar};`)}\n};`;
+  }
+
+  function distinctValueClause(leftVar, rightVar) {
+    return `not {\n${indentText(`${leftVar} == ${rightVar};`)}\n};`;
   }
 
   function compileExpression(expr, subjectVar, ctx) {
@@ -738,8 +759,8 @@ function buildAxiomQueryArtifacts(model, identifiers) {
       if (classIris.has(expr.iri)) {
         return { clauses: [`${subjectVar} isa ${identifiers.entity(expr.iri)};`], warnings: [] };
       }
-      if (expr.iri === "http://www.w3.org/2002/07/owl#Thing") {
-        return { clauses: [], warnings: [] };
+      if (expr.iri === SYNTHETIC_THING_IRI) {
+        return { clauses: [`${subjectVar} isa ${identifiers.entity(SYNTHETIC_THING_IRI)};`], warnings: [] };
       }
       if (instanceTypes.has(expr.iri)) {
         return { clauses: [`${subjectVar} has sourceIRI ${tqlString(expr.iri)};`], warnings: [] };
@@ -789,47 +810,82 @@ function buildAxiomQueryArtifacts(model, identifiers) {
           ? expr.onClass
           : hasConcreteExpr(expr.hasValue)
             ? expr.hasValue
-            : null;
+            : hasConcreteExpr(expr.allValuesFrom)
+              ? expr.allValuesFrom
+              : null;
       const card = cardinalitySummary(expr);
       const warnings = [];
       const clauses = [];
       const propertyLabel = iriLocalName(expr.property);
 
-      if (card.exact !== null && card.exact > 1) {
-        warnings.push(`${propertyLabel} exact cardinality ${card.exact} is approximated without upper-bound enforcement`);
-      } else if (card.min !== null && card.min > 1) {
-        warnings.push(`${propertyLabel} min cardinality ${card.min} is approximated as at-least-one existence`);
-      } else if (card.max !== null && card.max > 0) {
-        warnings.push(`${propertyLabel} max cardinality ${card.max} is not enforced in query form`);
-      } else if (card.exact === 1) {
-        warnings.push(`${propertyLabel} exact cardinality 1 is approximated as existence of one matching value`);
-      }
-
       if (objectPropertyIris.has(expr.property)) {
         const selfRole = `${relationName}${expr.inverse ? "Object" : "Subject"}`;
         const otherRole = `${relationName}${expr.inverse ? "Subject" : "Object"}`;
         const relationPattern = (targetVar) => `(${selfRole}: ${subjectVar}, ${otherRole}: ${targetVar}) isa ${relationName};`;
-
-        const addExistenceConstraint = target => {
-          const targetVar = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
-          clauses.push(relationPattern(targetVar));
-          if (target) {
-            const compiledTarget = compileExpression(target, targetVar, ctx);
-            clauses.push(...compiledTarget.clauses);
-            warnings.push(...compiledTarget.warnings);
-          }
-        };
-
-        const addAbsenceConstraint = target => {
-          const targetVar = ctx.nextVar(`forbidden_${iriLocalName(expr.property).toLowerCase()}`);
+        const compileTargetClauses = (targetVar, target = targetExpr) => {
           const compiledTarget = target ? compileExpression(target, targetVar, ctx) : { clauses: [], warnings: [] };
           warnings.push(...compiledTarget.warnings);
-          const block = [`${relationPattern(targetVar)}`, ...compiledTarget.clauses].join("\n");
+          return compiledTarget.clauses;
+        };
+        const addWitnesses = (count, target = targetExpr) => {
+          const witnesses = [];
+          for (let index = 0; index < count; index += 1) {
+            const targetVar = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+            witnesses.push(targetVar);
+            clauses.push(relationPattern(targetVar));
+            clauses.push(...compileTargetClauses(targetVar, target));
+          }
+          for (let left = 0; left < witnesses.length; left += 1) {
+            for (let right = left + 1; right < witnesses.length; right += 1) {
+              clauses.push(distinctConceptClause(witnesses[left], witnesses[right]));
+            }
+          }
+          return witnesses;
+        };
+        const addNoAdditionalWitnesses = (witnesses, target = targetExpr) => {
+          const targetVar = ctx.nextVar(`extra_${iriLocalName(expr.property).toLowerCase()}`);
+          const block = [`${relationPattern(targetVar)}`, ...compileTargetClauses(targetVar, target)];
+          for (const witness of witnesses) block.push(distinctConceptClause(targetVar, witness));
+          clauses.push(`not {\n${indentText(block.join("\n"))}\n};`);
+        };
+
+        const addAbsenceConstraint = (target = targetExpr) => {
+          const targetVar = ctx.nextVar(`forbidden_${iriLocalName(expr.property).toLowerCase()}`);
+          const block = [`${relationPattern(targetVar)}`, ...compileTargetClauses(targetVar, target)].join("\n");
           clauses.push(`not {\n${indentText(block)}\n};`);
         };
 
-        if (targetExpr || (card.min !== null && card.min > 0) || (card.exact !== null && card.exact > 0)) {
-          addExistenceConstraint(targetExpr);
+        if (card.exact === 0 || card.max === 0) {
+          addAbsenceConstraint();
+        } else if (card.exact === 1) {
+          const witnesses = addWitnesses(1);
+          addNoAdditionalWitnesses(witnesses);
+        } else if (card.exact === 2) {
+          const witnesses = addWitnesses(2);
+          addNoAdditionalWitnesses(witnesses);
+        } else if (card.exact !== null && card.exact > 2) {
+          warnings.push(`${propertyLabel} exact cardinality ${card.exact} is not yet enforced exactly`);
+          addWitnesses(1);
+        } else if (card.min === 2) {
+          addWitnesses(2);
+        } else if (card.min !== null && card.min > 2) {
+          warnings.push(`${propertyLabel} min cardinality ${card.min} is not yet enforced exactly`);
+          addWitnesses(1);
+        } else if (card.max === 1) {
+          const first = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+          const second = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+          const block = [
+            relationPattern(first),
+            ...compileTargetClauses(first),
+            relationPattern(second),
+            ...compileTargetClauses(second),
+            distinctConceptClause(first, second)
+          ];
+          clauses.push(`not {\n${indentText(block.join("\n"))}\n};`);
+        } else if (card.max !== null && card.max > 1) {
+          warnings.push(`${propertyLabel} max cardinality ${card.max} is not yet enforced exactly`);
+        } else if (targetExpr || (card.min !== null && card.min > 0)) {
+          addWitnesses(1);
         }
 
         if (hasConcreteExpr(expr.allValuesFrom)) {
@@ -843,18 +899,69 @@ function buildAxiomQueryArtifacts(model, identifiers) {
           );
         }
 
-        if ((card.max !== null && card.max === 0) || (card.exact !== null && card.exact === 0)) {
-          addAbsenceConstraint(targetExpr);
-        }
       } else if (datatypePropertyIris.has(expr.property)) {
-        const literalVar = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
-        const attributePattern = `${subjectVar} has ${attributeName} ${literalVar};`;
-        if (hasConcreteExpr(expr.hasValue) && expr.hasValue.kind === "literal") {
-          clauses.push(`${subjectVar} has ${attributeName} ${tqlString(expr.hasValue.value)};`);
-        } else if ((card.max !== null && card.max === 0) || (card.exact !== null && card.exact === 0)) {
-          clauses.push(`not {\n${indentText(attributePattern)}\n};`);
+        const literalConstraint = (literalVar, target = targetExpr) => {
+          if (!target || target.kind === "unknown") return [];
+          if (target.kind === "literal") return [`${literalVar} == ${tqlString(target.value)};`];
+          if (target.kind === "named") return [];
+          warnings.push(`${propertyLabel} datatype target ${target.kind} is not yet enforced exactly`);
+          return [];
+        };
+        const addLiteralWitnesses = (count, target = targetExpr) => {
+          const witnesses = [];
+          for (let index = 0; index < count; index += 1) {
+            const literalVar = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+            witnesses.push(literalVar);
+            clauses.push(`${subjectVar} has ${attributeName} ${literalVar};`);
+            clauses.push(...literalConstraint(literalVar, target));
+          }
+          for (let left = 0; left < witnesses.length; left += 1) {
+            for (let right = left + 1; right < witnesses.length; right += 1) {
+              clauses.push(distinctValueClause(witnesses[left], witnesses[right]));
+            }
+          }
+          return witnesses;
+        };
+        const addNoAdditionalLiteralWitnesses = (witnesses, target = targetExpr) => {
+          const literalVar = ctx.nextVar(`extra_${iriLocalName(expr.property).toLowerCase()}`);
+          const block = [`${subjectVar} has ${attributeName} ${literalVar};`, ...literalConstraint(literalVar, target)];
+          for (const witness of witnesses) block.push(distinctValueClause(literalVar, witness));
+          clauses.push(`not {\n${indentText(block.join("\n"))}\n};`);
+        };
+
+        if (card.exact === 0 || card.max === 0) {
+          const literalVar = ctx.nextVar(`forbidden_${iriLocalName(expr.property).toLowerCase()}`);
+          const block = [`${subjectVar} has ${attributeName} ${literalVar};`, ...literalConstraint(literalVar)];
+          clauses.push(`not {\n${indentText(block.join("\n"))}\n};`);
+        } else if (card.exact === 1) {
+          const witnesses = addLiteralWitnesses(1);
+          addNoAdditionalLiteralWitnesses(witnesses);
+        } else if (card.exact === 2) {
+          const witnesses = addLiteralWitnesses(2);
+          addNoAdditionalLiteralWitnesses(witnesses);
+        } else if (card.exact !== null && card.exact > 2) {
+          warnings.push(`${propertyLabel} exact cardinality ${card.exact} is not yet enforced exactly`);
+          addLiteralWitnesses(1);
+        } else if (card.min === 2) {
+          addLiteralWitnesses(2);
+        } else if (card.min !== null && card.min > 2) {
+          warnings.push(`${propertyLabel} min cardinality ${card.min} is not yet enforced exactly`);
+          addLiteralWitnesses(1);
+        } else if (card.max === 1) {
+          const first = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+          const second = ctx.nextVar(iriLocalName(expr.property).toLowerCase());
+          const block = [
+            `${subjectVar} has ${attributeName} ${first};`,
+            ...literalConstraint(first),
+            `${subjectVar} has ${attributeName} ${second};`,
+            ...literalConstraint(second),
+            distinctValueClause(first, second)
+          ];
+          clauses.push(`not {\n${indentText(block.join("\n"))}\n};`);
+        } else if (card.max !== null && card.max > 1) {
+          warnings.push(`${propertyLabel} max cardinality ${card.max} is not yet enforced exactly`);
         } else {
-          clauses.push(attributePattern);
+          addLiteralWitnesses(1);
         }
 
         if (hasConcreteExpr(expr.allValuesFrom) && expr.allValuesFrom.kind !== "named") {
@@ -877,6 +984,7 @@ function buildAxiomQueryArtifacts(model, identifiers) {
   }
 
   const queryEntries = [];
+  const fetchCandidate = [`fetch {`, `  "candidate": $candidate`, `};`];
   const queryLines = [
     "# Provenance bootstrap",
     "# upstream-repo: https://github.com/semanticarts/gist",
@@ -910,7 +1018,7 @@ function buildAxiomQueryArtifacts(model, identifiers) {
       {
         name: `axiom::${typeLabel}::satisfies`,
         kind: "satisfies",
-        body: [`match`, `  $candidate isa ${entityName};`, ...clauses.flatMap((clause) => indentText(clause).split("\n")), `get $candidate;`]
+        body: [`match`, `  $candidate isa ${entityName};`, ...clauses.flatMap((clause) => indentText(clause).split("\n")), ...fetchCandidate]
       },
       {
         name: `axiom::${typeLabel}::violation::equivalent-class-1`,
@@ -921,7 +1029,7 @@ function buildAxiomQueryArtifacts(model, identifiers) {
           `  not {`,
           indentText(clauses.join("\n"), "    "),
           `  };`,
-          `get $candidate;`
+          ...fetchCandidate
         ]
       },
       {
@@ -933,7 +1041,7 @@ function buildAxiomQueryArtifacts(model, identifiers) {
           `  not {`,
           `    $candidate isa ${entityName};`,
           `  };`,
-          `get $candidate;`
+          ...fetchCandidate
         ]
       }
     ];

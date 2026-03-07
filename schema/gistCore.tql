@@ -8,7 +8,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
 # manifest: manifests/gist-v14.0.0.translation-manifest.json
-# generator: gist-structural-emitter/0.4.0
+# generator: gist-structural-emitter/0.5.0
 
 define
 
@@ -421,7 +421,7 @@ entity Agreement sub Intention,
     plays isDirectPartOf:isDirectPartOfObject;
 
 # A measurable characteristic.
-entity Aspect,
+entity Aspect sub Thing,
     owns description,
     owns name,
     owns sourceIRI,
@@ -450,7 +450,7 @@ entity CatalogItem sub Specification,
     plays isDirectPartOf:isDirectPartOfSubject;
 
 # A concept or label used to categorize other instances without specifying any formal semantics.
-entity Category,
+entity Category sub Thing,
     plays isAllocatedBy:isAllocatedBySubject,
     plays isFirstMemberOf:isFirstMemberOfSubject,
     plays isMemberOf:isMemberOfSubject;
@@ -465,11 +465,11 @@ entity Commitment sub Intention,
     plays isDirectPartOf:isDirectPartOfSubject;
 
 # Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.
-entity Component,
+entity Component sub Thing,
     plays isDirectPartOf:isDirectPartOfSubject;
 
 # Something which is made up of various parts or elements that are independently identifiable.
-entity Composite;
+entity Composite sub Thing;
 
 # An event that has started but has not yet ended.
 entity ContemporaryEvent sub Event,
@@ -486,7 +486,7 @@ entity ContemporaryEvent sub Event,
     owns deathDate;
 
 # Information available in some medium.
-entity Content,
+entity Content sub Thing,
     plays isAbout:isAboutSubject;
 
 # Intellectual property reduced to text, audio, etc.  If it contains text (written or spoken), it will be expressed in a language.
@@ -547,7 +547,7 @@ entity EquipmentType sub Category,
     plays isCategorizedBy:isCategorizedByObject;
 
 # Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.
-entity Event,
+entity Event sub Thing,
     plays isBasedOn:isBasedOnSubject,
     plays isTriggeredBy:isTriggeredByObject;
 
@@ -566,7 +566,7 @@ entity GeneralMediaType sub Category,
     plays isCategorizedBy:isCategorizedByObject;
 
 # A physical location, with the earth as a frame of reference.
-entity GeoLocation,
+entity GeoLocation sub Thing,
     plays comesFromPlace:comesFromPlaceObject,
     plays goesToPlace:goesToPlaceObject,
     plays hasPhysicalLocation:hasPhysicalLocationObject,
@@ -584,7 +584,7 @@ entity GeoPoint sub GeoLocation,
     plays isMemberOf:isMemberOfSubject;
 
 # A bounded region (or set of regions) on the surface of the Earth.
-entity GeoRegion,
+entity GeoRegion sub Thing,
     plays hasMagnitude:hasMagnitudeSubject,
     plays hasPhysicalLocation:hasPhysicalLocationObject,
     plays isGovernedBy:isGovernedBySubject;
@@ -626,11 +626,11 @@ entity ID sub Content,
     plays isIdentifiedBy:isIdentifiedByObject;
 
 # An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.
-entity IntellectualProperty,
+entity IntellectualProperty sub Thing,
     plays isAllocatedBy:isAllocatedByObject;
 
 # A goal, desire, or aspiration.
-entity Intention,
+entity Intention sub Thing,
     plays hasGoal:hasGoalObject,
     plays prevents:preventsSubject;
 
@@ -647,7 +647,7 @@ entity Landmark sub PhysicalIdentifiableItem,
     plays hasPhysicalLocation:hasPhysicalLocationSubject;
 
 # A recognized, organized set of symbols and grammar.
-entity Language,
+entity Language sub Thing,
     plays isExpressedIn:isExpressedInObject;
 
 # Something that is currently, or at some point in time was, alive.
@@ -657,7 +657,7 @@ entity LivingThing sub PhysicalIdentifiableItem,
     plays hasBiologicalParent:hasBiologicalParentSubject;
 
 # The amount of a measurable characteristic (aspect).
-entity Magnitude,
+entity Magnitude sub Thing,
     owns numericValue,
     plays hasAccuracy:hasAccuracyObject,
     plays hasAspect:hasAspectSubject,
@@ -729,10 +729,9 @@ entity OrderedMember sub Component,
     plays providesOrderFor:providesOrderForSubject;
 
 # A structured entity formed to achieve specific goals, typically involving members with defined roles.
-entity Organization,
+entity Organization sub Thing,
     plays comesFromAgent:comesFromAgentObject,
     plays goesToAgent:goesToAgentObject,
-    plays hasGiver:hasGiverObject,
     plays hasParty:hasPartyObject,
     plays isAllocatedBy:isAllocatedByObject,
     plays isGovernedBy:isGovernedByObject,
@@ -747,7 +746,6 @@ entity Permission sub Intention,
 entity Person sub LivingThing,
     plays comesFromAgent:comesFromAgentObject,
     plays goesToAgent:goesToAgentObject,
-    plays hasGiver:hasGiverObject,
     plays hasParty:hasPartyObject,
     plays isAllocatedBy:isAllocatedByObject,
     plays isGovernedBy:isGovernedByObject,
@@ -769,12 +767,12 @@ entity PhysicalEvent sub Event,
     plays occursIn:occursInSubject;
 
 # A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.
-entity PhysicalIdentifiableItem,
+entity PhysicalIdentifiableItem sub Thing,
     plays hasMagnitude:hasMagnitudeSubject,
     plays isMadeUpOf:isMadeUpOfSubject;
 
 # An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.
-entity PhysicalSubstance,
+entity PhysicalSubstance sub Thing,
     plays hasMagnitude:hasMagnitudeSubject,
     plays isMadeUpOf:isMadeUpOfObject;
 
@@ -815,7 +813,7 @@ entity ScheduledEvent sub Event,
 entity ScheduledTask sub ScheduledEvent;
 
 # Superclass for all types of metadata.
-entity SchemaMetaData;
+entity SchemaMetaData sub Thing;
 
 # A description of something that can be done for a person or organization (which produces some form of an act).
 entity ServiceSpecification sub CatalogItem,
@@ -849,10 +847,10 @@ entity TaskTemplate sub Template,
     plays hasGoal:hasGoalSubject;
 
 # Something used to make objects in its own image.
-entity Template;
+entity Template sub Thing;
 
 # A relationship existing for a period of time.
-entity TemporalRelation,
+entity TemporalRelation sub Thing,
     owns actualStartDate,
     owns actualStartDateTime,
     owns actualStartMicrosecond,
@@ -878,8 +876,17 @@ entity Text sub ContentExpression,
     owns uniqueText,
     plays isExpressedIn:isExpressedInSubject;
 
+# Synthetic root used to anchor owl:Thing semantics for untyped role players.
+entity Thing,
+    plays hasGiver:hasGiverObject,
+    plays isAssignmentOf:isAssignmentOfObject,
+    plays isAssignmentTo:isAssignmentToObject,
+    plays offersToProvide:offersToProvideObject,
+    plays offersToReceive:offersToReceiveObject,
+    plays providesOrderFor:providesOrderForObject;
+
 # A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.
-entity TimeInterval,
+entity TimeInterval sub Thing,
     owns actualEndDate,
     owns actualEndDateTime,
     owns actualEndMicrosecond,
@@ -927,7 +934,7 @@ entity UnitGroup sub Collection,
     plays isMemberOf:isMemberOfObject;
 
 # A standard amount used to measure or specify things.
-entity UnitOfMeasure,
+entity UnitOfMeasure sub Thing,
     owns conversionFactor,
     owns conversionOffset,
     owns exponentOfAmpere,

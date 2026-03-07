@@ -21,4 +21,4 @@ Current state:
   - `manifests/gist-v14.0.0.translation-report.json`
 - `validate_bootstrap.mjs` verifies manifest checksums, deterministic regeneration, and stale checked-in artifacts
 - documentation, provenance, and axiom-query artifacts now ship as checked-in package outputs
-- some OWL cardinality-heavy axiom queries are emitted with explicit approximation warnings until exact count semantics are implemented
+- the generated axiom-query library now enforces the cardinality patterns currently present in gist's equivalent-class coverage without approximation warnings

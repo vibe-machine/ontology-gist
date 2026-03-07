@@ -31,8 +31,8 @@
   },
   "generator": {
     "name": "gist-structural-emitter",
-    "version": "0.4.0",
-    "generatedAt": "2026-03-07T15:54:21Z"
+    "version": "0.5.0",
+    "generatedAt": "2026-03-07T16:09:40Z"
   },
   "artifacts": [
     {
@@ -48,17 +48,17 @@
     {
       "kind": "schema",
       "path": "schema/gistCore.tql",
-      "sha256": "8acf40f9b40bffb4d45878c82517da53019655feb0cb5c8716e8f458b54354af"
+      "sha256": "69982dd4d98dfea278b7d535ea7433b43e4943b6782398ac69e828ce0a359566"
     },
     {
       "kind": "domain-seeds",
       "path": "data/gistCore-domain-seeds.tql",
-      "sha256": "7697bb9895c7bd214238820017b5d7ed4f6f27c4a9fb947665ba23cf57a637da"
+      "sha256": "b248679929433502f9616929bc345664d248897737bd85af0d21d9c1580dfddc"
     },
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "2f19008144496b5f856a2802327c09883debf067211eaccbf9dbb2bb6fabf66d"
+      "sha256": "71d0e7ae80e547bbb2904a86ab612b3118ac04a6de677642f83851abec98ccc8"
     },
     {
       "kind": "documentation",
@@ -68,12 +68,12 @@
     {
       "kind": "axiom-query-library",
       "path": "queries/gistCore-axioms.tql",
-      "sha256": "5bf339e88b9ce1f9c8c2bada16f6ca032224c83bd554ea2196d4b16d1b20cfbd"
+      "sha256": "e4afe579ea57caf8665a9dce7c99f7d0870b33a5fa46d46a9d279cfef424d0a1"
     },
     {
       "kind": "axiom-query-index",
       "path": "manifests/gist-v14.0.0.axiom-queries.json",
-      "sha256": "213712d7f26516df9dc5d5658b980a9c61ad2ce6339c1873b832df64eb880fe0"
+      "sha256": "8e339edfef6f4ca9e6cb103e79e0d455f97d9cc1a26f44a5e4172b6e5a3378d3"
     },
     {
       "kind": "ir-summary",
@@ -83,7 +83,7 @@
     {
       "kind": "translation-report",
       "path": "manifests/gist-v14.0.0.translation-report.json",
-      "sha256": "cbd13e9464762949ac01c394f4ae624e06c7c08d792561a6b1115b72537d9ef6"
+      "sha256": "de396dd42e32a8c9e5cff94554fe12ac2521c867f6579178ce685594d53e6fce"
     }
   ]
 }
