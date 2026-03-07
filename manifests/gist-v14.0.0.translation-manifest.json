@@ -43,7 +43,7 @@
     {
       "kind": "provenance-schema",
       "path": "schema/package-provenance.tql",
-      "sha256": "2bc79ba4ba77c44cfb3e476f9ba2125b10c549ab88f6290f52bdf8249012fb65"
+      "sha256": "75b46ee26cf30af89a62fb9628acf7585f7ccb5b343f1c40c506a5ec91a6eae3"
     },
     {
       "kind": "schema",

@@ -6,7 +6,9 @@
   "scripts": {
     "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v14.0.0.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
-    "validate:bootstrap": "node tools/gist_to_typeql/validate_bootstrap.mjs"
+    "validate:bootstrap": "node tools/gist_to_typeql/validate_bootstrap.mjs",
+    "test:typedb-bootstrap": "node tools/package_contract/validate_typedb_bootstrap.mjs",
+    "test": "npm run validate:bootstrap && npm run test:typedb-bootstrap"
   },
   "author": "Semantic Arts, Inc.",
   "license": "CC-BY-SA-4.0",
