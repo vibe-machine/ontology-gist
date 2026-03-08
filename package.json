@@ -78,14 +78,6 @@
     "manifest": "manifests/gist-v14.0.0.translation-manifest.json",
     "status": "bootstrap"
   },
-  "legacyDocumentation": {
-    "deprecatedFiles": [
-      "data/gistCore-typedoc.tql",
-      "data/domains.tql",
-      "data/categorize.tql"
-    ],
-    "status": "superseded-by-schema-resource"
-  },
   "devDependencies": {
     "n3": "^2.0.3"
   }

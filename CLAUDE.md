@@ -1,52 +1,46 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working in this repository.
 
 ## Project Overview
 
-This is the **gist Upper Ontology** — a TypeQL schema package adapted from Semantic Arts' [gist ontology](https://github.com/semanticarts/gist) (v14.0.0, CC-BY-SA-4.0). It provides foundational entity types and relations for enterprise knowledge graphs, used as a base layer by other ontology packages in the collection-vibe-machine ecosystem.
+This repo is the canonical `gist` TypeDB package lifecycle workspace. It stages pinned upstream Turtle artifacts from Semantic Arts gist `v14.0.0`, translates them into TypeQL schema/data/query outputs, and publishes self-describing documentation plus provenance metadata for downstream ontology consumers.
 
-## File Structure
+## Current Package Layout
 
-- `schema/gistCore.tql` — The single TypeQL schema file containing all attribute, relation, and entity definitions
-- `data/domains.tql` — Domain registration (insert statement)
-- `data/categorize.tql` — Match-insert statements linking TypeDoc entries to the gist domain
-- `data/gistCore-typedoc.tql` — TypeDoc insert statements providing definitions and usage notes for key types
-- `package.json` — Package manifest (not an npm package; describes the ontology package for the collection loader)
+- `upstream/gist/v14.0.0/` — vendored upstream Turtle inputs and source inventory
+- `tools/gist_to_typeql/` — parser, emitter, and validation scripts
+- `schema/gistCore.tql` — generated TypeQL schema
+- `schema/self-describing-schema.tql` — shared documentation schema
+- `schema/package-provenance.tql` — shared provenance schema
+- `data/gistCore-domain-seeds.tql` — generated package seed instances
+- `data/gistCore-schema-docs.tql` — generated `SchemaModule` / `SchemaResource` documentation records
+- `data/gistCore-provenance.tql` — generated `OntologyPackageBuild` provenance records
+- `queries/gistCore-axioms.tql` — generated axiom query library
+- `manifests/` — IR summary, translation report, axiom-query index, and translation manifest
+- `package.json` — package contract consumed by the ontology loader
 
-## TypeQL Schema Conventions
+Deprecated `TypeDoc`, `domains.tql`, and `categorize.tql` artifacts have been retired and should not be reintroduced.
 
-The schema uses TypeQL `define` syntax with three construct types:
+## Build And Validation
 
-- **Attributes**: `attribute <name> value <valuetype>;` — value types are `datetime`, `string`, `double`, `integer`
-- **Relations**: `relation <name>, relates <role1>, relates <role2>;` — binary relations with named roles
-- **Entities**: `entity <name>, owns <attr>, plays <relation>:<role>;` — entities declare owned attributes and played roles
+- `npm run parse:ir` — regenerate the normalized IR summary
+- `npm run emit:structural` — regenerate schema, seed data, query library, and reports
+- `npm run validate:bootstrap` — verify checksums, determinism, and artifact freshness
+- `npm run test:typedb-bootstrap` — load the package into a temporary TypeDB instance
+- `npm test` — run both validation stages
 
-Inheritance uses `sub`: `entity Task sub Event` means Task extends Event.
+## Modeling Conventions
 
-Data files use `insert` (for domain registration, TypeDoc entries) or `match/insert` (for categorization linking).
+- Generated schema uses TypeQL `define` syntax with `attribute`, `relation`, and `entity` declarations.
+- Package data files use `insert` only; query libraries are kept separate under `queries/`.
+- Documentation is modeled through `SchemaModule`, `SchemaResource`, and `inModule`, not legacy `TypeDoc`.
+- Provenance is modeled through `OntologyPackageBuild`, `SourceArtifactRecord`, and `GeneratedArtifactRecord`.
+- The emitter prunes inherited `owns` and `plays` declarations on subtypes because TypeDB already inherits them from supertypes.
 
-## Schema Design Patterns
+## Editing Guidance
 
-- **Measurement**: Entity → `hasMagnitude` → Magnitude → `hasUnitOfMeasure` → UnitOfMeasure, with Aspect defining what is measured
-- **Categorization**: Any entity → `isCategorizedBy` → Category (or subtypes like Tag, MediaType)
-- **Part-whole**: `isPartOf` (transitive) and `isDirectPartOf` (single-level)
-- **Temporal**: Event subtypes carry actual/planned start/end datetime attributes at multiple precisions (Year, Date, Minute, Microsecond)
-- **Transfer**: `comesFromAgent`/`goesToAgent` for agent transfers, `comesFromPlace`/`goesToPlace` for physical movement
-
-## Package Manifest
-
-`package.json` is not for npm — it's a custom manifest consumed by the collection-vibe-machine loader. Key fields:
-- `schemas` — array of `{name, file}` pointing to TypeQL define files
-- `data` — array of TypeQL data files to load after schema
-- `domains` — domain registration file
-- `categorization` — categorization linking file
-- `dependencies` — other ontology packages this depends on (empty for gist, the root)
-
-## Working with This Repo
-
-There are no build steps, tests, or linters. Changes involve editing `.tql` files directly. Ensure:
-- `define` blocks contain only schema declarations (attributes, relations, entities)
-- `insert` blocks are used for data (TypeDoc, Domain instances)
-- `match/insert` blocks are used for linking existing data
-- Role names in `plays` declarations match the corresponding `relates` clause in the relation definition
+- Treat `upstream/gist/v14.0.0/` as pinned source input, not as a scratch area.
+- Prefer changing the translator under `tools/gist_to_typeql/` and regenerating artifacts rather than hand-editing generated `.tql` outputs.
+- If generated outputs change, rerun the relevant generator and validation commands before finishing.
+- Keep `package.json` aligned with the active package contract in `schemas`, `data`, `queries`, `manifests`, and `assembly.loadOrder`.

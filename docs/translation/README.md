@@ -24,12 +24,12 @@ Current status:
 
 - The upstream `gist` release `v14.0.0` is pinned to commit `6ab80c158a7fa56a1b5d3d824b125b92107e8f08`.
 - `ontology-gist` is the sole canonical repository for gist translation and package lifecycle work.
-- `ontology-gist-owl2typeql` is a retired duplicate checkout and should not receive active implementation work.
+- `ontology-gist-owl2typeql` has been retired; no parallel gist translation checkout remains in the workspace.
 - `schema/gistCore.tql` and `data/gistCore-domain-seeds.tql` are now deterministic structural translator outputs derived from the vendored Turtle sources.
 - `manifests/gist-v14.0.0.ir-summary.json` and `manifests/gist-v14.0.0.translation-report.json` capture the normalized IR and structural translation decisions used to emit the package artifacts.
 - Provenance and manifest scaffolding now live in-repo so the translator can become reproducible without relying on hidden external workspace state.
 - The package now treats `schema/self-describing-schema.tql` and `data/gistCore-schema-docs.tql` as the authoritative documentation path.
-- Legacy `TypeDoc` files remain in the repo only as migration reference and are no longer part of active package assembly.
+- Legacy `TypeDoc` / domain-registration bridge artifacts have been removed from the repository and are no longer part of the package lifecycle.
 
 Vendoring policy:
 
