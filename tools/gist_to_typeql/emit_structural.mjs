@@ -29,7 +29,9 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
 
-const MANIFEST_PATH = "manifests/gist-v14.0.0.translation-manifest.json";
+const packageJson = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
+const MANIFEST_PATH = packageJson.provenance.manifest;
+const MANIFEST_PREFIX = `manifests/gist-v${packageJson.version}`;
 const GENERATOR = "gist-structural-emitter/0.5.0";
 const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
 const RESERVED_IDENTIFIERS = new Set([
@@ -1205,8 +1207,8 @@ async function main() {
   await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), schemaText, "utf8");
   await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), seedDataText, "utf8");
   await fs.writeFile(path.join(outputRoot, "queries/gistCore-axioms.tql"), axiomArtifacts.library, "utf8");
-  await fs.writeFile(path.join(outputRoot, "manifests/gist-v14.0.0.axiom-queries.json"), axiomArtifacts.index, "utf8");
-  await fs.writeFile(path.join(outputRoot, "manifests/gist-v14.0.0.translation-report.json"), reportText, "utf8");
+  await fs.writeFile(path.join(outputRoot, `${MANIFEST_PREFIX}.axiom-queries.json`), axiomArtifacts.index, "utf8");
+  await fs.writeFile(path.join(outputRoot, `${MANIFEST_PREFIX}.translation-report.json`), reportText, "utf8");
 
   const artifactEntries = [
     {
@@ -1241,17 +1243,17 @@ async function main() {
     },
     {
       kind: "axiom-query-index",
-      path: "manifests/gist-v14.0.0.axiom-queries.json",
+      path: `${MANIFEST_PREFIX}.axiom-queries.json`,
       sha256: sha256Text(axiomArtifacts.index),
     },
     {
       kind: "ir-summary",
-      path: "manifests/gist-v14.0.0.ir-summary.json",
-      sha256: await sha256File(path.join(root, "manifests/gist-v14.0.0.ir-summary.json")),
+      path: `${MANIFEST_PREFIX}.ir-summary.json`,
+      sha256: await sha256File(path.join(root, `${MANIFEST_PREFIX}.ir-summary.json`)),
     },
     {
       kind: "translation-report",
-      path: "manifests/gist-v14.0.0.translation-report.json",
+      path: `${MANIFEST_PREFIX}.translation-report.json`,
       sha256: sha256Text(reportText),
     },
   ];
@@ -1290,7 +1292,7 @@ async function main() {
 
   await fs.writeFile(path.join(outputRoot, "data/gistCore-provenance.tql"), provenanceText, "utf8");
   await fs.writeFile(
-    path.join(outputRoot, "manifests/gist-v14.0.0.translation-manifest.json"),
+    path.join(outputRoot, `${MANIFEST_PREFIX}.translation-manifest.json`),
     `${JSON.stringify(manifest, null, 2)}\n`,
     "utf8"
   );

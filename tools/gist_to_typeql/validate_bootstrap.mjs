@@ -156,10 +156,12 @@ async function stopProcess(child) {
 
 async function main() {
   const pkg = await readJson("package.json");
-  const manifest = await readJson("manifests/gist-v14.0.0.translation-manifest.json");
-  const sourceInventory = await readJson("upstream/gist/v14.0.0/source-artifacts.json");
-  const translationReport = await readJson("manifests/gist-v14.0.0.translation-report.json");
-  const axiomIndex = await readJson("manifests/gist-v14.0.0.axiom-queries.json");
+  const mp = `manifests/gist-v${pkg.version}`;
+  const upstreamDir = `upstream/gist/${pkg.upstream.tag}`;
+  const manifest = await readJson(`${mp}.translation-manifest.json`);
+  const sourceInventory = await readJson(`${upstreamDir}/source-artifacts.json`);
+  const translationReport = await readJson(`${mp}.translation-report.json`);
+  const axiomIndex = await readJson(`${mp}.axiom-queries.json`);
   const axiomLibrary = await fs.readFile(path.join(root, "queries/gistCore-axioms.tql"), "utf8");
 
   for (const relPath of pkg.assembly.loadOrder) {
@@ -175,13 +177,13 @@ async function main() {
   }
 
   for (const file of sourceInventory.files) {
-    await fs.access(path.join(root, "upstream/gist/v14.0.0", file.path));
+    await fs.access(path.join(root, upstreamDir, file.path));
   }
 
   const activeTqlFiles = [...pkg.schemas.map((schema) => schema.file), ...pkg.data, ...(pkg.queries ?? [])];
   for (const relPath of activeTqlFiles) {
     const text = await fs.readFile(path.join(root, relPath), "utf8");
-    await assertCondition(text.includes("# manifest: manifests/gist-v14.0.0.translation-manifest.json"), `missing manifest header in ${relPath}`);
+    await assertCondition(text.includes(`# manifest: ${mp}.translation-manifest.json`), `missing manifest header in ${relPath}`);
     await assertCondition(text.includes("# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08"), `missing upstream commit header in ${relPath}`);
   }
 
@@ -201,7 +203,7 @@ async function main() {
   const second = await fs.readFile(tmp2);
   await assertCondition(first.equals(second), "IR parser output is not deterministic");
 
-  const checkedIn = await fs.readFile(path.join(root, "manifests/gist-v14.0.0.ir-summary.json"));
+  const checkedIn = await fs.readFile(path.join(root, `${mp}.ir-summary.json`));
   await assertCondition(first.equals(checkedIn), "checked-in IR summary is stale; run npm run parse:ir");
 
   const emitDir1 = await fs.mkdtemp(path.join(os.tmpdir(), "gist-emit-1-"));
@@ -220,8 +222,8 @@ async function main() {
     "generated domain seeds are not deterministic"
   );
   await assertCondition(
-    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.translation-report.json"))) ===
-      sha256(await fs.readFile(path.join(emitDir2, "manifests/gist-v14.0.0.translation-report.json"))),
+    sha256(await fs.readFile(path.join(emitDir1, `${mp}.translation-report.json`))) ===
+      sha256(await fs.readFile(path.join(emitDir2, `${mp}.translation-report.json`))),
     "generated translation report is not deterministic"
   );
   await assertCondition(
@@ -230,8 +232,8 @@ async function main() {
     "generated axiom query library is not deterministic"
   );
   await assertCondition(
-    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.axiom-queries.json"))) ===
-      sha256(await fs.readFile(path.join(emitDir2, "manifests/gist-v14.0.0.axiom-queries.json"))),
+    sha256(await fs.readFile(path.join(emitDir1, `${mp}.axiom-queries.json`))) ===
+      sha256(await fs.readFile(path.join(emitDir2, `${mp}.axiom-queries.json`))),
     "generated axiom query index is not deterministic"
   );
   await assertCondition(
@@ -244,8 +246,8 @@ async function main() {
     "checked-in domain seeds are stale; run npm run emit:structural"
   );
   await assertCondition(
-    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.translation-report.json"))) ===
-      sha256(await fs.readFile(path.join(root, "manifests/gist-v14.0.0.translation-report.json"))),
+    sha256(await fs.readFile(path.join(emitDir1, `${mp}.translation-report.json`))) ===
+      sha256(await fs.readFile(path.join(root, `${mp}.translation-report.json`))),
     "checked-in translation report is stale; run npm run emit:structural"
   );
   await assertCondition(
@@ -254,8 +256,8 @@ async function main() {
     "checked-in axiom query library is stale; run npm run emit:structural"
   );
   await assertCondition(
-    sha256(await fs.readFile(path.join(emitDir1, "manifests/gist-v14.0.0.axiom-queries.json"))) ===
-      sha256(await fs.readFile(path.join(root, "manifests/gist-v14.0.0.axiom-queries.json"))),
+    sha256(await fs.readFile(path.join(emitDir1, `${mp}.axiom-queries.json`))) ===
+      sha256(await fs.readFile(path.join(root, `${mp}.axiom-queries.json`))),
     "checked-in axiom query index is stale; run npm run emit:structural"
   );
   await assertCondition(
