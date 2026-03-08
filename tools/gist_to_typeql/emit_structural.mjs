@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -104,6 +105,14 @@ const DATETIME_TYPES = new Set([
   "http://www.w3.org/2001/XMLSchema#date",
   "http://www.w3.org/2001/XMLSchema#dateTime"
 ]);
+
+function sha256Text(text) {
+  return createHash("sha256").update(text, "utf8").digest("hex");
+}
+
+async function sha256File(filePath) {
+  return createHash("sha256").update(await fs.readFile(filePath)).digest("hex");
+}
 
 const BOOLEAN_TYPES = new Set([
   "http://www.w3.org/2001/XMLSchema#boolean"
@@ -1178,25 +1187,111 @@ async function main() {
   const outDir = outIndex >= 0 ? process.argv[outIndex + 1] : ".";
   const outputRoot = path.isAbsolute(outDir) ? outDir : path.join(root, outDir);
   const model = await loadOntologyModel(root);
-  const manifest = JSON.parse(await fs.readFile(path.join(root, MANIFEST_PATH), "utf8"));
+  const currentManifest = JSON.parse(await fs.readFile(path.join(root, MANIFEST_PATH), "utf8"));
   const identifiers = buildIdentifierMaps(model);
   const propertyInfo = inferPropertyTypes(model);
   const entityDefinitions = buildEntityDefinitions(model, propertyInfo, identifiers);
   const axiomArtifacts = buildAxiomQueryArtifacts(model, identifiers);
+  const schemaText = renderSchema(model, propertyInfo, entityDefinitions, identifiers);
+  const seedDataText = renderSeedData(model, identifiers);
+  const reportText = renderReport(model, propertyInfo, entityDefinitions, identifiers);
+  const generatedAt = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
 
   await fs.mkdir(path.join(outputRoot, "schema"), { recursive: true });
   await fs.mkdir(path.join(outputRoot, "data"), { recursive: true });
   await fs.mkdir(path.join(outputRoot, "queries"), { recursive: true });
   await fs.mkdir(path.join(outputRoot, "manifests"), { recursive: true });
 
-  await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), renderSchema(model, propertyInfo, entityDefinitions, identifiers), "utf8");
-  await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), renderSeedData(model, identifiers), "utf8");
-  await fs.writeFile(path.join(outputRoot, "data/gistCore-provenance.tql"), renderProvenanceData(manifest), "utf8");
+  await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), schemaText, "utf8");
+  await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), seedDataText, "utf8");
   await fs.writeFile(path.join(outputRoot, "queries/gistCore-axioms.tql"), axiomArtifacts.library, "utf8");
   await fs.writeFile(path.join(outputRoot, "manifests/gist-v14.0.0.axiom-queries.json"), axiomArtifacts.index, "utf8");
+  await fs.writeFile(path.join(outputRoot, "manifests/gist-v14.0.0.translation-report.json"), reportText, "utf8");
+
+  const artifactEntries = [
+    {
+      kind: "meta-schema",
+      path: "schema/self-describing-schema.tql",
+      sha256: await sha256File(path.join(root, "schema/self-describing-schema.tql")),
+    },
+    {
+      kind: "provenance-schema",
+      path: "schema/package-provenance.tql",
+      sha256: await sha256File(path.join(root, "schema/package-provenance.tql")),
+    },
+    {
+      kind: "schema",
+      path: "schema/gistCore.tql",
+      sha256: sha256Text(schemaText),
+    },
+    {
+      kind: "domain-seeds",
+      path: "data/gistCore-domain-seeds.tql",
+      sha256: sha256Text(seedDataText),
+    },
+    {
+      kind: "documentation",
+      path: "data/gistCore-schema-docs.tql",
+      sha256: await sha256File(path.join(root, "data/gistCore-schema-docs.tql")),
+    },
+    {
+      kind: "axiom-query-library",
+      path: "queries/gistCore-axioms.tql",
+      sha256: sha256Text(axiomArtifacts.library),
+    },
+    {
+      kind: "axiom-query-index",
+      path: "manifests/gist-v14.0.0.axiom-queries.json",
+      sha256: sha256Text(axiomArtifacts.index),
+    },
+    {
+      kind: "ir-summary",
+      path: "manifests/gist-v14.0.0.ir-summary.json",
+      sha256: await sha256File(path.join(root, "manifests/gist-v14.0.0.ir-summary.json")),
+    },
+    {
+      kind: "translation-report",
+      path: "manifests/gist-v14.0.0.translation-report.json",
+      sha256: sha256Text(reportText),
+    },
+  ];
+
+  const manifestBase = {
+    ...currentManifest,
+    package: {
+      ...currentManifest.package,
+    },
+    upstream: {
+      ...currentManifest.upstream,
+    },
+    generator: {
+      ...currentManifest.generator,
+      generatedAt,
+    },
+    artifacts: artifactEntries,
+  };
+
+  const provenanceText = renderProvenanceData(manifestBase);
+  const manifest = {
+    ...manifestBase,
+    artifacts: [
+      artifactEntries[0],
+      artifactEntries[1],
+      artifactEntries[2],
+      artifactEntries[3],
+      {
+        kind: "provenance-seeds",
+        path: "data/gistCore-provenance.tql",
+        sha256: sha256Text(provenanceText),
+      },
+      ...artifactEntries.slice(4),
+    ],
+  };
+
+  await fs.writeFile(path.join(outputRoot, "data/gistCore-provenance.tql"), provenanceText, "utf8");
   await fs.writeFile(
-    path.join(outputRoot, "manifests/gist-v14.0.0.translation-report.json"),
-    renderReport(model, propertyInfo, entityDefinitions, identifiers),
+    path.join(outputRoot, "manifests/gist-v14.0.0.translation-manifest.json"),
+    `${JSON.stringify(manifest, null, 2)}\n`,
     "utf8"
   );
 }

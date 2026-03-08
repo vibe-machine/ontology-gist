@@ -169,6 +169,26 @@ async function readWorkingTreeOrHead(repoRoot, relativePath) {
   return execFileSync("git", ["show", `HEAD:${relativePath}`], { cwd: repoRoot, encoding: "utf8" });
 }
 
+function pathExistsInHead(repoRoot, relativePath) {
+  try {
+    execFileSync("git", ["cat-file", "-e", `HEAD:${relativePath}`], {
+      cwd: repoRoot,
+      stdio: "ignore",
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function stripToKeyword(text, keyword) {
+  const index = text.indexOf(`${keyword}\n`);
+  if (index === -1) {
+    throw new Error(`could not find ${keyword} block`);
+  }
+  return text.slice(index);
+}
+
 function renderSchemaDocs(meta, docEntries) {
   const lines = [renderHeader(meta), "insert", "", `$module isa SchemaModule,`, `  has moduleKey "${escapeTypeQL(meta.packageName)}",`, `  has moduleName "${escapeTypeQL(meta.moduleName)}",`, `  has moduleKind "${escapeTypeQL(meta.moduleKind)}";`, ""];
 
@@ -373,10 +393,6 @@ async function bootstrap(repoRoot) {
   const legacyTypedoc =
     (packageJson.data || []).find((relativePath) => relativePath.endsWith("-typedoc.tql")) ||
     (packageJson.legacyDocumentation?.deprecatedFiles || []).find((relativePath) => relativePath.endsWith("-typedoc.tql"));
-  if (!legacyTypedoc) {
-    throw new Error(`could not determine legacy typedoc file for ${repoRoot}`);
-  }
-
   const docsPath = `data/${packageJson.name}-schema-docs.tql`;
   const provenancePath = `data/${packageJson.name}-provenance.tql`;
   const manifestPath = `manifests/${packageJson.name}-v${packageJson.version}.package-manifest.json`;
@@ -392,13 +408,16 @@ async function bootstrap(repoRoot) {
   );
   const sourceArtifacts = ["package.json", mainSchema.file, ...sourceDataFiles];
 
-  const legacyFiles = [legacyTypedoc, "data/domains.tql", "data/categorize.tql"].filter((relativePath) =>
-    sourceArtifacts.includes(relativePath) ? false : true
+  const legacyFiles = [legacyTypedoc, "data/domains.tql", "data/categorize.tql"].filter(
+    (relativePath) => Boolean(relativePath) && !sourceArtifacts.includes(relativePath)
   );
 
   const schemaBody = readSchemaBody(await fs.readFile(path.join(gistRoot, "schema/self-describing-schema.tql"), "utf8"));
   const provenanceSchemaBody = readSchemaBody(await fs.readFile(path.join(gistRoot, "schema/package-provenance.tql"), "utf8"));
-  const typedocEntries = extractTypeDocEntries(await readWorkingTreeOrHead(repoRoot, legacyTypedoc));
+  const hasLegacyTypedoc = Boolean(legacyTypedoc) && (
+    (await fileExists(path.join(repoRoot, legacyTypedoc))) ||
+    pathExistsInHead(repoRoot, legacyTypedoc)
+  );
 
   const baseMeta = {
     repoUrl: packageJson.source,
@@ -466,7 +485,9 @@ async function bootstrap(repoRoot) {
 
   const sharedSchemaText = `${renderHeader(headerMeta)}${schemaBody}\n`;
   const provenanceSchemaText = `${renderHeader(headerMeta)}${provenanceSchemaBody}\n`;
-  const schemaDocsText = renderSchemaDocs(headerMeta, typedocEntries);
+  const schemaDocsText = hasLegacyTypedoc
+    ? renderSchemaDocs(headerMeta, extractTypeDocEntries(await readWorkingTreeOrHead(repoRoot, legacyTypedoc)))
+    : `${renderHeader(headerMeta)}${stripToKeyword(await readWorkingTreeOrHead(repoRoot, docsPath), "insert")}`;
   const manifestSchemaText = jsonText(MANIFEST_SCHEMA);
   const docsReadmeText = renderDocsReadme({
     packageName: packageJson.name,
@@ -474,7 +495,7 @@ async function bootstrap(repoRoot) {
     manifestPath,
     docsPath,
     provenancePath,
-    repoUrl: "https://github.com/vibe-machine/ontology-gist",
+    repoUrl: packageJson.source,
   });
 
   const manifestWithoutProvenance = {

@@ -22,7 +22,7 @@ $build isa OntologyPackageBuild,
   has manifestPath "manifests/gist-v14.0.0.translation-manifest.json",
   has generatorName "gist-structural-emitter",
   has generatorVersion "0.5.0",
-  has generatedAt "2026-03-07T16:09:40Z";
+  has generatedAt "2026-03-08T15:45:55Z";
 
 $s1 isa SourceArtifactRecord,
   has sourcePath "upstream/gist/v14.0.0/ontologies/gistCore.ttl",
@@ -53,7 +53,7 @@ $g1 isa GeneratedArtifactRecord,
 $g2 isa GeneratedArtifactRecord,
   has artifactPath "schema/package-provenance.tql",
   has artifactKind "provenance-schema",
-  has artifactSha256 "2bc79ba4ba77c44cfb3e476f9ba2125b10c549ab88f6290f52bdf8249012fb65";
+  has artifactSha256 "75b46ee26cf30af89a62fb9628acf7585f7ccb5b343f1c40c506a5ec91a6eae3";
 (build: $build, generatedArtifact: $g2) isa buildHasGeneratedArtifact;
 
 $g3 isa GeneratedArtifactRecord,

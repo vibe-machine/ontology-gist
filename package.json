@@ -6,9 +6,12 @@
   "scripts": {
     "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v14.0.0.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
+    "refresh:package-contract": "npm run parse:ir && npm run emit:structural",
     "validate:bootstrap": "node tools/gist_to_typeql/validate_bootstrap.mjs",
     "test:typedb-bootstrap": "node tools/package_contract/validate_typedb_bootstrap.mjs",
-    "test": "npm run validate:bootstrap && npm run test:typedb-bootstrap"
+    "test": "npm run validate:bootstrap && npm run test:typedb-bootstrap",
+    "release": "../ontology-tooling/bin/ontology-release --repo .",
+    "release:check": "../ontology-tooling/bin/ontology-release --repo . --validate-only"
   },
   "author": "Semantic Arts, Inc.",
   "license": "CC-BY-SA-4.0",
