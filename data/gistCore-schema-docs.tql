@@ -9,14 +9,12 @@
 # manifest: manifests/gist-v1.0.1.translation-manifest.json
 # generator: bootstrap-manifest/0.2.0
 
-insert
-
-$gist_core isa SchemaModule,
+put $gist_core isa SchemaModule,
   has moduleKey "gist-core",
   has moduleName "gistCore",
   has moduleKind "gist-core";
 
-$r1 isa SchemaResource,
+put $r1 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Event",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Event",
   has typeLabel "Event",
@@ -24,9 +22,9 @@ $r1 isa SchemaResource,
   has prefLabel "Event",
   has definition "A temporal occurrence - something that happens at a point or during an interval of time. Events have actual and planned start/end times and can have participants and locations.",
   has scopeNote "Event is the base type for all temporal occurrences. Use subtypes like Task, Transaction, or ScheduledEvent for specific event kinds. Beads extend Task which extends Event.";
-(resource: $r1, module: $gist_core) isa inModule;
+put (resource: $r1, module: $gist_core) isa inModule;
 
-$r2 isa SchemaResource,
+put $r2 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Task",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Task",
   has typeLabel "Task",
@@ -34,9 +32,9 @@ $r2 isa SchemaResource,
   has prefLabel "Task",
   has definition "A planned activity with a goal. Tasks are Events that represent work to be done, with the ability to track progress toward completion.",
   has scopeNote "Task extends Event and adds goal tracking via hasGoal relation. Bead extends Task to add issue tracking capabilities. Use Task for generic work items; use Bead for tracked issues.";
-(resource: $r2, module: $gist_core) isa inModule;
+put (resource: $r2, module: $gist_core) isa inModule;
 
-$r3 isa SchemaResource,
+put $r3 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Category",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Category",
   has typeLabel "Category",
@@ -44,9 +42,9 @@ $r3 isa SchemaResource,
   has prefLabel "Category",
   has definition "A classification or type used to categorize other entities. Categories provide taxonomic organization and can be hierarchical.",
   has scopeNote "Use isCategorizedBy relation to assign categories. BeadType, BeadStatus, and BeadPriority are Category subtypes. Agent also extends Category.";
-(resource: $r3, module: $gist_core) isa inModule;
+put (resource: $r3, module: $gist_core) isa inModule;
 
-$r4 isa SchemaResource,
+put $r4 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Organization",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Organization",
   has typeLabel "Organization",
@@ -54,9 +52,9 @@ $r4 isa SchemaResource,
   has prefLabel "Organization",
   has definition "A group of people organized for a common purpose. Organizations can own things, produce products, govern other entities, and have members.",
   has scopeNote "Use for companies, teams, departments. Rig extends Organization to represent git repositories as workspaces.";
-(resource: $r4, module: $gist_core) isa inModule;
+put (resource: $r4, module: $gist_core) isa inModule;
 
-$r5 isa SchemaResource,
+put $r5 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Person",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Person",
   has typeLabel "Person",
@@ -64,9 +62,9 @@ $r5 isa SchemaResource,
   has prefLabel "Person",
   has definition "An individual human being. Persons can own things, produce products, participate in events, and have biological relationships.",
   has scopeNote "Use for human users and team members. CrewWorker extends Person for human developers in a rig.";
-(resource: $r5, module: $gist_core) isa inModule;
+put (resource: $r5, module: $gist_core) isa inModule;
 
-$r6 isa SchemaResource,
+put $r6 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Aspect",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Aspect",
   has typeLabel "Aspect",
@@ -74,9 +72,9 @@ $r6 isa SchemaResource,
   has prefLabel "Aspect",
   has definition "A measurable characteristic or property. Aspects define what can be measured about something (e.g., length, weight, duration).",
   has scopeNote "Aspects are connected to Magnitudes which hold the actual numeric values. Use hasAspect to connect an entity to its measurable properties.";
-(resource: $r6, module: $gist_core) isa inModule;
+put (resource: $r6, module: $gist_core) isa inModule;
 
-$r7 isa SchemaResource,
+put $r7 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Magnitude",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Magnitude",
   has typeLabel "Magnitude",
@@ -84,9 +82,9 @@ $r7 isa SchemaResource,
   has prefLabel "Magnitude",
   has definition "A numeric value with an associated unit of measure and aspect. Magnitudes represent the actual measured values of properties.",
   has scopeNote "Magnitude connects to Aspect (what is measured), UnitOfMeasure (the unit), and holds numericValue (the number). Use hasMagnitude to attach to entities.";
-(resource: $r7, module: $gist_core) isa inModule;
+put (resource: $r7, module: $gist_core) isa inModule;
 
-$r8 isa SchemaResource,
+put $r8 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Content",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Content",
   has typeLabel "Content",
@@ -94,9 +92,9 @@ $r8 isa SchemaResource,
   has prefLabel "Content",
   has definition "Information or data that can be about something. Content is the base type for all informational entities like text, messages, and addresses.",
   has scopeNote "Use subtypes like Text, Message, Address, or ID for specific content kinds. Content can be expressed in a Language and rendered on a Medium.";
-(resource: $r8, module: $gist_core) isa inModule;
+put (resource: $r8, module: $gist_core) isa inModule;
 
-$r9 isa SchemaResource,
+put $r9 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#GeoLocation",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#GeoLocation",
   has typeLabel "GeoLocation",
@@ -104,9 +102,9 @@ $r9 isa SchemaResource,
   has prefLabel "Geo Location",
   has definition "A place in geographic space. Can be a point (latitude/longitude), region, or volume. Events can occur in GeoLocations.",
   has scopeNote "Use GeoPoint for specific coordinates, GeoRegion for areas. Connect to entities via hasPhysicalLocation or occursIn relations.";
-(resource: $r9, module: $gist_core) isa inModule;
+put (resource: $r9, module: $gist_core) isa inModule;
 
-$r10 isa SchemaResource,
+put $r10 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Collection",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Collection",
   has typeLabel "Collection",
@@ -114,9 +112,9 @@ $r10 isa SchemaResource,
   has prefLabel "Collection",
   has definition "A group of items gathered together. Collections can have members and can be ordered (OrderedCollection) or unordered.",
   has scopeNote "Use isMemberOfCollection to add items. UnitGroup is a Collection of UnitOfMeasure. Network is a Collection of NetworkNodes.";
-(resource: $r10, module: $gist_core) isa inModule;
+put (resource: $r10, module: $gist_core) isa inModule;
 
-$r11 isa SchemaResource,
+put $r11 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Intention",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Intention",
   has typeLabel "Intention",
@@ -124,9 +122,9 @@ $r11 isa SchemaResource,
   has prefLabel "Intention",
   has definition "A purpose or design - something meant to happen or be achieved. Intentions include commitments, specifications, and permissions.",
   has scopeNote "Agreement, Specification, and Commitment extend Intention. Use for contracts, requirements, and planned behaviors.";
-(resource: $r11, module: $gist_core) isa inModule;
+put (resource: $r11, module: $gist_core) isa inModule;
 
-$r12 isa SchemaResource,
+put $r12 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#TemporalRelation",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#TemporalRelation",
   has typeLabel "TemporalRelation",
@@ -134,9 +132,9 @@ $r12 isa SchemaResource,
   has prefLabel "Temporal Relation",
   has definition "A relationship that has temporal extent - it exists during a time interval with start and end times.",
   has scopeNote "StatusPeriod extends TemporalRelation to track bead status over time. Use for any relationship that needs temporal tracking.";
-(resource: $r12, module: $gist_core) isa inModule;
+put (resource: $r12, module: $gist_core) isa inModule;
 
-$r13 isa SchemaResource,
+put $r13 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#isPartOf",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#isPartOf",
   has typeLabel "isPartOf",
@@ -144,9 +142,9 @@ $r13 isa SchemaResource,
   has prefLabel "is Part Of",
   has definition "Expresses that something is a component or constituent of something else. The part-whole relationship is transitive.",
   has scopeNote "Roles: whole (the containing entity), part (the contained entity). Use for hierarchical containment. Bead uses this for parent-child relationships.";
-(resource: $r13, module: $gist_core) isa inModule;
+put (resource: $r13, module: $gist_core) isa inModule;
 
-$r14 isa SchemaResource,
+put $r14 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#isCategorizedBy",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#isCategorizedBy",
   has typeLabel "isCategorizedBy",
@@ -154,9 +152,9 @@ $r14 isa SchemaResource,
   has prefLabel "is Categorized By",
   has definition "Assigns a category to an entity for classification purposes. Multiple categories can be assigned to the same entity.",
   has scopeNote "Roles: categorized (the entity being classified), category (the Category being assigned). Use for type/status/priority assignment.";
-(resource: $r14, module: $gist_core) isa inModule;
+put (resource: $r14, module: $gist_core) isa inModule;
 
-$r15 isa SchemaResource,
+put $r15 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#precedes",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#precedes",
   has typeLabel "precedes",
@@ -164,9 +162,9 @@ $r15 isa SchemaResource,
   has prefLabel "precedes",
   has definition "Expresses temporal or logical ordering where one thing comes before another. The precedes relationship is transitive.",
   has scopeNote "Roles: predecessor (comes before), successor (comes after). Bead uses this for blocking dependencies.";
-(resource: $r15, module: $gist_core) isa inModule;
+put (resource: $r15, module: $gist_core) isa inModule;
 
-$r16 isa SchemaResource,
+put $r16 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#refersTo",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#refersTo",
   has typeLabel "refersTo",
@@ -174,9 +172,9 @@ $r16 isa SchemaResource,
   has prefLabel "refers To",
   has definition "Indicates that something references or points to something else without implying containment or ordering.",
   has scopeNote "Roles: referrer (the thing doing the referencing), referent (the thing being referenced). Use for cross-references and links.";
-(resource: $r16, module: $gist_core) isa inModule;
+put (resource: $r16, module: $gist_core) isa inModule;
 
-$r17 isa SchemaResource,
+put $r17 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#hasParticipant",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#hasParticipant",
   has typeLabel "hasParticipant",
@@ -184,9 +182,9 @@ $r17 isa SchemaResource,
   has prefLabel "has Participant",
   has definition "Associates an event with an entity that participates in it. Participants can be people, organizations, or other entities.",
   has scopeNote "Roles: participatedEvent (the Event), participant (the participating entity). Use for attendees, actors, stakeholders.";
-(resource: $r17, module: $gist_core) isa inModule;
+put (resource: $r17, module: $gist_core) isa inModule;
 
-$r18 isa SchemaResource,
+put $r18 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#occursIn",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#occursIn",
   has typeLabel "occursIn",
@@ -194,9 +192,9 @@ $r18 isa SchemaResource,
   has prefLabel "occurs In",
   has definition "Associates an event with the location where it takes place.",
   has scopeNote "Roles: occurringEvent (the Event), eventLocation (the GeoLocation). Use to place events geographically.";
-(resource: $r18, module: $gist_core) isa inModule;
+put (resource: $r18, module: $gist_core) isa inModule;
 
-$r19 isa SchemaResource,
+put $r19 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#hasGoal",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#hasGoal",
   has typeLabel "hasGoal",
@@ -204,9 +202,9 @@ $r19 isa SchemaResource,
   has prefLabel "has Goal",
   has definition "Associates a task with its intended outcome or objective.",
   has scopeNote "Roles: goalTask (the Task), goal (the intended outcome). Task extends Event and plays the goalTask role.";
-(resource: $r19, module: $gist_core) isa inModule;
+put (resource: $r19, module: $gist_core) isa inModule;
 
-$r20 isa SchemaResource,
+put $r20 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#ScheduledEvent",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#ScheduledEvent",
   has typeLabel "ScheduledEvent",
@@ -214,9 +212,9 @@ $r20 isa SchemaResource,
   has prefLabel "Scheduled Event",
   has definition "An event that is planned to occur at a specific time. Has both planned and actual timing attributes.",
   has scopeNote "Use for meetings, deadlines, milestones. Compare planned vs actual times to track schedule adherence.";
-(resource: $r20, module: $gist_core) isa inModule;
+put (resource: $r20, module: $gist_core) isa inModule;
 
-$r21 isa SchemaResource,
+put $r21 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Transaction",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Transaction",
   has typeLabel "Transaction",
@@ -224,9 +222,9 @@ $r21 isa SchemaResource,
   has prefLabel "Transaction",
   has definition "An event involving transfer or exchange - of goods, services, money, or information between parties.",
   has scopeNote "Use for purchases, payments, data transfers. Connect parties via hasGiver/hasRecipient relations.";
-(resource: $r21, module: $gist_core) isa inModule;
+put (resource: $r21, module: $gist_core) isa inModule;
 
-$r22 isa SchemaResource,
+put $r22 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Project",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Project",
   has typeLabel "Project",
@@ -234,9 +232,9 @@ $r22 isa SchemaResource,
   has prefLabel "Project",
   has definition "A planned endeavor with defined scope, typically temporary, undertaken to create a unique product, service, or result.",
   has scopeNote "Project extends Event. Use for large initiatives that contain multiple tasks or beads.";
-(resource: $r22, module: $gist_core) isa inModule;
+put (resource: $r22, module: $gist_core) isa inModule;
 
-$r23 isa SchemaResource,
+put $r23 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Text",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Text",
   has typeLabel "Text",
@@ -244,9 +242,9 @@ $r23 isa SchemaResource,
   has prefLabel "Text",
   has definition "Content consisting of written characters. Stores the actual text in containedText attribute.",
   has scopeNote "Text extends ContentExpression. Use for descriptions, comments, documentation. Can be expressed in a Language.";
-(resource: $r23, module: $gist_core) isa inModule;
+put (resource: $r23, module: $gist_core) isa inModule;
 
-$r24 isa SchemaResource,
+put $r24 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#ID",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#ID",
   has typeLabel "ID",
@@ -254,9 +252,9 @@ $r24 isa SchemaResource,
   has prefLabel "ID",
   has definition "A unique identifier that distinguishes one entity from another. Stores the identifier value in uniqueText.",
   has scopeNote "ID extends Content. Use isIdentifiedBy relation to attach IDs to entities. IDs can be allocated by IntellectualProperty.";
-(resource: $r24, module: $gist_core) isa inModule;
+put (resource: $r24, module: $gist_core) isa inModule;
 
-$r25 isa SchemaResource,
+put $r25 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#Address",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#Address",
   has typeLabel "Address",
@@ -264,9 +262,9 @@ $r25 isa SchemaResource,
   has prefLabel "Address",
   has definition "A locator that can be used to find or contact something. Can be physical (street address) or electronic (email, URL).",
   has scopeNote "Use hasAddress relation to attach. PhysicalAddress and ElectronicAddress are subtypes for specific address kinds.";
-(resource: $r25, module: $gist_core) isa inModule;
+put (resource: $r25, module: $gist_core) isa inModule;
 
-$r26 isa SchemaResource,
+put $r26 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#GovernmentOrganization",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#GovernmentOrganization",
   has typeLabel "GovernmentOrganization",
@@ -274,9 +272,9 @@ $r26 isa SchemaResource,
   has prefLabel "Government Organization",
   has definition "An organization that exercises governmental authority - making and enforcing laws, providing public services.",
   has scopeNote "CountryGovernment and SubCountryGovernment are subtypes. Use isUnderJurisdictionOf to show governance relationships.";
-(resource: $r26, module: $gist_core) isa inModule;
+put (resource: $r26, module: $gist_core) isa inModule;
 
-$r27 isa SchemaResource,
+put $r27 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#UnitOfMeasure",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#UnitOfMeasure",
   has typeLabel "UnitOfMeasure",
@@ -284,9 +282,9 @@ $r27 isa SchemaResource,
   has prefLabel "Unit Of Measure",
   has definition "A standard quantity used as a basis for measurement. Has a symbol and conversion factors to relate to other units.",
   has scopeNote "Connect to Magnitude via hasUnitOfMeasure. Units belong to UnitGroups (e.g., length units, time units).";
-(resource: $r27, module: $gist_core) isa inModule;
+put (resource: $r27, module: $gist_core) isa inModule;
 
-$r28 isa SchemaResource,
+put $r28 isa SchemaResource,
   has docKey "https://w3id.org/semanticarts/ontology/gistCore#UnitGroup",
   has iri "https://w3id.org/semanticarts/ontology/gistCore#UnitGroup",
   has typeLabel "UnitGroup",
@@ -294,4 +292,4 @@ $r28 isa SchemaResource,
   has prefLabel "Unit Group",
   has definition "A collection of related units of measure that measure the same kind of thing (e.g., length: meters, feet, inches).",
   has scopeNote "UnitGroup extends Collection. Connect Aspects to UnitGroups via hasUnitGroup to define what units can measure them.";
-(resource: $r28, module: $gist_core) isa inModule;
+put (resource: $r28, module: $gist_core) isa inModule;
