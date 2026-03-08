@@ -6,7 +6,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistCore.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v1.0.0.translation-manifest.json
+# manifest: manifests/gist-v1.0.1.translation-manifest.json
 # generator: bootstrap-manifest/0.2.0
 
 define
