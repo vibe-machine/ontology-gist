@@ -182,11 +182,14 @@ function pathExistsInHead(repoRoot, relativePath) {
 }
 
 function stripToKeyword(text, keyword) {
-  const index = text.indexOf(`${keyword}\n`);
-  if (index === -1) {
-    throw new Error(`could not find ${keyword} block`);
+  const keywords = Array.isArray(keyword) ? keyword : [keyword];
+  for (const kw of keywords) {
+    // Match keyword followed by newline (standalone) or space (inline, e.g. "put $var")
+    const pattern = new RegExp(`^${kw}(?=\\n| )`, "m");
+    const match = pattern.exec(text);
+    if (match) return text.slice(match.index);
   }
-  return text.slice(index);
+  throw new Error(`could not find ${keywords.join(" or ")} block`);
 }
 
 function renderSchemaDocs(meta, docEntries) {
@@ -487,7 +490,7 @@ async function bootstrap(repoRoot) {
   const provenanceSchemaText = `${renderHeader(headerMeta)}${provenanceSchemaBody}\n`;
   const schemaDocsText = hasLegacyTypedoc
     ? renderSchemaDocs(headerMeta, extractTypeDocEntries(await readWorkingTreeOrHead(repoRoot, legacyTypedoc)))
-    : `${renderHeader(headerMeta)}${stripToKeyword(await readWorkingTreeOrHead(repoRoot, docsPath), "insert")}`;
+    : `${renderHeader(headerMeta)}${stripToKeyword(await readWorkingTreeOrHead(repoRoot, docsPath), ["put", "insert"])}`;
   const manifestSchemaText = jsonText(MANIFEST_SCHEMA);
   const docsReadmeText = renderDocsReadme({
     packageName: packageJson.name,
