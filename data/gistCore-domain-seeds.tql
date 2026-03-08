@@ -7,105 +7,107 @@
 # - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v1.0.1.translation-manifest.json
+# manifest: manifests/gist-v1.0.2.translation-manifest.json
 # generator: gist-structural-emitter/0.5.0
 
-put $i1 isa Aspect,
+insert
+
+$i1 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude",
   has name "altitude",
   has description "The aspect altitude.";
 
-put $i2 isa Aspect,
+$i2 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_area",
   has name "area",
   has description "The aspect area.";
 
-put $i3 isa Aspect,
+$i3 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_duration",
   has name "duration",
   has description "The aspect duration.";
 
-put $i4 isa Aspect,
+$i4 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance",
   has name "balance",
   has description "The aspect financial balance.";
 
-put $i5 isa Aspect,
+$i5 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_mass",
   has name "mass",
   has description "The aspect mass.";
 
-put $i6 isa Aspect,
+$i6 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_monetary_value",
   has name "monetary value",
   has description "The aspect monetary value.";
 
-put $i7 isa Aspect,
+$i7 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability",
   has name "probability",
   has description "The aspect probability.";
 
-put $i8 isa Aspect,
+$i8 isa Aspect,
   has sourceIRI "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume",
   has name "volume",
   has description "The aspect volume.";
 
-put $i9 isa MediaType,
+$i9 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/json",
   has name "JSON",
   has uniqueText "application/json";
 
-put $i10 isa MediaType,
+$i10 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/ld+json",
   has name "JSON-LD",
   has uniqueText "application/ld+json";
 
-put $i11 isa MediaType,
+$i11 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/n-quads",
   has name "N-Quads",
   has uniqueText "application/n-quads";
 
-put $i12 isa MediaType,
+$i12 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/n-triples",
   has name "N-Triples",
   has uniqueText "application/n-triples";
 
-put $i13 isa MediaType,
+$i13 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/rdf+xml",
   has name "RDF/XML",
   has uniqueText "application/rdf+xml";
 
-put $i14 isa MediaType,
+$i14 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/sparql-results+json",
   has name "SPARQL 1.1 Query Results JSON",
   has uniqueText "application/sparql-results+json";
 
-put $i15 isa MediaType,
+$i15 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/sparql-results+xml",
   has name "SPARQL 1.1 Query Results XML",
   has uniqueText "application/sparql-results+xml";
 
-put $i16 isa MediaType,
+$i16 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/application/trig",
   has name "TriG",
   has uniqueText "application/trig";
 
-put $i17 isa MediaType,
+$i17 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/text/csv",
   has name "CSV",
   has uniqueText "text/csv";
 
-put $i18 isa MediaType,
+$i18 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/text/html",
   has name "HTML",
   has uniqueText "text/html";
 
-put $i19 isa MediaType,
+$i19 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/text/plain",
   has name "Plain Text",
   has uniqueText "text/plain";
 
-put $i20 isa MediaType,
+$i20 isa MediaType,
   has sourceIRI "https://www.iana.org/assignments/media-types/text/turtle",
   has name "Turtle",
   has uniqueText "text/turtle";
