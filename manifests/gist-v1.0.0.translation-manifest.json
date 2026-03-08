@@ -32,57 +32,57 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-03-08T15:45:55Z"
+    "generatedAt": "2026-03-08T22:13:50Z"
   },
   "artifacts": [
     {
       "kind": "meta-schema",
       "path": "schema/self-describing-schema.tql",
-      "sha256": "578d470f5f3ea865a40b34db719d82ae36e27aa5e22d2b69b3df0d56ddbdb36a"
+      "sha256": "ba66151c4aaa7f5eae00381a59bc9acd8f54444c5d726937ec1bdd3021c6a5e6"
     },
     {
       "kind": "provenance-schema",
       "path": "schema/package-provenance.tql",
-      "sha256": "75b46ee26cf30af89a62fb9628acf7585f7ccb5b343f1c40c506a5ec91a6eae3"
+      "sha256": "d8bfd0ceb3bb7a70c8394440f34b2732094bc0277e2a1b589d65e4fa2ed1b654"
     },
     {
       "kind": "schema",
       "path": "schema/gistCore.tql",
-      "sha256": "69982dd4d98dfea278b7d535ea7433b43e4943b6782398ac69e828ce0a359566"
+      "sha256": "e289cc65763603817febcc960676eff4a288de6984ad986d0496222c718f32f3"
     },
     {
       "kind": "domain-seeds",
       "path": "data/gistCore-domain-seeds.tql",
-      "sha256": "b248679929433502f9616929bc345664d248897737bd85af0d21d9c1580dfddc"
+      "sha256": "580ebbd808ee422901558e3d65992425ce8b2cf5e3d7de576db8f9782127a2bc"
     },
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "b9bb69fdf62c0cb95b77d7d2a1e179f714ad4d468eb2a9328df6b7dd82807c65"
+      "sha256": "2b740fdf64a2798d7e6b17e3151a51307935af454d9afc1d0e05583d5dfea279"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "25cd9450512c12bc24e273852804130014045f386ad01b6182d93aaad6f102db"
+      "sha256": "3fc1e4c28c49e7f9580fb799bb06c64b52ad80d5c70096f5b50bf766c0999f3c"
     },
     {
       "kind": "axiom-query-library",
       "path": "queries/gistCore-axioms.tql",
-      "sha256": "e4afe579ea57caf8665a9dce7c99f7d0870b33a5fa46d46a9d279cfef424d0a1"
+      "sha256": "5333ecbb935e525778448340d34219e8b5297b51608fdf39cdf741ab3035f695"
     },
     {
       "kind": "axiom-query-index",
-      "path": "manifests/gist-v14.0.0.axiom-queries.json",
+      "path": "manifests/gist-v1.0.0.axiom-queries.json",
       "sha256": "8e339edfef6f4ca9e6cb103e79e0d455f97d9cc1a26f44a5e4172b6e5a3378d3"
     },
     {
       "kind": "ir-summary",
-      "path": "manifests/gist-v14.0.0.ir-summary.json",
+      "path": "manifests/gist-v1.0.0.ir-summary.json",
       "sha256": "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b"
     },
     {
       "kind": "translation-report",
-      "path": "manifests/gist-v14.0.0.translation-report.json",
+      "path": "manifests/gist-v1.0.0.translation-report.json",
       "sha256": "de396dd42e32a8c9e5cff94554fe12ac2521c867f6579178ce685594d53e6fce"
     }
   ]

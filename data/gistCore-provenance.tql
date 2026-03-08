@@ -7,7 +7,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v14.0.0.translation-manifest.json
+# manifest: manifests/gist-v1.0.0.translation-manifest.json
 # generator: gist-structural-emitter/0.5.0
 
 insert
@@ -19,10 +19,10 @@ $build isa OntologyPackageBuild,
   has upstreamRepoUrl "https://github.com/semanticarts/gist",
   has upstreamTag "v14.0.0",
   has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
-  has manifestPath "manifests/gist-v14.0.0.translation-manifest.json",
+  has manifestPath "manifests/gist-v1.0.0.translation-manifest.json",
   has generatorName "gist-structural-emitter",
   has generatorVersion "0.5.0",
-  has generatedAt "2026-03-08T15:45:55Z";
+  has generatedAt "2026-03-08T22:13:50Z";
 
 $s1 isa SourceArtifactRecord,
   has sourcePath "upstream/gist/v14.0.0/ontologies/gistCore.ttl",
@@ -47,53 +47,53 @@ $s4 isa SourceArtifactRecord,
 $g1 isa GeneratedArtifactRecord,
   has artifactPath "schema/self-describing-schema.tql",
   has artifactKind "meta-schema",
-  has artifactSha256 "578d470f5f3ea865a40b34db719d82ae36e27aa5e22d2b69b3df0d56ddbdb36a";
+  has artifactSha256 "ba66151c4aaa7f5eae00381a59bc9acd8f54444c5d726937ec1bdd3021c6a5e6";
 (build: $build, generatedArtifact: $g1) isa buildHasGeneratedArtifact;
 
 $g2 isa GeneratedArtifactRecord,
   has artifactPath "schema/package-provenance.tql",
   has artifactKind "provenance-schema",
-  has artifactSha256 "75b46ee26cf30af89a62fb9628acf7585f7ccb5b343f1c40c506a5ec91a6eae3";
+  has artifactSha256 "d8bfd0ceb3bb7a70c8394440f34b2732094bc0277e2a1b589d65e4fa2ed1b654";
 (build: $build, generatedArtifact: $g2) isa buildHasGeneratedArtifact;
 
 $g3 isa GeneratedArtifactRecord,
   has artifactPath "schema/gistCore.tql",
   has artifactKind "schema",
-  has artifactSha256 "69982dd4d98dfea278b7d535ea7433b43e4943b6782398ac69e828ce0a359566";
+  has artifactSha256 "e289cc65763603817febcc960676eff4a288de6984ad986d0496222c718f32f3";
 (build: $build, generatedArtifact: $g3) isa buildHasGeneratedArtifact;
 
 $g4 isa GeneratedArtifactRecord,
   has artifactPath "data/gistCore-domain-seeds.tql",
   has artifactKind "domain-seeds",
-  has artifactSha256 "b248679929433502f9616929bc345664d248897737bd85af0d21d9c1580dfddc";
+  has artifactSha256 "580ebbd808ee422901558e3d65992425ce8b2cf5e3d7de576db8f9782127a2bc";
 (build: $build, generatedArtifact: $g4) isa buildHasGeneratedArtifact;
 
 $g5 isa GeneratedArtifactRecord,
   has artifactPath "data/gistCore-schema-docs.tql",
   has artifactKind "documentation",
-  has artifactSha256 "25cd9450512c12bc24e273852804130014045f386ad01b6182d93aaad6f102db";
+  has artifactSha256 "3fc1e4c28c49e7f9580fb799bb06c64b52ad80d5c70096f5b50bf766c0999f3c";
 (build: $build, generatedArtifact: $g5) isa buildHasGeneratedArtifact;
 
 $g6 isa GeneratedArtifactRecord,
   has artifactPath "queries/gistCore-axioms.tql",
   has artifactKind "axiom-query-library",
-  has artifactSha256 "e4afe579ea57caf8665a9dce7c99f7d0870b33a5fa46d46a9d279cfef424d0a1";
+  has artifactSha256 "5333ecbb935e525778448340d34219e8b5297b51608fdf39cdf741ab3035f695";
 (build: $build, generatedArtifact: $g6) isa buildHasGeneratedArtifact;
 
 $g7 isa GeneratedArtifactRecord,
-  has artifactPath "manifests/gist-v14.0.0.axiom-queries.json",
+  has artifactPath "manifests/gist-v1.0.0.axiom-queries.json",
   has artifactKind "axiom-query-index",
   has artifactSha256 "8e339edfef6f4ca9e6cb103e79e0d455f97d9cc1a26f44a5e4172b6e5a3378d3";
 (build: $build, generatedArtifact: $g7) isa buildHasGeneratedArtifact;
 
 $g8 isa GeneratedArtifactRecord,
-  has artifactPath "manifests/gist-v14.0.0.ir-summary.json",
+  has artifactPath "manifests/gist-v1.0.0.ir-summary.json",
   has artifactKind "ir-summary",
   has artifactSha256 "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b";
 (build: $build, generatedArtifact: $g8) isa buildHasGeneratedArtifact;
 
 $g9 isa GeneratedArtifactRecord,
-  has artifactPath "manifests/gist-v14.0.0.translation-report.json",
+  has artifactPath "manifests/gist-v1.0.0.translation-report.json",
   has artifactKind "translation-report",
   has artifactSha256 "de396dd42e32a8c9e5cff94554fe12ac2521c867f6579178ce685594d53e6fce";
 (build: $build, generatedArtifact: $g9) isa buildHasGeneratedArtifact;
