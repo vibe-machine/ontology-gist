@@ -193,13 +193,13 @@ function stripToKeyword(text, keyword) {
 }
 
 function renderSchemaDocs(meta, docEntries) {
-  const lines = [renderHeader(meta), "insert", "", `$module isa SchemaModule,`, `  has moduleKey "${escapeTypeQL(meta.packageName)}",`, `  has moduleName "${escapeTypeQL(meta.moduleName)}",`, `  has moduleKind "${escapeTypeQL(meta.moduleKind)}";`, ""];
+  const lines = [renderHeader(meta), "", `put $module isa SchemaModule,`, `  has moduleKey "${escapeTypeQL(meta.packageName)}",`, `  has moduleName "${escapeTypeQL(meta.moduleName)}",`, `  has moduleKind "${escapeTypeQL(meta.moduleKind)}";`, ""];
 
   docEntries.forEach((entry, index) => {
     const resourceVar = `$r${index + 1}`;
     const docKey = `${meta.repoUrl}#${entry.typeLabel}`;
     const kind = entry.typeKind || "resource";
-    lines.push(`${resourceVar} isa SchemaResource,`);
+    lines.push(`put ${resourceVar} isa SchemaResource,`);
     lines.push(`  has docKey "${escapeTypeQL(docKey)}",`);
     lines.push(`  has iri "${escapeTypeQL(docKey)}",`);
     lines.push(`  has typeLabel "${escapeTypeQL(entry.typeLabel)}",`);
@@ -209,7 +209,7 @@ function renderSchemaDocs(meta, docEntries) {
     if (entry.usageNote) {
       lines.push(`  has scopeNote "${escapeTypeQL(entry.usageNote)}";`);
     }
-    lines.push(`(resource: ${resourceVar}, module: $module) isa inModule;`);
+    lines.push(`put (resource: ${resourceVar}, module: $module) isa inModule;`);
     lines.push("");
   });
 
@@ -227,9 +227,8 @@ function renderProvenanceData(manifest, manifestPath, provenancePath) {
       manifestPath,
       generator: manifest.generator,
     }),
-    "insert",
     "",
-    "$build isa OntologyPackageBuild,",
+    "put $build isa OntologyPackageBuild,",
     `  has buildKey "${escapeTypeQL(buildKey)}",`,
     `  has packageName "${escapeTypeQL(manifest.package.name)}",`,
     `  has packageVersion "${escapeTypeQL(manifest.package.version)}",`,
@@ -245,21 +244,21 @@ function renderProvenanceData(manifest, manifestPath, provenancePath) {
 
   manifest.upstream.sourceArtifacts.forEach((artifact, index) => {
     const variable = `$s${index + 1}`;
-    lines.push(`${variable} isa SourceArtifactRecord,`);
+    lines.push(`put ${variable} isa SourceArtifactRecord,`);
     lines.push(`  has sourcePath "${escapeTypeQL(artifact.path)}",`);
     lines.push(`  has sourceSha256 "${escapeTypeQL(artifact.sha256)}";`);
-    lines.push(`(build: $build, sourceArtifact: ${variable}) isa buildHasSourceArtifact;`);
+    lines.push(`put (build: $build, sourceArtifact: ${variable}) isa buildHasSourceArtifact;`);
     lines.push("");
   });
 
   const generatedArtifacts = manifest.artifacts.filter((artifact) => artifact.path !== provenancePath);
   generatedArtifacts.forEach((artifact, index) => {
     const variable = `$g${index + 1}`;
-    lines.push(`${variable} isa GeneratedArtifactRecord,`);
+    lines.push(`put ${variable} isa GeneratedArtifactRecord,`);
     lines.push(`  has artifactPath "${escapeTypeQL(artifact.path)}",`);
     lines.push(`  has artifactKind "${escapeTypeQL(artifact.kind)}",`);
     lines.push(`  has artifactSha256 "${escapeTypeQL(artifact.sha256)}";`);
-    lines.push(`(build: $build, generatedArtifact: ${variable}) isa buildHasGeneratedArtifact;`);
+    lines.push(`put (build: $build, generatedArtifact: ${variable}) isa buildHasGeneratedArtifact;`);
     lines.push("");
   });
 

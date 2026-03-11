@@ -45,12 +45,18 @@ async function writeMergedQueryFile(keyword, relPaths, outPath) {
   for (const relPath of relPaths) {
     let text = await fs.readFile(path.join(root, relPath), "utf8");
     text = text.replace(/^#.*\n/gm, "");
+    // Strip standalone keyword lines (insert or define)
     text = text.replace(new RegExp(`^\\s*${keyword}\\s*\\n`, "i"), "");
     text = text.trim();
     if (text) chunks.push(text);
   }
 
-  const merged = `${keyword}\n\n${chunks.join("\n\n")}\n`;
+  // If chunks contain put-prefixed statements, emit them directly
+  // (each put is a self-contained write statement, no insert wrapper needed)
+  const hasPut = chunks.some((chunk) => /^put /m.test(chunk));
+  const merged = hasPut
+    ? `${chunks.join("\n\n")}\n`
+    : `${keyword}\n\n${chunks.join("\n\n")}\n`;
   await fs.writeFile(outPath, merged, "utf8");
 }
 

@@ -620,8 +620,6 @@ function renderSeedData(model, identifiers) {
     "# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl",
     `# manifest: ${MANIFEST_PATH}`,
     `# generator: ${GENERATOR}`,
-    "",
-    "insert",
     ""
   ];
 
@@ -653,7 +651,7 @@ function renderSeedData(model, identifiers) {
       attrs.push(`has ${identifiers.attribute(prop.predicate)} ${tqlString(first.value)}`);
     }
 
-    lines.push(`${variable} isa ${typeName},`);
+    lines.push(`put ${variable} isa ${typeName},`);
     const formattedAttrs = lineList(attrs.map((item) => `${item},`), "  ");
     formattedAttrs[formattedAttrs.length - 1] = formattedAttrs[formattedAttrs.length - 1].replace(/,$/, ";");
     lines.push(...formattedAttrs);
@@ -676,12 +674,10 @@ function renderProvenanceData(manifest) {
     "# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl",
     `# manifest: ${MANIFEST_PATH}`,
     `# generator: ${GENERATOR}`,
-    "",
-    "insert",
     ""
   ];
 
-  lines.push(`$build isa OntologyPackageBuild,`);
+  lines.push(`put $build isa OntologyPackageBuild,`);
   lines.push(`  has buildKey ${tqlString(`${manifest.package.name}@${manifest.package.version}:${manifest.upstream.commit}`)},`);
   lines.push(`  has packageName ${tqlString(manifest.package.name)},`);
   lines.push(`  has packageVersion ${tqlString(manifest.package.version)},`);
@@ -696,21 +692,21 @@ function renderProvenanceData(manifest) {
 
   manifest.upstream.sourceArtifacts.forEach((artifact, index) => {
     const variable = `$s${index + 1}`;
-    lines.push(`${variable} isa SourceArtifactRecord,`);
+    lines.push(`put ${variable} isa SourceArtifactRecord,`);
     lines.push(`  has sourcePath ${tqlString(artifact.path)},`);
     lines.push(`  has sourceSha256 ${tqlString(artifact.sha256)};`);
-    lines.push(`(build: $build, sourceArtifact: ${variable}) isa buildHasSourceArtifact;`);
+    lines.push(`put (build: $build, sourceArtifact: ${variable}) isa buildHasSourceArtifact;`);
     lines.push("");
   });
 
   const generatedArtifacts = manifest.artifacts.filter((artifact) => artifact.path !== "data/gistCore-provenance.tql");
   generatedArtifacts.forEach((artifact, index) => {
     const variable = `$g${index + 1}`;
-    lines.push(`${variable} isa GeneratedArtifactRecord,`);
+    lines.push(`put ${variable} isa GeneratedArtifactRecord,`);
     lines.push(`  has artifactPath ${tqlString(artifact.path)},`);
     lines.push(`  has artifactKind ${tqlString(artifact.kind)},`);
     lines.push(`  has artifactSha256 ${tqlString(artifact.sha256)};`);
-    lines.push(`(build: $build, generatedArtifact: ${variable}) isa buildHasGeneratedArtifact;`);
+    lines.push(`put (build: $build, generatedArtifact: ${variable}) isa buildHasGeneratedArtifact;`);
     lines.push("");
   });
 

@@ -73,7 +73,13 @@ async function writeMergedQueryFile(keyword, assets, outPath) {
     if (text) chunks.push(text);
   }
 
-  await fs.writeFile(outPath, `${keyword}\n\n${chunks.join("\n\n")}\n`, "utf8");
+  // If chunks contain put-prefixed statements, emit them directly
+  // (each put is a self-contained write statement, no insert wrapper needed)
+  const hasPut = chunks.some((chunk) => /^put /m.test(chunk));
+  const merged = hasPut
+    ? `${chunks.join("\n\n")}\n`
+    : `${keyword}\n\n${chunks.join("\n\n")}\n`;
+  await fs.writeFile(outPath, merged, "utf8");
 }
 
 async function getFreePort() {
