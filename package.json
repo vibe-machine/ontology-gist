@@ -6,8 +6,9 @@
   "scripts": {
     "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v1.0.3.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
+    "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
-    "refresh:package-contract": "npm run update:headers && npm run parse:ir && npm run emit:structural",
+    "refresh:package-contract": "npm run update:headers && npm run parse:ir && npm run emit:structural && npm run emit:schema-docs",
     "validate:bootstrap": "node tools/gist_to_typeql/validate_bootstrap.mjs",
     "test:typedb-bootstrap": "node tools/package_contract/validate_typedb_bootstrap.mjs",
     "test": "npm run validate:bootstrap && npm run test:typedb-bootstrap",
