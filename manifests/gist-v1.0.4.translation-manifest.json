@@ -3,7 +3,7 @@
   "manifestVersion": "1.0.0",
   "package": {
     "name": "gist",
-    "version": "1.0.3"
+    "version": "1.0.4"
   },
   "upstream": {
     "repoUrl": "https://github.com/semanticarts/gist",
@@ -32,58 +32,58 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-03-23T02:50:11Z"
+    "generatedAt": "2026-03-24T16:28:35Z"
   },
   "artifacts": [
     {
       "kind": "meta-schema",
       "path": "schema/self-describing-schema.tql",
-      "sha256": "5f0890055a7dd74a1006c5cdbf319837bc68ea40f2027ae933733f49f548ffe4"
+      "sha256": "c127a28370354ae586befc5d75c087aa7f20e62f82cbfeabc8b60b7b0b21365d"
     },
     {
       "kind": "provenance-schema",
       "path": "schema/package-provenance.tql",
-      "sha256": "cf9ce741acb005b5937ad32b8e9322694b801af8778cdbd629c7b2710d976da6"
+      "sha256": "9372514a97e556069f4f409a68e4a57329635bc721c41dc17bcb4ee26b9ea7e3"
     },
     {
       "kind": "schema",
       "path": "schema/gistCore.tql",
-      "sha256": "4a18686adf6d767a8528c76eebb421734750c0d88ba53f39d187747ce1ff4c42"
+      "sha256": "89673861784117d22b0bda00e4afd2798dbce1be5a3e798d5b2d90df6774a80d"
     },
     {
       "kind": "domain-seeds",
       "path": "data/gistCore-domain-seeds.tql",
-      "sha256": "068b3952b3a334895eda86ffefc32305ad189f13a118333d215b6289eeec73e5"
+      "sha256": "a4971f46f7b11efc5b7befe2e3656aad021f98487aef3c6a98333edd60588d9e"
     },
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "630420e5bc8c976ca4f3b676b8181dac6a0788ea371d40ad0472c59782d39886"
+      "sha256": "a3a0abb26fc38dca8fba18e391a7666abd1e6b36077ea0dd9a69e8e06c0a2d2c"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "29c41da67cb86cefe29a1adac52b62905943f221540f16177d74a7ce6e9d5a68"
+      "sha256": "23565b723fdb3dbc39139d71a55067b1c6c945bea4ed4cc0f4378113c77e0463"
     },
     {
       "kind": "axiom-query-library",
       "path": "queries/gistCore-axioms.tql",
-      "sha256": "da79b5388fee54d6b3f9a932fd2f34ce45f0772882bb17d4eba4e9e464969f89"
+      "sha256": "1205a4133f071da6d26555621146b3b72603c18f81351e9e89fa27c7c54dcc2b"
     },
     {
       "kind": "axiom-query-index",
-      "path": "manifests/gist-v1.0.3.axiom-queries.json",
-      "sha256": "e6561dc4448b14fcedf69d01106d3cd5d3ef40abc9dc21064e41a30673391162"
+      "path": "manifests/gist-v1.0.4.axiom-queries.json",
+      "sha256": "29552199ad5017d1f03cff45f2195f41002fc42b767617f16c94d3c06f9ef444"
     },
     {
       "kind": "ir-summary",
-      "path": "manifests/gist-v1.0.3.ir-summary.json",
+      "path": "manifests/gist-v1.0.4.ir-summary.json",
       "sha256": "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b"
     },
     {
       "kind": "translation-report",
-      "path": "manifests/gist-v1.0.3.translation-report.json",
-      "sha256": "5e1bdee1837f5f69d11d3df0c97934b20dea710adf35b2a69743ac70d3daca02"
+      "path": "manifests/gist-v1.0.4.translation-report.json",
+      "sha256": "0907467528938cc7d1820bfc24e852716b98264ca7765ca06020a178ce0c7096"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "name": "gist",
   "displayName": "gist Upper Ontology",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
   "scripts": {
-    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v1.0.3.ir-summary.json",
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v1.0.4.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
     "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
@@ -42,8 +42,8 @@
     "queries/gistCore-axioms.tql"
   ],
   "manifests": [
-    "manifests/gist-v1.0.3.translation-manifest.json",
-    "manifests/gist-v1.0.3.axiom-queries.json"
+    "manifests/gist-v1.0.4.translation-manifest.json",
+    "manifests/gist-v1.0.4.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
@@ -62,10 +62,10 @@
       "data/gistCore-provenance.tql",
       "data/gistCore-schema-docs.tql",
       "queries/gistCore-axioms.tql",
-      "manifests/gist-v1.0.3.axiom-queries.json",
-      "manifests/gist-v1.0.3.translation-manifest.json",
-      "manifests/gist-v1.0.3.translation-report.json",
-      "manifests/gist-v1.0.3.ir-summary.json"
+      "manifests/gist-v1.0.4.axiom-queries.json",
+      "manifests/gist-v1.0.4.translation-manifest.json",
+      "manifests/gist-v1.0.4.translation-report.json",
+      "manifests/gist-v1.0.4.ir-summary.json"
     ]
   },
   "upstream": {
@@ -80,7 +80,7 @@
     ]
   },
   "provenance": {
-    "manifest": "manifests/gist-v1.0.3.translation-manifest.json",
+    "manifest": "manifests/gist-v1.0.4.translation-manifest.json",
     "status": "bootstrap"
   },
   "devDependencies": {
