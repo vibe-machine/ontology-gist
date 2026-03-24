@@ -179,6 +179,76 @@ function runTypedbScript(typedb, grpcPort, scriptPath, cwd) {
   );
 }
 
+// ── Put-statement batching ─────────────────────────────────────────
+
+const BATCH_SIZE = 50;
+
+function splitPutStatements(text) {
+  const stmts = [];
+  let cur = "";
+  for (const line of text.split("\n")) {
+    const t = line.trim();
+    if (t.startsWith("#") || t === "") continue;
+    if (t.startsWith("put ") && cur) { stmts.push(cur.trim()); cur = line; }
+    else { cur += (cur ? "\n" : "") + line; }
+  }
+  if (cur.trim()) stmts.push(cur.trim());
+  return stmts;
+}
+
+function groupPutStatements(stmts) {
+  const groups = [];
+  let g = null;
+  for (const s of stmts) {
+    const m = s.match(/^put\s+\$(\w+)\s+isa\s+(\w+)/);
+    if (m) { if (g) groups.push(g); g = { variable: m[1], statements: [s] }; }
+    else if (g && s.includes(`$${g.variable}`)) { g.statements.push(s); }
+    else { if (g) groups.push(g); g = { variable: null, statements: [s] }; }
+  }
+  if (g) groups.push(g);
+  return groups;
+}
+
+function findPreambles(allGroups) {
+  const defs = new Map();
+  for (const g of allGroups) if (g.variable) defs.set(g.variable, g);
+  const needed = new Set();
+  for (const g of allGroups) {
+    for (const m of g.statements.join("\n").matchAll(/\$(\w+)/g)) {
+      if (m[1] !== g.variable && defs.has(m[1])) needed.add(m[1]);
+    }
+  }
+  return allGroups.filter((g) => g.variable && needed.has(g.variable));
+}
+
+async function writeDataBatchFiles(writeAssets, tempDir) {
+  let allText = "";
+  for (const [index, asset] of writeAssets.entries()) {
+    const text = await fs.readFile(path.join(asset.packageRoot, asset.relativePath), "utf8");
+    const chunk = rewriteChunk(text, "insert", `write${index + 1}`);
+    if (chunk) allText += chunk + "\n\n";
+  }
+
+  const groups = groupPutStatements(splitPutStatements(allText));
+  if (groups.length === 0) return [];
+
+  const preambles = findPreambles(groups);
+  const preambleVars = new Set(preambles.map((g) => g.variable));
+  const contentGroups = groups.filter((g) => !preambleVars.has(g.variable));
+  const preambleText = preambles.flatMap((g) => g.statements).join("\n\n");
+
+  const batchFiles = [];
+  for (let i = 0; i < contentGroups.length; i += BATCH_SIZE) {
+    const batch = contentGroups.slice(i, i + BATCH_SIZE);
+    const body = batch.flatMap((g) => g.statements).join("\n\n");
+    const text = preambleText ? `${preambleText}\n\n${body}\n` : `${body}\n`;
+    const filePath = path.join(tempDir, `data-batch-${batchFiles.length}.tql`);
+    await fs.writeFile(filePath, text, "utf8");
+    batchFiles.push(filePath);
+  }
+  return batchFiles;
+}
+
 async function main() {
   const orderedPackages = await resolvePackageOrder(root);
   const orderedNames = orderedPackages.map((item) => item.manifest.name);
@@ -199,19 +269,29 @@ async function main() {
 
   const typedbTemp = await fs.mkdtemp(path.join(os.tmpdir(), "ontology-package-bootstrap-"));
   const mergedSchema = path.join(typedbTemp, "merged-schema.tql");
-  const mergedData = path.join(typedbTemp, "merged-data.tql");
-  const loadScript = path.join(typedbTemp, "load-script.tql");
   const databaseName = `ontology_pkg_${process.pid}`;
 
   await writeMergedQueryFile("define", schemaAssets, mergedSchema);
-  await writeMergedQueryFile("insert", writeAssets, mergedData);
-  await fs.writeFile(loadScript, `database create-init ${databaseName} ${mergedSchema} ${mergedData}\n\nexit\n`, "utf8");
+  const dataBatchFiles = await writeDataBatchFiles(writeAssets, typedbTemp);
 
   let typedbServer;
   try {
     typedbServer = await startTypedbServer(typedbTemp);
-    const load = runTypedbScript(typedbServer.typedb, typedbServer.grpcPort, loadScript, root);
-    assertCondition(load.status === 0, `TypeDB bootstrap failed:\n${load.stdout}\n${load.stderr}`);
+    const { typedb, grpcPort } = typedbServer;
+
+    // Create database and load schema
+    const schemaScript = path.join(typedbTemp, "schema-script.tql");
+    await fs.writeFile(schemaScript, `database create ${databaseName}\n\ntransaction schema ${databaseName}\n\nsource ${mergedSchema}\n\ncommit\n\nexit\n`, "utf8");
+    const schemaResult = runTypedbScript(typedb, grpcPort, schemaScript, root);
+    assertCondition(schemaResult.status === 0, `TypeDB schema load failed:\n${schemaResult.stdout}\n${schemaResult.stderr}`);
+
+    // Load data in batches
+    for (const batchFile of dataBatchFiles) {
+      const batchScript = path.join(typedbTemp, `batch-${path.basename(batchFile)}.tql`);
+      await fs.writeFile(batchScript, `transaction write ${databaseName}\n\nsource ${batchFile}\n\ncommit\n\nexit\n`, "utf8");
+      const batchResult = runTypedbScript(typedb, grpcPort, batchScript, root);
+      assertCondition(batchResult.status === 0, `TypeDB data batch load failed:\n${batchResult.stdout}\n${batchResult.stderr}`);
+    }
 
     for (const packageName of orderedNames) {
       const queryScript = path.join(typedbTemp, `query-${packageName}.tql`);

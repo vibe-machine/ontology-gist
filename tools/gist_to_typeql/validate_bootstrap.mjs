@@ -45,19 +45,82 @@ async function writeMergedQueryFile(keyword, relPaths, outPath) {
   for (const relPath of relPaths) {
     let text = await fs.readFile(path.join(root, relPath), "utf8");
     text = text.replace(/^#.*\n/gm, "");
-    // Strip standalone keyword lines (insert or define)
     text = text.replace(new RegExp(`^\\s*${keyword}\\s*\\n`, "i"), "");
     text = text.trim();
     if (text) chunks.push(text);
   }
 
-  // If chunks contain put-prefixed statements, emit them directly
-  // (each put is a self-contained write statement, no insert wrapper needed)
   const hasPut = chunks.some((chunk) => /^put /m.test(chunk));
   const merged = hasPut
     ? `${chunks.join("\n\n")}\n`
     : `${keyword}\n\n${chunks.join("\n\n")}\n`;
   await fs.writeFile(outPath, merged, "utf8");
+}
+
+// ── Put-statement batching ─────────────────────────────────────────
+
+const BATCH_SIZE = 50;
+
+function splitPutStatements(text) {
+  const stmts = [];
+  let cur = "";
+  for (const line of text.split("\n")) {
+    const t = line.trim();
+    if (t.startsWith("#") || t === "") continue;
+    if (t.startsWith("put ") && cur) { stmts.push(cur.trim()); cur = line; }
+    else { cur += (cur ? "\n" : "") + line; }
+  }
+  if (cur.trim()) stmts.push(cur.trim());
+  return stmts;
+}
+
+function groupPutStatements(stmts) {
+  const groups = [];
+  let g = null;
+  for (const s of stmts) {
+    const m = s.match(/^put\s+\$(\w+)\s+isa\s+(\w+)/);
+    if (m) { if (g) groups.push(g); g = { variable: m[1], statements: [s] }; }
+    else if (g && s.includes(`$${g.variable}`)) { g.statements.push(s); }
+    else { if (g) groups.push(g); g = { variable: null, statements: [s] }; }
+  }
+  if (g) groups.push(g);
+  return groups;
+}
+
+function findPreambles(allGroups) {
+  const defs = new Map();
+  for (const g of allGroups) if (g.variable) defs.set(g.variable, g);
+  const needed = new Set();
+  for (const g of allGroups) {
+    for (const m of g.statements.join("\n").matchAll(/\$(\w+)/g)) {
+      if (m[1] !== g.variable && defs.has(m[1])) needed.add(m[1]);
+    }
+  }
+  return allGroups.filter((g) => g.variable && needed.has(g.variable));
+}
+
+async function writeDataBatchFiles(relPaths, tempDir) {
+  let allText = "";
+  for (const relPath of relPaths) {
+    allText += await fs.readFile(path.join(root, relPath), "utf8") + "\n";
+  }
+
+  const groups = groupPutStatements(splitPutStatements(allText));
+  const preambles = findPreambles(groups);
+  const preambleVars = new Set(preambles.map((g) => g.variable));
+  const contentGroups = groups.filter((g) => !preambleVars.has(g.variable));
+  const preambleText = preambles.flatMap((g) => g.statements).join("\n\n");
+
+  const batchFiles = [];
+  for (let i = 0; i < contentGroups.length; i += BATCH_SIZE) {
+    const batch = contentGroups.slice(i, i + BATCH_SIZE);
+    const body = batch.flatMap((g) => g.statements).join("\n\n");
+    const text = preambleText ? `${preambleText}\n\n${body}\n` : `${body}\n`;
+    const filePath = path.join(tempDir, `data-batch-${batchFiles.length}.tql`);
+    await fs.writeFile(filePath, text, "utf8");
+    batchFiles.push(filePath);
+  }
+  return batchFiles;
 }
 
 function extractNamedQueries(text) {
@@ -292,33 +355,40 @@ async function main() {
 
   const typedbTemp = await fs.mkdtemp(path.join(os.tmpdir(), "gist-typedb-validate-"));
   const mergedSchema = path.join(typedbTemp, "merged-schema.tql");
-  const mergedData = path.join(typedbTemp, "merged-data.tql");
-  const scriptPath = path.join(typedbTemp, "load-script.tql");
   await writeMergedQueryFile("define", pkg.schemas.map((schema) => schema.file), mergedSchema);
-  await writeMergedQueryFile("insert", pkg.data, mergedData);
-  await fs.writeFile(
-    scriptPath,
-    `database create-init gist_validate_${process.pid} ${mergedSchema} ${mergedData}\n\nexit\n`,
-    "utf8"
-  );
+  const dataBatchFiles = await writeDataBatchFiles(pkg.data, typedbTemp);
+
+  const dbName = `gist_validate_${process.pid}`;
+  const typedbBin = path.join(process.env.HOME ?? "", ".typedb", "typedb");
+
+  function runConsoleScript(grpcPort, script) {
+    const scriptFile = path.join(typedbTemp, `script-${Date.now()}.tql`);
+    spawnSync("bash", ["-c", `cat > ${scriptFile}`], { input: script, encoding: "utf8" });
+    return spawnSync(typedbBin, [
+      "console", `--address=127.0.0.1:${grpcPort}`,
+      "--username=admin", "--password=password", "--tls-disabled",
+      "--script", scriptFile
+    ], { cwd: root, encoding: "utf8" });
+  }
 
   let typedbServer;
   try {
     typedbServer = await startTypedbServer(typedbTemp);
-    const load = spawnSync(
-      path.join(process.env.HOME ?? "", ".typedb", "typedb"),
-      [
-        "console",
-        `--address=127.0.0.1:${typedbServer.grpcPort}`,
-        "--username=admin",
-        "--password=password",
-        "--tls-disabled",
-        "--script",
-        scriptPath
-      ],
-      { cwd: root, encoding: "utf8" }
+    const { grpcPort } = typedbServer;
+
+    // Create database and load schema
+    const schemaResult = runConsoleScript(grpcPort,
+      `database create ${dbName}\n\ntransaction schema ${dbName}\n\nsource ${mergedSchema}\n\ncommit\n\nexit\n`
     );
-    await assertCondition(load.status === 0, `TypeDB package load validation failed:\n${load.stdout}\n${load.stderr}`);
+    await assertCondition(schemaResult.status === 0, `TypeDB schema load failed:\n${schemaResult.stdout}\n${schemaResult.stderr}`);
+
+    // Load data in batches to avoid stack overflow
+    for (const batchFile of dataBatchFiles) {
+      const dataResult = runConsoleScript(grpcPort,
+        `transaction write ${dbName}\n\nsource ${batchFile}\n\ncommit\n\nexit\n`
+      );
+      await assertCondition(dataResult.status === 0, `TypeDB data batch load failed:\n${dataResult.stdout}\n${dataResult.stderr}`);
+    }
 
     const queryScriptPath = path.join(typedbTemp, "query-script.tql");
     await fs.writeFile(
