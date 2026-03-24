@@ -1076,7 +1076,7 @@ function buildAxiomQueryArtifacts(model, identifiers) {
     index: JSON.stringify(
       {
         package: "gist",
-        version: "14.0.0",
+        version: packageJson.version,
         generatedBy: GENERATOR,
         file: "queries/gistCore-axioms.tql",
         queryCount: queryEntries.length,
@@ -1118,7 +1118,7 @@ function renderReport(model, propertyInfo, entityDefinitions, identifiers) {
 
   const report = {
     package: "gist",
-    version: "14.0.0",
+    version: packageJson.version,
     generatedBy: GENERATOR,
     summary: {
       classes: model.resources.classes.length,
@@ -1258,6 +1258,7 @@ async function main() {
     ...currentManifest,
     package: {
       ...currentManifest.package,
+      version: packageJson.version,
     },
     upstream: {
       ...currentManifest.upstream,

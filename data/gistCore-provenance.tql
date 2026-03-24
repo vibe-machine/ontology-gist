@@ -11,16 +11,16 @@
 # generator: gist-structural-emitter/0.5.0
 
 put $build isa OntologyPackageBuild,
-  has buildKey "gist@14.0.0:6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
+  has buildKey "gist@1.0.3:6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
   has packageName "gist",
-  has packageVersion "14.0.0",
+  has packageVersion "1.0.3",
   has upstreamRepoUrl "https://github.com/semanticarts/gist",
   has upstreamTag "v14.0.0",
   has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
   has manifestPath "manifests/gist-v1.0.3.translation-manifest.json",
   has generatorName "gist-structural-emitter",
   has generatorVersion "0.5.0",
-  has generatedAt "2026-03-11T02:22:06Z";
+  has generatedAt "2026-03-23T02:50:11Z";
 
 put $s1 isa SourceArtifactRecord,
   has sourcePath "upstream/gist/v14.0.0/ontologies/gistCore.ttl",
@@ -45,7 +45,7 @@ put (build: $build, sourceArtifact: $s4) isa buildHasSourceArtifact;
 put $g1 isa GeneratedArtifactRecord,
   has artifactPath "schema/self-describing-schema.tql",
   has artifactKind "meta-schema",
-  has artifactSha256 "7484f25ce5a22e033987d5c29b52b31413fc2324519f1a9ece8735920fc21201";
+  has artifactSha256 "5f0890055a7dd74a1006c5cdbf319837bc68ea40f2027ae933733f49f548ffe4";
 put (build: $build, generatedArtifact: $g1) isa buildHasGeneratedArtifact;
 
 put $g2 isa GeneratedArtifactRecord,
@@ -69,7 +69,7 @@ put (build: $build, generatedArtifact: $g4) isa buildHasGeneratedArtifact;
 put $g5 isa GeneratedArtifactRecord,
   has artifactPath "data/gistCore-schema-docs.tql",
   has artifactKind "documentation",
-  has artifactSha256 "889d42fce98f0d0fa2094e61ef7c36e26bbb8d6d8a28c73de94c4265085d96bc";
+  has artifactSha256 "29c41da67cb86cefe29a1adac52b62905943f221540f16177d74a7ce6e9d5a68";
 put (build: $build, generatedArtifact: $g5) isa buildHasGeneratedArtifact;
 
 put $g6 isa GeneratedArtifactRecord,
@@ -81,7 +81,7 @@ put (build: $build, generatedArtifact: $g6) isa buildHasGeneratedArtifact;
 put $g7 isa GeneratedArtifactRecord,
   has artifactPath "manifests/gist-v1.0.3.axiom-queries.json",
   has artifactKind "axiom-query-index",
-  has artifactSha256 "8e339edfef6f4ca9e6cb103e79e0d455f97d9cc1a26f44a5e4172b6e5a3378d3";
+  has artifactSha256 "e6561dc4448b14fcedf69d01106d3cd5d3ef40abc9dc21064e41a30673391162";
 put (build: $build, generatedArtifact: $g7) isa buildHasGeneratedArtifact;
 
 put $g8 isa GeneratedArtifactRecord,
@@ -93,5 +93,5 @@ put (build: $build, generatedArtifact: $g8) isa buildHasGeneratedArtifact;
 put $g9 isa GeneratedArtifactRecord,
   has artifactPath "manifests/gist-v1.0.3.translation-report.json",
   has artifactKind "translation-report",
-  has artifactSha256 "de396dd42e32a8c9e5cff94554fe12ac2521c867f6579178ce685594d53e6fce";
+  has artifactSha256 "5e1bdee1837f5f69d11d3df0c97934b20dea710adf35b2a69743ac70d3daca02";
 put (build: $build, generatedArtifact: $g9) isa buildHasGeneratedArtifact;

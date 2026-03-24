@@ -3,7 +3,7 @@
   "manifestVersion": "1.0.0",
   "package": {
     "name": "gist",
-    "version": "14.0.0"
+    "version": "1.0.3"
   },
   "upstream": {
     "repoUrl": "https://github.com/semanticarts/gist",
@@ -32,13 +32,13 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-03-11T02:22:06Z"
+    "generatedAt": "2026-03-23T02:50:11Z"
   },
   "artifacts": [
     {
       "kind": "meta-schema",
       "path": "schema/self-describing-schema.tql",
-      "sha256": "7484f25ce5a22e033987d5c29b52b31413fc2324519f1a9ece8735920fc21201"
+      "sha256": "5f0890055a7dd74a1006c5cdbf319837bc68ea40f2027ae933733f49f548ffe4"
     },
     {
       "kind": "provenance-schema",
@@ -58,12 +58,12 @@
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "39802ea8de60719969581d31e4f244493283e1fd229e4cc274acd1bc527c12bb"
+      "sha256": "630420e5bc8c976ca4f3b676b8181dac6a0788ea371d40ad0472c59782d39886"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "889d42fce98f0d0fa2094e61ef7c36e26bbb8d6d8a28c73de94c4265085d96bc"
+      "sha256": "29c41da67cb86cefe29a1adac52b62905943f221540f16177d74a7ce6e9d5a68"
     },
     {
       "kind": "axiom-query-library",
@@ -73,7 +73,7 @@
     {
       "kind": "axiom-query-index",
       "path": "manifests/gist-v1.0.3.axiom-queries.json",
-      "sha256": "8e339edfef6f4ca9e6cb103e79e0d455f97d9cc1a26f44a5e4172b6e5a3378d3"
+      "sha256": "e6561dc4448b14fcedf69d01106d3cd5d3ef40abc9dc21064e41a30673391162"
     },
     {
       "kind": "ir-summary",
@@ -83,7 +83,7 @@
     {
       "kind": "translation-report",
       "path": "manifests/gist-v1.0.3.translation-report.json",
-      "sha256": "de396dd42e32a8c9e5cff94554fe12ac2521c867f6579178ce685594d53e6fce"
+      "sha256": "5e1bdee1837f5f69d11d3df0c97934b20dea710adf35b2a69743ac70d3daca02"
     }
   ]
 }
