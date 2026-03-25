@@ -32,13 +32,13 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-03-24T16:28:35Z"
+    "generatedAt": "2026-03-25T05:02:56Z"
   },
   "artifacts": [
     {
       "kind": "meta-schema",
       "path": "schema/self-describing-schema.tql",
-      "sha256": "c127a28370354ae586befc5d75c087aa7f20e62f82cbfeabc8b60b7b0b21365d"
+      "sha256": "3d0a7f2b24c3d9b03c38518c6817dca84604223ad781dd197c75ed336098e7b5"
     },
     {
       "kind": "provenance-schema",
@@ -58,12 +58,12 @@
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "a3a0abb26fc38dca8fba18e391a7666abd1e6b36077ea0dd9a69e8e06c0a2d2c"
+      "sha256": "dcfeb6b95995645cb0dc42d34c0be78b3afe6dc92d8f1d06ea74c0bcfc83b666"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "23565b723fdb3dbc39139d71a55067b1c6c945bea4ed4cc0f4378113c77e0463"
+      "sha256": "d712e702b77740e43979e6cfb9277b7e6044052861f3e6710980dc5c6d573173"
     },
     {
       "kind": "axiom-query-library",

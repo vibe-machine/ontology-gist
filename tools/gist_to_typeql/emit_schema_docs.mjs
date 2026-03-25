@@ -26,6 +26,46 @@ const packageJson = JSON.parse(
 );
 
 const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
+const SYNTHETIC_SCHEMA_DOCS = [
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#SchemaView",
+    typeLabel: "SchemaView",
+    kind: "entity",
+    annotations: {
+      prefLabel: ["Schema View"],
+      definition: ["A named organizational perspective for browsing or presenting documented schema resources."],
+      scopeNote: ["Examples include Domain View, Workflow View, and Ontology View."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#SchemaGroup",
+    typeLabel: "SchemaGroup",
+    kind: "entity",
+    annotations: {
+      prefLabel: ["Schema Group"],
+      definition: ["A named grouping of documented schema resources within a particular schema view."],
+      scopeNote: ["A schema resource may appear in multiple schema groups across different views."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#groupInView",
+    typeLabel: "groupInView",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["group in view"],
+      definition: ["Associates a schema group with the schema view in which it appears."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#resourceInGroup",
+    typeLabel: "resourceInGroup",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["resource in group"],
+      definition: ["Associates a documented schema resource with a schema group for a particular browsing view."]
+    }
+  }
+];
 
 const RESERVED_IDENTIFIERS = new Set([
   "and", "attribute", "define", "entity", "fetch", "function", "group",
@@ -202,6 +242,18 @@ async function main() {
     `  has moduleName "gistCore",\n` +
     `  has moduleKind "gist-core";`
   );
+
+  for (const synthetic of SYNTHETIC_SCHEMA_DOCS) {
+    const varName = `$r${++varCounter}`;
+    const tql = renderSchemaResource(
+      synthetic.iri,
+      synthetic.typeLabel,
+      synthetic.kind,
+      synthetic.annotations,
+      varName
+    );
+    blocks.push(tql + `\nput (resource: ${varName}, module: $gist_core) isa inModule;`);
+  }
 
   // Synthetic Thing entity (owl:Thing has no annotations in gist)
   {
