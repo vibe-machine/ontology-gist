@@ -15,7 +15,7 @@ This repo is the canonical `gist` TypeDB package lifecycle workspace. It stages 
 - `schema/package-provenance.tql` — shared provenance schema
 - `data/gistCore-domain-seeds.tql` — generated package seed instances
 - `data/gistCore-schema-docs.tql` — generated `SchemaModule` / `SchemaResource` documentation records
-- `data/gistCore-provenance.tql` — generated `OntologyPackageBuild` provenance records
+- `data/gistCore-provenance.tql` — generated `OntologyModule` / `OntologyModuleVersion` provenance records
 - `queries/gistCore-axioms.tql` — generated axiom query library
 - `manifests/` — IR summary, translation report, axiom-query index, and translation manifest
 - `package.json` — package contract consumed by the ontology loader
@@ -35,7 +35,7 @@ Deprecated `TypeDoc`, `domains.tql`, and `categorize.tql` artifacts have been re
 - Generated schema uses TypeQL `define` syntax with `attribute`, `relation`, and `entity` declarations.
 - Package data files use `insert` only; query libraries are kept separate under `queries/`.
 - Documentation is modeled through `SchemaModule`, `SchemaResource`, and `inModule`, not legacy `TypeDoc`.
-- Provenance is modeled through `OntologyPackageBuild`, `SourceArtifactRecord`, and `GeneratedArtifactRecord`.
+- Provenance is modeled through `OntologyModule`, `OntologyModuleVersion`, `OntologyModuleInstallation`, `SourceArtifactRecord`, and `GeneratedArtifactRecord`.
 - The emitter prunes inherited `owns` and `plays` declarations on subtypes because TypeDB already inherits them from supertypes.
 
 ## Editing Guidance

@@ -297,14 +297,14 @@ async function main() {
       const queryScript = path.join(typedbTemp, `query-${packageName}.tql`);
       await fs.writeFile(
         queryScript,
-        `transaction read ${databaseName}\n\nmatch\n$b isa OntologyPackageBuild,\n  has packageName "${packageName}";\nlimit 1;\n\nclose\n\nexit\n`,
+        `transaction read ${databaseName}\n\nmatch\n$m isa OntologyModule,\n  has moduleName "${packageName}";\n$v isa OntologyModuleVersion;\n(version: $v, module: $m) isa ontologyModuleVersionOf;\nlimit 1;\n\nclose\n\nexit\n`,
         "utf8"
       );
       const query = runTypedbScript(typedbServer.typedb, typedbServer.grpcPort, queryScript, root);
       assertCondition(query.status === 0, `TypeDB provenance query failed for ${packageName}:\n${query.stdout}\n${query.stderr}`);
       assertCondition(
         query.stdout.includes("Finished. Total answers: 1"),
-        `Expected OntologyPackageBuild row for ${packageName}:\n${query.stdout}`
+        `Expected OntologyModuleVersion row for ${packageName}:\n${query.stdout}`
       );
     }
   } finally {

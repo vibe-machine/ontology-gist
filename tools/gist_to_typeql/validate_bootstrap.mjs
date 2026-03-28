@@ -397,7 +397,7 @@ async function main() {
         `transaction read gist_validate_${process.pid}`,
         "",
         'match',
-        '$m isa SchemaModule, has moduleKey "gist-core";',
+        '$schemaModule isa SchemaModule, has moduleKey "gist-core";',
         'limit 1;',
         "",
         'match',
@@ -409,9 +409,11 @@ async function main() {
         'limit 1;',
         "",
         'match',
-        '$b isa OntologyPackageBuild, has packageName "gist", has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08";',
+        '$module isa OntologyModule, has moduleRepoUrl "https://github.com/semanticarts/gist";',
+        '$v isa OntologyModuleVersion, has moduleVersion "2.0.0", has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08";',
+        '(version: $v, module: $module) isa ontologyModuleVersionOf;',
         '$ga isa GeneratedArtifactRecord, has artifactPath "schema/gistCore.tql";',
-        '(build: $b, generatedArtifact: $ga) isa buildHasGeneratedArtifact;',
+        '(generatedArtifact: $ga, version: $v) isa generatedArtifactForOntologyModuleVersion;',
         'limit 1;',
         "",
         'close',
@@ -436,14 +438,16 @@ async function main() {
     );
     await assertCondition(query.status === 0, `TypeDB query smoke test failed:\n${query.stdout}\n${query.stderr}`);
     await assertCondition(
-      query.stdout.includes("$m") &&
+        query.stdout.includes("$schemaModule") &&
         query.stdout.includes("SchemaModule") &&
         query.stdout.includes("$r") &&
         query.stdout.includes("SchemaResource") &&
         query.stdout.includes("$mt") &&
         query.stdout.includes("MediaType") &&
-        query.stdout.includes("$b") &&
-        query.stdout.includes("OntologyPackageBuild") &&
+        query.stdout.includes("$module") &&
+        query.stdout.includes("OntologyModule") &&
+        query.stdout.includes("$v") &&
+        query.stdout.includes("OntologyModuleVersion") &&
         query.stdout.includes("$ga") &&
         query.stdout.includes("GeneratedArtifactRecord") &&
         query.stdout.includes("Finished. Total answers: 1"),

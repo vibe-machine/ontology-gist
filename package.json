@@ -1,10 +1,10 @@
 {
   "name": "gist",
   "displayName": "gist Upper Ontology",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
   "scripts": {
-    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v1.1.0.ir-summary.json",
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v2.0.0.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
     "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
@@ -29,6 +29,10 @@
       "file": "schema/package-provenance.tql"
     },
     {
+      "name": "administrative-operations",
+      "file": "schema/administrative-operations.tql"
+    },
+    {
       "name": "gistCore",
       "file": "schema/gistCore.tql"
     }
@@ -42,14 +46,15 @@
     "queries/gistCore-axioms.tql"
   ],
   "manifests": [
-    "manifests/gist-v1.1.0.translation-manifest.json",
-    "manifests/gist-v1.1.0.axiom-queries.json"
+    "manifests/gist-v2.0.0.translation-manifest.json",
+    "manifests/gist-v2.0.0.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
       "schema/self-describing-schema.tql",
-      "schema/package-provenance.tql",
       "schema/gistCore.tql",
+      "schema/package-provenance.tql",
+      "schema/administrative-operations.tql",
       "data/gistCore-domain-seeds.tql",
       "data/gistCore-provenance.tql",
       "data/gistCore-schema-docs.tql"
@@ -57,15 +62,16 @@
     "generatedArtifacts": [
       "schema/self-describing-schema.tql",
       "schema/package-provenance.tql",
+      "schema/administrative-operations.tql",
       "schema/gistCore.tql",
       "data/gistCore-domain-seeds.tql",
       "data/gistCore-provenance.tql",
       "data/gistCore-schema-docs.tql",
       "queries/gistCore-axioms.tql",
-      "manifests/gist-v1.1.0.axiom-queries.json",
-      "manifests/gist-v1.1.0.translation-manifest.json",
-      "manifests/gist-v1.1.0.translation-report.json",
-      "manifests/gist-v1.1.0.ir-summary.json"
+      "manifests/gist-v2.0.0.axiom-queries.json",
+      "manifests/gist-v2.0.0.translation-manifest.json",
+      "manifests/gist-v2.0.0.translation-report.json",
+      "manifests/gist-v2.0.0.ir-summary.json"
     ]
   },
   "upstream": {
@@ -80,7 +86,7 @@
     ]
   },
   "provenance": {
-    "manifest": "manifests/gist-v1.1.0.translation-manifest.json",
+    "manifest": "manifests/gist-v2.0.0.translation-manifest.json",
     "status": "bootstrap"
   },
   "devDependencies": {

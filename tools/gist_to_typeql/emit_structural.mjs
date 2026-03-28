@@ -662,6 +662,8 @@ function renderSeedData(model, identifiers) {
 }
 
 function renderProvenanceData(manifest) {
+  const moduleRepoUrl = manifest.upstream.repoUrl;
+  const moduleVersionKey = `${moduleRepoUrl}@${manifest.package.version}`;
   const lines = [
     "# Provenance bootstrap",
     "# upstream-repo: https://github.com/semanticarts/gist",
@@ -677,17 +679,19 @@ function renderProvenanceData(manifest) {
     ""
   ];
 
-  lines.push(`put $build isa OntologyPackageBuild,`);
-  lines.push(`  has buildKey ${tqlString(`${manifest.package.name}@${manifest.package.version}:${manifest.upstream.commit}`)},`);
-  lines.push(`  has packageName ${tqlString(manifest.package.name)},`);
-  lines.push(`  has packageVersion ${tqlString(manifest.package.version)},`);
-  lines.push(`  has upstreamRepoUrl ${tqlString(manifest.upstream.repoUrl)},`);
-  lines.push(`  has upstreamTag ${tqlString(manifest.upstream.tag)},`);
+  lines.push(`put $module isa OntologyModule,`);
+  lines.push(`  has moduleName ${tqlString(manifest.package.name)},`);
+  lines.push(`  has moduleRepoUrl ${tqlString(moduleRepoUrl)};`);
+  lines.push("");
+  lines.push(`put $version isa OntologyModuleVersion,`);
+  lines.push(`  has moduleVersionKey ${tqlString(moduleVersionKey)},`);
+  lines.push(`  has moduleVersion ${tqlString(manifest.package.version)},`);
   lines.push(`  has upstreamCommit ${tqlString(manifest.upstream.commit)},`);
   lines.push(`  has manifestPath ${tqlString(MANIFEST_PATH)},`);
   lines.push(`  has generatorName ${tqlString(manifest.generator.name)},`);
   lines.push(`  has generatorVersion ${tqlString(manifest.generator.version)},`);
   lines.push(`  has generatedAt ${tqlString(manifest.generator.generatedAt)};`);
+  lines.push(`put (version: $version, module: $module) isa ontologyModuleVersionOf;`);
   lines.push("");
 
   manifest.upstream.sourceArtifacts.forEach((artifact, index) => {
@@ -695,7 +699,7 @@ function renderProvenanceData(manifest) {
     lines.push(`put ${variable} isa SourceArtifactRecord,`);
     lines.push(`  has sourcePath ${tqlString(artifact.path)},`);
     lines.push(`  has sourceSha256 ${tqlString(artifact.sha256)};`);
-    lines.push(`put (build: $build, sourceArtifact: ${variable}) isa buildHasSourceArtifact;`);
+    lines.push(`put (version: $version, sourceArtifact: ${variable}) isa ontologyModuleVersionBasedOnSourceArtifact;`);
     lines.push("");
   });
 
@@ -706,7 +710,7 @@ function renderProvenanceData(manifest) {
     lines.push(`  has artifactPath ${tqlString(artifact.path)},`);
     lines.push(`  has artifactKind ${tqlString(artifact.kind)},`);
     lines.push(`  has artifactSha256 ${tqlString(artifact.sha256)};`);
-    lines.push(`put (build: $build, generatedArtifact: ${variable}) isa buildHasGeneratedArtifact;`);
+    lines.push(`put (generatedArtifact: ${variable}, version: $version) isa generatedArtifactForOntologyModuleVersion;`);
     lines.push("");
   });
 
@@ -1185,7 +1189,12 @@ async function main() {
   const outDir = outIndex >= 0 ? process.argv[outIndex + 1] : ".";
   const outputRoot = path.isAbsolute(outDir) ? outDir : path.join(root, outDir);
   const model = await loadOntologyModel(root);
-  const currentManifest = JSON.parse(await fs.readFile(path.join(root, MANIFEST_PATH), "utf8"));
+  let currentManifest = { artifacts: [] };
+  try {
+    currentManifest = JSON.parse(await fs.readFile(path.join(root, MANIFEST_PATH), "utf8"));
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
   const identifiers = buildIdentifierMaps(model);
   const propertyInfo = inferPropertyTypes(model);
   const entityDefinitions = buildEntityDefinitions(model, propertyInfo, identifiers);
@@ -1216,6 +1225,11 @@ async function main() {
       kind: "provenance-schema",
       path: "schema/package-provenance.tql",
       sha256: await sha256File(path.join(root, "schema/package-provenance.tql")),
+    },
+    {
+      kind: "administrative-schema",
+      path: "schema/administrative-operations.tql",
+      sha256: await sha256File(path.join(root, "schema/administrative-operations.tql")),
     },
     {
       kind: "schema",
@@ -1254,17 +1268,30 @@ async function main() {
     },
   ];
 
+  const upstreamSourceArtifacts = currentManifest.upstream?.sourceArtifacts ?? await Promise.all(
+    packageJson.upstream.sourceArtifacts.map(async (artifactPath) => ({
+      path: artifactPath,
+      sha256: await sha256File(path.join(root, artifactPath)),
+    }))
+  );
+
   const manifestBase = {
     ...currentManifest,
     package: {
-      ...currentManifest.package,
+      ...(currentManifest.package ?? {}),
+      name: packageJson.name,
       version: packageJson.version,
     },
     upstream: {
-      ...currentManifest.upstream,
+      repoUrl: currentManifest.upstream?.repoUrl ?? packageJson.upstream.repo,
+      tag: currentManifest.upstream?.tag ?? packageJson.upstream.tag,
+      commit: currentManifest.upstream?.commit ?? packageJson.upstream.commit,
+      sourceArtifacts: upstreamSourceArtifacts,
     },
     generator: {
-      ...currentManifest.generator,
+      ...(currentManifest.generator ?? {}),
+      name: currentManifest.generator?.name ?? GENERATOR.split("/")[0],
+      version: currentManifest.generator?.version ?? GENERATOR.split("/")[1],
       generatedAt,
     },
     artifacts: artifactEntries,
@@ -1278,12 +1305,13 @@ async function main() {
       artifactEntries[1],
       artifactEntries[2],
       artifactEntries[3],
+      artifactEntries[4],
       {
         kind: "provenance-seeds",
         path: "data/gistCore-provenance.tql",
         sha256: sha256Text(provenanceText),
       },
-      ...artifactEntries.slice(4),
+      ...artifactEntries.slice(5),
     ],
   };
 

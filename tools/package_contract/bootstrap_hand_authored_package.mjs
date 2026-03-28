@@ -113,6 +113,10 @@ function readSchemaBody(content) {
   return content.slice(defineIndex).trim();
 }
 
+function tqlString(value) {
+  return JSON.stringify(value);
+}
+
 function renderHeader({ repoUrl, tag, commit, sourceArtifacts, manifestPath, generator }) {
   return [
     "# Provenance bootstrap",
@@ -217,7 +221,8 @@ function renderSchemaDocs(meta, docEntries) {
 }
 
 function renderProvenanceData(manifest, manifestPath, provenancePath) {
-  const buildKey = `${manifest.package.name}@${manifest.package.version}:${manifest.upstream.commit}`;
+  const moduleRepoUrl = manifest.upstream.repoUrl;
+  const moduleVersionKey = `${moduleRepoUrl}@${manifest.package.version}`;
   const lines = [
     renderHeader({
       repoUrl: manifest.upstream.repoUrl,
@@ -228,17 +233,20 @@ function renderProvenanceData(manifest, manifestPath, provenancePath) {
       generator: manifest.generator,
     }),
     "",
-    "put $build isa OntologyPackageBuild,",
-    `  has buildKey "${escapeTypeQL(buildKey)}",`,
-    `  has packageName "${escapeTypeQL(manifest.package.name)}",`,
-    `  has packageVersion "${escapeTypeQL(manifest.package.version)}",`,
-    `  has upstreamRepoUrl "${escapeTypeQL(manifest.upstream.repoUrl)}",`,
-    `  has upstreamTag "${escapeTypeQL(manifest.upstream.tag)}",`,
+    "put $module isa OntologyModule,",
+    `  has moduleName "${escapeTypeQL(manifest.package.name)}",`,
+    `  has moduleRepoUrl "${escapeTypeQL(moduleRepoUrl)}";`,
+    "",
+    "put $version isa OntologyModuleVersion,",
+    `  has moduleVersionKey "${escapeTypeQL(moduleVersionKey)}",`,
+    `  has moduleVersion "${escapeTypeQL(manifest.package.version)}",`,
     `  has upstreamCommit "${escapeTypeQL(manifest.upstream.commit)}",`,
     `  has manifestPath "${escapeTypeQL(manifestPath)}",`,
     `  has generatorName "${escapeTypeQL(manifest.generator.name)}",`,
     `  has generatorVersion "${escapeTypeQL(manifest.generator.version)}",`,
     `  has generatedAt "${escapeTypeQL(manifest.generator.generatedAt)}";`,
+    "",
+    "put (version: $version, module: $module) isa ontologyModuleVersionOf;",
     "",
   ];
 
@@ -247,7 +255,7 @@ function renderProvenanceData(manifest, manifestPath, provenancePath) {
     lines.push(`put ${variable} isa SourceArtifactRecord,`);
     lines.push(`  has sourcePath "${escapeTypeQL(artifact.path)}",`);
     lines.push(`  has sourceSha256 "${escapeTypeQL(artifact.sha256)}";`);
-    lines.push(`put (build: $build, sourceArtifact: ${variable}) isa buildHasSourceArtifact;`);
+    lines.push(`put (version: $version, sourceArtifact: ${variable}) isa ontologyModuleVersionBasedOnSourceArtifact;`);
     lines.push("");
   });
 
@@ -258,7 +266,7 @@ function renderProvenanceData(manifest, manifestPath, provenancePath) {
     lines.push(`  has artifactPath "${escapeTypeQL(artifact.path)}",`);
     lines.push(`  has artifactKind "${escapeTypeQL(artifact.kind)}",`);
     lines.push(`  has artifactSha256 "${escapeTypeQL(artifact.sha256)}";`);
-    lines.push(`put (build: $build, generatedArtifact: ${variable}) isa buildHasGeneratedArtifact;`);
+    lines.push(`put (generatedArtifact: ${variable}, version: $version) isa generatedArtifactForOntologyModuleVersion;`);
     lines.push("");
   });
 
@@ -271,15 +279,15 @@ This repository publishes the \`${displayName}\` ontology package using the self
 
 Current package boundaries:
 
-- \`schema/\`: package schema plus the shared self-describing/provenance schemas
-- \`data/\`: package seed data, queryable provenance records, and schema documentation records
+- \`schema/\`: package schema plus the shared self-describing/provenance/administrative schemas
+- \`data/\`: package seed data, queryable module-version provenance records, and schema documentation records
 - \`manifests/\`: machine-readable package manifest for deterministic artifact tracking
 - \`tools/package_contract/\`: bootstrap validation for this hand-authored package
 
 Current status:
 
 - \`${docsPath}\` is the authoritative documentation path for package-local schema resources.
-- \`${provenancePath}\` records the package build, source artifacts, and generated artifact checksums.
+- \`${provenancePath}\` records the ontology module version, source artifacts, and generated artifact checksums.
 - \`${manifestPath}\` is the filesystem source of truth for the package contract.
 - Legacy TypeDoc files are retired and are no longer part of active package assembly.
 
@@ -356,6 +364,7 @@ async function main() {
   const headerFiles = [
     "schema/self-describing-schema.tql",
     "schema/package-provenance.tql",
+    "schema/administrative-operations.tql",
     ...manifest.artifacts.filter((artifact) => artifact.path.endsWith(".tql")).map((artifact) => artifact.path),
   ];
 
@@ -387,7 +396,7 @@ async function writeText(root, relativePath, text) {
 async function bootstrap(repoRoot) {
   const packagePath = path.join(repoRoot, "package.json");
   const packageJson = JSON.parse(await fs.readFile(packagePath, "utf8"));
-  const mainSchema = (packageJson.schemas || []).find((schema) => !["self-describing-schema", "package-provenance"].includes(schema.name));
+  const mainSchema = (packageJson.schemas || []).find((schema) => !["self-describing-schema", "package-provenance", "administrative-operations"].includes(schema.name));
   if (!mainSchema) {
     throw new Error(`could not determine main schema for ${repoRoot}`);
   }
@@ -416,6 +425,7 @@ async function bootstrap(repoRoot) {
 
   const schemaBody = readSchemaBody(await fs.readFile(path.join(gistRoot, "schema/self-describing-schema.tql"), "utf8"));
   const provenanceSchemaBody = readSchemaBody(await fs.readFile(path.join(gistRoot, "schema/package-provenance.tql"), "utf8"));
+  const administrativeSchemaBody = readSchemaBody(await fs.readFile(path.join(gistRoot, "schema/administrative-operations.tql"), "utf8"));
   const hasLegacyTypedoc = Boolean(legacyTypedoc) && (
     (await fileExists(path.join(repoRoot, legacyTypedoc))) ||
     pathExistsInHead(repoRoot, legacyTypedoc)
@@ -442,15 +452,25 @@ async function bootstrap(repoRoot) {
     schemas: [
       { name: "self-describing-schema", file: "schema/self-describing-schema.tql" },
       { name: "package-provenance", file: "schema/package-provenance.tql" },
+      { name: "administrative-operations", file: "schema/administrative-operations.tql" },
       mainSchema,
     ],
     data: [...sourceDataFiles, provenancePath, docsPath],
     manifests: [manifestPath],
     assembly: {
-      loadOrder: ["schema/self-describing-schema.tql", "schema/package-provenance.tql", mainSchema.file, ...sourceDataFiles, provenancePath, docsPath],
+      loadOrder: [
+        "schema/self-describing-schema.tql",
+        "schema/package-provenance.tql",
+        "schema/administrative-operations.tql",
+        mainSchema.file,
+        ...sourceDataFiles,
+        provenancePath,
+        docsPath
+      ],
       generatedArtifacts: [
         "schema/self-describing-schema.tql",
         "schema/package-provenance.tql",
+        "schema/administrative-operations.tql",
         docsPath,
         provenancePath,
         "manifests/package-manifest.schema.json",
@@ -487,6 +507,7 @@ async function bootstrap(repoRoot) {
 
   const sharedSchemaText = `${renderHeader(headerMeta)}${schemaBody}\n`;
   const provenanceSchemaText = `${renderHeader(headerMeta)}${provenanceSchemaBody}\n`;
+  const administrativeSchemaText = `${renderHeader(headerMeta)}${administrativeSchemaBody}\n`;
   const schemaDocsText = hasLegacyTypedoc
     ? renderSchemaDocs(headerMeta, extractTypeDocEntries(await readWorkingTreeOrHead(repoRoot, legacyTypedoc)))
     : `${renderHeader(headerMeta)}${stripToKeyword(await readWorkingTreeOrHead(repoRoot, docsPath), ["put", "insert"])}`;
@@ -520,6 +541,7 @@ async function bootstrap(repoRoot) {
     artifacts: [
       { kind: "meta-schema", path: "schema/self-describing-schema.tql", sha256: sha256Text(sharedSchemaText) },
       { kind: "provenance-schema", path: "schema/package-provenance.tql", sha256: sha256Text(provenanceSchemaText) },
+      { kind: "administrative-schema", path: "schema/administrative-operations.tql", sha256: sha256Text(administrativeSchemaText) },
       { kind: "documentation", path: docsPath, sha256: sha256Text(schemaDocsText) },
       { kind: "manifest-schema", path: "manifests/package-manifest.schema.json", sha256: sha256Text(manifestSchemaText) },
     ],
@@ -538,6 +560,7 @@ async function bootstrap(repoRoot) {
   await writeText(repoRoot, "package.json", packageJsonText);
   await writeText(repoRoot, "schema/self-describing-schema.tql", sharedSchemaText);
   await writeText(repoRoot, "schema/package-provenance.tql", provenanceSchemaText);
+  await writeText(repoRoot, "schema/administrative-operations.tql", administrativeSchemaText);
   await writeText(repoRoot, docsPath, schemaDocsText);
   await writeText(repoRoot, provenancePath, provenanceText);
   await writeText(repoRoot, "manifests/package-manifest.schema.json", manifestSchemaText);
