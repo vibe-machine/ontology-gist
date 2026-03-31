@@ -396,10 +396,12 @@ async function writeText(root, relativePath, text) {
 async function bootstrap(repoRoot) {
   const packagePath = path.join(repoRoot, "package.json");
   const packageJson = JSON.parse(await fs.readFile(packagePath, "utf8"));
-  const mainSchema = (packageJson.schemas || []).find((schema) => !["self-describing-schema", "package-provenance", "administrative-operations"].includes(schema.name));
-  if (!mainSchema) {
+  const infrastructureNames = ["self-describing-schema", "package-provenance", "administrative-operations"];
+  const packageSchemas = (packageJson.schemas || []).filter((schema) => !infrastructureNames.includes(schema.name));
+  if (packageSchemas.length === 0) {
     throw new Error(`could not determine main schema for ${repoRoot}`);
   }
+  const mainSchema = packageSchemas[0];
 
   const legacyTypedoc =
     (packageJson.data || []).find((relativePath) => relativePath.endsWith("-typedoc.tql")) ||
@@ -417,7 +419,7 @@ async function bootstrap(repoRoot) {
       !relativePath.endsWith("-provenance.tql") &&
       !relativePath.endsWith("-schema-docs.tql")
   );
-  const sourceArtifacts = ["package.json", mainSchema.file, ...sourceDataFiles];
+  const sourceArtifacts = ["package.json", ...packageSchemas.map((s) => s.file), ...sourceDataFiles];
 
   const legacyFiles = [legacyTypedoc, "data/domains.tql", "data/categorize.tql"].filter(
     (relativePath) => Boolean(relativePath) && !sourceArtifacts.includes(relativePath)
@@ -453,7 +455,7 @@ async function bootstrap(repoRoot) {
       { name: "self-describing-schema", file: "schema/self-describing-schema.tql" },
       { name: "package-provenance", file: "schema/package-provenance.tql" },
       { name: "administrative-operations", file: "schema/administrative-operations.tql" },
-      mainSchema,
+      ...packageSchemas,
     ],
     data: [...sourceDataFiles, provenancePath, docsPath],
     manifests: [manifestPath],
@@ -462,7 +464,7 @@ async function bootstrap(repoRoot) {
         "schema/self-describing-schema.tql",
         "schema/package-provenance.tql",
         "schema/administrative-operations.tql",
-        mainSchema.file,
+        ...packageSchemas.map((s) => s.file),
         ...sourceDataFiles,
         provenancePath,
         docsPath
