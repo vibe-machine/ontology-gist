@@ -3,7 +3,7 @@
     {
       "kind": "meta-schema",
       "path": "schema/self-describing-schema.tql",
-      "sha256": "cf6242f4e3aba2558f3b62b95ec5afb2bace5604a4a43c65ef623fad4253cd40"
+      "sha256": "0f2bb5ac85b2c70fa28a1a4d882ef9392509b89338ee4f2355804f575a4160d5"
     },
     {
       "kind": "provenance-schema",
@@ -28,12 +28,12 @@
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "ecc2d4fa6fc2d57d3fc163473b86987430f730b767d430e4109503b8e8a95c79"
+      "sha256": "1e6574005a28348c5aaa164cc8ddf395233d141b1bd05e22ead9e36ec3b6f0d7"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "cec3c1ce193263b3a5320c331332516bd1237098fcf7a1421af127e436fe58e7"
+      "sha256": "830d63857cda849d301044cd0d05df85aa13ebb0c5f4c3b088895bd7080e971f"
     },
     {
       "kind": "axiom-query-library",
@@ -86,6 +86,6 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-03-28T14:05:19Z"
+    "generatedAt": "2026-04-08T12:56:05Z"
   }
 }

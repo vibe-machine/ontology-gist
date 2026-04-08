@@ -3,6 +3,11 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  parseTypeQLSchemaStructure,
+  renderStructuralMetadataSection,
+  replaceGeneratedStructuralSection,
+} from "../shared/schema_structure.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -510,9 +515,20 @@ async function bootstrap(repoRoot) {
   const sharedSchemaText = `${renderHeader(headerMeta)}${schemaBody}\n`;
   const provenanceSchemaText = `${renderHeader(headerMeta)}${provenanceSchemaBody}\n`;
   const administrativeSchemaText = `${renderHeader(headerMeta)}${administrativeSchemaBody}\n`;
-  const schemaDocsText = hasLegacyTypedoc
+  const baseSchemaDocsText = hasLegacyTypedoc
     ? renderSchemaDocs(headerMeta, extractTypeDocEntries(await readWorkingTreeOrHead(repoRoot, legacyTypedoc)))
     : `${renderHeader(headerMeta)}${stripToKeyword(await readWorkingTreeOrHead(repoRoot, docsPath), ["put", "insert"])}`;
+  const packageSchemaTexts = await Promise.all(
+    packageSchemas.map((schema) => fs.readFile(path.join(repoRoot, schema.file), "utf8"))
+  );
+  const schemaDocsText = replaceGeneratedStructuralSection(
+    baseSchemaDocsText,
+    renderStructuralMetadataSection({
+      repoUrl: packageJson.source,
+      moduleKey: packageJson.name,
+      structure: parseTypeQLSchemaStructure(packageSchemaTexts),
+    })
+  );
   const manifestSchemaText = jsonText(MANIFEST_SCHEMA);
   const docsReadmeText = renderDocsReadme({
     packageName: packageJson.name,

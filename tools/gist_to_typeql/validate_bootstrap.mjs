@@ -59,7 +59,7 @@ async function writeMergedQueryFile(keyword, relPaths, outPath) {
 
 // ── Put-statement batching ─────────────────────────────────────────
 
-const BATCH_SIZE = 50;
+const BATCH_SIZE = 10;
 
 function splitPutStatements(text) {
   const stmts = [];
@@ -67,7 +67,7 @@ function splitPutStatements(text) {
   for (const line of text.split("\n")) {
     const t = line.trim();
     if (t.startsWith("#") || t === "") continue;
-    if (t.startsWith("put ") && cur) { stmts.push(cur.trim()); cur = line; }
+    if ((t.startsWith("put ") || t.startsWith("match")) && cur) { stmts.push(cur.trim()); cur = line; }
     else { cur += (cur ? "\n" : "") + line; }
   }
   if (cur.trim()) stmts.push(cur.trim());
@@ -410,7 +410,7 @@ async function main() {
         "",
         'match',
         '$module isa OntologyModule, has moduleRepoUrl "https://github.com/semanticarts/gist";',
-        '$v isa OntologyModuleVersion, has moduleVersion "2.0.0", has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08";',
+        `$v isa OntologyModuleVersion, has moduleVersion "${pkg.version}", has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08";`,
         '(version: $v, module: $module) isa ontologyModuleVersionOf;',
         '$ga isa GeneratedArtifactRecord, has artifactPath "schema/gistCore.tql";',
         '(generatedArtifact: $ga, version: $v) isa generatedArtifactForOntologyModuleVersion;',

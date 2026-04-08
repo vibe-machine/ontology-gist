@@ -28,6 +28,16 @@ const packageJson = JSON.parse(
 const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
 const SYNTHETIC_SCHEMA_DOCS = [
   {
+    iri: "https://vibe-machine.github.io/schema/self-describing#SchemaModule",
+    typeLabel: "SchemaModule",
+    kind: "entity",
+    annotations: {
+      prefLabel: ["Schema Module"],
+      definition: ["A named ontology module installed in the live database."],
+      scopeNote: ["Used to organize SchemaResource records by package or ontology layer."]
+    }
+  },
+  {
     iri: "https://vibe-machine.github.io/schema/self-describing#SchemaView",
     typeLabel: "SchemaView",
     kind: "entity",
@@ -48,6 +58,43 @@ const SYNTHETIC_SCHEMA_DOCS = [
     }
   },
   {
+    iri: "https://vibe-machine.github.io/schema/self-describing#SchemaResource",
+    typeLabel: "SchemaResource",
+    kind: "entity",
+    annotations: {
+      prefLabel: ["Schema Resource"],
+      definition: ["A queryable documentation record for a schema type, role, or related resource."],
+      scopeNote: ["The schema browser combines SchemaResource documentation with structural metadata relations."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#roleName",
+    typeLabel: "roleName",
+    kind: "attribute",
+    annotations: {
+      prefLabel: ["role name"],
+      definition: ["The local role label for a role SchemaResource."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#valueTypeName",
+    typeLabel: "valueTypeName",
+    kind: "attribute",
+    annotations: {
+      prefLabel: ["value type name"],
+      definition: ["For attribute SchemaResources, the TypeQL primitive value type carried by the attribute."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#inModule",
+    typeLabel: "inModule",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["in module"],
+      definition: ["Associates a documented schema resource with the ontology module that publishes it."]
+    }
+  },
+  {
     iri: "https://vibe-machine.github.io/schema/self-describing#groupInView",
     typeLabel: "groupInView",
     kind: "relation",
@@ -63,6 +110,42 @@ const SYNTHETIC_SCHEMA_DOCS = [
     annotations: {
       prefLabel: ["resource in group"],
       definition: ["Associates a documented schema resource with a schema group for a particular browsing view."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#schemaSubTypeOf",
+    typeLabel: "schemaSubTypeOf",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["schema subtype of"],
+      definition: ["Associates a schema resource with its direct supertype in queryable metadata."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#schemaOwns",
+    typeLabel: "schemaOwns",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["schema owns"],
+      definition: ["Associates a schema resource with an attribute it explicitly owns."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#schemaPlays",
+    typeLabel: "schemaPlays",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["schema plays"],
+      definition: ["Associates a schema resource with a relation role it explicitly plays."]
+    }
+  },
+  {
+    iri: "https://vibe-machine.github.io/schema/self-describing#schemaRelates",
+    typeLabel: "schemaRelates",
+    kind: "relation",
+    annotations: {
+      prefLabel: ["schema relates"],
+      definition: ["Associates a relation schema resource with one of its explicit role definitions."]
     }
   }
 ];

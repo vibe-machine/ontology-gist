@@ -25,6 +25,11 @@ import {
   RDF_TYPE,
   loadOntologyModel,
 } from "./model.mjs";
+import {
+  parseTypeQLSchemaStructure,
+  renderStructuralMetadataSection,
+  replaceGeneratedStructuralSection,
+} from "../shared/schema_structure.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
@@ -1200,6 +1205,17 @@ async function main() {
   const entityDefinitions = buildEntityDefinitions(model, propertyInfo, identifiers);
   const axiomArtifacts = buildAxiomQueryArtifacts(model, identifiers);
   const schemaText = renderSchema(model, propertyInfo, entityDefinitions, identifiers);
+  const docsPath = path.join(outputRoot, "data/gistCore-schema-docs.tql");
+  const structure = parseTypeQLSchemaStructure([schemaText]);
+  const existingDocsText = await fs.readFile(path.join(root, "data/gistCore-schema-docs.tql"), "utf8");
+  const docsText = replaceGeneratedStructuralSection(
+    existingDocsText,
+    renderStructuralMetadataSection({
+      repoUrl: packageJson.source,
+      moduleKey: "gist-core",
+      structure,
+    })
+  );
   const seedDataText = renderSeedData(model, identifiers);
   const reportText = renderReport(model, propertyInfo, entityDefinitions, identifiers);
   const generatedAt = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
@@ -1210,6 +1226,7 @@ async function main() {
   await fs.mkdir(path.join(outputRoot, "manifests"), { recursive: true });
 
   await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), schemaText, "utf8");
+  await fs.writeFile(docsPath, docsText, "utf8");
   await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), seedDataText, "utf8");
   await fs.writeFile(path.join(outputRoot, "queries/gistCore-axioms.tql"), axiomArtifacts.library, "utf8");
   await fs.writeFile(path.join(outputRoot, `${MANIFEST_PREFIX}.axiom-queries.json`), axiomArtifacts.index, "utf8");

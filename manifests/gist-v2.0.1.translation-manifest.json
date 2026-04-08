@@ -1,0 +1,91 @@
+{
+  "artifacts": [
+    {
+      "kind": "meta-schema",
+      "path": "schema/self-describing-schema.tql",
+      "sha256": "8f25f5e102d465288452313f15932416ea585bf11927fdc47fde1ef114282eeb"
+    },
+    {
+      "kind": "provenance-schema",
+      "path": "schema/package-provenance.tql",
+      "sha256": "f89685ee8b0888ee414f33c9757e7b22a911851ee7d0c24c17cac998dba0491d"
+    },
+    {
+      "kind": "administrative-schema",
+      "path": "schema/administrative-operations.tql",
+      "sha256": "8e312398800c51a81144f167cdf1c1dfa41d1c52b927ca612d85157eed112196"
+    },
+    {
+      "kind": "schema",
+      "path": "schema/gistCore.tql",
+      "sha256": "78918bdd5073e0c90c7f9e94b4c9b8a37c897e13206aa12ace527abe2a65727c"
+    },
+    {
+      "kind": "domain-seeds",
+      "path": "data/gistCore-domain-seeds.tql",
+      "sha256": "ec962da5d1d4b5fb0ca0b53e2b2026568bf1e5710a45b567b3f8eb6b747fbf4a"
+    },
+    {
+      "kind": "provenance-seeds",
+      "path": "data/gistCore-provenance.tql",
+      "sha256": "be344699974d97d8db972f042b44402ccb81b4464b069a233520de4edbb1778a"
+    },
+    {
+      "kind": "documentation",
+      "path": "data/gistCore-schema-docs.tql",
+      "sha256": "5ef8a80659fb028fb8e02cf47a242958e958dcf40192952e763ff16173a04ded"
+    },
+    {
+      "kind": "axiom-query-library",
+      "path": "queries/gistCore-axioms.tql",
+      "sha256": "dddf2dbd34b93801009812a78d0fc4cacb5e51d852796bb131659c9084d39a69"
+    },
+    {
+      "kind": "axiom-query-index",
+      "path": "manifests/gist-v2.0.1.axiom-queries.json",
+      "sha256": "1d6593902f9b90f08330fcb274ad83f156fec5300207254fabde0e0ea9d35f1a"
+    },
+    {
+      "kind": "ir-summary",
+      "path": "manifests/gist-v2.0.1.ir-summary.json",
+      "sha256": "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b"
+    },
+    {
+      "kind": "translation-report",
+      "path": "manifests/gist-v2.0.1.translation-report.json",
+      "sha256": "acd1887342026ff6308216b06e09b8e9131858d7775f6c6e97ae7a9fff5a0923"
+    }
+  ],
+  "package": {
+    "name": "gist",
+    "version": "2.0.1"
+  },
+  "upstream": {
+    "repoUrl": "https://github.com/semanticarts/gist",
+    "tag": "v14.0.0",
+    "commit": "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
+    "sourceArtifacts": [
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistCore.ttl",
+        "sha256": "4fc4ce044544f4b1b4b65015bbb3a31788665c0bd7810e1075fefef00963d672"
+      },
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl",
+        "sha256": "270a859d195f6d5f0c76fccaf2ad17b1fbc62ee8c2f9280b4389b48a7d24eb20"
+      },
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl",
+        "sha256": "48ad0101e810b023b6731dff803ca5f6a03dbcdd8ce012cff4e0d104fc3cf64b"
+      },
+      {
+        "path": "upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl",
+        "sha256": "9b41f18d17846b87be815b48e6e06631c0faea8244596ade9dbc5751cfd5cff5"
+      }
+    ]
+  },
+  "generator": {
+    "name": "gist-structural-emitter",
+    "version": "0.5.0",
+    "generatedAt": "2026-04-08T12:58:42Z"
+  }
+}
