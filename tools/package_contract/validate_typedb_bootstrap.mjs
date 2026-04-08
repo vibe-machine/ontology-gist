@@ -58,9 +58,10 @@ function classifyAssemblyAssets(manifest) {
 }
 
 function rewriteChunk(text, keyword, variablePrefix) {
+  const sanitizedPrefix = variablePrefix.replace(/[^A-Za-z0-9_]+/g, "_");
   let chunk = text.replace(/^#.*\n/gm, "");
   chunk = chunk.replace(new RegExp(`^\\s*${keyword}\\s*\\n`, "i"), "");
-  chunk = chunk.replace(/\$([A-Za-z][A-Za-z0-9_]*)/g, `\$${variablePrefix}_$1`);
+  chunk = chunk.replace(/\$([A-Za-z][A-Za-z0-9_]*)/g, `\$${sanitizedPrefix}_$1`);
   return chunk.trim();
 }
 
@@ -179,74 +180,150 @@ function runTypedbScript(typedb, grpcPort, scriptPath, cwd) {
   );
 }
 
-// ── Put-statement batching ─────────────────────────────────────────
-
-const BATCH_SIZE = 50;
-
-function splitPutStatements(text) {
-  const stmts = [];
-  let cur = "";
-  for (const line of text.split("\n")) {
-    const t = line.trim();
-    if (t.startsWith("#") || t === "") continue;
-    if (t.startsWith("put ") && cur) { stmts.push(cur.trim()); cur = line; }
-    else { cur += (cur ? "\n" : "") + line; }
-  }
-  if (cur.trim()) stmts.push(cur.trim());
-  return stmts;
+function declaredVariablesForBlock(block) {
+  return [...block.matchAll(/\$([A-Za-z][A-Za-z0-9_]*)\s+isa\b/g)].map((match) => match[1]);
 }
 
-function groupPutStatements(stmts) {
-  const groups = [];
-  let g = null;
-  for (const s of stmts) {
-    const m = s.match(/^put\s+\$(\w+)\s+isa\s+(\w+)/);
-    if (m) { if (g) groups.push(g); g = { variable: m[1], statements: [s] }; }
-    else if (g && s.includes(`$${g.variable}`)) { g.statements.push(s); }
-    else { if (g) groups.push(g); g = { variable: null, statements: [s] }; }
-  }
-  if (g) groups.push(g);
-  return groups;
+function referencedVariablesForBlock(block) {
+  return [...block.matchAll(/\$([A-Za-z][A-Za-z0-9_]*)/g)].map((match) => match[1]);
 }
 
-function findPreambles(allGroups) {
-  const defs = new Map();
-  for (const g of allGroups) if (g.variable) defs.set(g.variable, g);
-  const needed = new Set();
-  for (const g of allGroups) {
-    for (const m of g.statements.join("\n").matchAll(/\$(\w+)/g)) {
-      if (m[1] !== g.variable && defs.has(m[1])) needed.add(m[1]);
+function atomicWriteBlocks(trimmed) {
+  const blocks = trimmed
+    .split(/\n\s*\n+/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  if (blocks.length > 1) {
+    return blocks;
+  }
+
+  const statements = trimmed.match(/[\s\S]*?;/g) ?? [];
+  if (statements.length === 0) {
+    return [trimmed];
+  }
+
+  const statementBlocks = [];
+  for (let index = 0; index < statements.length; index++) {
+    const current = statements[index].trim();
+    const referencedVariables = referencedVariablesForBlock(current);
+    const blockStatements = [current];
+    const next = statements[index + 1]?.trim();
+    if (
+      next &&
+      (next.startsWith("put (") || next.startsWith("match")) &&
+      referencedVariables.some((name) => next.includes(`$${name}`))
+    ) {
+      blockStatements.push(next);
+      index += 1;
     }
+    statementBlocks.push(blockStatements.join("\n"));
   }
-  return allGroups.filter((g) => g.variable && needed.has(g.variable));
+
+  return statementBlocks;
 }
 
-async function writeDataBatchFiles(writeAssets, tempDir) {
-  let allText = "";
-  for (const [index, asset] of writeAssets.entries()) {
-    const text = await fs.readFile(path.join(asset.packageRoot, asset.relativePath), "utf8");
-    const chunk = rewriteChunk(text, "insert", `write${index + 1}`);
-    if (chunk) allText += chunk + "\n\n";
+function contextualBlockChunks(blocks, maxBlocks = 5) {
+  if (blocks.length <= maxBlocks) {
+    return [blocks.join("\n\n").trim()].filter(Boolean);
   }
 
-  const groups = groupPutStatements(splitPutStatements(allText));
-  if (groups.length === 0) return [];
+  const declarationIndexByVariable = new Map();
+  blocks.forEach((block, index) => {
+    for (const variable of declaredVariablesForBlock(block)) {
+      if (!declarationIndexByVariable.has(variable)) {
+        declarationIndexByVariable.set(variable, index);
+      }
+    }
+  });
 
-  const preambles = findPreambles(groups);
-  const preambleVars = new Set(preambles.map((g) => g.variable));
-  const contentGroups = groups.filter((g) => !preambleVars.has(g.variable));
-  const preambleText = preambles.flatMap((g) => g.statements).join("\n\n");
+  const chunks = [];
+  for (let start = 0; start < blocks.length; start += maxBlocks) {
+    const end = Math.min(start + maxBlocks, blocks.length);
+    const selectedIndexes = new Set();
+    for (let index = start; index < end; index += 1) {
+      selectedIndexes.add(index);
+    }
 
-  const batchFiles = [];
-  for (let i = 0; i < contentGroups.length; i += BATCH_SIZE) {
-    const batch = contentGroups.slice(i, i + BATCH_SIZE);
-    const body = batch.flatMap((g) => g.statements).join("\n\n");
-    const text = preambleText ? `${preambleText}\n\n${body}\n` : `${body}\n`;
-    const filePath = path.join(tempDir, `data-batch-${batchFiles.length}.tql`);
-    await fs.writeFile(filePath, text, "utf8");
-    batchFiles.push(filePath);
+    const contextIndexes = new Set();
+    const pending = [];
+    for (let index = start; index < end; index += 1) {
+      for (const variable of referencedVariablesForBlock(blocks[index])) {
+        const declarationIndex = declarationIndexByVariable.get(variable);
+        if (declarationIndex !== undefined && declarationIndex < start) {
+          pending.push(declarationIndex);
+        }
+      }
+    }
+
+    while (pending.length > 0) {
+      const declarationIndex = pending.pop();
+      if (declarationIndex === undefined || selectedIndexes.has(declarationIndex) || contextIndexes.has(declarationIndex)) {
+        continue;
+      }
+      contextIndexes.add(declarationIndex);
+      for (const variable of referencedVariablesForBlock(blocks[declarationIndex])) {
+        const dependencyIndex = declarationIndexByVariable.get(variable);
+        if (
+          dependencyIndex !== undefined
+          && dependencyIndex < start
+          && !selectedIndexes.has(dependencyIndex)
+          && !contextIndexes.has(dependencyIndex)
+        ) {
+          pending.push(dependencyIndex);
+        }
+      }
+    }
+
+    const orderedIndexes = [...contextIndexes, ...selectedIndexes].sort((lhs, rhs) => lhs - rhs);
+    chunks.push(orderedIndexes.map((index) => blocks[index]).join("\n\n").trim());
   }
-  return batchFiles;
+
+  return chunks.filter(Boolean);
+}
+
+function splitWriteChunk(chunk, maxBlocks = 5) {
+  const trimmed = chunk.trim();
+  if (!/^put\b/m.test(trimmed) && !/^match\b/m.test(trimmed)) {
+    return [trimmed];
+  }
+
+  const blocks = atomicWriteBlocks(trimmed);
+  return contextualBlockChunks(blocks, maxBlocks);
+}
+
+function chunkingError(output) {
+  return output.includes("broken pipe")
+    || output.includes("stream closed")
+    || output.includes("h2 protocol error");
+}
+
+async function applyWriteChunk(typedb, grpcPort, tempDir, databaseName, chunk, context, maxBlocks = 5) {
+  const chunks = splitWriteChunk(chunk, maxBlocks);
+
+  for (const [index, writeChunk] of chunks.entries()) {
+    const dataFile = path.join(tempDir, `${context.replaceAll(/[^A-Za-z0-9_-]+/g, "_")}-${maxBlocks}-${index + 1}.tql`);
+    await fs.writeFile(dataFile, `${writeChunk}\n`, "utf8");
+    const loadScript = path.join(tempDir, `${context.replaceAll(/[^A-Za-z0-9_-]+/g, "_")}-${maxBlocks}-${index + 1}-load.tql`);
+    await fs.writeFile(
+      loadScript,
+      `transaction write ${databaseName}\n\nsource ${dataFile}\n\ncommit\n\nexit\n`,
+      "utf8"
+    );
+
+    const load = runTypedbScript(typedb, grpcPort, loadScript, root);
+    if (load.status === 0) {
+      continue;
+    }
+
+    const output = `${load.stdout}\n${load.stderr}`;
+    if (maxBlocks > 1 && chunkingError(output)) {
+      await applyWriteChunk(typedb, grpcPort, tempDir, databaseName, writeChunk, `${context}-retry-${index + 1}`, Math.max(1, Math.floor(maxBlocks / 2)));
+      continue;
+    }
+
+    assertCondition(false, `TypeDB data chunk load failed (${context} chunk ${index + 1}):\n${output}`);
+  }
 }
 
 async function main() {
@@ -272,8 +349,6 @@ async function main() {
   const databaseName = `ontology_pkg_${process.pid}`;
 
   await writeMergedQueryFile("define", schemaAssets, mergedSchema);
-  const dataBatchFiles = await writeDataBatchFiles(writeAssets, typedbTemp);
-
   let typedbServer;
   try {
     typedbServer = await startTypedbServer(typedbTemp);
@@ -285,12 +360,12 @@ async function main() {
     const schemaResult = runTypedbScript(typedb, grpcPort, schemaScript, root);
     assertCondition(schemaResult.status === 0, `TypeDB schema load failed:\n${schemaResult.stdout}\n${schemaResult.stderr}`);
 
-    // Load data in batches
-    for (const batchFile of dataBatchFiles) {
-      const batchScript = path.join(typedbTemp, `batch-${path.basename(batchFile)}.tql`);
-      await fs.writeFile(batchScript, `transaction write ${databaseName}\n\nsource ${batchFile}\n\ncommit\n\nexit\n`, "utf8");
-      const batchResult = runTypedbScript(typedb, grpcPort, batchScript, root);
-      assertCondition(batchResult.status === 0, `TypeDB data batch load failed:\n${batchResult.stdout}\n${batchResult.stderr}`);
+    for (const [index, asset] of writeAssets.entries()) {
+      const text = await fs.readFile(path.join(asset.packageRoot, asset.relativePath), "utf8");
+      const chunk = rewriteChunk(text, "insert", `write${index + 1}`);
+      if (!chunk) continue;
+      console.log(`Loading write asset ${index + 1}/${writeAssets.length} (${asset.relativePath})`);
+      await applyWriteChunk(typedb, grpcPort, typedbTemp, databaseName, chunk, `asset-${index + 1}`);
     }
 
     for (const packageName of orderedNames) {

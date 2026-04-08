@@ -1,10 +1,10 @@
 {
   "name": "gist",
   "displayName": "gist Upper Ontology",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
   "scripts": {
-    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v2.0.1.ir-summary.json",
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v2.0.2.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
     "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
@@ -46,8 +46,8 @@
     "queries/gistCore-axioms.tql"
   ],
   "manifests": [
-    "manifests/gist-v2.0.1.translation-manifest.json",
-    "manifests/gist-v2.0.1.axiom-queries.json"
+    "manifests/gist-v2.0.2.translation-manifest.json",
+    "manifests/gist-v2.0.2.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
@@ -68,10 +68,39 @@
       "data/gistCore-provenance.tql",
       "data/gistCore-schema-docs.tql",
       "queries/gistCore-axioms.tql",
-      "manifests/gist-v2.0.1.axiom-queries.json",
-      "manifests/gist-v2.0.1.translation-manifest.json",
-      "manifests/gist-v2.0.1.translation-report.json",
-      "manifests/gist-v2.0.1.ir-summary.json"
+      "manifests/gist-v2.0.2.axiom-queries.json",
+      "manifests/gist-v2.0.2.translation-manifest.json",
+      "manifests/gist-v2.0.2.translation-report.json",
+      "manifests/gist-v2.0.2.ir-summary.json"
+    ]
+  },
+  "migration": {
+    "format": 1,
+    "supportsUpgradeFrom": [
+      "2.0.x"
+    ],
+    "plans": [
+      {
+        "id": "gist-2.0.x-to-2.0.2",
+        "from": ">=2.0.0 <2.0.2",
+        "to": "2.0.2",
+        "mode": "compatible",
+        "snapshot": {
+          "required": true,
+          "label": "pre-gist-2.0.2-migration"
+        },
+        "phases": [
+          {
+            "id": "write",
+            "units": [
+              {
+                "kind": "write",
+                "path": "migrations/v2.0.0-to-v2.0.2.tql"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "upstream": {
@@ -86,7 +115,7 @@
     ]
   },
   "provenance": {
-    "manifest": "manifests/gist-v2.0.1.translation-manifest.json",
+    "manifest": "manifests/gist-v2.0.2.translation-manifest.json",
     "status": "bootstrap"
   },
   "devDependencies": {
