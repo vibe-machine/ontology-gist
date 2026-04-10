@@ -99,30 +99,6 @@ function findPreambles(allGroups) {
   return allGroups.filter((g) => g.variable && needed.has(g.variable));
 }
 
-async function writeDataBatchFiles(relPaths, tempDir) {
-  let allText = "";
-  for (const relPath of relPaths) {
-    allText += await fs.readFile(path.join(root, relPath), "utf8") + "\n";
-  }
-
-  const groups = groupPutStatements(splitPutStatements(allText));
-  const preambles = findPreambles(groups);
-  const preambleVars = new Set(preambles.map((g) => g.variable));
-  const contentGroups = groups.filter((g) => !preambleVars.has(g.variable));
-  const preambleText = preambles.flatMap((g) => g.statements).join("\n\n");
-
-  const batchFiles = [];
-  for (let i = 0; i < contentGroups.length; i += BATCH_SIZE) {
-    const batch = contentGroups.slice(i, i + BATCH_SIZE);
-    const body = batch.flatMap((g) => g.statements).join("\n\n");
-    const text = preambleText ? `${preambleText}\n\n${body}\n` : `${body}\n`;
-    const filePath = path.join(tempDir, `data-batch-${batchFiles.length}.tql`);
-    await fs.writeFile(filePath, text, "utf8");
-    batchFiles.push(filePath);
-  }
-  return batchFiles;
-}
-
 function extractNamedQueries(text) {
   const blocks = new Map();
   let currentName = null;
@@ -356,7 +332,6 @@ async function main() {
   const typedbTemp = await fs.mkdtemp(path.join(os.tmpdir(), "gist-typedb-validate-"));
   const mergedSchema = path.join(typedbTemp, "merged-schema.tql");
   await writeMergedQueryFile("define", pkg.schemas.map((schema) => schema.file), mergedSchema);
-  const dataBatchFiles = await writeDataBatchFiles(pkg.data, typedbTemp);
 
   const dbName = `gist_validate_${process.pid}`;
   const typedbBin = path.join(process.env.HOME ?? "", ".typedb", "typedb");
@@ -382,12 +357,16 @@ async function main() {
     );
     await assertCondition(schemaResult.status === 0, `TypeDB schema load failed:\n${schemaResult.stdout}\n${schemaResult.stderr}`);
 
-    // Load data in batches to avoid stack overflow
-    for (const batchFile of dataBatchFiles) {
+    // Load write assets exactly as the package publishes them.
+    for (const relativePath of pkg.data) {
+      const assetPath = path.join(root, relativePath);
       const dataResult = runConsoleScript(grpcPort,
-        `transaction write ${dbName}\n\nsource ${batchFile}\n\ncommit\n\nexit\n`
+        `transaction write ${dbName}\n\nsource ${assetPath}\n\ncommit\n\nexit\n`
       );
-      await assertCondition(dataResult.status === 0, `TypeDB data batch load failed:\n${dataResult.stdout}\n${dataResult.stderr}`);
+      await assertCondition(
+        dataResult.status === 0,
+        `TypeDB write asset load failed (${relativePath}):\n${dataResult.stdout}\n${dataResult.stderr}`
+      );
     }
 
     const queryScriptPath = path.join(typedbTemp, "query-script.tql");
