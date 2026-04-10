@@ -1,0 +1,247 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+# Provenance bootstrap
+# upstream-repo: https://github.com/semanticarts/gist
+# upstream-tag: v14.0.0
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+# source-artifacts:
+# - upstream/gist/v14.0.0/ontologies/gistCore.ttl
+# - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
+# - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
+# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# generator: gist-schema-docs-emitter/1.0.0
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $r1 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#SchemaModule",
+  has iri "https://vibe-machine.github.io/schema/self-describing#SchemaModule",
+  has typeLabel "SchemaModule",
+  has kind "entity",
+  has prefLabel "Schema Module",
+  has definition "A named ontology module installed in the live database.",
+  has scopeNote "Used to organize SchemaResource records by package or ontology layer.";
+put (resource: $r1, module: $gist_core) isa inModule;
+
+put $r2 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#SchemaView",
+  has iri "https://vibe-machine.github.io/schema/self-describing#SchemaView",
+  has typeLabel "SchemaView",
+  has kind "entity",
+  has prefLabel "Schema View",
+  has definition "A named organizational perspective for browsing or presenting documented schema resources.",
+  has scopeNote "Examples include Domain View, Workflow View, and Ontology View.";
+put (resource: $r2, module: $gist_core) isa inModule;
+
+put $r3 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#SchemaGroup",
+  has iri "https://vibe-machine.github.io/schema/self-describing#SchemaGroup",
+  has typeLabel "SchemaGroup",
+  has kind "entity",
+  has prefLabel "Schema Group",
+  has definition "A named grouping of documented schema resources within a particular schema view.",
+  has scopeNote "A schema resource may appear in multiple schema groups across different views.";
+put (resource: $r3, module: $gist_core) isa inModule;
+
+put $r4 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#SchemaResource",
+  has iri "https://vibe-machine.github.io/schema/self-describing#SchemaResource",
+  has typeLabel "SchemaResource",
+  has kind "entity",
+  has prefLabel "Schema Resource",
+  has definition "A queryable documentation record for a schema type, role, or related resource.",
+  has scopeNote "The schema browser combines SchemaResource documentation with structural metadata relations.";
+put (resource: $r4, module: $gist_core) isa inModule;
+
+put $r5 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#roleName",
+  has iri "https://vibe-machine.github.io/schema/self-describing#roleName",
+  has typeLabel "roleName",
+  has kind "attribute",
+  has prefLabel "role name",
+  has definition "The local role label for a role SchemaResource.";
+put (resource: $r5, module: $gist_core) isa inModule;
+
+put $r6 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#valueTypeName",
+  has iri "https://vibe-machine.github.io/schema/self-describing#valueTypeName",
+  has typeLabel "valueTypeName",
+  has kind "attribute",
+  has prefLabel "value type name",
+  has definition "For attribute SchemaResources, the TypeQL primitive value type carried by the attribute.";
+put (resource: $r6, module: $gist_core) isa inModule;
+
+put $r7 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#inModule",
+  has iri "https://vibe-machine.github.io/schema/self-describing#inModule",
+  has typeLabel "inModule",
+  has kind "relation",
+  has prefLabel "in module",
+  has definition "Associates a documented schema resource with the ontology module that publishes it.";
+put (resource: $r7, module: $gist_core) isa inModule;
+
+put $r8 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#groupInView",
+  has iri "https://vibe-machine.github.io/schema/self-describing#groupInView",
+  has typeLabel "groupInView",
+  has kind "relation",
+  has prefLabel "group in view",
+  has definition "Associates a schema group with the schema view in which it appears.";
+put (resource: $r8, module: $gist_core) isa inModule;
+
+put $r9 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#resourceInGroup",
+  has iri "https://vibe-machine.github.io/schema/self-describing#resourceInGroup",
+  has typeLabel "resourceInGroup",
+  has kind "relation",
+  has prefLabel "resource in group",
+  has definition "Associates a documented schema resource with a schema group for a particular browsing view.";
+put (resource: $r9, module: $gist_core) isa inModule;
+
+put $r10 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#schemaSubTypeOf",
+  has iri "https://vibe-machine.github.io/schema/self-describing#schemaSubTypeOf",
+  has typeLabel "schemaSubTypeOf",
+  has kind "relation",
+  has prefLabel "schema subtype of",
+  has definition "Associates a schema resource with its direct supertype in queryable metadata.";
+put (resource: $r10, module: $gist_core) isa inModule;
+
+put $r11 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#schemaOwns",
+  has iri "https://vibe-machine.github.io/schema/self-describing#schemaOwns",
+  has typeLabel "schemaOwns",
+  has kind "relation",
+  has prefLabel "schema owns",
+  has definition "Associates a schema resource with an attribute it explicitly owns.";
+put (resource: $r11, module: $gist_core) isa inModule;
+
+put $r12 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#schemaPlays",
+  has iri "https://vibe-machine.github.io/schema/self-describing#schemaPlays",
+  has typeLabel "schemaPlays",
+  has kind "relation",
+  has prefLabel "schema plays",
+  has definition "Associates a schema resource with a relation role it explicitly plays.";
+put (resource: $r12, module: $gist_core) isa inModule;
+
+put $r13 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/self-describing#schemaRelates",
+  has iri "https://vibe-machine.github.io/schema/self-describing#schemaRelates",
+  has typeLabel "schemaRelates",
+  has kind "relation",
+  has prefLabel "schema relates",
+  has definition "Associates a relation schema resource with one of its explicit role definitions.";
+put (resource: $r13, module: $gist_core) isa inModule;
+
+put $r14 isa SchemaResource,
+  has docKey "http://www.w3.org/2002/07/owl#Thing",
+  has iri "http://www.w3.org/2002/07/owl#Thing",
+  has typeLabel "Thing",
+  has kind "entity",
+  has prefLabel "Thing",
+  has definition "The universal root type. All gist entities are direct or indirect subtypes of Thing.";
+put (resource: $r14, module: $gist_core) isa inModule;
+
+put $r15 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+  has typeLabel "Account",
+  has kind "entity",
+  has prefLabel "Account",
+  has definition "An agreement having a balance.",
+  has example "A bank account, a credit card account, an accounts receivable account.";
+put (resource: $r15, module: $gist_core) isa inModule;
+
+put $r16 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+  has typeLabel "Address",
+  has kind "entity",
+  has prefLabel "Address",
+  has definition "A reference to a place (real or virtual) that can be located by some routing algorithm and where messages or things can be sent or received.",
+  has example "A PO Box, a URL to a PDF file.";
+put (resource: $r16, module: $gist_core) isa inModule;
+
+put $r17 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/AddressUsageType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/AddressUsageType",
+  has typeLabel "AddressUsageType",
+  has kind "entity",
+  has prefLabel "Address Usage Type",
+  has definition "A category indicating the context or manner in which an address may be used.",
+  has scopeNote "If you are using temporal relations involving addresses, this category should be used to qualify the temporal relation rather than the address itself, since the same address may have different uses in different contexts, by different people and organizations, or at different times.",
+  has example "Billing, business, personal, postal, residence.";
+put (resource: $r17, module: $gist_core) isa inModule;
+
+put $r18 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+  has typeLabel "Agreement",
+  has kind "entity",
+  has prefLabel "Agreement",
+  has definition "A mutually understood arrangement in which two or more parties make commitments to one another.",
+  has scopeNote "While an agreement has two or more parties, and contains commitments which bind those parties, it will not always be necessary to instantiate each individual commitment.",
+  has example "A gym membership is an agreement in which the member commits to paying the gym a certain price and the gym commits to allowing access to their facilities.";
+put (resource: $r18, module: $gist_core) isa inModule;
+
+put $r19 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Aspect",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Aspect",
+  has typeLabel "Aspect",
+  has kind "entity",
+  has prefLabel "Aspect",
+  has definition "A measurable characteristic.",
+  has scopeNote "Depending on implementation, every aspect should be related to a unit group either directly or through a broader aspect. For example, angle of incidence could be related to the broader concept of angle, which in turn is related to a unit group, or it could be related directly to the unit group without the hierarchical relationship.",
+  has example "Length, weight, cost, cycle time, defect rate.";
+put (resource: $r19, module: $gist_core) isa inModule;
+
+put $r20 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+  has typeLabel "Assignment",
+  has kind "entity",
+  has prefLabel "Assignment",
+  has definition "A temporal relationship between an assignee, the thing assigned, and the resource that made the assignment.",
+  has scopeNote "Based on the Open World Assumption, the assigner may not be asserted or known.",
+  has scopeNote "For some assignments, such as the assignment of a person to a task, it may seem equally correct in ordinary speech to say it is an assignment of a task to a person. Since gist:isAssignmentTo and gist:isAssignmentOf have no formal domains or ranges, the choice of which predicate to use for which is left as an implementation decision. Consistency is a key consideration.",
+  has example "An employee is assigned to a task by a supervisor. A person is assigned to a position.";
+put (resource: $r20, module: $gist_core) isa inModule;
+
+put $r21 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Behavior",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Behavior",
+  has typeLabel "Behavior",
+  has kind "entity",
+  has prefLabel "Behavior",
+  has definition "A category indicating the nature of an activity.",
+  has example "Drilling and cutting are two different kinds of manufacturing event.";
+put (resource: $r21, module: $gist_core) isa inModule;
+
+put $r22 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Building",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Building",
+  has typeLabel "Building",
+  has kind "entity",
+  has prefLabel "Building",
+  has definition "A relatively permanent man-made structure situated on a plot of land, having a roof and walls, commonly used for dwelling, entertaining, or working.",
+  has scopeNote "User discretion can be applied to edge cases: e.g., is a traditional yurt 'relatively permanently situated' although it is portable and has a tent-like construction?",
+  has example "A house, school, store, factory, chicken coop.",
+  has example "Negative examples: houseboats (not built on land), caves (not man-made), food trucks and RVs (not permanently situated).";
+put (resource: $r22, module: $gist_core) isa inModule;
+
+put $r23 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+  has typeLabel "BundledCatalogItem",
+  has kind "entity",
+  has prefLabel "Bundled Catalog Item",
+  has definition "Any combination of descriptions of things offered together.",
+  has example "A kit containing several parts offered together; a product plus a warranty.";
+put (resource: $r23, module: $gist_core) isa inModule;

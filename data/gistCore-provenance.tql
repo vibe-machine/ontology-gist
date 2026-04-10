@@ -7,7 +7,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v2.0.3.translation-manifest.json
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
 # generator: gist-structural-emitter/0.5.0
 
 put $module isa OntologyModule,
@@ -15,13 +15,13 @@ put $module isa OntologyModule,
   has moduleRepoUrl "https://github.com/semanticarts/gist";
 
 put $version isa OntologyModuleVersion,
-  has moduleVersionKey "https://github.com/semanticarts/gist@2.0.3",
-  has moduleVersion "2.0.3",
+  has moduleVersionKey "https://github.com/semanticarts/gist@2.0.4",
+  has moduleVersion "2.0.4",
   has upstreamCommit "6ab80c158a7fa56a1b5d3d824b125b92107e8f08",
-  has manifestPath "manifests/gist-v2.0.3.translation-manifest.json",
+  has manifestPath "manifests/gist-v2.0.4.translation-manifest.json",
   has generatorName "gist-structural-emitter",
   has generatorVersion "0.5.0",
-  has generatedAt "2026-04-08T16:12:46Z";
+  has generatedAt "2026-04-10T14:30:45Z";
 put (version: $version, module: $module) isa ontologyModuleVersionOf;
 
 put $s1 isa SourceArtifactRecord,
@@ -47,59 +47,59 @@ put (version: $version, sourceArtifact: $s4) isa ontologyModuleVersionBasedOnSou
 put $g1 isa GeneratedArtifactRecord,
   has artifactPath "schema/self-describing-schema.tql",
   has artifactKind "meta-schema",
-  has artifactSha256 "f1c674f3f6a07f92d88213d740bf86294b0a29b2523fad5ac8b5e40d0f74a6ba";
+  has artifactSha256 "f9899399e6836771e453a331f91beb489fc5c0d11dee0860ff39274aed0411ae";
 put (generatedArtifact: $g1, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g2 isa GeneratedArtifactRecord,
   has artifactPath "schema/package-provenance.tql",
   has artifactKind "provenance-schema",
-  has artifactSha256 "7e71486fe25ddedab2f5606dc6fe0a9d633753584f38a4c1e50242be12cf114a";
+  has artifactSha256 "783c156dd3e875a98889b9cb7dcba83cba8b8733217c9a3f3d283ca4cb459300";
 put (generatedArtifact: $g2, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g3 isa GeneratedArtifactRecord,
   has artifactPath "schema/administrative-operations.tql",
   has artifactKind "administrative-schema",
-  has artifactSha256 "4811099fa0ce30b2d2a7ad7a935564a73755b668a59318f73fa982625d94ac72";
+  has artifactSha256 "7572734440cdfa65ad3bd7987e967eb8938d39588f60eecf84da3c00e452f15a";
 put (generatedArtifact: $g3, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g4 isa GeneratedArtifactRecord,
   has artifactPath "schema/gistCore.tql",
   has artifactKind "schema",
-  has artifactSha256 "30e881d2ce72b09ed25b8da9a181143c5f7477a84ff1acc3370c97a1c6b2fc98";
+  has artifactSha256 "de8cde3e8fbf30945f4120359b02a61b2bed7a6dbd4610d2da63b5c502167491";
 put (generatedArtifact: $g4, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g5 isa GeneratedArtifactRecord,
   has artifactPath "data/gistCore-domain-seeds.tql",
   has artifactKind "domain-seeds",
-  has artifactSha256 "d68392f1fb0690f83fb9b7415d04c72f8522c7ba547eb562c0da84c348a97662";
+  has artifactSha256 "44fa42cc30e7c540ba4702f0abf4c384e3ec861f1ed47c0995aa271427cc206e";
 put (generatedArtifact: $g5, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g6 isa GeneratedArtifactRecord,
   has artifactPath "data/gistCore-schema-docs.tql",
   has artifactKind "documentation",
-  has artifactSha256 "d3ce24226c82eef994e77725404452d81301fdd4b1c9400f6d726137cb7db31a";
+  has artifactSha256 "5bd74eb65e61636ef298f995bfc25bfba604d7871fd393c815620e6589495094";
 put (generatedArtifact: $g6, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g7 isa GeneratedArtifactRecord,
   has artifactPath "queries/gistCore-axioms.tql",
   has artifactKind "axiom-query-library",
-  has artifactSha256 "b8ec5b1381cabfb5652512c04a76de88c4b6df32bef5d50b57aa50a7a1a28b66";
+  has artifactSha256 "e6545551a0171286e1da0f0b626d3782a74f1e7c53130e624562b9f1f904d544";
 put (generatedArtifact: $g7, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g8 isa GeneratedArtifactRecord,
-  has artifactPath "manifests/gist-v2.0.3.axiom-queries.json",
+  has artifactPath "manifests/gist-v2.0.4.axiom-queries.json",
   has artifactKind "axiom-query-index",
-  has artifactSha256 "550f9bb4518a90fbaf55a1bec8455f07372029e958751ee1aa70db3a94d6ca91";
+  has artifactSha256 "fb25e9d4db72d6a059044fdc0d2f71190319d05905c366cd26e1cba5f634ea66";
 put (generatedArtifact: $g8, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g9 isa GeneratedArtifactRecord,
-  has artifactPath "manifests/gist-v2.0.3.ir-summary.json",
+  has artifactPath "manifests/gist-v2.0.4.ir-summary.json",
   has artifactKind "ir-summary",
   has artifactSha256 "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b";
 put (generatedArtifact: $g9, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g10 isa GeneratedArtifactRecord,
-  has artifactPath "manifests/gist-v2.0.3.translation-report.json",
+  has artifactPath "manifests/gist-v2.0.4.translation-report.json",
   has artifactKind "translation-report",
-  has artifactSha256 "1648602c8a32b5121a31906661551a8d97743a5d8395db25c1998774e386f9b6";
+  has artifactSha256 "abf25d74f3999327e66fd87aee7e49d39c2f6367d2c75c40d0bf95ce303d20ac";
 put (generatedArtifact: $g10, version: $version) isa generatedArtifactForOntologyModuleVersion;

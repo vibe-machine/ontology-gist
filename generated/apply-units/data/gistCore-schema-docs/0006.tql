@@ -1,0 +1,253 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $r120 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasAddress",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasAddress",
+  has typeLabel "hasAddress",
+  has kind "relation",
+  has prefLabel "has address",
+  has definition "Relates something to its physical or electronic address.",
+  has example "A brick-and-mortar store has a street address; a person can be contacted electronically via an email address.";
+put (resource: $r120, module: $gist_core) isa inModule;
+
+put $r121 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasAspect",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasAspect",
+  has typeLabel "hasAspect",
+  has kind "relation",
+  has prefLabel "has aspect",
+  has definition "Relates a magnitude to its aspect (measurable characteristic).";
+put (resource: $r121, module: $gist_core) isa inModule;
+
+put $r122 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent",
+  has typeLabel "hasBiologicalParent",
+  has kind "relation",
+  has prefLabel "has biological parent",
+  has definition "Relates a living thing to its biological parent.";
+put (resource: $r122, module: $gist_core) isa inModule;
+
+put $r123 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader",
+  has typeLabel "hasBroader",
+  has kind "relation",
+  has prefLabel "has broader",
+  has definition "Relates a thing to another thing with a broader meaning.",
+  has example "The aspect distance is broader than the aspect height.";
+put (resource: $r123, module: $gist_core) isa inModule;
+
+put $r124 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader",
+  has typeLabel "hasDirectBroader",
+  has kind "relation",
+  has prefLabel "has direct broader",
+  has definition "Relates a thing to another thing with a broader meaning, when there is no intermediate between them.",
+  has scopeNote "Unlike gist:hasBroader, this property is not transitive. It is safest to use this property when semantic directness is inherent in the relationship. Otherwise, there is a risk of making a hasDirectBroader assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:hasBroader.";
+put (resource: $r124, module: $gist_core) isa inModule;
+
+put $r125 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor",
+  has typeLabel "hasDivisor",
+  has kind "relation",
+  has prefLabel "has divisor",
+  has definition "Relates a unit of measure to another unit of measure that is a divisor, or relates an aspect to another aspect that is a divisor.",
+  has scopeNote "Provides a supplemental method of decomposing a unit of measure or an aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles.",
+  has example "Miles per hour has miles as a multiplier and hour as a divisor; speed has distance as a multiplier and duration as a divisor.";
+put (resource: $r125, module: $gist_core) isa inModule;
+
+put $r126 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasGiver",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasGiver",
+  has typeLabel "hasGiver",
+  has kind "relation",
+  has prefLabel "has giver",
+  has definition "Relates something to the participant that provides it.",
+  has scopeNote "This property is often used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:comesFromAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift.",
+  has example "An offer is made by a giver; an obligation has a giver who is obligated to another person; a gift is presented by the giver.";
+put (resource: $r126, module: $gist_core) isa inModule;
+
+put $r127 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasGoal",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasGoal",
+  has typeLabel "hasGoal",
+  has kind "relation",
+  has prefLabel "has goal",
+  has definition "Relates something to the end towards which it directs effort.",
+  has example "The sales division of a company has the goal of acquiring new customers and contracts.";
+put (resource: $r127, module: $gist_core) isa inModule;
+
+put $r128 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent",
+  has typeLabel "hasIncumbent",
+  has kind "relation",
+  has prefLabel "has incumbent",
+  has definition "Relates a position to the thing or person that currently holds that position.",
+  has scopeNote "To create a temporal view, define a subclass of gist:TemporalRelation for this property (e.g., Incumbency).";
+put (resource: $r128, module: $gist_core) isa inModule;
+
+put $r129 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude",
+  has typeLabel "hasMagnitude",
+  has kind "relation",
+  has prefLabel "has magnitude",
+  has definition "Relates a thing to a magnitude.",
+  has example "A car or model of car has magnitudes for length, width, weight, average miles per gallon, etc.";
+put (resource: $r129, module: $gist_core) isa inModule;
+
+put $r130 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier",
+  has typeLabel "hasMultiplier",
+  has kind "relation",
+  has prefLabel "has multiplier",
+  has definition "Relates a unit of measure to another unit of measure that is a factor, or relates an aspect to another aspect that is a factor.",
+  has scopeNote "Provides a supplemental method of decomposing a unit of measure or aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles.",
+  has example "Miles per hour has miles as a multiplier and hours as a divisor; speed has distance as a multiplier and duration as a divisor.";
+put (resource: $r130, module: $gist_core) isa inModule;
+
+put $r131 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent",
+  has typeLabel "hasNavigationalParent",
+  has kind "relation",
+  has prefLabel "has navigational parent",
+  has definition "Relates a child category to a parent category in an informal (e.g., faceted) hierarchy.",
+  has example "Refrigerator handles are not refrigerators, but it may be useful to represent their relationship hierarchically for a faceted UI filter.";
+put (resource: $r131, module: $gist_core) isa inModule;
+
+put $r132 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant",
+  has typeLabel "hasParticipant",
+  has kind "relation",
+  has prefLabel "has participant",
+  has definition "Relates something (e.g. an agreement) to things that play a role, or take part or are otherwise involved in some way.",
+  has scopeNote "The thing with participants will often be an agreement, event or obligation. Participation does not imply agency.",
+  has scopeNote "This will most often be used as an abstract property. Use subproperties that indicate the nature of the participation (e.g. hasBorrower, hasVenue).",
+  has example "An event of transferring money has a participating account that receives the money.";
+put (resource: $r132, module: $gist_core) isa inModule;
+
+put $r133 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasParty",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasParty",
+  has typeLabel "hasParty",
+  has kind "relation",
+  has prefLabel "has party",
+  has definition "Relates an event, agreement, or obligation to a participating person or organization.",
+  has scopeNote "Subproperties may be defined to describe specific parties, such as hasLender and hasBorrower for a loan.",
+  has example "Loan agreements have lender and borrower parties.";
+put (resource: $r133, module: $gist_core) isa inModule;
+
+put $r134 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation",
+  has typeLabel "hasPhysicalLocation",
+  has kind "relation",
+  has prefLabel "has physical location",
+  has definition "Relates something to its physical location.",
+  has scopeNote "This property does not distinguish between things whose locations are stable and those whose locations change over time; e.g., a fire hydrant vs. a car.";
+put (resource: $r134, module: $gist_core) isa inModule;
+
+put $r135 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient",
+  has typeLabel "hasRecipient",
+  has kind "relation",
+  has prefLabel "has recipient",
+  has definition "Relates something to the participant that receives or is intended to receive it.",
+  has scopeNote "This property is used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:goesToAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift.",
+  has example "An offer is made to a recipient; an obligation has a recipient to whom another person is obligated; a gift is bestowed upon a recipient.";
+put (resource: $r135, module: $gist_core) isa inModule;
+
+put $r136 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend",
+  has typeLabel "hasSubtrahend",
+  has kind "relation",
+  has prefLabel "has subtrahend",
+  has definition "Relates an aspect to another aspect that is a subtracted component of it.",
+  has scopeNote "Commonly used with financial metrics.",
+  has example "In the equation 'profit = revenue - expenses', revenue is an addend and expenses is a subtrahend.";
+put (resource: $r136, module: $gist_core) isa inModule;
+
+put $r137 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
+  has typeLabel "hasUniqueBroader",
+  has kind "relation",
+  has prefLabel "has unique broader",
+  has definition "Relates a thing to a unique other thing with a broader meaning.";
+put (resource: $r137, module: $gist_core) isa inModule;
+
+put $r138 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
+  has typeLabel "hasUniqueNavigationalParent",
+  has kind "relation",
+  has prefLabel "has unique navigational parent",
+  has definition "Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy.";
+put (resource: $r138, module: $gist_core) isa inModule;
+
+put $r139 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup",
+  has typeLabel "hasUnitGroup",
+  has kind "relation",
+  has prefLabel "has unit group",
+  has definition "Relates an aspect to a unit group. The aspect can be measured using any of the members of the unit group.",
+  has example "The aspect distance can have a unit group that includes the units meter, inch, foot, etc.";
+put (resource: $r139, module: $gist_core) isa inModule;
+
+put $r140 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure",
+  has typeLabel "hasUnitOfMeasure",
+  has kind "relation",
+  has prefLabel "has unit of measure",
+  has definition "Relates a magnitude to its unit of measure.",
+  has example "The magnitude 87 inches of height has unit of measure inches.";
+put (resource: $r140, module: $gist_core) isa inModule;
+
+put $r141 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isAbout",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isAbout",
+  has typeLabel "isAbout",
+  has kind "relation",
+  has prefLabel "is about",
+  has definition "Subject matter of a document.";
+put (resource: $r141, module: $gist_core) isa inModule;
+
+put $r142 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy",
+  has typeLabel "isAffectedBy",
+  has kind "relation",
+  has prefLabel "is affected by",
+  has definition "Relates an affected thing to the source of the effect.";
+put (resource: $r142, module: $gist_core) isa inModule;
+
+put $r143 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy",
+  has typeLabel "isAllocatedBy",
+  has kind "relation",
+  has prefLabel "is allocated by",
+  has definition "Relates something to whomever or whatever assigns or distributes it.",
+  has scopeNote "The allocator may be a person, organization, or automated process.",
+  has example "A U.S. Social Security number is allocated by the U.S. Social Security Administration; the media type https://www.iana.org/assignments/media-types/text/csv is allocated by the Internet Assigned Numbers Authority (IANA).",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/ID";
+put (resource: $r143, module: $gist_core) isa inModule;

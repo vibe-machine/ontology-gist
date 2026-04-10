@@ -1,0 +1,259 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $r48 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/EventSpecification",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/EventSpecification",
+  has typeLabel "EventSpecification",
+  has kind "entity",
+  has prefLabel "Event Specification",
+  has definition "A characterization of an event that might happen.",
+  has scopeNote "This concept is useful for risk assessment and insurance policies.",
+  has example "An insurance company defines the characteristics of a weather event that must be satisfied for it to qualify as a hail storm covered in its homeowner's policy; a bank defines the point at which a borrower defaults on a loan.";
+put (resource: $r48, module: $gist_core) isa inModule;
+
+put $r49 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+  has typeLabel "FormattedContent",
+  has kind "entity",
+  has prefLabel "Formatted Content",
+  has definition "Content which is in a particular format.",
+  has example "An HTML website, a PDF document, a JPG image.";
+put (resource: $r49, module: $gist_core) isa inModule;
+
+put $r50 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Function",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Function",
+  has typeLabel "Function",
+  has kind "entity",
+  has prefLabel "Function",
+  has definition "The activity that a human-made item is intended to perform.",
+  has example "Transmit electricity, provide ballast, control ambient temperature.";
+put (resource: $r50, module: $gist_core) isa inModule;
+
+put $r51 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
+  has typeLabel "GeneralMediaType",
+  has kind "entity",
+  has prefLabel "General Media Type",
+  has definition "The real-world media type for content.",
+  has example "Audio, still image, video, textual, physical (e.g., a statue), performance (e.g., a play), oil or pastel for a painting.";
+put (resource: $r51, module: $gist_core) isa inModule;
+
+put $r52 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+  has typeLabel "GeoLocation",
+  has kind "entity",
+  has prefLabel "Geographic Location",
+  has definition "A physical location, with the earth as a frame of reference.",
+  has scopeNote "A geographic location may be a point, region, or volume.";
+put (resource: $r52, module: $gist_core) isa inModule;
+
+put $r53 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+  has typeLabel "GeoPoint",
+  has kind "entity",
+  has prefLabel "Geographic Point",
+  has definition "An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.";
+put (resource: $r53, module: $gist_core) isa inModule;
+
+put $r54 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+  has typeLabel "GeoRegion",
+  has kind "entity",
+  has prefLabel "Geographic Region",
+  has definition "A bounded region (or set of regions) on the surface of the Earth.",
+  has scopeNote "A geographic region could be non-contiguous; e.g., the region governed by the US federal government is the contiguous area of the lower 48 states plus Alaska, Hawaii, and overseas territories. Child classes in lower ontologies can make this distinction.",
+  has example "The bounded shape that defines the region occupied by Crater Lake; the bounded area known as the contiguous USA.";
+put (resource: $r54, module: $gist_core) isa inModule;
+
+put $r55 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+  has typeLabel "GeoRoute",
+  has kind "entity",
+  has prefLabel "Geographic Route",
+  has definition "An ordered set of geographic points that defines a path from a starting point to an ending point.",
+  has scopeNote "A geographic route could describe a bus route by identifying the points where the bus stops. A geographic route could describe the boundary of a polygonal geographic region (it does not have to be a travelled route).";
+put (resource: $r55, module: $gist_core) isa inModule;
+
+put $r56 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+  has typeLabel "GeoVolume",
+  has kind "entity",
+  has prefLabel "Geographic Volume",
+  has definition "A three-dimensional space on or near the surface of the Earth, such as an oil reservoir, the body of a lake, or an airspace.";
+put (resource: $r56, module: $gist_core) isa inModule;
+
+put $r57 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+  has typeLabel "GovernedGeoRegion",
+  has kind "entity",
+  has prefLabel "Governed Geographic Region",
+  has definition "A geographic region governed by at least one government organization.",
+  has scopeNote "Geographic regions do not need not be physically contiguous in order to constitute a governed geographic region; e.g., Alaska and Hawaii are part of the region governed by the United States.";
+put (resource: $r57, module: $gist_core) isa inModule;
+
+put $r58 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+  has typeLabel "GovernmentOrganization",
+  has kind "entity",
+  has prefLabel "Government Organization",
+  has definition "An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body.",
+  has scopeNote "Includes administrative, regulatory, and enforcement organizations created or sanctioned by country or sub-country governments.",
+  has example "Negative example: A corporation, which is owned and therefore not independent.",
+  has example "The State of Washington Office of Financial Management; the Food and Drug Administration; the Scottish Parliament.";
+put (resource: $r58, module: $gist_core) isa inModule;
+
+put $r59 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+  has typeLabel "HistoricalEvent",
+  has kind "entity",
+  has prefLabel "Historical Event",
+  has definition "An event which occurred in time, with an actual end earlier than the present moment.";
+put (resource: $r59, module: $gist_core) isa inModule;
+
+put $r60 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+  has typeLabel "ID",
+  has kind "entity",
+  has prefLabel "ID",
+  has definition "Content that is used to uniquely identify something or someone.",
+  has scopeNote "Used in conjunction with gist:isIdentifiedBy.",
+  has example "SSN for a person; serial number for a product; employee ID for a person.";
+put (resource: $r60, module: $gist_core) isa inModule;
+
+put $r61 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+  has typeLabel "IntellectualProperty",
+  has kind "entity",
+  has prefLabel "Intellectual Property",
+  has definition "An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.",
+  has scopeNote "For literature this could be called the 'Work', except that 'work' is a highly overloaded term (expenditure of energy, resource consumption, art).  Often the first expression precedes our recognition of the IP, but subsequent expressions are known to be derivatives of the IP, even if they are expression-to-expression translations (or copies).",
+  has scopeNote "This concept includes works that are out of copyright or were never formally registered; the defining feature is not that it is legally protected but that it is an intangible creation of the human mind.",
+  has example "The Old Man and The Sea; the Page Rank algorithm; the brand Coca Cola.";
+put (resource: $r61, module: $gist_core) isa inModule;
+
+put $r62 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+  has typeLabel "Intention",
+  has kind "entity",
+  has prefLabel "Intention",
+  has definition "A goal, desire, or aspiration.",
+  has scopeNote "The 'teleological' aspect of a system that indicates things are done with a purpose.";
+put (resource: $r62, module: $gist_core) isa inModule;
+
+put $r63 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+  has typeLabel "IntergovernmentalOrganization",
+  has kind "entity",
+  has prefLabel "Intergovernmental Organization",
+  has definition "An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities.",
+  has example "The United Nations, the European Union, the Metropolitan Transit Authority.";
+put (resource: $r63, module: $gist_core) isa inModule;
+
+put $r64 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept",
+  has typeLabel "KnowledgeConcept",
+  has kind "entity",
+  has prefLabel "Knowledge Concept",
+  has definition "An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.",
+  has scopeNote "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\n\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances.  Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\n\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge.  A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\n\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\n\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances.",
+  has example "Most domains will define a few subclasses, such as gene, protein, chemical, disease, subject matter, industry, method.";
+put (resource: $r64, module: $gist_core) isa inModule;
+
+put $r65 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
+  has typeLabel "Landmark",
+  has kind "entity",
+  has prefLabel "Landmark",
+  has definition "Something permanently attached to the Earth.",
+  has editorialNote "See guidance on removing the term in the next major release at https://github.com/semanticarts/gist/issues/947#issuecomment-1679566885.";
+put (resource: $r65, module: $gist_core) isa inModule;
+
+put $r66 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Language",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Language",
+  has typeLabel "Language",
+  has kind "entity",
+  has prefLabel "Language",
+  has definition "A recognized, organized set of symbols and grammar.",
+  has example "Natural languages such as English and Spanish; computer languages such as OWL, Python, and XML.";
+put (resource: $r66, module: $gist_core) isa inModule;
+
+put $r67 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+  has typeLabel "LivingThing",
+  has kind "entity",
+  has prefLabel "Living Thing",
+  has definition "Something that is currently, or at some point in time was, alive.",
+  has scopeNote "Not all life forms have exactly two parents, so the restriction only specifies a minimum of one.",
+  has example "A cat, a mushroom, a tree.",
+  has example "Negative examples: fictional life forms such as unicorns or Mickey Mouse.";
+put (resource: $r67, module: $gist_core) isa inModule;
+
+put $r68 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+  has typeLabel "Magnitude",
+  has kind "entity",
+  has prefLabel "Magnitude",
+  has definition "The amount of a measurable characteristic (aspect).",
+  has scopeNote "An accuracy can be assigned to a magnitude using the property has accuracy.",
+  has example "A model of car could have a wheelbase of 113.2 inches. In this example, the aspect is wheelbase, the unit of measure is inch, and the numeric value is 113.2.",
+  has seeAlso "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy";
+put (resource: $r68, module: $gist_core) isa inModule;
+
+put $r69 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+  has typeLabel "MediaType",
+  has kind "entity",
+  has prefLabel "Media Type",
+  has definition "A digitized type that computer applications can recognize.",
+  has scopeNote "The unique text for an IANA media type is the concatenation of the 'Type name', a slash '/', and the 'Subtype name' as provided on the page displayed when you resolve the URI of the media type.",
+  has example "application/sparql-results+xml",
+  has seeAlso "https://www.iana.org/assignments/media-types/media-types.xhtml";
+put (resource: $r69, module: $gist_core) isa inModule;
+
+put $r70 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Medium",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Medium",
+  has typeLabel "Medium",
+  has kind "entity",
+  has prefLabel "Medium",
+  has definition "A physical material on which a work can be rendered, represented, or implemented.",
+  has example "Paper, clay, a computer monitor.";
+put (resource: $r70, module: $gist_core) isa inModule;
+
+put $r71 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+  has typeLabel "Message",
+  has kind "entity",
+  has prefLabel "Message",
+  has definition "A specific instance of content sent from a sender to at least one other recipient.",
+  has example "An email, voice, or web service message; a phone call.";
+put (resource: $r71, module: $gist_core) isa inModule;

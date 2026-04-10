@@ -1,0 +1,212 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+put $generated_role_1 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#allows:allowsObject",
+  has iri "https://github.com/semanticarts/gist#allows:allowsObject",
+  has typeLabel "allows:allowsObject",
+  has kind "role",
+  has roleName "allowsObject",
+  has prefLabel "allowsObject",
+  has definition "Role 'allowsObject' in relation 'allows'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "actualStartMicrosecond";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "actualStartMinute";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "actualStartYear";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "atDateTime";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "birthDate";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "containedText";
+  not {
+    $schema_resource has valueTypeName "string";
+  };
+insert
+  $schema_resource has valueTypeName "string";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "conversionFactor";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "conversionOffset";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "deathDate";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "description";
+  not {
+    $schema_resource has valueTypeName "string";
+  };
+insert
+  $schema_resource has valueTypeName "string";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "encryptedText";
+  not {
+    $schema_resource has valueTypeName "string";
+  };
+insert
+  $schema_resource has valueTypeName "string";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "endDateTime";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfAmpere";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfBit";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfCandela";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfKelvin";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfKilogram";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfMeter";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfMole";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfNumber";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfOther";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfRadian";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfSecond";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfSteradian";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";

@@ -1,10 +1,10 @@
 {
   "name": "gist",
   "displayName": "gist Upper Ontology",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
   "scripts": {
-    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v2.0.3.ir-summary.json",
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v2.0.4.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
     "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
@@ -41,14 +41,52 @@
   "data": [
     "data/gistCore-domain-seeds.tql",
     "data/gistCore-provenance.tql",
-    "data/gistCore-schema-docs.tql"
+    "generated/apply-units/data/gistCore-schema-docs/0001.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0002.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0003.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0004.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0005.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0006.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0007.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0008.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0009.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0010.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0011.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0012.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0013.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0014.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0015.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0016.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0017.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0018.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0019.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0020.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0021.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0022.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0023.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0024.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0025.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0026.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0027.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0028.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0029.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0030.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0031.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0032.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0033.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0034.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0035.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0036.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0037.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0038.tql",
+    "generated/apply-units/data/gistCore-schema-docs/0039.tql"
   ],
   "queries": [
     "queries/gistCore-axioms.tql"
   ],
   "manifests": [
-    "manifests/gist-v2.0.3.translation-manifest.json",
-    "manifests/gist-v2.0.3.axiom-queries.json"
+    "manifests/gist-v2.0.4.translation-manifest.json",
+    "manifests/gist-v2.0.4.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
@@ -58,7 +96,45 @@
       "schema/administrative-operations.tql",
       "data/gistCore-domain-seeds.tql",
       "data/gistCore-provenance.tql",
-      "data/gistCore-schema-docs.tql"
+      "generated/apply-units/data/gistCore-schema-docs/0001.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0002.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0003.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0004.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0005.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0006.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0007.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0008.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0009.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0010.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0011.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0012.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0013.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0014.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0015.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0016.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0017.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0018.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0019.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0020.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0021.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0022.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0023.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0024.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0025.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0026.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0027.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0028.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0029.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0030.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0031.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0032.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0033.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0034.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0035.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0036.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0037.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0038.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0039.tql"
     ],
     "generatedArtifacts": [
       "schema/self-describing-schema.tql",
@@ -69,48 +145,49 @@
       "data/gistCore-provenance.tql",
       "data/gistCore-schema-docs.tql",
       "queries/gistCore-axioms.tql",
-      "manifests/gist-v2.0.3.axiom-queries.json",
-      "manifests/gist-v2.0.3.translation-manifest.json",
-      "manifests/gist-v2.0.3.translation-report.json",
-      "manifests/gist-v2.0.3.ir-summary.json"
-    ]
-  },
-  "migration": {
-    "format": 1,
-    "supportsUpgradeFrom": [
-      "2.0.x"
-    ],
-    "plans": [
-      {
-        "id": "gist-2.0.x-to-2.0.3",
-        "from": ">=2.0.0 <2.0.3",
-        "to": "2.0.3",
-        "mode": "compatible",
-        "snapshot": {
-          "required": true,
-          "label": "pre-gist-2.0.3-migration"
-        },
-        "phases": [
-          {
-            "id": "schema",
-            "units": [
-              {
-                "kind": "schema",
-                "path": "schema/self-describing-schema.tql"
-              }
-            ]
-          },
-          {
-            "id": "write",
-            "units": [
-              {
-                "kind": "write",
-                "path": "migrations/v2.0.0-to-v2.0.3.tql"
-              }
-            ]
-          }
-        ]
-      }
+      "manifests/gist-v2.0.4.axiom-queries.json",
+      "manifests/gist-v2.0.4.translation-manifest.json",
+      "manifests/gist-v2.0.4.translation-report.json",
+      "manifests/gist-v2.0.4.ir-summary.json",
+      "generated/apply-units/data/gistCore-schema-docs/0001.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0002.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0003.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0004.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0005.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0006.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0007.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0008.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0009.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0010.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0011.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0012.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0013.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0014.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0015.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0016.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0017.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0018.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0019.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0020.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0021.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0022.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0023.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0024.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0025.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0026.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0027.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0028.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0029.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0030.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0031.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0032.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0033.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0034.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0035.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0036.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0037.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0038.tql",
+      "generated/apply-units/data/gistCore-schema-docs/0039.tql"
     ]
   },
   "upstream": {
@@ -125,7 +202,7 @@
     ]
   },
   "provenance": {
-    "manifest": "manifests/gist-v2.0.3.translation-manifest.json",
+    "manifest": "manifests/gist-v2.0.4.translation-manifest.json",
     "status": "bootstrap"
   },
   "devDependencies": {

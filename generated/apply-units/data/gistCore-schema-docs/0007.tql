@@ -1,0 +1,253 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $r144 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf",
+  has typeLabel "isAssignmentOf",
+  has kind "relation",
+  has prefLabel "is assignment of",
+  has definition "Relates an assignment to the resource it assigns.",
+  has scopeNote "People, organizations, monetary amounts, equipment can all be assigned.",
+  has scopeNote "While typically this predicate will be used with assignment subjects, there may be other use cases, and therefore a domain is not specified.",
+  has example "Assignment of a person to a project.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Assignment";
+put (resource: $r144, module: $gist_core) isa inModule;
+
+put $r145 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo",
+  has typeLabel "isAssignmentTo",
+  has kind "relation",
+  has prefLabel "is assignment to",
+  has definition "Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate.",
+  has scopeNote "While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Assignment";
+put (resource: $r145, module: $gist_core) isa inModule;
+
+put $r146 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn",
+  has typeLabel "isBasedOn",
+  has kind "relation",
+  has prefLabel "is based on",
+  has definition "The object is a foundation for, a starting point for, gave rise to, or justifies the subject.",
+  has example "A document is based on a document template; a metric computing the average income of a population is based on the metric for individual income.";
+put (resource: $r146, module: $gist_core) isa inModule;
+
+put $r147 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
+  has typeLabel "isCategorizedBy",
+  has kind "relation",
+  has prefLabel "is categorized by",
+  has definition "Relates something to a taxonomy term or other less formally defined classification.";
+put (resource: $r147, module: $gist_core) isa inModule;
+
+put $r148 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+  has typeLabel "isConnectedTo",
+  has kind "relation",
+  has prefLabel "is connected to",
+  has definition "A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship.";
+put (resource: $r148, module: $gist_core) isa inModule;
+
+put $r149 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf",
+  has typeLabel "isDirectPartOf",
+  has kind "relation",
+  has prefLabel "is direct part of",
+  has definition "The relationship between a part and a whole where the part has independent existence and there are no other parts in between.",
+  has scopeNote "Because the part has independent existence, there is no cascading delete.",
+  has scopeNote "It is safest to use this property when semantic directness is inherent in the relationship, rather than simply expressing a chosen granularity. For example, a spark plug is a direct part of an engine block; there cannot be any intermediate parts. Otherwise, there is a risk of making an isDirectPartOf assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:isPartOf.";
+put (resource: $r149, module: $gist_core) isa inModule;
+
+put $r150 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
+  has typeLabel "isExpressedIn",
+  has kind "relation",
+  has prefLabel "is expressed in",
+  has definition "Relates something to the language it is expressed in.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Text";
+put (resource: $r150, module: $gist_core) isa inModule;
+
+put $r151 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
+  has typeLabel "isFirstMemberOf",
+  has kind "relation",
+  has prefLabel "is first member of",
+  has definition "Relates the first member of an ordered collection to the collection.",
+  has scopeNote "Given the Open World Assumption, the absence of a predecessor does not entail that an ordered member is the first member of an ordered collection. This property is used to explicitly indicate the first member. Since ordered collections need not be strictly ordered, there can be more than one first member.";
+put (resource: $r151, module: $gist_core) isa inModule;
+
+put $r152 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn",
+  has typeLabel "isGeoContainedIn",
+  has kind "relation",
+  has prefLabel "is geographically contained in",
+  has definition "Relates one geographic location to another that contains it.";
+put (resource: $r152, module: $gist_core) isa inModule;
+
+put $r153 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy",
+  has typeLabel "isGovernedBy",
+  has kind "relation",
+  has prefLabel "is governed by",
+  has definition "Relates an entity to another entity that controls, directs, determines or has a guiding influence or authority over it.",
+  has example "A country geographic region is governed by a country government; the installation and use of software is governed by a license.";
+put (resource: $r153, module: $gist_core) isa inModule;
+
+put $r154 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
+  has typeLabel "isIdentifiedBy",
+  has kind "relation",
+  has prefLabel "is identified by",
+  has definition "Relates something to a content object that uniquely identifies it.",
+  has scopeNote "This is like a URI: a thing can have more than one ID, but each ID can refer to only one thing. Note that it is possible to have two IDs with the same text that refer to different things.";
+put (resource: $r154, module: $gist_core) isa inModule;
+
+put $r155 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf",
+  has typeLabel "isMadeUpOf",
+  has kind "relation",
+  has prefLabel "is made up of",
+  has definition "Relates something to a substance that it is made up of.",
+  has example "A vase is made of clay; water is made up of hydrogen and oxygen.";
+put (resource: $r155, module: $gist_core) isa inModule;
+
+put $r156 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
+  has typeLabel "isMemberOf",
+  has kind "relation",
+  has prefLabel "is member of",
+  has definition "Relates a member individual to the thing, such as a collection or organization, that it is a member of.";
+put (resource: $r156, module: $gist_core) isa inModule;
+
+put $r157 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf",
+  has typeLabel "isPartOf",
+  has kind "relation",
+  has prefLabel "is part of",
+  has definition "The relationship between a part and a whole where the part has independent existence.",
+  has scopeNote "Because the part has independent existence, there is no cascading delete.",
+  has scopeNote "The transitive version of gist:isDirectPartOf.";
+put (resource: $r157, module: $gist_core) isa inModule;
+
+put $r158 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+  has typeLabel "isProducedBy",
+  has kind "relation",
+  has prefLabel "is produced by",
+  has definition "Relates something to the thing that created, composed, or brought it into existence.",
+  has example "A deliverable is produces by a task.",
+  has example "A measurement is produced by a sensor.",
+  has example "A painting is produced by a person.";
+put (resource: $r158, module: $gist_core) isa inModule;
+
+put $r159 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
+  has typeLabel "isRecognizedBy",
+  has kind "relation",
+  has prefLabel "is recognized by",
+  has definition "Relates something to a party that formally acknowledges its existence, validity, or legality.",
+  has example "The existence of a particular company is recognized by the state.";
+put (resource: $r159, module: $gist_core) isa inModule;
+
+put $r160 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn",
+  has typeLabel "isRenderedOn",
+  has kind "relation",
+  has prefLabel "is rendered on",
+  has definition "Relates content to the media on which it is rendered.",
+  has example "A document is rendered on a computer screen; a piece of music is rendered through speakers.";
+put (resource: $r160, module: $gist_core) isa inModule;
+
+put $r161 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy",
+  has typeLabel "isTriggeredBy",
+  has kind "relation",
+  has prefLabel "is triggered by",
+  has definition "Relates a contingency, such as an event or obligation, to the event that gives rise to it.",
+  has scopeNote "For obligations, this property describes what must happen to trigger the contingent obligation. Other uses include controls, processes, etc.",
+  has example "Fire insurance is contingent on a particular building burning down; the death benefit payout on a life insurance policy is contingent on the death of the insured person.";
+put (resource: $r161, module: $gist_core) isa inModule;
+
+put $r162 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
+  has typeLabel "isUnderJurisdictionOf",
+  has kind "relation",
+  has prefLabel "is under jurisdiction of",
+  has definition "Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it.";
+put (resource: $r162, module: $gist_core) isa inModule;
+
+put $r163 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/links",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/links",
+  has typeLabel "linksRel",
+  has kind "relation",
+  has prefLabel "links",
+  has definition "Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink";
+put (resource: $r163, module: $gist_core) isa inModule;
+
+put $r164 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
+  has typeLabel "linksFrom",
+  has kind "relation",
+  has prefLabel "links from",
+  has definition "Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink";
+put (resource: $r164, module: $gist_core) isa inModule;
+
+put $r165 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
+  has typeLabel "linksTo",
+  has kind "relation",
+  has prefLabel "links to",
+  has definition "Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink";
+put (resource: $r165, module: $gist_core) isa inModule;
+
+put $r166 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/occursIn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/occursIn",
+  has typeLabel "occursIn",
+  has kind "relation",
+  has prefLabel "occurs in",
+  has definition "Relates something, such as an event, to the geographic location where it did, does, or will happen.";
+put (resource: $r166, module: $gist_core) isa inModule;
+
+put $r167 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
+  has typeLabel "offersToProvide",
+  has kind "relation",
+  has prefLabel "offers to provide",
+  has definition "Relates an offer to the thing being made available for exchange.",
+  has scopeNote "This will most often be a good or service, but could be an amount of money, e.g., for currency exchange.",
+  has example "An offer to provide a specific product in exchange for an amount of money or to pay a certain price for a home that is for sale.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Offer";
+put (resource: $r167, module: $gist_core) isa inModule;

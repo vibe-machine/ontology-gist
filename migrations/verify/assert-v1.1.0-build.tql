@@ -1,6 +1,0 @@
-match
-  $build isa OntologyPackageBuild,
-    has packageName "gist",
-    has packageVersion "1.1.0",
-    has upstreamTag "v1.1.0";
-limit 1;

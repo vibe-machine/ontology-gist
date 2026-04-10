@@ -1,0 +1,266 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $r96 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
+  has typeLabel "SchemaMetaData",
+  has kind "entity",
+  has prefLabel "Schema Meta Data",
+  has definition "Superclass for all types of metadata.",
+  has scopeNote "The definition of this class needs additional work.",
+  has example "Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps.";
+put (resource: $r96, module: $gist_core) isa inModule;
+
+put $r97 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+  has typeLabel "ServiceSpecification",
+  has kind "entity",
+  has prefLabel "Service Specification",
+  has definition "A description of something that can be done for a person or organization (which produces some form of an act).";
+put (resource: $r97, module: $gist_core) isa inModule;
+
+put $r98 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
+  has typeLabel "Specification",
+  has kind "entity",
+  has prefLabel "Specification",
+  has definition "One or more characteristics that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification.",
+  has scopeNote "Although a characterization of how to do something is often called a specification, the intended meaning here is limited to specifying what something is. The focus is on the what, not the how. Use gist:TaskTemplate for specifying the how, such as a plan or process specification.",
+  has example "The specification of the iPhone 14; hypothetical events covered by a homeowner's insurance policy.";
+put (resource: $r98, module: $gist_core) isa inModule;
+
+put $r99 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+  has typeLabel "SubCountryGovernment",
+  has kind "entity",
+  has prefLabel "Sub-Country Government",
+  has definition "The government of a governed geographic region other than a country which is under the direct or indirect control of a country government.",
+  has scopeNote "Note that the predicate gist:isGovernedBy is used both for the relationship a governed geographic region has to its government and for the relationship a sub-region government has to the government of the larger region.",
+  has scopeNote "There are many types of sub-regions of a country and the governments thereof (as well as different terms, like 'province' and 'state,' which refer to essentially the same type of thing). We should not automatically assume 'state,' 'county,' and 'city.' Subclasses or categories can be defined if greater specificity is needed.",
+  has scopeNote "This class applies only to organizations governing geographic regions. Regulatory and bureaucratic organizations are members of the more generic gist:GovernmentOrganization class.";
+put (resource: $r99, module: $gist_core) isa inModule;
+
+put $r100 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/System",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/System",
+  has typeLabel "System",
+  has kind "entity",
+  has prefLabel "System",
+  has definition "A composite with component parts that contribute to the goal of the system.";
+put (resource: $r100, module: $gist_core) isa inModule;
+
+put $r101 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+  has typeLabel "Tag",
+  has kind "entity",
+  has prefLabel "Tag",
+  has definition "A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.",
+  has scopeNote "Whether to use gist:containedText or gist:uniqueText on tags is an implementation decision. Since the latter is a subproperty of the former, the restriction remains valid either way.";
+put (resource: $r101, module: $gist_core) isa inModule;
+
+put $r102 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+  has typeLabel "Task",
+  has kind "entity",
+  has prefLabel "Task",
+  has definition "An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.",
+  has scopeNote "Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.",
+  has scopeNote "This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task.",
+  has scopeNote "Use the property gist:isBasedOn to link a task back to the task template.";
+put (resource: $r102, module: $gist_core) isa inModule;
+
+put $r103 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+  has typeLabel "TaskTemplate",
+  has kind "entity",
+  has prefLabel "Task Template",
+  has definition "An outline of a task of a particular type, which is the basis for executing such tasks.",
+  has scopeNote "A task template may define a single activity or a series of activities; the level of granularity can be varied according to use case. For example, in a new employee onboarding process, signing up for benefits might be one activity, or it might be broken down into signing up for health insurance, signing up for dental insurance, etc.",
+  has scopeNote "Use the property isBasedOn to link the Task back to the TaskTemplate.",
+  has example "A business process for onboarding new employees.";
+put (resource: $r103, module: $gist_core) isa inModule;
+
+put $r104 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Template",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Template",
+  has typeLabel "Template",
+  has kind "entity",
+  has prefLabel "Template",
+  has definition "Something used to make objects in its own image.",
+  has scopeNote "Use gist:isBasedOn to link the object made from the template back to the template.",
+  has example "A die in manufacturing is used to make stamped parts; a form provides a structure and fields to be filled in; a cookie cutter is a template for cookies.";
+put (resource: $r104, module: $gist_core) isa inModule;
+
+put $r105 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+  has typeLabel "TemporalRelation",
+  has kind "entity",
+  has prefLabel "Temporal Relation",
+  has definition "A relationship existing for a period of time.",
+  has scopeNote "A temporal relation must have a minimum of two participants. For example, both the employer and the employee are participants in a temporal relation representing a period of employment. Note that 'participant' does not imply agency; a non-sentient being can participate in a temporal relation. For example, both a person and a house could be participants in a hypothetical relation 'lives at.'",
+  has example "The relationship between a person and their employer; the relationship between a person or business and an address.";
+put (resource: $r105, module: $gist_core) isa inModule;
+
+put $r106 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Text",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Text",
+  has typeLabel "Text",
+  has kind "entity",
+  has prefLabel "Text",
+  has definition "Content expressed as words and numbers.",
+  has example "Negative example: graphical content.";
+put (resource: $r106, module: $gist_core) isa inModule;
+
+put $r107 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
+  has typeLabel "TimeInterval",
+  has kind "entity",
+  has prefLabel "Time Interval",
+  has definition "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.",
+  has scopeNote "An ongoing state of affairs with an unknown end time in the future cannot be a time interval; e.g. the lifespan of a living person cannot be a time interval, as the end time is unknown.",
+  has scopeNote "This is distinct from a duration, which describes how long a time interval lasts (e.g., one hour; 3 days; 22 minutes).",
+  has example "7pm to 9pm on Jan 1, 2001; fiscal year 2023 (according to some particular definition of fiscal year); the week starting at midnight of January 12, 2023 and lasting exactly 168 hours.";
+put (resource: $r107, module: $gist_core) isa inModule;
+
+put $r108 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Transaction",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Transaction",
+  has typeLabel "Transaction",
+  has kind "entity",
+  has prefLabel "Transaction",
+  has definition "An exchange or transfer of goods, services, or funds.",
+  has scopeNote "Different sorts of transactions can have different datetime precisions. For example, an electronic transaction would have a gist:actualEndMicrosecond.";
+put (resource: $r108, module: $gist_core) isa inModule;
+
+put $r109 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+  has typeLabel "UnitGroup",
+  has kind "entity",
+  has prefLabel "Unit Group",
+  has definition "A collection of units of measure that can all be used to measure the same aspects.",
+  has scopeNote "Typically there is one unit group per aspect. An example of an aspect with two unit groups is vehicle efficiency, which can be measured by miles per gallon (distance per volume) or by liters per 100 kilometers (volume per distance). These two units of measure need to be in different unit groups because they have different values of exponents. When adding a unit of measure to a unit group, make sure it has the same exponents as the other members of the unit group.",
+  has example "The units of measure bit, byte, kilobit, kilobyte, etc. are all in the same unit group because they can all be used to measure an amount of data.";
+put (resource: $r109, module: $gist_core) isa inModule;
+
+put $r110 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
+  has typeLabel "UnitOfMeasure",
+  has kind "entity",
+  has prefLabel "Unit of Measure",
+  has definition "A standard amount used to measure or specify things.",
+  has example "An acre is a unit for measuring area.";
+put (resource: $r110, module: $gist_core) isa inModule;
+
+put $r111 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/allows",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/allows",
+  has typeLabel "allows",
+  has kind "relation",
+  has prefLabel "allows",
+  has definition "Relates a permission to a particular activity or type of activity it allows.",
+  has example "An easement grants a right to cross or otherwise use someone else's land for a specified purpose.";
+put (resource: $r111, module: $gist_core) isa inModule;
+
+put $r112 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent",
+  has typeLabel "comesFromAgent",
+  has kind "relation",
+  has prefLabel "comes from agent",
+  has definition "Relates something to the originating agent.",
+  has scopeNote "This is not the inverse of gist:goesToAgent, as both properties have the message or shipment as the subject.",
+  has scopeNote "This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasGiver is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the giving of a gift.",
+  has example "A package is shipped by a person; a purchase order is emailed to a vendor by an organization.";
+put (resource: $r112, module: $gist_core) isa inModule;
+
+put $r113 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
+  has typeLabel "comesFromPlace",
+  has kind "relation",
+  has prefLabel "comes from place",
+  has definition "Relates something to its place of origin.",
+  has example "A letter has a return address indicating its origin; a delivery route originates at a distribution center; a trail originates at the trailhead.";
+put (resource: $r113, module: $gist_core) isa inModule;
+
+put $r114 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
+  has typeLabel "conformsTo",
+  has kind "relation",
+  has prefLabel "conforms to",
+  has definition "The subject is consistent with or satisfies the requirements, rules, or expectations established by the object.",
+  has example "Meet an obligation; adhere to a specification or standard; meet terms and conditions of an offer; comply with a regulation.";
+put (resource: $r114, module: $gist_core) isa inModule;
+
+put $r115 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
+  has typeLabel "contributesTo",
+  has kind "relation",
+  has prefLabel "contributes to",
+  has definition "Relates a part of a system to the system whose goals or function it contributes to.";
+put (resource: $r115, module: $gist_core) isa inModule;
+
+put $r116 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent",
+  has typeLabel "goesToAgent",
+  has kind "relation",
+  has prefLabel "goes to agent",
+  has definition "Relates something to the agent that receives it.",
+  has scopeNote "This is not the inverse of gist:comesFromAgent, as both properties have the message or shipment as the subject.",
+  has scopeNote "This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the recieving of a gift.",
+  has example "A package is sent to a person; a purchase order email is received by a vendor.";
+put (resource: $r116, module: $gist_core) isa inModule;
+
+put $r117 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
+  has typeLabel "goesToPlace",
+  has kind "relation",
+  has prefLabel "goes to place",
+  has definition "Relates something to its destination place.",
+  has example "A letter has an address indicating its destination; a segment of a delivery route terminates at a delivery location; a trail terminates at an intersection with another trail.";
+put (resource: $r117, module: $gist_core) isa inModule;
+
+put $r118 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
+  has typeLabel "hasAccuracy",
+  has kind "relation",
+  has prefLabel "has accuracy",
+  has definition "Relates a magnitude to another magnitude that describes its accuracy.",
+  has scopeNote "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\n\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have a accuracy in terms of millimeters or any other unit that measures distance).",
+  has example "Temperature accurate to tenth of a degree C; length accurate to the nearest centimeter.",
+  has seeAlso "https://en.wikipedia.org/wiki/Accuracy_and_precision",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude";
+put (resource: $r118, module: $gist_core) isa inModule;
+
+put $r119 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
+  has typeLabel "hasAddend",
+  has kind "relation",
+  has prefLabel "has addend",
+  has definition "Relates an aspect to another aspect that is an additive component of it.",
+  has scopeNote "Commonly used with financial metrics.",
+  has example "In the equation 'profit = revenue - expenses', revenue is an addend and expenses is a subtrahend.";
+put (resource: $r119, module: $gist_core) isa inModule;

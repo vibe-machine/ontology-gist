@@ -1,0 +1,256 @@
+# Generated executable apply unit from data/gistCore-schema-docs.tql
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $r192 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/description",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/description",
+  has typeLabel "description",
+  has kind "attribute",
+  has prefLabel "description",
+  has definition "A statement about someone or something's attributes or characteristics.",
+  has scopeNote "This property is used to describe instance data which is not part of the ontology. A definition and a description have different semantics. Use skos:definition for a statement of the meaning of a thing and gist:description to describe a thing's attributes, characteristics, or features.",
+  has example "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+  has example "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition.";
+put (resource: $r192, module: $gist_core) isa inModule;
+
+put $r193 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText",
+  has typeLabel "encryptedText",
+  has kind "attribute",
+  has prefLabel "encrypted text",
+  has definition "Encoded text produced from readable data by an algorithm so that it can only be understood or restored with a decryption key.";
+put (resource: $r193, module: $gist_core) isa inModule;
+
+put $r194 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime",
+  has typeLabel "endDateTime",
+  has kind "attribute",
+  has prefLabel "end date time",
+  has definition "The date and time that something ends.",
+  has scopeNote "This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals).",
+  has scopeNote "Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
+put (resource: $r194, module: $gist_core) isa inModule;
+
+put $r195 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
+  has typeLabel "exponentOfAmpere",
+  has kind "attribute",
+  has prefLabel "exponent of ampere",
+  has definition "The exponent of ampere in a product of powers of base units.",
+  has example "In the equation '1 milliampere = 0.001 x ampere'\n\n\t\tthe conversionFactor for milliampere is 0.001\n\t\tthe exponent of ampere is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing milliampere must be a multiple of ampere.";
+put (resource: $r195, module: $gist_core) isa inModule;
+
+put $r196 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
+  has typeLabel "exponentOfBit",
+  has kind "attribute",
+  has prefLabel "exponent of bit",
+  has definition "The exponent of bit in a product of powers of base units.",
+  has example "In the equation '1 megabit per second = 1000000 x bit per second'\n\n\t\tthe conversion factor for megabit per second is 1000000\n\t\tthe exponent of bit is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing megabit per second must be a multiple of bit per second.";
+put (resource: $r196, module: $gist_core) isa inModule;
+
+put $r197 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
+  has typeLabel "exponentOfCandela",
+  has kind "attribute",
+  has prefLabel "exponent of candela",
+  has definition "The exponent of candela in a product of powers of base units.",
+  has example "In the equation '1 candlepower = 1 x candela'\n\n\t\tthe conversion factor for candlepower is 1\n\t\tthe exponent of candela is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing candlepower must be a multiple of candela.";
+put (resource: $r197, module: $gist_core) isa inModule;
+
+put $r198 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
+  has typeLabel "exponentOfKelvin",
+  has kind "attribute",
+  has prefLabel "exponent of Kelvin",
+  has definition "The exponent of Kelvin in a product of powers of base units.",
+  has example "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\n\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\n\t\tthe conversion factor for degree Fahrenheit is 5/9\n\t\tthe exponent of Kelvin is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both).";
+put (resource: $r198, module: $gist_core) isa inModule;
+
+put $r199 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
+  has typeLabel "exponentOfKilogram",
+  has kind "attribute",
+  has prefLabel "exponent of kilogram",
+  has definition "The exponent of kilogram in a product of powers of base units.",
+  has example "In the equation '1 millimole per gram = 1 x mole per kilogram'\n\n\t\tthe conversion factor for millimole per gram is 1\n\t\tthe exponent of mole is 1\n\t\tthe exponent of kilogram is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram.";
+put (resource: $r199, module: $gist_core) isa inModule;
+
+put $r200 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
+  has typeLabel "exponentOfMeter",
+  has kind "attribute",
+  has prefLabel "exponent of meter",
+  has definition "The exponent of meter in a product of powers of base units.",
+  has example "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\n\n\t\tthe conversion factor for microgram per milliliter is 0.001\n\t\tthe exponent of kilogram is 1\n\t\tthe exponent of meter is -3\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed.";
+put (resource: $r200, module: $gist_core) isa inModule;
+
+put $r201 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
+  has typeLabel "exponentOfMole",
+  has kind "attribute",
+  has prefLabel "exponent of mole",
+  has definition "The exponent of mole in a product of powers of base units.",
+  has example "In the equation '1 katal = 1 x mole per second'\n\n\t\tthe conversion factor for katal is 1\n\t\tthe exponent of mole is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing katal must be a multiple of mole per second.";
+put (resource: $r201, module: $gist_core) isa inModule;
+
+put $r202 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
+  has typeLabel "exponentOfNumber",
+  has kind "attribute",
+  has prefLabel "exponent of number",
+  has definition "The exponent of number in a product of powers of base units.",
+  has scopeNote "Use when the unit of measure involves a count or other number.",
+  has example "In the equation '1 beat per minute = 0.016667 x number per second'\n\n\t\tthe conversion factor for beat per minute is 0.016667\n\t\tthe exponent of number is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing beat per minute must be a multiple of number per second.";
+put (resource: $r202, module: $gist_core) isa inModule;
+
+put $r203 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
+  has typeLabel "exponentOfOther",
+  has kind "attribute",
+  has prefLabel "exponent of other",
+  has definition "Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples).",
+  has scopeNote "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\n\n\t\tOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale.",
+  has example "Decibel, pH, and octave are units of measure that are logarithmic. Their unit groups have exponent of other = 1.";
+put (resource: $r203, module: $gist_core) isa inModule;
+
+put $r204 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
+  has typeLabel "exponentOfRadian",
+  has kind "attribute",
+  has prefLabel "exponent of radian",
+  has definition "The exponent of radian in a product of powers of base units.",
+  has example "In the equation '1 revolution = 6.283 x radian'\n\n\t\tthe conversion factor for revolution is 6.283\n\t\tthe exponent of radian is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing revolution must be a multiple of radian.";
+put (resource: $r204, module: $gist_core) isa inModule;
+
+put $r205 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
+  has typeLabel "exponentOfSecond",
+  has kind "attribute",
+  has prefLabel "exponent of second",
+  has definition "The exponent of second in a product of powers of base units.",
+  has example "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\n\n\t\tthe conversion factor for watt-hour is 3600\n\t\tthe exponent of kilogram is 1\n\t\tthe exponent of meter is 2\n\t\tthe exponent of second is -2\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared.";
+put (resource: $r205, module: $gist_core) isa inModule;
+
+put $r206 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
+  has typeLabel "exponentOfSteradian",
+  has kind "attribute",
+  has prefLabel "exponent of steradian",
+  has definition "The exponent of steradian in a product of powers of base units.",
+  has scopeNote "Steradian is a measure of solid angle.",
+  has example "In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'\n\n\t\tthe conversion factor for watt per square meter steradian is 1\n\t\tthe exponent of kilogram is 1\n\t\tthe exponent of second is -3\n\t\tthe exponent of steradian is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian.";
+put (resource: $r206, module: $gist_core) isa inModule;
+
+put $r207 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
+  has typeLabel "exponentOfUSDollar",
+  has kind "attribute",
+  has prefLabel "exponent of US dollar",
+  has definition "The exponent of US Dollar in a product of powers of base units.",
+  has scopeNote "The factors for converting from one currency to another change constantly.",
+  has example "In the equation '1 million dollars per week = 1.65344 x dollar per second'\n\n\t\tthe conversion factor for million dollars per week is 1.65344\n\t\tthe exponent of US Dollar is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing million dollars per week must be a multiple of dollar per second.";
+put (resource: $r207, module: $gist_core) isa inModule;
+
+put $r208 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/idText",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/idText",
+  has typeLabel "idText",
+  has kind "attribute",
+  has prefLabel "id text",
+  has definition "A text string that identifies an individual.",
+  has scopeNote "A common use case would be for pre-existing internal company identifiers.",
+  has scopeNote "Often, there will be just one identifying text string. More would be appropriate if the individual had different identifiers, such as employee number and social security number. A good way to model that would be to have functional subproperties of idText, such as departmentNumber.",
+  has scopeNote "This property is an alternative to using the property gist:isIdentifiedBy in conjunction with instances of the class gist:ID.",
+  has example "The id text for a car is '4Y1SL65848Z411439'; the id text for the HR department of some company is H31415.";
+put (resource: $r208, module: $gist_core) isa inModule;
+
+put $r209 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
+  has typeLabel "isRecordedAt",
+  has kind "attribute",
+  has prefLabel "is recorded at",
+  has definition "The date that something was posted (which is not necessarily the date it occurred). It must be after the date of occurrence, but could be before or after the planned date.",
+  has scopeNote "Precision may vary according to context.",
+  has example "The date and time a customer payment or stock purchase was posted.";
+put (resource: $r209, module: $gist_core) isa inModule;
+
+put $r210 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/latitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/latitude",
+  has typeLabel "latitude",
+  has kind "attribute",
+  has prefLabel "latitude",
+  has definition "Degrees above or below the equator.";
+put (resource: $r210, module: $gist_core) isa inModule;
+
+put $r211 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/longitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/longitude",
+  has typeLabel "longitude",
+  has kind "attribute",
+  has prefLabel "longitude",
+  has definition "Degrees from the prime meridian.";
+put (resource: $r211, module: $gist_core) isa inModule;
+
+put $r212 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/name",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/name",
+  has typeLabel "name",
+  has kind "attribute",
+  has prefLabel "name",
+  has definition "Relates an individual to (one of) its name(s).";
+put (resource: $r212, module: $gist_core) isa inModule;
+
+put $r213 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
+  has typeLabel "numericValue",
+  has kind "attribute",
+  has prefLabel "numeric value",
+  has definition "The actual value of a magnitude.";
+put (resource: $r213, module: $gist_core) isa inModule;
+
+put $r214 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate",
+  has typeLabel "plannedEndDate",
+  has kind "attribute",
+  has prefLabel "planned end date",
+  has definition "The date that something is or was planned to end, with precision of one day.",
+  has scopeNote "Used for anything with a planned end date, such as when a lease will expire, when an offer is no longer available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r214, module: $gist_core) isa inModule;
+
+put $r215 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime",
+  has typeLabel "plannedEndDateTime",
+  has kind "attribute",
+  has prefLabel "planned end date time",
+  has definition "The date that something is or was planned to end, with no implied precision.",
+  has scopeNote "This is an abstraction over the various precisions of planned end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.",
+  has scopeNote "This property, unlike gist:actualEndDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.";
+put (resource: $r215, module: $gist_core) isa inModule;

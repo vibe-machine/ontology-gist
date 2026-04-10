@@ -7,7 +7,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v2.0.3.translation-manifest.json
+# manifest: manifests/gist-v2.0.4.translation-manifest.json
 # generator: gist-schema-docs-emitter/1.0.0
 
 put $gist_core isa SchemaModule,
