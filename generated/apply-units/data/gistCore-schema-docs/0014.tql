@@ -2,427 +2,452 @@
 # manifest: manifests/gist-v2.0.4.translation-manifest.json
 # upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
 
-put $generated_role_1 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#allows:allowsObject",
-  has iri "https://github.com/semanticarts/gist#allows:allowsObject",
-  has typeLabel "allows:allowsObject",
-  has kind "role",
-  has roleName "allowsObject",
-  has prefLabel "allowsObject",
-  has definition "Role 'allowsObject' in relation 'allows'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsObject";
+  $struct_left isa SchemaResource, has typeLabel "Account";
+  $struct_right isa SchemaResource, has typeLabel "Agreement";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_66 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isAllocatedBy:isAllocatedBySubject",
-  has iri "https://github.com/semanticarts/gist#isAllocatedBy:isAllocatedBySubject",
-  has typeLabel "isAllocatedBy:isAllocatedBySubject",
-  has kind "role",
-  has roleName "isAllocatedBySubject",
-  has prefLabel "isAllocatedBySubject",
-  has definition "Role 'isAllocatedBySubject' in relation 'isAllocatedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isAllocatedBy:isAllocatedBySubject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "deathDate";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_67 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isAssignmentOf:isAssignmentOfObject",
-  has iri "https://github.com/semanticarts/gist#isAssignmentOf:isAssignmentOfObject",
-  has typeLabel "isAssignmentOf:isAssignmentOfObject",
-  has kind "role",
-  has roleName "isAssignmentOfObject",
-  has prefLabel "isAssignmentOfObject",
-  has definition "Role 'isAssignmentOfObject' in relation 'isAssignmentOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isAssignmentOf:isAssignmentOfObject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "endDateTime";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_68 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isAssignmentOf:isAssignmentOfSubject",
-  has iri "https://github.com/semanticarts/gist#isAssignmentOf:isAssignmentOfSubject",
-  has typeLabel "isAssignmentOf:isAssignmentOfSubject",
-  has kind "role",
-  has roleName "isAssignmentOfSubject",
-  has prefLabel "isAssignmentOfSubject",
-  has definition "Role 'isAssignmentOfSubject' in relation 'isAssignmentOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isAssignmentOf:isAssignmentOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndDate";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_69 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isAssignmentTo:isAssignmentToObject",
-  has iri "https://github.com/semanticarts/gist#isAssignmentTo:isAssignmentToObject",
-  has typeLabel "isAssignmentTo:isAssignmentToObject",
-  has kind "role",
-  has roleName "isAssignmentToObject",
-  has prefLabel "isAssignmentToObject",
-  has definition "Role 'isAssignmentToObject' in relation 'isAssignmentTo'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isAssignmentTo:isAssignmentToObject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndDateTime";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_70 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isAssignmentTo:isAssignmentToSubject",
-  has iri "https://github.com/semanticarts/gist#isAssignmentTo:isAssignmentToSubject",
-  has typeLabel "isAssignmentTo:isAssignmentToSubject",
-  has kind "role",
-  has roleName "isAssignmentToSubject",
-  has prefLabel "isAssignmentToSubject",
-  has definition "Role 'isAssignmentToSubject' in relation 'isAssignmentTo'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isAssignmentTo:isAssignmentToSubject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndMinute";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_71 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isBasedOn:isBasedOnObject",
-  has iri "https://github.com/semanticarts/gist#isBasedOn:isBasedOnObject",
-  has typeLabel "isBasedOn:isBasedOnObject",
-  has kind "role",
-  has roleName "isBasedOnObject",
-  has prefLabel "isBasedOnObject",
-  has definition "Role 'isBasedOnObject' in relation 'isBasedOn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isBasedOn:isBasedOnObject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndYear";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_72 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isBasedOn:isBasedOnSubject",
-  has iri "https://github.com/semanticarts/gist#isBasedOn:isBasedOnSubject",
-  has typeLabel "isBasedOn:isBasedOnSubject",
-  has kind "role",
-  has roleName "isBasedOnSubject",
-  has prefLabel "isBasedOnSubject",
-  has definition "Role 'isBasedOnSubject' in relation 'isBasedOn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isBasedOn:isBasedOnSubject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartDate";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_73 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isCategorizedBy:isCategorizedByObject",
-  has iri "https://github.com/semanticarts/gist#isCategorizedBy:isCategorizedByObject",
-  has typeLabel "isCategorizedBy:isCategorizedByObject",
-  has kind "role",
-  has roleName "isCategorizedByObject",
-  has prefLabel "isCategorizedByObject",
-  has definition "Role 'isCategorizedByObject' in relation 'isCategorizedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isCategorizedBy:isCategorizedByObject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartDateTime";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_74 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isCategorizedBy:isCategorizedBySubject",
-  has iri "https://github.com/semanticarts/gist#isCategorizedBy:isCategorizedBySubject",
-  has typeLabel "isCategorizedBy:isCategorizedBySubject",
-  has kind "role",
-  has roleName "isCategorizedBySubject",
-  has prefLabel "isCategorizedBySubject",
-  has definition "Role 'isCategorizedBySubject' in relation 'isCategorizedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isCategorizedBy:isCategorizedBySubject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartMinute";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_75 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isConnectedTo:isConnectedToObject",
-  has iri "https://github.com/semanticarts/gist#isConnectedTo:isConnectedToObject",
-  has typeLabel "isConnectedTo:isConnectedToObject",
-  has kind "role",
-  has roleName "isConnectedToObject",
-  has prefLabel "isConnectedToObject",
-  has definition "Role 'isConnectedToObject' in relation 'isConnectedTo'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isConnectedTo:isConnectedToObject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartYear";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_76 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isConnectedTo:isConnectedToSubject",
-  has iri "https://github.com/semanticarts/gist#isConnectedTo:isConnectedToSubject",
-  has typeLabel "isConnectedTo:isConnectedToSubject",
-  has kind "role",
-  has roleName "isConnectedToSubject",
-  has prefLabel "isConnectedToSubject",
-  has definition "Role 'isConnectedToSubject' in relation 'isConnectedTo'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isConnectedTo:isConnectedToSubject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "startDateTime";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_77 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isDirectPartOf:isDirectPartOfObject",
-  has iri "https://github.com/semanticarts/gist#isDirectPartOf:isDirectPartOfObject",
-  has typeLabel "isDirectPartOf:isDirectPartOfObject",
-  has kind "role",
-  has roleName "isDirectPartOfObject",
-  has prefLabel "isDirectPartOfObject",
-  has definition "Role 'isDirectPartOfObject' in relation 'isDirectPartOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isDirectPartOf:isDirectPartOfObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfAmpere";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_78 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isDirectPartOf:isDirectPartOfSubject",
-  has iri "https://github.com/semanticarts/gist#isDirectPartOf:isDirectPartOfSubject",
-  has typeLabel "isDirectPartOf:isDirectPartOfSubject",
-  has kind "role",
-  has roleName "isDirectPartOfSubject",
-  has prefLabel "isDirectPartOfSubject",
-  has definition "Role 'isDirectPartOfSubject' in relation 'isDirectPartOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isDirectPartOf:isDirectPartOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfBit";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_79 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isExpressedIn:isExpressedInObject",
-  has iri "https://github.com/semanticarts/gist#isExpressedIn:isExpressedInObject",
-  has typeLabel "isExpressedIn:isExpressedInObject",
-  has kind "role",
-  has roleName "isExpressedInObject",
-  has prefLabel "isExpressedInObject",
-  has definition "Role 'isExpressedInObject' in relation 'isExpressedIn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isExpressedIn:isExpressedInObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfCandela";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_80 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isExpressedIn:isExpressedInSubject",
-  has iri "https://github.com/semanticarts/gist#isExpressedIn:isExpressedInSubject",
-  has typeLabel "isExpressedIn:isExpressedInSubject",
-  has kind "role",
-  has roleName "isExpressedInSubject",
-  has prefLabel "isExpressedInSubject",
-  has definition "Role 'isExpressedInSubject' in relation 'isExpressedIn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isExpressedIn:isExpressedInSubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfKelvin";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_81 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isFirstMemberOf:isFirstMemberOfObject",
-  has iri "https://github.com/semanticarts/gist#isFirstMemberOf:isFirstMemberOfObject",
-  has typeLabel "isFirstMemberOf:isFirstMemberOfObject",
-  has kind "role",
-  has roleName "isFirstMemberOfObject",
-  has prefLabel "isFirstMemberOfObject",
-  has definition "Role 'isFirstMemberOfObject' in relation 'isFirstMemberOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isFirstMemberOf:isFirstMemberOfObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfKilogram";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_82 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isFirstMemberOf:isFirstMemberOfSubject",
-  has iri "https://github.com/semanticarts/gist#isFirstMemberOf:isFirstMemberOfSubject",
-  has typeLabel "isFirstMemberOf:isFirstMemberOfSubject",
-  has kind "role",
-  has roleName "isFirstMemberOfSubject",
-  has prefLabel "isFirstMemberOfSubject",
-  has definition "Role 'isFirstMemberOfSubject' in relation 'isFirstMemberOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isFirstMemberOf:isFirstMemberOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfMeter";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_83 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isGeoContainedIn:isGeoContainedInObject",
-  has iri "https://github.com/semanticarts/gist#isGeoContainedIn:isGeoContainedInObject",
-  has typeLabel "isGeoContainedIn:isGeoContainedInObject",
-  has kind "role",
-  has roleName "isGeoContainedInObject",
-  has prefLabel "isGeoContainedInObject",
-  has definition "Role 'isGeoContainedInObject' in relation 'isGeoContainedIn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isGeoContainedIn:isGeoContainedInObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfMole";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_84 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isGeoContainedIn:isGeoContainedInSubject",
-  has iri "https://github.com/semanticarts/gist#isGeoContainedIn:isGeoContainedInSubject",
-  has typeLabel "isGeoContainedIn:isGeoContainedInSubject",
-  has kind "role",
-  has roleName "isGeoContainedInSubject",
-  has prefLabel "isGeoContainedInSubject",
-  has definition "Role 'isGeoContainedInSubject' in relation 'isGeoContainedIn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isGeoContainedIn:isGeoContainedInSubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfNumber";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_85 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isGovernedBy:isGovernedByObject",
-  has iri "https://github.com/semanticarts/gist#isGovernedBy:isGovernedByObject",
-  has typeLabel "isGovernedBy:isGovernedByObject",
-  has kind "role",
-  has roleName "isGovernedByObject",
-  has prefLabel "isGovernedByObject",
-  has definition "Role 'isGovernedByObject' in relation 'isGovernedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isGovernedBy:isGovernedByObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfOther";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_86 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isGovernedBy:isGovernedBySubject",
-  has iri "https://github.com/semanticarts/gist#isGovernedBy:isGovernedBySubject",
-  has typeLabel "isGovernedBy:isGovernedBySubject",
-  has kind "role",
-  has roleName "isGovernedBySubject",
-  has prefLabel "isGovernedBySubject",
-  has definition "Role 'isGovernedBySubject' in relation 'isGovernedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isGovernedBy:isGovernedBySubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfRadian";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_87 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isIdentifiedBy:isIdentifiedByObject",
-  has iri "https://github.com/semanticarts/gist#isIdentifiedBy:isIdentifiedByObject",
-  has typeLabel "isIdentifiedBy:isIdentifiedByObject",
-  has kind "role",
-  has roleName "isIdentifiedByObject",
-  has prefLabel "isIdentifiedByObject",
-  has definition "Role 'isIdentifiedByObject' in relation 'isIdentifiedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isIdentifiedBy:isIdentifiedByObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfSecond";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_88 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isIdentifiedBy:isIdentifiedBySubject",
-  has iri "https://github.com/semanticarts/gist#isIdentifiedBy:isIdentifiedBySubject",
-  has typeLabel "isIdentifiedBy:isIdentifiedBySubject",
-  has kind "role",
-  has roleName "isIdentifiedBySubject",
-  has prefLabel "isIdentifiedBySubject",
-  has definition "Role 'isIdentifiedBySubject' in relation 'isIdentifiedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isIdentifiedBy:isIdentifiedBySubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfSteradian";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
 
-put $generated_role_89 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isMadeUpOf:isMadeUpOfObject",
-  has iri "https://github.com/semanticarts/gist#isMadeUpOf:isMadeUpOfObject",
-  has typeLabel "isMadeUpOf:isMadeUpOfObject",
-  has kind "role",
-  has roleName "isMadeUpOfObject",
-  has prefLabel "isMadeUpOfObject",
-  has definition "Role 'isMadeUpOfObject' in relation 'isMadeUpOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isMadeUpOf:isMadeUpOfObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfUSDollar";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "conversionFactor";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "conversionOffset";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfAmpere";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfBit";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfCandela";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfKelvin";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfKilogram";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfMeter";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfMole";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfNumber";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfOther";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfRadian";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfSecond";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfSteradian";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "exponentOfUSDollar";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Account";
+  $struct_right isa SchemaResource, has typeLabel "hasMagnitude:hasMagnitudeSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Address";
+  $struct_right isa SchemaResource, has typeLabel "comesFromPlace:comesFromPlaceObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Address";
+  $struct_right isa SchemaResource, has typeLabel "goesToPlace:goesToPlaceObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Address";
+  $struct_right isa SchemaResource, has typeLabel "hasAddress:hasAddressObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Agreement";
+  $struct_right isa SchemaResource, has typeLabel "hasParty:hasPartySubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Agreement";
+  $struct_right isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Aspect";
+  $struct_right isa SchemaResource, has typeLabel "hasAspect:hasAspectObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Aspect";
+  $struct_right isa SchemaResource, has typeLabel "hasUnitGroup:hasUnitGroupSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Assignment";
+  $struct_right isa SchemaResource, has typeLabel "isAssignmentOf:isAssignmentOfSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Assignment";
+  $struct_right isa SchemaResource, has typeLabel "isAssignmentTo:isAssignmentToSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;

@@ -7,260 +7,490 @@ put $gist_core isa SchemaModule,
   has moduleName "gistCore",
   has moduleKind "gist-core";
 
-put $r96 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
-  has typeLabel "SchemaMetaData",
-  has kind "entity",
-  has prefLabel "Schema Meta Data",
-  has definition "Superclass for all types of metadata.",
-  has scopeNote "The definition of this class needs additional work.",
-  has example "Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps.";
-put (resource: $r96, module: $gist_core) isa inModule;
+put $r196 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
+  has typeLabel "exponentOfBit",
+  has kind "attribute",
+  has prefLabel "exponent of bit",
+  has definition "The exponent of bit in a product of powers of base units.",
+  has example "In the equation '1 megabit per second = 1000000 x bit per second'\n\n\t\tthe conversion factor for megabit per second is 1000000\n\t\tthe exponent of bit is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing megabit per second must be a multiple of bit per second.";
+put (resource: $r196, module: $gist_core) isa inModule;
 
-put $r97 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
-  has typeLabel "ServiceSpecification",
-  has kind "entity",
-  has prefLabel "Service Specification",
-  has definition "A description of something that can be done for a person or organization (which produces some form of an act).";
-put (resource: $r97, module: $gist_core) isa inModule;
+put $r197 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
+  has typeLabel "exponentOfCandela",
+  has kind "attribute",
+  has prefLabel "exponent of candela",
+  has definition "The exponent of candela in a product of powers of base units.",
+  has example "In the equation '1 candlepower = 1 x candela'\n\n\t\tthe conversion factor for candlepower is 1\n\t\tthe exponent of candela is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing candlepower must be a multiple of candela.";
+put (resource: $r197, module: $gist_core) isa inModule;
 
-put $r98 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
-  has typeLabel "Specification",
-  has kind "entity",
-  has prefLabel "Specification",
-  has definition "One or more characteristics that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification.",
-  has scopeNote "Although a characterization of how to do something is often called a specification, the intended meaning here is limited to specifying what something is. The focus is on the what, not the how. Use gist:TaskTemplate for specifying the how, such as a plan or process specification.",
-  has example "The specification of the iPhone 14; hypothetical events covered by a homeowner's insurance policy.";
-put (resource: $r98, module: $gist_core) isa inModule;
+put $r198 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
+  has typeLabel "exponentOfKelvin",
+  has kind "attribute",
+  has prefLabel "exponent of Kelvin",
+  has definition "The exponent of Kelvin in a product of powers of base units.",
+  has example "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\n\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\n\t\tthe conversion factor for degree Fahrenheit is 5/9\n\t\tthe exponent of Kelvin is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both).";
+put (resource: $r198, module: $gist_core) isa inModule;
 
-put $r99 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
-  has typeLabel "SubCountryGovernment",
-  has kind "entity",
-  has prefLabel "Sub-Country Government",
-  has definition "The government of a governed geographic region other than a country which is under the direct or indirect control of a country government.",
-  has scopeNote "Note that the predicate gist:isGovernedBy is used both for the relationship a governed geographic region has to its government and for the relationship a sub-region government has to the government of the larger region.",
-  has scopeNote "There are many types of sub-regions of a country and the governments thereof (as well as different terms, like 'province' and 'state,' which refer to essentially the same type of thing). We should not automatically assume 'state,' 'county,' and 'city.' Subclasses or categories can be defined if greater specificity is needed.",
-  has scopeNote "This class applies only to organizations governing geographic regions. Regulatory and bureaucratic organizations are members of the more generic gist:GovernmentOrganization class.";
-put (resource: $r99, module: $gist_core) isa inModule;
+put $r199 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
+  has typeLabel "exponentOfKilogram",
+  has kind "attribute",
+  has prefLabel "exponent of kilogram",
+  has definition "The exponent of kilogram in a product of powers of base units.",
+  has example "In the equation '1 millimole per gram = 1 x mole per kilogram'\n\n\t\tthe conversion factor for millimole per gram is 1\n\t\tthe exponent of mole is 1\n\t\tthe exponent of kilogram is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram.";
+put (resource: $r199, module: $gist_core) isa inModule;
 
-put $r100 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/System",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/System",
-  has typeLabel "System",
-  has kind "entity",
-  has prefLabel "System",
-  has definition "A composite with component parts that contribute to the goal of the system.";
-put (resource: $r100, module: $gist_core) isa inModule;
+put $r200 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
+  has typeLabel "exponentOfMeter",
+  has kind "attribute",
+  has prefLabel "exponent of meter",
+  has definition "The exponent of meter in a product of powers of base units.",
+  has example "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\n\n\t\tthe conversion factor for microgram per milliliter is 0.001\n\t\tthe exponent of kilogram is 1\n\t\tthe exponent of meter is -3\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed.";
+put (resource: $r200, module: $gist_core) isa inModule;
 
-put $r101 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
-  has typeLabel "Tag",
-  has kind "entity",
-  has prefLabel "Tag",
-  has definition "A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.",
-  has scopeNote "Whether to use gist:containedText or gist:uniqueText on tags is an implementation decision. Since the latter is a subproperty of the former, the restriction remains valid either way.";
-put (resource: $r101, module: $gist_core) isa inModule;
+put $r201 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
+  has typeLabel "exponentOfMole",
+  has kind "attribute",
+  has prefLabel "exponent of mole",
+  has definition "The exponent of mole in a product of powers of base units.",
+  has example "In the equation '1 katal = 1 x mole per second'\n\n\t\tthe conversion factor for katal is 1\n\t\tthe exponent of mole is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing katal must be a multiple of mole per second.";
+put (resource: $r201, module: $gist_core) isa inModule;
 
-put $r102 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Task",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Task",
-  has typeLabel "Task",
-  has kind "entity",
-  has prefLabel "Task",
-  has definition "An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.",
-  has scopeNote "Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.",
-  has scopeNote "This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task.",
-  has scopeNote "Use the property gist:isBasedOn to link a task back to the task template.";
-put (resource: $r102, module: $gist_core) isa inModule;
+put $r202 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
+  has typeLabel "exponentOfNumber",
+  has kind "attribute",
+  has prefLabel "exponent of number",
+  has definition "The exponent of number in a product of powers of base units.",
+  has scopeNote "Use when the unit of measure involves a count or other number.",
+  has example "In the equation '1 beat per minute = 0.016667 x number per second'\n\n\t\tthe conversion factor for beat per minute is 0.016667\n\t\tthe exponent of number is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing beat per minute must be a multiple of number per second.";
+put (resource: $r202, module: $gist_core) isa inModule;
 
-put $r103 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
-  has typeLabel "TaskTemplate",
-  has kind "entity",
-  has prefLabel "Task Template",
-  has definition "An outline of a task of a particular type, which is the basis for executing such tasks.",
-  has scopeNote "A task template may define a single activity or a series of activities; the level of granularity can be varied according to use case. For example, in a new employee onboarding process, signing up for benefits might be one activity, or it might be broken down into signing up for health insurance, signing up for dental insurance, etc.",
-  has scopeNote "Use the property isBasedOn to link the Task back to the TaskTemplate.",
-  has example "A business process for onboarding new employees.";
-put (resource: $r103, module: $gist_core) isa inModule;
+put $r203 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
+  has typeLabel "exponentOfOther",
+  has kind "attribute",
+  has prefLabel "exponent of other",
+  has definition "Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples).",
+  has scopeNote "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\n\n\t\tOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale.",
+  has example "Decibel, pH, and octave are units of measure that are logarithmic. Their unit groups have exponent of other = 1.";
+put (resource: $r203, module: $gist_core) isa inModule;
 
-put $r104 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Template",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Template",
-  has typeLabel "Template",
-  has kind "entity",
-  has prefLabel "Template",
-  has definition "Something used to make objects in its own image.",
-  has scopeNote "Use gist:isBasedOn to link the object made from the template back to the template.",
-  has example "A die in manufacturing is used to make stamped parts; a form provides a structure and fields to be filled in; a cookie cutter is a template for cookies.";
-put (resource: $r104, module: $gist_core) isa inModule;
+put $r204 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
+  has typeLabel "exponentOfRadian",
+  has kind "attribute",
+  has prefLabel "exponent of radian",
+  has definition "The exponent of radian in a product of powers of base units.",
+  has example "In the equation '1 revolution = 6.283 x radian'\n\n\t\tthe conversion factor for revolution is 6.283\n\t\tthe exponent of radian is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing revolution must be a multiple of radian.";
+put (resource: $r204, module: $gist_core) isa inModule;
 
-put $r105 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
-  has typeLabel "TemporalRelation",
-  has kind "entity",
-  has prefLabel "Temporal Relation",
-  has definition "A relationship existing for a period of time.",
-  has scopeNote "A temporal relation must have a minimum of two participants. For example, both the employer and the employee are participants in a temporal relation representing a period of employment. Note that 'participant' does not imply agency; a non-sentient being can participate in a temporal relation. For example, both a person and a house could be participants in a hypothetical relation 'lives at.'",
-  has example "The relationship between a person and their employer; the relationship between a person or business and an address.";
-put (resource: $r105, module: $gist_core) isa inModule;
+put $r205 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
+  has typeLabel "exponentOfSecond",
+  has kind "attribute",
+  has prefLabel "exponent of second",
+  has definition "The exponent of second in a product of powers of base units.",
+  has example "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\n\n\t\tthe conversion factor for watt-hour is 3600\n\t\tthe exponent of kilogram is 1\n\t\tthe exponent of meter is 2\n\t\tthe exponent of second is -2\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared.";
+put (resource: $r205, module: $gist_core) isa inModule;
 
-put $r106 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Text",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Text",
-  has typeLabel "Text",
-  has kind "entity",
-  has prefLabel "Text",
-  has definition "Content expressed as words and numbers.",
-  has example "Negative example: graphical content.";
-put (resource: $r106, module: $gist_core) isa inModule;
+put $r206 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
+  has typeLabel "exponentOfSteradian",
+  has kind "attribute",
+  has prefLabel "exponent of steradian",
+  has definition "The exponent of steradian in a product of powers of base units.",
+  has scopeNote "Steradian is a measure of solid angle.",
+  has example "In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'\n\n\t\tthe conversion factor for watt per square meter steradian is 1\n\t\tthe exponent of kilogram is 1\n\t\tthe exponent of second is -3\n\t\tthe exponent of steradian is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian.";
+put (resource: $r206, module: $gist_core) isa inModule;
 
-put $r107 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
-  has typeLabel "TimeInterval",
-  has kind "entity",
-  has prefLabel "Time Interval",
-  has definition "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.",
-  has scopeNote "An ongoing state of affairs with an unknown end time in the future cannot be a time interval; e.g. the lifespan of a living person cannot be a time interval, as the end time is unknown.",
-  has scopeNote "This is distinct from a duration, which describes how long a time interval lasts (e.g., one hour; 3 days; 22 minutes).",
-  has example "7pm to 9pm on Jan 1, 2001; fiscal year 2023 (according to some particular definition of fiscal year); the week starting at midnight of January 12, 2023 and lasting exactly 168 hours.";
-put (resource: $r107, module: $gist_core) isa inModule;
+put $r207 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
+  has typeLabel "exponentOfUSDollar",
+  has kind "attribute",
+  has prefLabel "exponent of US dollar",
+  has definition "The exponent of US Dollar in a product of powers of base units.",
+  has scopeNote "The factors for converting from one currency to another change constantly.",
+  has example "In the equation '1 million dollars per week = 1.65344 x dollar per second'\n\n\t\tthe conversion factor for million dollars per week is 1.65344\n\t\tthe exponent of US Dollar is 1\n\t\tthe exponent of second is -1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing million dollars per week must be a multiple of dollar per second.";
+put (resource: $r207, module: $gist_core) isa inModule;
 
-put $r108 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Transaction",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Transaction",
-  has typeLabel "Transaction",
-  has kind "entity",
-  has prefLabel "Transaction",
-  has definition "An exchange or transfer of goods, services, or funds.",
-  has scopeNote "Different sorts of transactions can have different datetime precisions. For example, an electronic transaction would have a gist:actualEndMicrosecond.";
-put (resource: $r108, module: $gist_core) isa inModule;
+put $r208 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/idText",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/idText",
+  has typeLabel "idText",
+  has kind "attribute",
+  has prefLabel "id text",
+  has definition "A text string that identifies an individual.",
+  has scopeNote "A common use case would be for pre-existing internal company identifiers.",
+  has scopeNote "Often, there will be just one identifying text string. More would be appropriate if the individual had different identifiers, such as employee number and social security number. A good way to model that would be to have functional subproperties of idText, such as departmentNumber.",
+  has scopeNote "This property is an alternative to using the property gist:isIdentifiedBy in conjunction with instances of the class gist:ID.",
+  has example "The id text for a car is '4Y1SL65848Z411439'; the id text for the HR department of some company is H31415.";
+put (resource: $r208, module: $gist_core) isa inModule;
 
-put $r109 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
-  has typeLabel "UnitGroup",
-  has kind "entity",
-  has prefLabel "Unit Group",
-  has definition "A collection of units of measure that can all be used to measure the same aspects.",
-  has scopeNote "Typically there is one unit group per aspect. An example of an aspect with two unit groups is vehicle efficiency, which can be measured by miles per gallon (distance per volume) or by liters per 100 kilometers (volume per distance). These two units of measure need to be in different unit groups because they have different values of exponents. When adding a unit of measure to a unit group, make sure it has the same exponents as the other members of the unit group.",
-  has example "The units of measure bit, byte, kilobit, kilobyte, etc. are all in the same unit group because they can all be used to measure an amount of data.";
-put (resource: $r109, module: $gist_core) isa inModule;
+put $r209 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
+  has typeLabel "isRecordedAt",
+  has kind "attribute",
+  has prefLabel "is recorded at",
+  has definition "The date that something was posted (which is not necessarily the date it occurred). It must be after the date of occurrence, but could be before or after the planned date.",
+  has scopeNote "Precision may vary according to context.",
+  has example "The date and time a customer payment or stock purchase was posted.";
+put (resource: $r209, module: $gist_core) isa inModule;
 
-put $r110 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
-  has typeLabel "UnitOfMeasure",
-  has kind "entity",
-  has prefLabel "Unit of Measure",
-  has definition "A standard amount used to measure or specify things.",
-  has example "An acre is a unit for measuring area.";
-put (resource: $r110, module: $gist_core) isa inModule;
+put $r210 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/latitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/latitude",
+  has typeLabel "latitude",
+  has kind "attribute",
+  has prefLabel "latitude",
+  has definition "Degrees above or below the equator.";
+put (resource: $r210, module: $gist_core) isa inModule;
 
-put $r111 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/allows",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/allows",
-  has typeLabel "allows",
-  has kind "relation",
-  has prefLabel "allows",
-  has definition "Relates a permission to a particular activity or type of activity it allows.",
-  has example "An easement grants a right to cross or otherwise use someone else's land for a specified purpose.";
-put (resource: $r111, module: $gist_core) isa inModule;
+put $r211 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/longitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/longitude",
+  has typeLabel "longitude",
+  has kind "attribute",
+  has prefLabel "longitude",
+  has definition "Degrees from the prime meridian.";
+put (resource: $r211, module: $gist_core) isa inModule;
 
-put $r112 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent",
-  has typeLabel "comesFromAgent",
-  has kind "relation",
-  has prefLabel "comes from agent",
-  has definition "Relates something to the originating agent.",
-  has scopeNote "This is not the inverse of gist:goesToAgent, as both properties have the message or shipment as the subject.",
-  has scopeNote "This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasGiver is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the giving of a gift.",
-  has example "A package is shipped by a person; a purchase order is emailed to a vendor by an organization.";
-put (resource: $r112, module: $gist_core) isa inModule;
+put $r212 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/name",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/name",
+  has typeLabel "name",
+  has kind "attribute",
+  has prefLabel "name",
+  has definition "Relates an individual to (one of) its name(s).";
+put (resource: $r212, module: $gist_core) isa inModule;
 
-put $r113 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
-  has typeLabel "comesFromPlace",
-  has kind "relation",
-  has prefLabel "comes from place",
-  has definition "Relates something to its place of origin.",
-  has example "A letter has a return address indicating its origin; a delivery route originates at a distribution center; a trail originates at the trailhead.";
-put (resource: $r113, module: $gist_core) isa inModule;
+put $r213 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
+  has typeLabel "numericValue",
+  has kind "attribute",
+  has prefLabel "numeric value",
+  has definition "The actual value of a magnitude.";
+put (resource: $r213, module: $gist_core) isa inModule;
 
-put $r114 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
-  has typeLabel "conformsTo",
-  has kind "relation",
-  has prefLabel "conforms to",
-  has definition "The subject is consistent with or satisfies the requirements, rules, or expectations established by the object.",
-  has example "Meet an obligation; adhere to a specification or standard; meet terms and conditions of an offer; comply with a regulation.";
-put (resource: $r114, module: $gist_core) isa inModule;
+put $r214 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate",
+  has typeLabel "plannedEndDate",
+  has kind "attribute",
+  has prefLabel "planned end date",
+  has definition "The date that something is or was planned to end, with precision of one day.",
+  has scopeNote "Used for anything with a planned end date, such as when a lease will expire, when an offer is no longer available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r214, module: $gist_core) isa inModule;
 
-put $r115 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
-  has typeLabel "contributesTo",
-  has kind "relation",
-  has prefLabel "contributes to",
-  has definition "Relates a part of a system to the system whose goals or function it contributes to.";
-put (resource: $r115, module: $gist_core) isa inModule;
+put $r215 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime",
+  has typeLabel "plannedEndDateTime",
+  has kind "attribute",
+  has prefLabel "planned end date time",
+  has definition "The date that something is or was planned to end, with no implied precision.",
+  has scopeNote "This is an abstraction over the various precisions of planned end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.",
+  has scopeNote "This property, unlike gist:actualEndDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.";
+put (resource: $r215, module: $gist_core) isa inModule;
 
-put $r116 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent",
-  has typeLabel "goesToAgent",
-  has kind "relation",
-  has prefLabel "goes to agent",
-  has definition "Relates something to the agent that receives it.",
-  has scopeNote "This is not the inverse of gist:comesFromAgent, as both properties have the message or shipment as the subject.",
-  has scopeNote "This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the recieving of a gift.",
-  has example "A package is sent to a person; a purchase order email is received by a vendor.";
-put (resource: $r116, module: $gist_core) isa inModule;
+put $r216 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndMinute",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndMinute",
+  has typeLabel "plannedEndMinute",
+  has kind "attribute",
+  has prefLabel "planned end minute",
+  has definition "The date and time that something is or was planned to end, with precision of one minute.",
+  has scopeNote "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.",
+  has example "'2021-06-01T08:32:00-6:00'^^xsd:dateTime";
+put (resource: $r216, module: $gist_core) isa inModule;
 
-put $r117 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
-  has typeLabel "goesToPlace",
-  has kind "relation",
-  has prefLabel "goes to place",
-  has definition "Relates something to its destination place.",
-  has example "A letter has an address indicating its destination; a segment of a delivery route terminates at a delivery location; a trail terminates at an intersection with another trail.";
-put (resource: $r117, module: $gist_core) isa inModule;
+put $r217 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndYear",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndYear",
+  has typeLabel "plannedEndYear",
+  has kind "attribute",
+  has prefLabel "planned end year",
+  has definition "The date that something is or was planned to end, with precision of one year.",
+  has scopeNote "Used for anything with a planned end date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.",
+  has example "'2021-01-01T00:00:00-6:00'^^xsd:dateTime",
+  has example "The automobile manufacturer announced that it will stop producing gas-powered vehicles in 2035.";
+put (resource: $r217, module: $gist_core) isa inModule;
 
-put $r118 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
-  has typeLabel "hasAccuracy",
-  has kind "relation",
-  has prefLabel "has accuracy",
-  has definition "Relates a magnitude to another magnitude that describes its accuracy.",
-  has scopeNote "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\n\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have a accuracy in terms of millimeters or any other unit that measures distance).",
-  has example "Temperature accurate to tenth of a degree C; length accurate to the nearest centimeter.",
-  has seeAlso "https://en.wikipedia.org/wiki/Accuracy_and_precision",
-  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude";
-put (resource: $r118, module: $gist_core) isa inModule;
+put $r218 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDate",
+  has typeLabel "plannedStartDate",
+  has kind "attribute",
+  has prefLabel "planned start date",
+  has definition "The date that something is or was planned to start, with precision of one day.",
+  has scopeNote "Used for anything with a planned start date, such as when a lease will start, when a configuration becomes available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r218, module: $gist_core) isa inModule;
 
-put $r119 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
-  has typeLabel "hasAddend",
-  has kind "relation",
-  has prefLabel "has addend",
-  has definition "Relates an aspect to another aspect that is an additive component of it.",
-  has scopeNote "Commonly used with financial metrics.",
-  has example "In the equation 'profit = revenue - expenses', revenue is an addend and expenses is a subtrahend.";
-put (resource: $r119, module: $gist_core) isa inModule;
+put $r219 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime",
+  has typeLabel "plannedStartDateTime",
+  has kind "attribute",
+  has prefLabel "planned start date time",
+  has definition "The date and time that something is or was planned to start, with no implied precision.",
+  has scopeNote "This is an abstraction over the various precisions of planned start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.",
+  has scopeNote "This property, unlike gist:actualStartDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.";
+put (resource: $r219, module: $gist_core) isa inModule;
+
+put $r220 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartMinute",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartMinute",
+  has typeLabel "plannedStartMinute",
+  has kind "attribute",
+  has prefLabel "planned start minute",
+  has definition "The date and time that something is or was planned to start, with precision of one minute.",
+  has scopeNote "Used for things like meetings and time card entries, where the hour and minute are important. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.",
+  has example "'2021-06-01T08:32:00-6:00'^^xsd:dateTime";
+put (resource: $r220, module: $gist_core) isa inModule;
+
+put $r221 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartYear",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartYear",
+  has typeLabel "plannedStartYear",
+  has kind "attribute",
+  has prefLabel "planned start year",
+  has definition "The date that something is or was planned to start, with precision of one year.",
+  has scopeNote "Used for anything with a planned start date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.",
+  has example "'2021-01-01T00:00:00-6:00'^^xsd:dateTime",
+  has example "The automobile manufacturer announced that its full line-up will include only electric cars starting in 2035.";
+put (resource: $r221, module: $gist_core) isa inModule;
+
+put $r222 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/sequence",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/sequence",
+  has typeLabel "sequence",
+  has kind "attribute",
+  has prefLabel "sequence",
+  has definition "For ordering ordered lists.";
+put (resource: $r222, module: $gist_core) isa inModule;
+
+put $r223 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/startDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/startDateTime",
+  has typeLabel "startDateTime",
+  has kind "attribute",
+  has prefLabel "start date time",
+  has definition "The date and time that something starts.",
+  has scopeNote "This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals).",
+  has scopeNote "Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
+put (resource: $r223, module: $gist_core) isa inModule;
+
+put $r224 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/symbol",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/symbol",
+  has typeLabel "symbol",
+  has kind "attribute",
+  has prefLabel "symbol",
+  has definition "A symbol for something using only ASCII characters.",
+  has example "The ASCII symbol for square meter is m^2.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure";
+put (resource: $r224, module: $gist_core) isa inModule;
+
+put $r225 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/uniqueText",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/uniqueText",
+  has typeLabel "uniqueText",
+  has kind "attribute",
+  has prefLabel "unique text",
+  has definition "The unique string value of some content object, to be used when there is no possibility of having more than one value.",
+  has scopeNote "Note that the uniqueness only goes in one direction: a product catalog number might also be an employee ID.",
+  has example "The unique string for a vehicle identification number.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Text";
+put (resource: $r225, module: $gist_core) isa inModule;
+
+put $r226 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_altitude",
+  has typeLabel "_Aspect_altitude",
+  has kind "individual",
+  has prefLabel "altitude",
+  has definition "The aspect altitude.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r226, module: $gist_core) isa inModule;
+
+put $r227 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_area",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_area",
+  has typeLabel "_Aspect_area",
+  has kind "individual",
+  has prefLabel "area",
+  has definition "The aspect area.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r227, module: $gist_core) isa inModule;
+
+put $r228 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_duration",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_duration",
+  has typeLabel "_Aspect_duration",
+  has kind "individual",
+  has prefLabel "duration",
+  has definition "The aspect duration.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r228, module: $gist_core) isa inModule;
+
+put $r229 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_financial_balance",
+  has typeLabel "_Aspect_financial_balance",
+  has kind "individual",
+  has prefLabel "balance",
+  has definition "The aspect financial balance.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r229, module: $gist_core) isa inModule;
+
+put $r230 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_mass",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_mass",
+  has typeLabel "_Aspect_mass",
+  has kind "individual",
+  has prefLabel "mass",
+  has definition "The aspect mass.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r230, module: $gist_core) isa inModule;
+
+put $r231 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_monetary_value",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_monetary_value",
+  has typeLabel "_Aspect_monetary_value",
+  has kind "individual",
+  has prefLabel "monetary value",
+  has definition "The aspect monetary value.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r231, module: $gist_core) isa inModule;
+
+put $r232 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_probability",
+  has typeLabel "_Aspect_probability",
+  has kind "individual",
+  has prefLabel "probability",
+  has definition "The aspect probability.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r232, module: $gist_core) isa inModule;
+
+put $r233 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume",
+  has iri "https://w3id.org/semanticarts/ns/data/gist/_Aspect_volume",
+  has typeLabel "_Aspect_volume",
+  has kind "individual",
+  has prefLabel "volume",
+  has definition "The aspect volume.",
+  has editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions.";
+put (resource: $r233, module: $gist_core) isa inModule;
+
+put $r234 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/json",
+  has iri "https://www.iana.org/assignments/media-types/application/json",
+  has typeLabel "json",
+  has kind "individual",
+  has prefLabel "JSON";
+put (resource: $r234, module: $gist_core) isa inModule;
+
+put $r235 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/ld+json",
+  has iri "https://www.iana.org/assignments/media-types/application/ld+json",
+  has typeLabel "ld+json",
+  has kind "individual",
+  has prefLabel "JSON-LD";
+put (resource: $r235, module: $gist_core) isa inModule;
+
+put $r236 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/n-quads",
+  has iri "https://www.iana.org/assignments/media-types/application/n-quads",
+  has typeLabel "n-quads",
+  has kind "individual",
+  has prefLabel "N-Quads";
+put (resource: $r236, module: $gist_core) isa inModule;
+
+put $r237 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/n-triples",
+  has iri "https://www.iana.org/assignments/media-types/application/n-triples",
+  has typeLabel "n-triples",
+  has kind "individual",
+  has prefLabel "N-Triples";
+put (resource: $r237, module: $gist_core) isa inModule;
+
+put $r238 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/rdf+xml",
+  has iri "https://www.iana.org/assignments/media-types/application/rdf+xml",
+  has typeLabel "rdf+xml",
+  has kind "individual",
+  has prefLabel "RDF/XML";
+put (resource: $r238, module: $gist_core) isa inModule;
+
+put $r239 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/sparql-results+json",
+  has iri "https://www.iana.org/assignments/media-types/application/sparql-results+json",
+  has typeLabel "sparql-results+json",
+  has kind "individual",
+  has prefLabel "SPARQL 1.1 Query Results JSON";
+put (resource: $r239, module: $gist_core) isa inModule;
+
+put $r240 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/sparql-results+xml",
+  has iri "https://www.iana.org/assignments/media-types/application/sparql-results+xml",
+  has typeLabel "sparql-results+xml",
+  has kind "individual",
+  has prefLabel "SPARQL 1.1 Query Results XML";
+put (resource: $r240, module: $gist_core) isa inModule;
+
+put $r241 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/application/trig",
+  has iri "https://www.iana.org/assignments/media-types/application/trig",
+  has typeLabel "trig",
+  has kind "individual",
+  has prefLabel "TriG";
+put (resource: $r241, module: $gist_core) isa inModule;
+
+put $r242 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/text/csv",
+  has iri "https://www.iana.org/assignments/media-types/text/csv",
+  has typeLabel "csv",
+  has kind "individual",
+  has prefLabel "CSV";
+put (resource: $r242, module: $gist_core) isa inModule;
+
+put $r243 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/text/html",
+  has iri "https://www.iana.org/assignments/media-types/text/html",
+  has typeLabel "html",
+  has kind "individual",
+  has prefLabel "HTML";
+put (resource: $r243, module: $gist_core) isa inModule;
+
+put $r244 isa SchemaResource,
+  has docKey "https://www.iana.org/assignments/media-types/text/plain",
+  has iri "https://www.iana.org/assignments/media-types/text/plain",
+  has typeLabel "plain",
+  has kind "individual",
+  has prefLabel "Plain Text";
+put (resource: $r244, module: $gist_core) isa inModule;

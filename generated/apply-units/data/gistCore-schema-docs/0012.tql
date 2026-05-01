@@ -2,427 +2,452 @@
 # manifest: manifests/gist-v2.0.4.translation-manifest.json
 # upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
 
-put $generated_role_1 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#allows:allowsObject",
-  has iri "https://github.com/semanticarts/gist#allows:allowsObject",
-  has typeLabel "allows:allowsObject",
-  has kind "role",
-  has roleName "allowsObject",
-  has prefLabel "allowsObject",
-  has definition "Role 'allowsObject' in relation 'allows'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsObject";
+  $struct_left isa SchemaResource, has typeLabel "Account";
+  $struct_right isa SchemaResource, has typeLabel "Agreement";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_18 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddend:hasAddendSubject",
-  has iri "https://github.com/semanticarts/gist#hasAddend:hasAddendSubject",
-  has typeLabel "hasAddend:hasAddendSubject",
-  has kind "role",
-  has roleName "hasAddendSubject",
-  has prefLabel "hasAddendSubject",
-  has definition "Role 'hasAddendSubject' in relation 'hasAddend'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddend:hasAddendSubject";
+  $struct_left isa SchemaResource, has typeLabel "Project";
+  $struct_right isa SchemaResource, has typeLabel "Task";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_19 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressObject",
-  has iri "https://github.com/semanticarts/gist#hasAddress:hasAddressObject",
-  has typeLabel "hasAddress:hasAddressObject",
-  has kind "role",
-  has roleName "hasAddressObject",
-  has prefLabel "hasAddressObject",
-  has definition "Role 'hasAddressObject' in relation 'hasAddress'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressObject";
+  $struct_left isa SchemaResource, has typeLabel "ReferenceValue";
+  $struct_right isa SchemaResource, has typeLabel "Magnitude";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_20 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressSubject",
-  has iri "https://github.com/semanticarts/gist#hasAddress:hasAddressSubject",
-  has typeLabel "hasAddress:hasAddressSubject",
-  has kind "role",
-  has roleName "hasAddressSubject",
-  has prefLabel "hasAddressSubject",
-  has definition "Role 'hasAddressSubject' in relation 'hasAddress'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressSubject";
+  $struct_left isa SchemaResource, has typeLabel "RenderedContent";
+  $struct_right isa SchemaResource, has typeLabel "FormattedContent";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_21 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectObject",
-  has iri "https://github.com/semanticarts/gist#hasAspect:hasAspectObject",
-  has typeLabel "hasAspect:hasAspectObject",
-  has kind "role",
-  has roleName "hasAspectObject",
-  has prefLabel "hasAspectObject",
-  has definition "Role 'hasAspectObject' in relation 'hasAspect'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectObject";
+  $struct_left isa SchemaResource, has typeLabel "Requirement";
+  $struct_right isa SchemaResource, has typeLabel "Intention";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_22 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectSubject",
-  has iri "https://github.com/semanticarts/gist#hasAspect:hasAspectSubject",
-  has typeLabel "hasAspect:hasAspectSubject",
-  has kind "role",
-  has roleName "hasAspectSubject",
-  has prefLabel "hasAspectSubject",
-  has definition "Role 'hasAspectSubject' in relation 'hasAspect'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectSubject";
+  $struct_left isa SchemaResource, has typeLabel "Restriction";
+  $struct_right isa SchemaResource, has typeLabel "Intention";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_23 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentObject",
-  has iri "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentObject",
-  has typeLabel "hasBiologicalParent:hasBiologicalParentObject",
-  has kind "role",
-  has roleName "hasBiologicalParentObject",
-  has prefLabel "hasBiologicalParentObject",
-  has definition "Role 'hasBiologicalParentObject' in relation 'hasBiologicalParent'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentObject";
+  $struct_left isa SchemaResource, has typeLabel "ScheduledEvent";
+  $struct_right isa SchemaResource, has typeLabel "Event";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_24 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentSubject",
-  has iri "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentSubject",
-  has typeLabel "hasBiologicalParent:hasBiologicalParentSubject",
-  has kind "role",
-  has roleName "hasBiologicalParentSubject",
-  has prefLabel "hasBiologicalParentSubject",
-  has definition "Role 'hasBiologicalParentSubject' in relation 'hasBiologicalParent'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentSubject";
+  $struct_left isa SchemaResource, has typeLabel "ScheduledTask";
+  $struct_right isa SchemaResource, has typeLabel "ScheduledEvent";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_25 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderObject",
-  has iri "https://github.com/semanticarts/gist#hasBroader:hasBroaderObject",
-  has typeLabel "hasBroader:hasBroaderObject",
-  has kind "role",
-  has roleName "hasBroaderObject",
-  has prefLabel "hasBroaderObject",
-  has definition "Role 'hasBroaderObject' in relation 'hasBroader'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderObject";
+  $struct_left isa SchemaResource, has typeLabel "SchemaMetaData";
+  $struct_right isa SchemaResource, has typeLabel "Thing";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_26 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderSubject",
-  has iri "https://github.com/semanticarts/gist#hasBroader:hasBroaderSubject",
-  has typeLabel "hasBroader:hasBroaderSubject",
-  has kind "role",
-  has roleName "hasBroaderSubject",
-  has prefLabel "hasBroaderSubject",
-  has definition "Role 'hasBroaderSubject' in relation 'hasBroader'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderSubject";
+  $struct_left isa SchemaResource, has typeLabel "ServiceSpecification";
+  $struct_right isa SchemaResource, has typeLabel "CatalogItem";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_27 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderObject",
-  has iri "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderObject",
-  has typeLabel "hasDirectBroader:hasDirectBroaderObject",
-  has kind "role",
-  has roleName "hasDirectBroaderObject",
-  has prefLabel "hasDirectBroaderObject",
-  has definition "Role 'hasDirectBroaderObject' in relation 'hasDirectBroader'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderObject";
+  $struct_left isa SchemaResource, has typeLabel "Specification";
+  $struct_right isa SchemaResource, has typeLabel "Intention";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_28 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderSubject",
-  has iri "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderSubject",
-  has typeLabel "hasDirectBroader:hasDirectBroaderSubject",
-  has kind "role",
-  has roleName "hasDirectBroaderSubject",
-  has prefLabel "hasDirectBroaderSubject",
-  has definition "Role 'hasDirectBroaderSubject' in relation 'hasDirectBroader'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderSubject";
+  $struct_left isa SchemaResource, has typeLabel "startDateTime";
+  $struct_right isa SchemaResource, has typeLabel "atDateTime";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_29 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorObject",
-  has iri "https://github.com/semanticarts/gist#hasDivisor:hasDivisorObject",
-  has typeLabel "hasDivisor:hasDivisorObject",
-  has kind "role",
-  has roleName "hasDivisorObject",
-  has prefLabel "hasDivisorObject",
-  has definition "Role 'hasDivisorObject' in relation 'hasDivisor'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorObject";
+  $struct_left isa SchemaResource, has typeLabel "SubCountryGovernment";
+  $struct_right isa SchemaResource, has typeLabel "GovernmentOrganization";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_30 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorSubject",
-  has iri "https://github.com/semanticarts/gist#hasDivisor:hasDivisorSubject",
-  has typeLabel "hasDivisor:hasDivisorSubject",
-  has kind "role",
-  has roleName "hasDivisorSubject",
-  has prefLabel "hasDivisorSubject",
-  has definition "Role 'hasDivisorSubject' in relation 'hasDivisor'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorSubject";
+  $struct_left isa SchemaResource, has typeLabel "System";
+  $struct_right isa SchemaResource, has typeLabel "Composite";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_31 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverObject",
-  has iri "https://github.com/semanticarts/gist#hasGiver:hasGiverObject",
-  has typeLabel "hasGiver:hasGiverObject",
-  has kind "role",
-  has roleName "hasGiverObject",
-  has prefLabel "hasGiverObject",
-  has definition "Role 'hasGiverObject' in relation 'hasGiver'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverObject";
+  $struct_left isa SchemaResource, has typeLabel "Tag";
+  $struct_right isa SchemaResource, has typeLabel "Category";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_32 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverSubject",
-  has iri "https://github.com/semanticarts/gist#hasGiver:hasGiverSubject",
-  has typeLabel "hasGiver:hasGiverSubject",
-  has kind "role",
-  has roleName "hasGiverSubject",
-  has prefLabel "hasGiverSubject",
-  has definition "Role 'hasGiverSubject' in relation 'hasGiver'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverSubject";
+  $struct_left isa SchemaResource, has typeLabel "Task";
+  $struct_right isa SchemaResource, has typeLabel "Event";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_33 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalObject",
-  has iri "https://github.com/semanticarts/gist#hasGoal:hasGoalObject",
-  has typeLabel "hasGoal:hasGoalObject",
-  has kind "role",
-  has roleName "hasGoalObject",
-  has prefLabel "hasGoalObject",
-  has definition "Role 'hasGoalObject' in relation 'hasGoal'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalObject";
+  $struct_left isa SchemaResource, has typeLabel "TaskTemplate";
+  $struct_right isa SchemaResource, has typeLabel "Template";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_34 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalSubject",
-  has iri "https://github.com/semanticarts/gist#hasGoal:hasGoalSubject",
-  has typeLabel "hasGoal:hasGoalSubject",
-  has kind "role",
-  has roleName "hasGoalSubject",
-  has prefLabel "hasGoalSubject",
-  has definition "Role 'hasGoalSubject' in relation 'hasGoal'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalSubject";
+  $struct_left isa SchemaResource, has typeLabel "Template";
+  $struct_right isa SchemaResource, has typeLabel "Thing";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_35 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentObject",
-  has iri "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentObject",
-  has typeLabel "hasIncumbent:hasIncumbentObject",
-  has kind "role",
-  has roleName "hasIncumbentObject",
-  has prefLabel "hasIncumbentObject",
-  has definition "Role 'hasIncumbentObject' in relation 'hasIncumbent'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentObject";
+  $struct_left isa SchemaResource, has typeLabel "TemporalRelation";
+  $struct_right isa SchemaResource, has typeLabel "Thing";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_36 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentSubject",
-  has iri "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentSubject",
-  has typeLabel "hasIncumbent:hasIncumbentSubject",
-  has kind "role",
-  has roleName "hasIncumbentSubject",
-  has prefLabel "hasIncumbentSubject",
-  has definition "Role 'hasIncumbentSubject' in relation 'hasIncumbent'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentSubject";
+  $struct_left isa SchemaResource, has typeLabel "Text";
+  $struct_right isa SchemaResource, has typeLabel "ContentExpression";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_37 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeObject",
-  has iri "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeObject",
-  has typeLabel "hasMagnitude:hasMagnitudeObject",
-  has kind "role",
-  has roleName "hasMagnitudeObject",
-  has prefLabel "hasMagnitudeObject",
-  has definition "Role 'hasMagnitudeObject' in relation 'hasMagnitude'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeObject";
+  $struct_left isa SchemaResource, has typeLabel "TimeInterval";
+  $struct_right isa SchemaResource, has typeLabel "Thing";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_38 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeSubject",
-  has iri "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeSubject",
-  has typeLabel "hasMagnitude:hasMagnitudeSubject",
-  has kind "role",
-  has roleName "hasMagnitudeSubject",
-  has prefLabel "hasMagnitudeSubject",
-  has definition "Role 'hasMagnitudeSubject' in relation 'hasMagnitude'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeSubject";
+  $struct_left isa SchemaResource, has typeLabel "Transaction";
+  $struct_right isa SchemaResource, has typeLabel "Event";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_39 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierObject",
-  has iri "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierObject",
-  has typeLabel "hasMultiplier:hasMultiplierObject",
-  has kind "role",
-  has roleName "hasMultiplierObject",
-  has prefLabel "hasMultiplierObject",
-  has definition "Role 'hasMultiplierObject' in relation 'hasMultiplier'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierObject";
+  $struct_left isa SchemaResource, has typeLabel "uniqueText";
+  $struct_right isa SchemaResource, has typeLabel "containedText";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_40 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierSubject",
-  has iri "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierSubject",
-  has typeLabel "hasMultiplier:hasMultiplierSubject",
-  has kind "role",
-  has roleName "hasMultiplierSubject",
-  has prefLabel "hasMultiplierSubject",
-  has definition "Role 'hasMultiplierSubject' in relation 'hasMultiplier'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierSubject";
+  $struct_left isa SchemaResource, has typeLabel "UnitGroup";
+  $struct_right isa SchemaResource, has typeLabel "Collection";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_41 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentObject",
-  has iri "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentObject",
-  has typeLabel "hasNavigationalParent:hasNavigationalParentObject",
-  has kind "role",
-  has roleName "hasNavigationalParentObject",
-  has prefLabel "hasNavigationalParentObject",
-  has definition "Role 'hasNavigationalParentObject' in relation 'hasNavigationalParent'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentObject";
+  $struct_left isa SchemaResource, has typeLabel "UnitOfMeasure";
+  $struct_right isa SchemaResource, has typeLabel "Thing";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Aspect";
+  $struct_right isa SchemaResource, has typeLabel "description";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Aspect";
+  $struct_right isa SchemaResource, has typeLabel "name";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Aspect";
+  $struct_right isa SchemaResource, has typeLabel "sourceIRI";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDate";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDateTime";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndMicrosecond";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndMinute";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndYear";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDate";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDateTime";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartMicrosecond";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartMinute";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartYear";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ContemporaryEvent";
+  $struct_right isa SchemaResource, has typeLabel "deathDate";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoPoint";
+  $struct_right isa SchemaResource, has typeLabel "latitude";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoPoint";
+  $struct_right isa SchemaResource, has typeLabel "longitude";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDate";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDateTime";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndMicrosecond";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndMinute";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualEndYear";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDate";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDateTime";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartMicrosecond";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
+  $struct_right isa SchemaResource, has typeLabel "actualStartMinute";
+  not {
+    (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;
+  };
+insert
+  (ownerResource: $struct_left, attributeResource: $struct_right) isa schemaOwns;

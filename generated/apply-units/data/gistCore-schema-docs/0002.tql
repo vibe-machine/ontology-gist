@@ -7,254 +7,511 @@ put $gist_core isa SchemaModule,
   has moduleName "gistCore",
   has moduleKind "gist-core";
 
-put $r24 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
-  has typeLabel "CatalogItem",
+put $r49 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+  has typeLabel "FormattedContent",
   has kind "entity",
-  has prefLabel "Catalog Item",
-  has definition "A description of a product or service to be delivered, given in a sufficient level of detail that a receiver could determine whether delivery constituted discharge of the obligation to deliver.",
-  has scopeNote "In short, an unambiguous characterization of what it is that a potential buyer is paying for.";
-put (resource: $r24, module: $gist_core) isa inModule;
+  has prefLabel "Formatted Content",
+  has definition "Content which is in a particular format.",
+  has example "An HTML website, a PDF document, a JPG image.";
+put (resource: $r49, module: $gist_core) isa inModule;
 
-put $r25 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Category",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Category",
-  has typeLabel "Category",
+put $r50 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Function",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Function",
+  has typeLabel "Function",
   has kind "entity",
-  has prefLabel "Category",
-  has definition "A concept or label used to categorize other instances without specifying any formal semantics.",
-  has scopeNote "Often a type can be modeled either as an owl:Class or as a gist:Category. Use the latter if you don't care much about the formal structure of the different types, or if there is a whole hierarchy of types that are going to be managed by a group separate from the ontology developers. The formal structure may be defined elsewhere and linked to, if necessary.",
-  has example "Tags used in folksonomies; formal definitions from other systems.";
-put (resource: $r25, module: $gist_core) isa inModule;
+  has prefLabel "Function",
+  has definition "The activity that a human-made item is intended to perform.",
+  has example "Transmit electricity, provide ballast, control ambient temperature.";
+put (resource: $r50, module: $gist_core) isa inModule;
 
-put $r26 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
-  has typeLabel "Collection",
+put $r51 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
+  has typeLabel "GeneralMediaType",
   has kind "entity",
-  has prefLabel "Collection",
-  has definition "A grouping of things.",
-  has scopeNote "Individuals are placed in the collection using the gist:isMemberOf property. Collections typically are created because the members are functionally connected in some way. This definition allows a collection to have zero members.",
-  has example "A jury is a group of people; a financial ledger is a collection of transaction entries; a route is an (ordered) collection of segments.";
-put (resource: $r26, module: $gist_core) isa inModule;
+  has prefLabel "General Media Type",
+  has definition "The real-world media type for content.",
+  has example "Audio, still image, video, textual, physical (e.g., a statue), performance (e.g., a play), oil or pastel for a painting.";
+put (resource: $r51, module: $gist_core) isa inModule;
 
-put $r27 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
-  has typeLabel "Commitment",
+put $r52 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+  has typeLabel "GeoLocation",
   has kind "entity",
-  has prefLabel "Commitment",
-  has definition "A promise made by a single party to one or more parties to do or not do something or act in a particular way.",
-  has scopeNote "A commitment is unilateral in that it is binding on only one party. This contrasts with gist:Agreement, which consists of commitments that bind two or more parties.",
-  has scopeNote "A single commitment may be made to multiple parties at once; it is a single commitment rather than multiple commitments if the same action would fulfill the obligation to all the parties simultaneously. For example, a performer makes a single commitment to hold a performance to all ticket purchasers; by holding the performance, the commitment to all parties is fulfilled in a single action.",
-  has scopeNote "The manner in which a commitment is binding may vary. In a business context, we are typically interested in commitments that are legally binding.",
-  has example "Upon selling a treasury bill, the U.S. government makes a commitment to pay the purchaser a stated amount of money at a stated time.",
-  has example "When signing an NDA, the signatory commits to keeping specified information confidential.";
-put (resource: $r27, module: $gist_core) isa inModule;
+  has prefLabel "Geographic Location",
+  has definition "A physical location, with the earth as a frame of reference.",
+  has scopeNote "A geographic location may be a point, region, or volume.";
+put (resource: $r52, module: $gist_core) isa inModule;
 
-put $r28 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Component",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Component",
-  has typeLabel "Component",
+put $r53 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+  has typeLabel "GeoPoint",
   has kind "entity",
-  has prefLabel "Component",
-  has definition "Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.",
-  has scopeNote "A component may be designed or intended as part of a whole without actually being so; e.g., a car steering wheel that is not installed in any car.",
-  has scopeNote "Many things are in a trivial sense a part of a larger thing, but are not considered components because they are not inherently part of that larger thing. For example, while a book may be part of a library (a collection of books), it is not inherently so, and thus is not a component. A playing card, on the other hand, could be considered a component in (member of) a deck of cards. This may be use case-dependent; e.g., car parts might be modeled as components in an automobile manufacturing context but not in a retail auto parts store.",
-  has scopeNote "Physical substances, such as ingredients in a cake batter, do not meet the independent existence criterion, so are not components.",
-  has scopeNote "This class is not disjoint with gist:Composite, because a component may itself break down into smaller components.",
-  has scopeNote "This is an abstract class that is not directly instantiated. Users will define subclasses that are meaningful to their domain of interest.";
-put (resource: $r28, module: $gist_core) isa inModule;
+  has prefLabel "Geographic Point",
+  has definition "An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.";
+put (resource: $r53, module: $gist_core) isa inModule;
 
-put $r29 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
-  has typeLabel "Composite",
+put $r54 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+  has typeLabel "GeoRegion",
   has kind "entity",
-  has prefLabel "Composite",
-  has definition "Something which is made up of various parts or elements that are independently identifiable.",
-  has scopeNote "Some composites, like systems, networks, and ordered collections, have internal organization, while others, such as unordered collections, typically do not.",
-  has scopeNote "This class is not disjoint with gist:Component, because a composite can itself be a component of a larger composite.",
-  has scopeNote "This is an abstract class that will not be directly instantiated.",
-  has example "A library (collection of books); a network of pipes and valves; a computer network of routers and computers.";
-put (resource: $r29, module: $gist_core) isa inModule;
+  has prefLabel "Geographic Region",
+  has definition "A bounded region (or set of regions) on the surface of the Earth.",
+  has scopeNote "A geographic region could be non-contiguous; e.g., the region governed by the US federal government is the contiguous area of the lower 48 states plus Alaska, Hawaii, and overseas territories. Child classes in lower ontologies can make this distinction.",
+  has example "The bounded shape that defines the region occupied by Crater Lake; the bounded area known as the contiguous USA.";
+put (resource: $r54, module: $gist_core) isa inModule;
 
-put $r30 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
-  has typeLabel "ContemporaryEvent",
+put $r55 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+  has typeLabel "GeoRoute",
   has kind "entity",
-  has prefLabel "Contemporary Event",
-  has definition "An event that has started but has not yet ended.",
-  has scopeNote "When the event actually ends, it will cease being contemporary.";
-put (resource: $r30, module: $gist_core) isa inModule;
+  has prefLabel "Geographic Route",
+  has definition "An ordered set of geographic points that defines a path from a starting point to an ending point.",
+  has scopeNote "A geographic route could describe a bus route by identifying the points where the bus stops. A geographic route could describe the boundary of a polygonal geographic region (it does not have to be a travelled route).";
+put (resource: $r55, module: $gist_core) isa inModule;
 
-put $r31 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Content",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Content",
-  has typeLabel "Content",
+put $r56 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+  has typeLabel "GeoVolume",
   has kind "entity",
-  has prefLabel "Content",
-  has definition "Information available in some medium.",
-  has scopeNote "Categories are not content until they are written down.",
-  has example "A document, program, image.";
-put (resource: $r31, module: $gist_core) isa inModule;
+  has prefLabel "Geographic Volume",
+  has definition "A three-dimensional space on or near the surface of the Earth, such as an oil reservoir, the body of a lake, or an airspace.";
+put (resource: $r56, module: $gist_core) isa inModule;
 
-put $r32 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
-  has typeLabel "ContentExpression",
+put $r57 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+  has typeLabel "GovernedGeoRegion",
   has kind "entity",
-  has prefLabel "Content Expression",
-  has definition "Intellectual property reduced to text, audio, etc.  If it contains text (written or spoken), it will be expressed in a language.";
-put (resource: $r32, module: $gist_core) isa inModule;
+  has prefLabel "Governed Geographic Region",
+  has definition "A geographic region governed by at least one government organization.",
+  has scopeNote "Geographic regions do not need not be physically contiguous in order to constitute a governed geographic region; e.g., Alaska and Hawaii are part of the region governed by the United States.";
+put (resource: $r57, module: $gist_core) isa inModule;
 
-put $r33 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
-  has typeLabel "ContingentEvent",
+put $r58 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+  has typeLabel "GovernmentOrganization",
   has kind "entity",
-  has prefLabel "Contingent Event",
-  has definition "An event with a probability of happening in the future, and usually dependent upon some other event or condition.",
-  has example "A fire insurance payout is contingent on a particular building burning down; selling 20 shares of stock in a given company is contingent on the price dropping below $200/share; the death benefit payout on a life insurance policy is contingent on the death of the insured person.";
-put (resource: $r33, module: $gist_core) isa inModule;
+  has prefLabel "Government Organization",
+  has definition "An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body.",
+  has scopeNote "Includes administrative, regulatory, and enforcement organizations created or sanctioned by country or sub-country governments.",
+  has example "Negative example: A corporation, which is owned and therefore not independent.",
+  has example "The State of Washington Office of Financial Management; the Food and Drug Administration; the Scottish Parliament.";
+put (resource: $r58, module: $gist_core) isa inModule;
 
-put $r34 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
-  has typeLabel "ContingentObligation",
+put $r59 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+  has typeLabel "HistoricalEvent",
   has kind "entity",
-  has prefLabel "Contingent Obligation",
-  has definition "An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm.",
-  has scopeNote "A contingent obligation might have a getter counterparty (as in the case of insurance); but it might not (as in the case of an offer).";
-put (resource: $r34, module: $gist_core) isa inModule;
+  has prefLabel "Historical Event",
+  has definition "An event which occurred in time, with an actual end earlier than the present moment.";
+put (resource: $r59, module: $gist_core) isa inModule;
 
-put $r35 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
-  has typeLabel "Contract",
+put $r60 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+  has typeLabel "ID",
   has kind "entity",
-  has prefLabel "Contract",
-  has definition "An agreement which can be enforced by law.";
-put (resource: $r35, module: $gist_core) isa inModule;
+  has prefLabel "ID",
+  has definition "Content that is used to uniquely identify something or someone.",
+  has scopeNote "Used in conjunction with gist:isIdentifiedBy.",
+  has example "SSN for a person; serial number for a product; employee ID for a person.";
+put (resource: $r60, module: $gist_core) isa inModule;
 
-put $r36 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ContractTerm",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ContractTerm",
-  has typeLabel "ContractTerm",
+put $r61 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+  has typeLabel "IntellectualProperty",
   has kind "entity",
-  has prefLabel "Contract Term",
-  has definition "A specification of some aspect of a contract.";
-put (resource: $r36, module: $gist_core) isa inModule;
+  has prefLabel "Intellectual Property",
+  has definition "An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.",
+  has scopeNote "For literature this could be called the 'Work', except that 'work' is a highly overloaded term (expenditure of energy, resource consumption, art).  Often the first expression precedes our recognition of the IP, but subsequent expressions are known to be derivatives of the IP, even if they are expression-to-expression translations (or copies).",
+  has scopeNote "This concept includes works that are out of copyright or were never formally registered; the defining feature is not that it is legally protected but that it is an intangible creation of the human mind.",
+  has example "The Old Man and The Sea; the Page Rank algorithm; the brand Coca Cola.";
+put (resource: $r61, module: $gist_core) isa inModule;
 
-put $r37 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
-  has typeLabel "ControlledVocabulary",
+put $r62 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+  has typeLabel "Intention",
   has kind "entity",
-  has prefLabel "Controlled Vocabulary",
-  has definition "A collection of terms approved and managed by some organization or person.",
-  has scopeNote "A controlled vocabulary is similar to a skos:ConceptScheme, but it could also be used for things that are not concepts, such as organizations, US presidents, geographic regions, etc. Hierarchical relationships between instances of the controlled vocabulary are possible.";
-put (resource: $r37, module: $gist_core) isa inModule;
+  has prefLabel "Intention",
+  has definition "A goal, desire, or aspiration.",
+  has scopeNote "The 'teleological' aspect of a system that indicates things are done with a purpose.";
+put (resource: $r62, module: $gist_core) isa inModule;
 
-put $r38 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
-  has typeLabel "CountryGeoRegion",
+put $r63 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+  has typeLabel "IntergovernmentalOrganization",
   has kind "entity",
-  has prefLabel "Country Geographic Region",
-  has definition "A geographic region governed by exactly one country government.";
-put (resource: $r38, module: $gist_core) isa inModule;
+  has prefLabel "Intergovernmental Organization",
+  has definition "An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities.",
+  has example "The United Nations, the European Union, the Metropolitan Transit Authority.";
+put (resource: $r63, module: $gist_core) isa inModule;
 
-put $r39 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
-  has typeLabel "CountryGovernment",
+put $r64 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept",
+  has typeLabel "KnowledgeConcept",
   has kind "entity",
-  has prefLabel "Country Government",
-  has definition "A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country.",
-  has scopeNote "While a country government may enter into treaties with other country governments, there are no governing relationships among the treaty members.";
-put (resource: $r39, module: $gist_core) isa inModule;
+  has prefLabel "Knowledge Concept",
+  has definition "An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.",
+  has scopeNote "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\n\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances.  Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\n\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge.  A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\n\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\n\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances.",
+  has example "Most domains will define a few subclasses, such as gene, protein, chemical, disease, subject matter, industry, method.";
+put (resource: $r64, module: $gist_core) isa inModule;
 
-put $r40 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/DegreeOfCommitment",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/DegreeOfCommitment",
-  has typeLabel "DegreeOfCommitment",
+put $r65 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
+  has typeLabel "Landmark",
   has kind "entity",
-  has prefLabel "Degree Of Commitment",
-  has definition "The difficulty of reversing a commitment.",
-  has example "A car rental typically has a lower degree of commitment than an airfare reservation.";
-put (resource: $r40, module: $gist_core) isa inModule;
+  has prefLabel "Landmark",
+  has definition "Something permanently attached to the Earth.",
+  has editorialNote "See guidance on removing the term in the next major release at https://github.com/semanticarts/gist/issues/947#issuecomment-1679566885.";
+put (resource: $r65, module: $gist_core) isa inModule;
 
-put $r41 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Determination",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Determination",
-  has typeLabel "Determination",
+put $r66 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Language",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Language",
+  has typeLabel "Language",
   has kind "entity",
-  has prefLabel "Determination",
-  has definition "An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating.",
-  has example "Measuring the sulphur content of crude oil; evaluating a loan application for approval; estimating the price of gas for the next three months; determining whether and by how much an interest rate should change; classifying a purchase into a budget category.";
-put (resource: $r41, module: $gist_core) isa inModule;
+  has prefLabel "Language",
+  has definition "A recognized, organized set of symbols and grammar.",
+  has example "Natural languages such as English and Spanish; computer languages such as OWL, Python, and XML.";
+put (resource: $r66, module: $gist_core) isa inModule;
 
-put $r42 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Discipline",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Discipline",
-  has typeLabel "Discipline",
+put $r67 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+  has typeLabel "LivingThing",
   has kind "entity",
-  has prefLabel "Discipline",
-  has definition "An area of study or practice.",
-  has example "Finance, accounting, project management, acoustics, ballistics.";
-put (resource: $r42, module: $gist_core) isa inModule;
+  has prefLabel "Living Thing",
+  has definition "Something that is currently, or at some point in time was, alive.",
+  has scopeNote "Not all life forms have exactly two parents, so the restriction only specifies a minimum of one.",
+  has example "A cat, a mushroom, a tree.",
+  has example "Negative examples: fictional life forms such as unicorns or Mickey Mouse.";
+put (resource: $r67, module: $gist_core) isa inModule;
 
-put $r43 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddress",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddress",
-  has typeLabel "ElectronicAddress",
+put $r68 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+  has typeLabel "Magnitude",
   has kind "entity",
-  has prefLabel "Electronic Address",
-  has definition "An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so.",
-  has example "A file system path, website URL, IP address, email address, mobile or landline telephone number.",
-  has altLabel "Virtual Address";
-put (resource: $r43, module: $gist_core) isa inModule;
+  has prefLabel "Magnitude",
+  has definition "The amount of a measurable characteristic (aspect).",
+  has scopeNote "An accuracy can be assigned to a magnitude using the property has accuracy.",
+  has example "A model of car could have a wheelbase of 113.2 inches. In this example, the aspect is wheelbase, the unit of measure is inch, and the numeric value is 113.2.",
+  has seeAlso "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy";
+put (resource: $r68, module: $gist_core) isa inModule;
 
-put $r44 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddressType",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddressType",
-  has typeLabel "ElectronicAddressType",
+put $r69 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+  has typeLabel "MediaType",
   has kind "entity",
-  has prefLabel "Electronic Address Type",
-  has definition "A category indicating a kind of electronic address. Such a category is usually based on the technology that enables routing to the address referent.",
-  has example "A URL, file system path, email address, mobile telephone number.";
-put (resource: $r44, module: $gist_core) isa inModule;
+  has prefLabel "Media Type",
+  has definition "A digitized type that computer applications can recognize.",
+  has scopeNote "The unique text for an IANA media type is the concatenation of the 'Type name', a slash '/', and the 'Subtype name' as provided on the page displayed when you resolve the URI of the media type.",
+  has example "application/sparql-results+xml",
+  has seeAlso "https://www.iana.org/assignments/media-types/media-types.xhtml";
+put (resource: $r69, module: $gist_core) isa inModule;
 
-put $r45 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
-  has typeLabel "Equipment",
+put $r70 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Medium",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Medium",
+  has typeLabel "Medium",
   has kind "entity",
-  has prefLabel "Equipment",
-  has definition "Human-made, tangible property other than land or buildings used to perform a task or activity.",
-  has example "A machine, a router, a car, a baseball bat.";
-put (resource: $r45, module: $gist_core) isa inModule;
+  has prefLabel "Medium",
+  has definition "A physical material on which a work can be rendered, represented, or implemented.",
+  has example "Paper, clay, a computer monitor.";
+put (resource: $r70, module: $gist_core) isa inModule;
 
-put $r46 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/EquipmentType",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/EquipmentType",
-  has typeLabel "EquipmentType",
+put $r71 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+  has typeLabel "Message",
   has kind "entity",
-  has prefLabel "Equipment Type",
-  has definition "A category of equipment.";
-put (resource: $r46, module: $gist_core) isa inModule;
+  has prefLabel "Message",
+  has definition "A specific instance of content sent from a sender to at least one other recipient.",
+  has example "An email, voice, or web service message; a phone call.";
+put (resource: $r71, module: $gist_core) isa inModule;
 
-put $r47 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Event",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Event",
-  has typeLabel "Event",
+put $r72 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+  has typeLabel "Network",
   has kind "entity",
-  has prefLabel "Event",
-  has definition "Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.",
-  has scopeNote "An event does not necessarily have either planned or actual start or end datetimes. For example, a conference can be in the planning phase without any dates selected, but is nevertheless an (unscheduled) event. The subclasses of gist:Event state particular restrictions on planned and actual start and end dates.",
-  has scopeNote "An event occurs during a time interval, which is distinct from the event.",
-  has example "A transaction, conference, baseball game, earthquake.";
-put (resource: $r47, module: $gist_core) isa inModule;
+  has prefLabel "Network",
+  has definition "A composite consisting of nodes connected by links.",
+  has example "A physical network could include connected computers or routers, whereas a social network would consist of related person or organization members (or their proxies, such as accounts).";
+put (resource: $r72, module: $gist_core) isa inModule;
+
+put $r73 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+  has typeLabel "NetworkLink",
+  has kind "entity",
+  has prefLabel "Network Link",
+  has definition "An abstract representation of the connection between two or more nodes in a network.",
+  has scopeNote "Each newtork link is connected to a network node via the property gist:links or one of its subproperties.",
+  has example "A network link may be physical, such as pipes, wired or wireless networks, but may also be a link in a non-physical network, such as organizational structures or social networks.";
+put (resource: $r73, module: $gist_core) isa inModule;
+
+put $r74 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
+  has typeLabel "NetworkNode",
+  has kind "entity",
+  has prefLabel "Network Node",
+  has definition "A node in a network.",
+  has example "A person's account is a node in a social network; a valve is a node in a network of pipes.";
+put (resource: $r74, module: $gist_core) isa inModule;
+
+put $r75 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+  has typeLabel "Offer",
+  has kind "entity",
+  has prefLabel "Offer",
+  has definition "A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).",
+  has scopeNote "Dates on an offer represent the time period the offer is valid for, as in '25% off through October 25, 2025'.",
+  has example "An offer to sell a book for a given price; an offer to purchase real estate for a particular price; an offer to swap a sea kayak for a mountain bike; currency exchange. A donation may be modeled as an offer to receive money typically in exchange for $0.00, but sometimes for items of value such as coffee mugs or T-shirts.";
+put (resource: $r75, module: $gist_core) isa inModule;
+
+put $r76 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+  has typeLabel "OrderedCollection",
+  has kind "entity",
+  has prefLabel "Ordered Collection",
+  has definition "A collection whose members are ordered in some way.",
+  has scopeNote "Includes partially ordered collections as well as collections in which members occupy the same position in a 'tie.' All members of an ordered collection are ordered members.";
+put (resource: $r76, module: $gist_core) isa inModule;
+
+put $r77 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+  has typeLabel "OrderedMember",
+  has kind "entity",
+  has prefLabel "Ordered Member",
+  has definition "A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.",
+  has scopeNote "An ordered member points to the real world item via the providesOrderFor property. Ordering information is represented either as a number in a sequence, or by preceding or following another ordered member.",
+  has example "A person may rank 12th in the Boston Marathon but 29th in the New York City Marathon.";
+put (resource: $r77, module: $gist_core) isa inModule;
+
+put $r78 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+  has typeLabel "Organization",
+  has kind "entity",
+  has prefLabel "Organization",
+  has definition "A structured entity formed to achieve specific goals, typically involving members with defined roles.",
+  has scopeNote "Not all organizations have members, e.g. shell companies.",
+  has scopeNote "While typically the members of organizations are people, in some cases they are other organizations; e.g., the members of the United Nations are country governments.",
+  has example "Legal entities like companies; non-legal entities like clubs, committees, or departments.";
+put (resource: $r78, module: $gist_core) isa inModule;
+
+put $r79 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+  has typeLabel "Permission",
+  has kind "entity",
+  has prefLabel "Permission",
+  has definition "A description of things one is permitted to do.",
+  has example "Permission could be broad, such as free speech, but more often is very specific, such as the right to enter a particular property.";
+put (resource: $r79, module: $gist_core) isa inModule;
+
+put $r80 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+  has typeLabel "Person",
+  has kind "entity",
+  has prefLabel "Person",
+  has definition "A human being who was or is alive.",
+  has example "Negative example: fictional characters.";
+put (resource: $r80, module: $gist_core) isa inModule;
+
+put $r81 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalActionType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalActionType",
+  has typeLabel "PhysicalActionType",
+  has kind "entity",
+  has prefLabel "Physical Action Type",
+  has definition "A category indicating the type of an action based on its effect in the physical world.",
+  has example "Lifting a garage door, turning off a valve, dropping cadmium rods.";
+put (resource: $r81, module: $gist_core) isa inModule;
+
+put $r82 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+  has typeLabel "PhysicalAddress",
+  has kind "entity",
+  has prefLabel "Physical Address",
+  has definition "An address that refers to a locatable place within the physical universe.",
+  has example "1600 Pennsylvania Avenue NW, Washington, DC 20500; PO Box 7704, San Francisco, CA 94120-7704; Room 317 in the Louvre Museum.";
+put (resource: $r82, module: $gist_core) isa inModule;
+
+put $r83 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddressType",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddressType",
+  has typeLabel "PhysicalAddressType",
+  has kind "entity",
+  has prefLabel "Physical Address Type",
+  has definition "A category indicating local customary characterizations of physical addresses.",
+  has example "Street address, PO box, FPO code.";
+put (resource: $r83, module: $gist_core) isa inModule;
+
+put $r84 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+  has typeLabel "PhysicalEvent",
+  has kind "entity",
+  has prefLabel "Physical Event",
+  has definition "An event that can be said to have occurred at some place in space.",
+  has example "A meeting, a car accident.",
+  has example "Negative examples: Excludes events that have no meaningful location, such as financial events or project milestones.";
+put (resource: $r84, module: $gist_core) isa inModule;
+
+put $r85 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+  has typeLabel "PhysicalIdentifiableItem",
+  has kind "entity",
+  has prefLabel "Physical Identifiable Item",
+  has definition "A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.",
+  has scopeNote "This concept generally corresponds to count nouns in English. By contrast, physical substances, such as an amount of water, flour, or sand, are mass nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a statue is made of bronze. If you divide a physical substance such as an amount of water into parts, you have two amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part is different from the whole.",
+  has example "A computer, a book, a car.";
+put (resource: $r85, module: $gist_core) isa inModule;
+
+put $r86 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
+  has typeLabel "PhysicalSubstance",
+  has kind "entity",
+  has prefLabel "Physical Substance",
+  has definition "An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.",
+  has scopeNote "An instance of this class has weight and takes up space. We mean the physical gold in a ring, not the concept of gold that shows up in the periodic table. The latter would be an instance of gist:KnowledgeConcept.",
+  has scopeNote "This concept generally corresponds to mass nouns in English. By contrast, instances of PhysicalIdentifiableItem, such as a computer, book, or car, are count nouns. PhysicalIdentifiableItems are made up of PhysicalSubstances; e.g., a cake is made up of butter, flour, and sugar; a ring is made of gold. If you divide a PhysicalSubstance such as an amount of water into parts, you have different amounts of water otherwise indistinguishable from one another; if you divide a PhysicalIdentifiableItem such as a computer into parts, each part will be distinguishable from the original whole.",
+  has example "An amount of water, penicillin, sand, or gold.",
+  has example "Negative example: the concept of gold.";
+put (resource: $r86, module: $gist_core) isa inModule;
+
+put $r87 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory",
+  has typeLabel "ProductCategory",
+  has kind "entity",
+  has prefLabel "Product Category",
+  has definition "Any of many ways of categorizing products.",
+  has example "Automobile models, NATO product codes.";
+put (resource: $r87, module: $gist_core) isa inModule;
+
+put $r88 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+  has typeLabel "ProductSpecification",
+  has kind "entity",
+  has prefLabel "Product Specification",
+  has definition "Offering something which could be physically warehoused or digitally stored.";
+put (resource: $r88, module: $gist_core) isa inModule;
+
+put $r89 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+  has typeLabel "Project",
+  has kind "entity",
+  has prefLabel "Project",
+  has definition "A task, usually of longer duration, made up of other tasks.",
+  has example "Designing an insurance product; adding a new feature to a software application; assessing the level of risk for a mortgage application.";
+put (resource: $r89, module: $gist_core) isa inModule;
+
+put $r90 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ReferenceValue",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ReferenceValue",
+  has typeLabel "ReferenceValue",
+  has kind "entity",
+  has prefLabel "Reference Value",
+  has definition "A magnitude that was neither measured nor estimated but set by fiat.",
+  has example "The sales goal for a company.";
+put (resource: $r90, module: $gist_core) isa inModule;
+
+put $r91 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+  has typeLabel "RenderedContent",
+  has kind "entity",
+  has prefLabel "Rendered Content",
+  has definition "Content which has been physically expressed.",
+  has example "Words printed on paper; audio played on speakers; images displayed on monitors.";
+put (resource: $r91, module: $gist_core) isa inModule;
+
+put $r92 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Requirement",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Requirement",
+  has typeLabel "Requirement",
+  has kind "entity",
+  has prefLabel "Requirement",
+  has definition "The obligation of a person or organization to behave in a certain way.",
+  has example "In the US, drivers must drive on the right side of the road.";
+put (resource: $r92, module: $gist_core) isa inModule;
+
+put $r93 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+  has typeLabel "Restriction",
+  has kind "entity",
+  has prefLabel "Restriction",
+  has definition "A description of things one is prevented from doing.",
+  has example "In the US, tax laws restrict the amount of money a person can put in retirement accounts over the course of a year.";
+put (resource: $r93, module: $gist_core) isa inModule;
+
+put $r94 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+  has typeLabel "ScheduledEvent",
+  has kind "entity",
+  has prefLabel "Scheduled Event",
+  has definition "An event with a planned start datetime.",
+  has scopeNote "If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event.";
+put (resource: $r94, module: $gist_core) isa inModule;
+
+put $r95 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+  has typeLabel "ScheduledTask",
+  has kind "entity",
+  has prefLabel "Scheduled Task",
+  has definition "A task with a planned start datetime.",
+  has scopeNote "If work on the task has already started, but has not yet ended, it will have an actual start datetime. If the task is completed, it will also have an actual end datetime. The task always retains its planned start time, and thus continues to be a scheduled task.";
+put (resource: $r95, module: $gist_core) isa inModule;
+
+put $r96 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
+  has typeLabel "SchemaMetaData",
+  has kind "entity",
+  has prefLabel "Schema Meta Data",
+  has definition "Superclass for all types of metadata.",
+  has scopeNote "The definition of this class needs additional work.",
+  has example "Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps.";
+put (resource: $r96, module: $gist_core) isa inModule;
+
+put $r97 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+  has typeLabel "ServiceSpecification",
+  has kind "entity",
+  has prefLabel "Service Specification",
+  has definition "A description of something that can be done for a person or organization (which produces some form of an act).";
+put (resource: $r97, module: $gist_core) isa inModule;

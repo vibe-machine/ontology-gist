@@ -4755,95 +4755,7 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 match
-  $schema_resource isa SchemaResource, has typeLabel "actualEndDate";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualEndDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualEndMicrosecond";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualEndMinute";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualEndYear";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualStartDate";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualStartDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualStartMicrosecond";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualStartMinute";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "actualStartYear";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
   $schema_resource isa SchemaResource, has typeLabel "atDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "birthDate";
   not {
     $schema_resource has valueTypeName "datetime";
   };
@@ -4875,36 +4787,12 @@ insert
   $schema_resource has valueTypeName "double";
 
 match
-  $schema_resource isa SchemaResource, has typeLabel "deathDate";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
   $schema_resource isa SchemaResource, has typeLabel "description";
   not {
     $schema_resource has valueTypeName "string";
   };
 insert
   $schema_resource has valueTypeName "string";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "encryptedText";
-  not {
-    $schema_resource has valueTypeName "string";
-  };
-insert
-  $schema_resource has valueTypeName "string";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "endDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
 
 match
   $schema_resource isa SchemaResource, has typeLabel "exponentOfAmpere";
@@ -5019,14 +4907,6 @@ insert
   $schema_resource has valueTypeName "string";
 
 match
-  $schema_resource isa SchemaResource, has typeLabel "isRecordedAt";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
   $schema_resource isa SchemaResource, has typeLabel "latitude";
   not {
     $schema_resource has valueTypeName "double";
@@ -5059,70 +4939,6 @@ insert
   $schema_resource has valueTypeName "double";
 
 match
-  $schema_resource isa SchemaResource, has typeLabel "plannedEndDate";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedEndDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedEndMinute";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedEndYear";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedStartDate";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedStartDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedStartMinute";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "plannedStartYear";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
   $schema_resource isa SchemaResource, has typeLabel "sequence";
   not {
     $schema_resource has valueTypeName "integer";
@@ -5139,23 +4955,7 @@ insert
   $schema_resource has valueTypeName "string";
 
 match
-  $schema_resource isa SchemaResource, has typeLabel "startDateTime";
-  not {
-    $schema_resource has valueTypeName "datetime";
-  };
-insert
-  $schema_resource has valueTypeName "datetime";
-
-match
   $schema_resource isa SchemaResource, has typeLabel "symbol";
-  not {
-    $schema_resource has valueTypeName "string";
-  };
-insert
-  $schema_resource has valueTypeName "string";
-
-match
-  $schema_resource isa SchemaResource, has typeLabel "uniqueText";
   not {
     $schema_resource has valueTypeName "string";
   };
@@ -5165,6 +4965,96 @@ insert
 match
   $struct_left isa SchemaResource, has typeLabel "Account";
   $struct_right isa SchemaResource, has typeLabel "Agreement";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualEndDate";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualEndDateTime";
+  $struct_right isa SchemaResource, has typeLabel "endDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualEndMicrosecond";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualEndMinute";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualEndYear";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualStartDate";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualStartDateTime";
+  $struct_right isa SchemaResource, has typeLabel "startDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualStartMicrosecond";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualStartMinute";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "actualStartYear";
+  $struct_right isa SchemaResource, has typeLabel "actualStartDateTime";
   not {
     (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
@@ -5226,6 +5116,15 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
+  $struct_left isa SchemaResource, has typeLabel "birthDate";
+  $struct_right isa SchemaResource, has typeLabel "startDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
   $struct_left isa SchemaResource, has typeLabel "Building";
   $struct_right isa SchemaResource, has typeLabel "Landmark";
   not {
@@ -5264,6 +5163,33 @@ insert
 match
   $struct_left isa SchemaResource, has typeLabel "Collection";
   $struct_right isa SchemaResource, has typeLabel "Composite";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "comesFromAgent";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "comesFromAgent:comesFromAgentObject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "comesFromAgent:comesFromAgentSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantSubject";
   not {
     (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
@@ -5388,6 +5314,15 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
+  $struct_left isa SchemaResource, has typeLabel "deathDate";
+  $struct_right isa SchemaResource, has typeLabel "actualEndDate";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
   $struct_left isa SchemaResource, has typeLabel "DegreeOfCommitment";
   $struct_right isa SchemaResource, has typeLabel "Category";
   not {
@@ -5426,6 +5361,24 @@ insert
 match
   $struct_left isa SchemaResource, has typeLabel "ElectronicAddressType";
   $struct_right isa SchemaResource, has typeLabel "Category";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "encryptedText";
+  $struct_right isa SchemaResource, has typeLabel "containedText";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "endDateTime";
+  $struct_right isa SchemaResource, has typeLabel "atDateTime";
   not {
     (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
@@ -5541,6 +5494,33 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
+  $struct_left isa SchemaResource, has typeLabel "goesToAgent";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "goesToAgent:goesToAgentObject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "goesToAgent:goesToAgentSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
   $struct_left isa SchemaResource, has typeLabel "GovernedGeoRegion";
   $struct_right isa SchemaResource, has typeLabel "GeoRegion";
   not {
@@ -5552,6 +5532,168 @@ insert
 match
   $struct_left isa SchemaResource, has typeLabel "GovernmentOrganization";
   $struct_right isa SchemaResource, has typeLabel "Organization";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasDirectBroader";
+  $struct_right isa SchemaResource, has typeLabel "hasBroader";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasDirectBroader:hasDirectBroaderObject";
+  $struct_right isa SchemaResource, has typeLabel "hasBroader:hasBroaderObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasDirectBroader:hasDirectBroaderSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasBroader:hasBroaderSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasGiver";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasGiver:hasGiverObject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasGiver:hasGiverSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasParty";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasParty:hasPartyObject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasParty:hasPartySubject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasRecipient";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasRecipient:hasRecipientObject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasRecipient:hasRecipientSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasParticipant:hasParticipantSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasUniqueBroader";
+  $struct_right isa SchemaResource, has typeLabel "hasBroader";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasUniqueBroader:hasUniqueBroaderObject";
+  $struct_right isa SchemaResource, has typeLabel "hasBroader:hasBroaderObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasUniqueBroader:hasUniqueBroaderSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasBroader:hasBroaderSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasUniqueNavigationalParent";
+  $struct_right isa SchemaResource, has typeLabel "hasNavigationalParent";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasUniqueNavigationalParent:hasUniqueNavigationalParentObject";
+  $struct_right isa SchemaResource, has typeLabel "hasNavigationalParent:hasNavigationalParentObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "hasUniqueNavigationalParent:hasUniqueNavigationalParentSubject";
+  $struct_right isa SchemaResource, has typeLabel "hasNavigationalParent:hasNavigationalParentSubject";
   not {
     (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
@@ -5604,6 +5746,69 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
+  $struct_left isa SchemaResource, has typeLabel "isDirectPartOf";
+  $struct_right isa SchemaResource, has typeLabel "isPartOf";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfObject";
+  $struct_right isa SchemaResource, has typeLabel "isPartOf:isPartOfObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfSubject";
+  $struct_right isa SchemaResource, has typeLabel "isPartOf:isPartOfSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "isFirstMemberOf";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "isFirstMemberOf:isFirstMemberOfObject";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf:isMemberOfObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "isFirstMemberOf:isFirstMemberOfSubject";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf:isMemberOfSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "isRecordedAt";
+  $struct_right isa SchemaResource, has typeLabel "atDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
   $struct_left isa SchemaResource, has typeLabel "KnowledgeConcept";
   $struct_right isa SchemaResource, has typeLabel "IntellectualProperty";
   not {
@@ -5624,6 +5829,60 @@ insert
 match
   $struct_left isa SchemaResource, has typeLabel "Language";
   $struct_right isa SchemaResource, has typeLabel "Thing";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "linksFrom";
+  $struct_right isa SchemaResource, has typeLabel "linksRel";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "linksFrom:linksFromObject";
+  $struct_right isa SchemaResource, has typeLabel "linksRel:linksRelObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "linksFrom:linksFromSubject";
+  $struct_right isa SchemaResource, has typeLabel "linksRel:linksRelSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "linksTo";
+  $struct_right isa SchemaResource, has typeLabel "linksRel";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "linksTo:linksToObject";
+  $struct_right isa SchemaResource, has typeLabel "linksRel:linksRelObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "linksTo:linksToSubject";
+  $struct_right isa SchemaResource, has typeLabel "linksRel:linksRelSubject";
   not {
     (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
@@ -5811,6 +6070,105 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
+  $struct_left isa SchemaResource, has typeLabel "plannedEndDate";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedEndDateTime";
+  $struct_right isa SchemaResource, has typeLabel "endDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedEndMinute";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedEndYear";
+  $struct_right isa SchemaResource, has typeLabel "plannedEndDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedStartDate";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedStartDateTime";
+  $struct_right isa SchemaResource, has typeLabel "startDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedStartMinute";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "plannedStartYear";
+  $struct_right isa SchemaResource, has typeLabel "plannedStartDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "precedesDirectly";
+  $struct_right isa SchemaResource, has typeLabel "precedes";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "precedesDirectly:precedesDirectlyObject";
+  $struct_right isa SchemaResource, has typeLabel "precedes:precedesObject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "precedesDirectly:precedesDirectlySubject";
+  $struct_right isa SchemaResource, has typeLabel "precedes:precedesSubject";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
   $struct_left isa SchemaResource, has typeLabel "ProductCategory";
   $struct_right isa SchemaResource, has typeLabel "Category";
   not {
@@ -5919,6 +6277,15 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
+  $struct_left isa SchemaResource, has typeLabel "startDateTime";
+  $struct_right isa SchemaResource, has typeLabel "atDateTime";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
   $struct_left isa SchemaResource, has typeLabel "SubCountryGovernment";
   $struct_right isa SchemaResource, has typeLabel "GovernmentOrganization";
   not {
@@ -6002,6 +6369,15 @@ insert
 match
   $struct_left isa SchemaResource, has typeLabel "Transaction";
   $struct_right isa SchemaResource, has typeLabel "Event";
+  not {
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  };
+insert
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "uniqueText";
+  $struct_right isa SchemaResource, has typeLabel "containedText";
   not {
     (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };

@@ -12,217 +12,210 @@ insert
   (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "ElectronicAddress";
-  $struct_right isa SchemaResource, has typeLabel "Address";
+  $struct_left isa SchemaResource, has typeLabel "linksRel";
+  $struct_right isa SchemaResource, has typeLabel "linksRel:linksRelSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "ElectronicAddressType";
-  $struct_right isa SchemaResource, has typeLabel "Category";
+  $struct_left isa SchemaResource, has typeLabel "linksTo";
+  $struct_right isa SchemaResource, has typeLabel "linksTo:linksToObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "Equipment";
-  $struct_right isa SchemaResource, has typeLabel "PhysicalIdentifiableItem";
+  $struct_left isa SchemaResource, has typeLabel "linksTo";
+  $struct_right isa SchemaResource, has typeLabel "linksTo:linksToSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "EquipmentType";
-  $struct_right isa SchemaResource, has typeLabel "Category";
+  $struct_left isa SchemaResource, has typeLabel "occursIn";
+  $struct_right isa SchemaResource, has typeLabel "occursIn:occursInObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "Event";
-  $struct_right isa SchemaResource, has typeLabel "Thing";
+  $struct_left isa SchemaResource, has typeLabel "occursIn";
+  $struct_right isa SchemaResource, has typeLabel "occursIn:occursInSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "EventSpecification";
-  $struct_right isa SchemaResource, has typeLabel "Specification";
+  $struct_left isa SchemaResource, has typeLabel "offersToProvide";
+  $struct_right isa SchemaResource, has typeLabel "offersToProvide:offersToProvideObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "FormattedContent";
-  $struct_right isa SchemaResource, has typeLabel "ContentExpression";
+  $struct_left isa SchemaResource, has typeLabel "offersToProvide";
+  $struct_right isa SchemaResource, has typeLabel "offersToProvide:offersToProvideSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "Function";
-  $struct_right isa SchemaResource, has typeLabel "Intention";
+  $struct_left isa SchemaResource, has typeLabel "offersToReceive";
+  $struct_right isa SchemaResource, has typeLabel "offersToReceive:offersToReceiveObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GeneralMediaType";
-  $struct_right isa SchemaResource, has typeLabel "Category";
+  $struct_left isa SchemaResource, has typeLabel "offersToReceive";
+  $struct_right isa SchemaResource, has typeLabel "offersToReceive:offersToReceiveSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
-  $struct_right isa SchemaResource, has typeLabel "Thing";
+  $struct_left isa SchemaResource, has typeLabel "ownsRel";
+  $struct_right isa SchemaResource, has typeLabel "ownsRel:ownsRelObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GeoPoint";
-  $struct_right isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_left isa SchemaResource, has typeLabel "ownsRel";
+  $struct_right isa SchemaResource, has typeLabel "ownsRel:ownsRelSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GeoRegion";
-  $struct_right isa SchemaResource, has typeLabel "Thing";
+  $struct_left isa SchemaResource, has typeLabel "precedes";
+  $struct_right isa SchemaResource, has typeLabel "precedes:precedesObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GeoRoute";
-  $struct_right isa SchemaResource, has typeLabel "OrderedCollection";
+  $struct_left isa SchemaResource, has typeLabel "precedes";
+  $struct_right isa SchemaResource, has typeLabel "precedes:precedesSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GeoVolume";
-  $struct_right isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_left isa SchemaResource, has typeLabel "precedesDirectly";
+  $struct_right isa SchemaResource, has typeLabel "precedesDirectly:precedesDirectlyObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GovernedGeoRegion";
-  $struct_right isa SchemaResource, has typeLabel "GeoRegion";
+  $struct_left isa SchemaResource, has typeLabel "precedesDirectly";
+  $struct_right isa SchemaResource, has typeLabel "precedesDirectly:precedesDirectlySubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "GovernmentOrganization";
-  $struct_right isa SchemaResource, has typeLabel "Organization";
+  $struct_left isa SchemaResource, has typeLabel "prevents";
+  $struct_right isa SchemaResource, has typeLabel "prevents:preventsObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "HistoricalEvent";
-  $struct_right isa SchemaResource, has typeLabel "Event";
+  $struct_left isa SchemaResource, has typeLabel "prevents";
+  $struct_right isa SchemaResource, has typeLabel "prevents:preventsSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "ID";
-  $struct_right isa SchemaResource, has typeLabel "Content";
+  $struct_left isa SchemaResource, has typeLabel "providesOrderFor";
+  $struct_right isa SchemaResource, has typeLabel "providesOrderFor:providesOrderForObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "IntellectualProperty";
-  $struct_right isa SchemaResource, has typeLabel "Thing";
+  $struct_left isa SchemaResource, has typeLabel "providesOrderFor";
+  $struct_right isa SchemaResource, has typeLabel "providesOrderFor:providesOrderForSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "Intention";
-  $struct_right isa SchemaResource, has typeLabel "Thing";
+  $struct_left isa SchemaResource, has typeLabel "refersTo";
+  $struct_right isa SchemaResource, has typeLabel "refersTo:refersToObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "IntergovernmentalOrganization";
-  $struct_right isa SchemaResource, has typeLabel "Organization";
+  $struct_left isa SchemaResource, has typeLabel "refersTo";
+  $struct_right isa SchemaResource, has typeLabel "refersTo:refersToSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "KnowledgeConcept";
-  $struct_right isa SchemaResource, has typeLabel "IntellectualProperty";
+  $struct_left isa SchemaResource, has typeLabel "requires";
+  $struct_right isa SchemaResource, has typeLabel "requires:requiresObject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
 match
-  $struct_left isa SchemaResource, has typeLabel "Landmark";
-  $struct_right isa SchemaResource, has typeLabel "PhysicalIdentifiableItem";
+  $struct_left isa SchemaResource, has typeLabel "requires";
+  $struct_right isa SchemaResource, has typeLabel "requires:requiresSubject";
   not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+    (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
 insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+  (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
 
-match
-  $struct_left isa SchemaResource, has typeLabel "Language";
-  $struct_right isa SchemaResource, has typeLabel "Thing";
-  not {
-    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
-  };
-insert
-  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
+# -- END GENERATED STRUCTURAL METADATA --

@@ -12,25 +12,25 @@
 
 define
 
-attribute actualEndDate value datetime;
-attribute actualEndDateTime value datetime;
-attribute actualEndMicrosecond value datetime;
-attribute actualEndMinute value datetime;
-attribute actualEndYear value datetime;
-attribute actualStartDate value datetime;
-attribute actualStartDateTime value datetime;
-attribute actualStartMicrosecond value datetime;
-attribute actualStartMinute value datetime;
-attribute actualStartYear value datetime;
+attribute actualEndDate sub actualEndDateTime;
+attribute actualEndDateTime sub endDateTime;
+attribute actualEndMicrosecond sub actualEndDateTime;
+attribute actualEndMinute sub actualEndDateTime;
+attribute actualEndYear sub actualEndDateTime;
+attribute actualStartDate sub actualStartDateTime;
+attribute actualStartDateTime sub startDateTime;
+attribute actualStartMicrosecond sub actualStartDateTime;
+attribute actualStartMinute sub actualStartDateTime;
+attribute actualStartYear sub actualStartDateTime;
 attribute atDateTime value datetime;
-attribute birthDate value datetime;
+attribute birthDate sub startDateTime;
 attribute containedText value string;
 attribute conversionFactor value double;
 attribute conversionOffset value double;
-attribute deathDate value datetime;
+attribute deathDate sub actualEndDate;
 attribute description value string;
-attribute encryptedText value string;
-attribute endDateTime value datetime;
+attribute encryptedText sub containedText;
+attribute endDateTime sub atDateTime;
 attribute exponentOfAmpere value double;
 attribute exponentOfBit value double;
 attribute exponentOfCandela value double;
@@ -45,24 +45,24 @@ attribute exponentOfSecond value double;
 attribute exponentOfSteradian value double;
 attribute exponentOfUSDollar value double;
 attribute idText value string;
-attribute isRecordedAt value datetime;
+attribute isRecordedAt sub atDateTime;
 attribute latitude value double;
 attribute longitude value double;
 attribute name value string;
 attribute numericValue value double;
-attribute plannedEndDate value datetime;
-attribute plannedEndDateTime value datetime;
-attribute plannedEndMinute value datetime;
-attribute plannedEndYear value datetime;
-attribute plannedStartDate value datetime;
-attribute plannedStartDateTime value datetime;
-attribute plannedStartMinute value datetime;
-attribute plannedStartYear value datetime;
+attribute plannedEndDate sub plannedEndDateTime;
+attribute plannedEndDateTime sub endDateTime;
+attribute plannedEndMinute sub plannedEndDateTime;
+attribute plannedEndYear sub plannedEndDateTime;
+attribute plannedStartDate sub plannedStartDateTime;
+attribute plannedStartDateTime sub startDateTime;
+attribute plannedStartMinute sub plannedStartDateTime;
+attribute plannedStartYear sub plannedStartDateTime;
 attribute sequence value integer;
 attribute sourceIRI value string;
-attribute startDateTime value datetime;
+attribute startDateTime sub atDateTime;
 attribute symbol value string;
-attribute uniqueText value string;
+attribute uniqueText sub containedText;
 
 # allows: Relates a permission to a particular activity or type of activity it allows.
 relation allows,
@@ -70,9 +70,9 @@ relation allows,
     relates allowsObject;
 
 # comesFromAgent: Relates something to the originating agent.
-relation comesFromAgent,
-    relates comesFromAgentSubject,
-    relates comesFromAgentObject;
+relation comesFromAgent sub hasParticipant,
+    relates comesFromAgentSubject as hasParticipantSubject,
+    relates comesFromAgentObject as hasParticipantObject;
 
 # comesFromPlace: Relates something to its place of origin.
 relation comesFromPlace,
@@ -90,9 +90,9 @@ relation contributesTo,
     relates contributesToObject;
 
 # goesToAgent: Relates something to the agent that receives it.
-relation goesToAgent,
-    relates goesToAgentSubject,
-    relates goesToAgentObject;
+relation goesToAgent sub hasParticipant,
+    relates goesToAgentSubject as hasParticipantSubject,
+    relates goesToAgentObject as hasParticipantObject;
 
 # goesToPlace: Relates something to its destination place.
 relation goesToPlace,
@@ -133,9 +133,9 @@ relation hasBroader,
     relates hasBroaderObject;
 
 # hasDirectBroader: Relates a thing to another thing with a broader meaning, when there is no intermediate between them.
-relation hasDirectBroader,
-    relates hasDirectBroaderSubject,
-    relates hasDirectBroaderObject;
+relation hasDirectBroader sub hasBroader,
+    relates hasDirectBroaderSubject as hasBroaderSubject,
+    relates hasDirectBroaderObject as hasBroaderObject;
 
 # hasDivisor: Relates a unit of measure to another unit of measure that is a divisor, or relates an aspect to another aspect that is a divisor.
 relation hasDivisor,
@@ -143,9 +143,9 @@ relation hasDivisor,
     relates hasDivisorObject;
 
 # hasGiver: Relates something to the participant that provides it.
-relation hasGiver,
-    relates hasGiverSubject,
-    relates hasGiverObject;
+relation hasGiver sub hasParticipant,
+    relates hasGiverSubject as hasParticipantSubject,
+    relates hasGiverObject as hasParticipantObject;
 
 # hasGoal: Relates something to the end towards which it directs effort.
 relation hasGoal,
@@ -178,9 +178,9 @@ relation hasParticipant,
     relates hasParticipantObject;
 
 # hasParty: Relates an event, agreement, or obligation to a participating person or organization.
-relation hasParty,
-    relates hasPartySubject,
-    relates hasPartyObject;
+relation hasParty sub hasParticipant,
+    relates hasPartySubject as hasParticipantSubject,
+    relates hasPartyObject as hasParticipantObject;
 
 # hasPhysicalLocation: Relates something to its physical location.
 # hasPhysicalLocation: transitive in OWL
@@ -189,9 +189,9 @@ relation hasPhysicalLocation,
     relates hasPhysicalLocationObject;
 
 # hasRecipient: Relates something to the participant that receives or is intended to receive it.
-relation hasRecipient,
-    relates hasRecipientSubject,
-    relates hasRecipientObject;
+relation hasRecipient sub hasParticipant,
+    relates hasRecipientSubject as hasParticipantSubject,
+    relates hasRecipientObject as hasParticipantObject;
 
 # hasSubtrahend: Relates an aspect to another aspect that is a subtracted component of it.
 relation hasSubtrahend,
@@ -200,15 +200,15 @@ relation hasSubtrahend,
 
 # hasUniqueBroader: Relates a thing to a unique other thing with a broader meaning.
 # hasUniqueBroader: functional in OWL
-relation hasUniqueBroader,
-    relates hasUniqueBroaderSubject,
-    relates hasUniqueBroaderObject;
+relation hasUniqueBroader sub hasBroader,
+    relates hasUniqueBroaderSubject as hasBroaderSubject,
+    relates hasUniqueBroaderObject as hasBroaderObject;
 
 # hasUniqueNavigationalParent: Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy.
 # hasUniqueNavigationalParent: functional in OWL
-relation hasUniqueNavigationalParent,
-    relates hasUniqueNavigationalParentSubject,
-    relates hasUniqueNavigationalParentObject;
+relation hasUniqueNavigationalParent sub hasNavigationalParent,
+    relates hasUniqueNavigationalParentSubject as hasNavigationalParentSubject,
+    relates hasUniqueNavigationalParentObject as hasNavigationalParentObject;
 
 # hasUnitGroup: Relates an aspect to a unit group. The aspect can be measured using any of the members of the unit group.
 relation hasUnitGroup,
@@ -262,9 +262,9 @@ relation isConnectedTo,
     relates isConnectedToObject;
 
 # isDirectPartOf: The relationship between a part and a whole where the part has independent existence and there are no other parts in between.
-relation isDirectPartOf,
-    relates isDirectPartOfSubject,
-    relates isDirectPartOfObject;
+relation isDirectPartOf sub isPartOf,
+    relates isDirectPartOfSubject as isPartOfSubject,
+    relates isDirectPartOfObject as isPartOfObject;
 
 # isExpressedIn: Relates something to the language it is expressed in.
 relation isExpressedIn,
@@ -273,9 +273,9 @@ relation isExpressedIn,
 
 # isFirstMemberOf: Relates the first member of an ordered collection to the collection.
 # isFirstMemberOf: functional in OWL
-relation isFirstMemberOf,
-    relates isFirstMemberOfSubject,
-    relates isFirstMemberOfObject;
+relation isFirstMemberOf sub isMemberOf,
+    relates isFirstMemberOfSubject as isMemberOfSubject,
+    relates isFirstMemberOfObject as isMemberOfObject;
 
 # isGeoContainedIn: Relates one geographic location to another that contains it.
 # isGeoContainedIn: transitive in OWL
@@ -341,14 +341,14 @@ relation linksRel,
     relates linksRelObject;
 
 # linksFrom: Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.
-relation linksFrom,
-    relates linksFromSubject,
-    relates linksFromObject;
+relation linksFrom sub linksRel,
+    relates linksFromSubject as linksRelSubject,
+    relates linksFromObject as linksRelObject;
 
 # linksTo: Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.
-relation linksTo,
-    relates linksToSubject,
-    relates linksToObject;
+relation linksTo sub linksRel,
+    relates linksToSubject as linksRelSubject,
+    relates linksToObject as linksRelObject;
 
 # occursIn: Relates something, such as an event, to the geographic location where it did, does, or will happen.
 relation occursIn,
@@ -377,9 +377,9 @@ relation precedes,
     relates precedesObject;
 
 # precedesDirectly: A generic ordering relation indicating that the subject comes immediately before the object.
-relation precedesDirectly,
-    relates precedesDirectlySubject,
-    relates precedesDirectlyObject;
+relation precedesDirectly sub precedes,
+    relates precedesDirectlySubject as precedesSubject,
+    relates precedesDirectlyObject as precedesObject;
 
 # prevents: Relates an intention to behavior that it prohibits.
 relation prevents,

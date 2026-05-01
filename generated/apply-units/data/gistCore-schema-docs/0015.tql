@@ -2,427 +2,452 @@
 # manifest: manifests/gist-v2.0.4.translation-manifest.json
 # upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
 
-put $generated_role_1 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#allows:allowsObject",
-  has iri "https://github.com/semanticarts/gist#allows:allowsObject",
-  has typeLabel "allows:allowsObject",
-  has kind "role",
-  has roleName "allowsObject",
-  has prefLabel "allowsObject",
-  has definition "Role 'allowsObject' in relation 'allows'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsObject";
+  $struct_left isa SchemaResource, has typeLabel "Account";
+  $struct_right isa SchemaResource, has typeLabel "Agreement";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (subtypeResource: $struct_left, supertypeResource: $struct_right) isa schemaSubTypeOf;
 
-put $generated_role_90 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isMadeUpOf:isMadeUpOfSubject",
-  has iri "https://github.com/semanticarts/gist#isMadeUpOf:isMadeUpOfSubject",
-  has typeLabel "isMadeUpOf:isMadeUpOfSubject",
-  has kind "role",
-  has roleName "isMadeUpOfSubject",
-  has prefLabel "isMadeUpOfSubject",
-  has definition "Role 'isMadeUpOfSubject' in relation 'isMadeUpOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isMadeUpOf:isMadeUpOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "Behavior";
+  $struct_right isa SchemaResource, has typeLabel "allows:allowsObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_91 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isMemberOf:isMemberOfObject",
-  has iri "https://github.com/semanticarts/gist#isMemberOf:isMemberOfObject",
-  has typeLabel "isMemberOf:isMemberOfObject",
-  has kind "role",
-  has roleName "isMemberOfObject",
-  has prefLabel "isMemberOfObject",
-  has definition "Role 'isMemberOfObject' in relation 'isMemberOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isMemberOf:isMemberOfObject";
+  $struct_left isa SchemaResource, has typeLabel "Behavior";
+  $struct_right isa SchemaResource, has typeLabel "prevents:preventsObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_92 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isMemberOf:isMemberOfSubject",
-  has iri "https://github.com/semanticarts/gist#isMemberOf:isMemberOfSubject",
-  has typeLabel "isMemberOf:isMemberOfSubject",
-  has kind "role",
-  has roleName "isMemberOfSubject",
-  has prefLabel "isMemberOfSubject",
-  has definition "Role 'isMemberOfSubject' in relation 'isMemberOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isMemberOf:isMemberOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "BundledCatalogItem";
+  $struct_right isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_93 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isPartOf:isPartOfObject",
-  has iri "https://github.com/semanticarts/gist#isPartOf:isPartOfObject",
-  has typeLabel "isPartOf:isPartOfObject",
-  has kind "role",
-  has roleName "isPartOfObject",
-  has prefLabel "isPartOfObject",
-  has definition "Role 'isPartOfObject' in relation 'isPartOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isPartOf:isPartOfObject";
+  $struct_left isa SchemaResource, has typeLabel "CatalogItem";
+  $struct_right isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_94 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isPartOf:isPartOfSubject",
-  has iri "https://github.com/semanticarts/gist#isPartOf:isPartOfSubject",
-  has typeLabel "isPartOf:isPartOfSubject",
-  has kind "role",
-  has roleName "isPartOfSubject",
-  has prefLabel "isPartOfSubject",
-  has definition "Role 'isPartOfSubject' in relation 'isPartOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isPartOf:isPartOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "Category";
+  $struct_right isa SchemaResource, has typeLabel "isAllocatedBy:isAllocatedBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_95 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedByObject",
-  has iri "https://github.com/semanticarts/gist#isProducedBy:isProducedByObject",
-  has typeLabel "isProducedBy:isProducedByObject",
-  has kind "role",
-  has roleName "isProducedByObject",
-  has prefLabel "isProducedByObject",
-  has definition "Role 'isProducedByObject' in relation 'isProducedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedByObject";
+  $struct_left isa SchemaResource, has typeLabel "Category";
+  $struct_right isa SchemaResource, has typeLabel "isFirstMemberOf:isFirstMemberOfSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_96 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedBySubject",
-  has iri "https://github.com/semanticarts/gist#isProducedBy:isProducedBySubject",
-  has typeLabel "isProducedBy:isProducedBySubject",
-  has kind "role",
-  has roleName "isProducedBySubject",
-  has prefLabel "isProducedBySubject",
-  has definition "Role 'isProducedBySubject' in relation 'isProducedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedBySubject";
+  $struct_left isa SchemaResource, has typeLabel "Category";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf:isMemberOfSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_97 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedByObject",
-  has iri "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedByObject",
-  has typeLabel "isRecognizedBy:isRecognizedByObject",
-  has kind "role",
-  has roleName "isRecognizedByObject",
-  has prefLabel "isRecognizedByObject",
-  has definition "Role 'isRecognizedByObject' in relation 'isRecognizedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedByObject";
+  $struct_left isa SchemaResource, has typeLabel "Commitment";
+  $struct_right isa SchemaResource, has typeLabel "hasGiver:hasGiverSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_98 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedBySubject",
-  has iri "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedBySubject",
-  has typeLabel "isRecognizedBy:isRecognizedBySubject",
-  has kind "role",
-  has roleName "isRecognizedBySubject",
-  has prefLabel "isRecognizedBySubject",
-  has definition "Role 'isRecognizedBySubject' in relation 'isRecognizedBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedBySubject";
+  $struct_left isa SchemaResource, has typeLabel "Commitment";
+  $struct_right isa SchemaResource, has typeLabel "isCategorizedBy:isCategorizedBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_99 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnObject",
-  has iri "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnObject",
-  has typeLabel "isRenderedOn:isRenderedOnObject",
-  has kind "role",
-  has roleName "isRenderedOnObject",
-  has prefLabel "isRenderedOnObject",
-  has definition "Role 'isRenderedOnObject' in relation 'isRenderedOn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnObject";
+  $struct_left isa SchemaResource, has typeLabel "Commitment";
+  $struct_right isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_100 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnSubject",
-  has iri "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnSubject",
-  has typeLabel "isRenderedOn:isRenderedOnSubject",
-  has kind "role",
-  has roleName "isRenderedOnSubject",
-  has prefLabel "isRenderedOnSubject",
-  has definition "Role 'isRenderedOnSubject' in relation 'isRenderedOn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnSubject";
+  $struct_left isa SchemaResource, has typeLabel "Component";
+  $struct_right isa SchemaResource, has typeLabel "isDirectPartOf:isDirectPartOfSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_101 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredByObject",
-  has iri "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredByObject",
-  has typeLabel "isTriggeredBy:isTriggeredByObject",
-  has kind "role",
-  has roleName "isTriggeredByObject",
-  has prefLabel "isTriggeredByObject",
-  has definition "Role 'isTriggeredByObject' in relation 'isTriggeredBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredByObject";
+  $struct_left isa SchemaResource, has typeLabel "Content";
+  $struct_right isa SchemaResource, has typeLabel "isAbout:isAboutSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_102 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredBySubject",
-  has iri "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredBySubject",
-  has typeLabel "isTriggeredBy:isTriggeredBySubject",
-  has kind "role",
-  has roleName "isTriggeredBySubject",
-  has prefLabel "isTriggeredBySubject",
-  has definition "Role 'isTriggeredBySubject' in relation 'isTriggeredBy'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredBySubject";
+  $struct_left isa SchemaResource, has typeLabel "ContentExpression";
+  $struct_right isa SchemaResource, has typeLabel "isCategorizedBy:isCategorizedBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_103 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfObject",
-  has iri "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfObject",
-  has typeLabel "isUnderJurisdictionOf:isUnderJurisdictionOfObject",
-  has kind "role",
-  has roleName "isUnderJurisdictionOfObject",
-  has prefLabel "isUnderJurisdictionOfObject",
-  has definition "Role 'isUnderJurisdictionOfObject' in relation 'isUnderJurisdictionOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfObject";
+  $struct_left isa SchemaResource, has typeLabel "ContingentEvent";
+  $struct_right isa SchemaResource, has typeLabel "hasMagnitude:hasMagnitudeSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_104 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfSubject",
-  has iri "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfSubject",
-  has typeLabel "isUnderJurisdictionOf:isUnderJurisdictionOfSubject",
-  has kind "role",
-  has roleName "isUnderJurisdictionOfSubject",
-  has prefLabel "isUnderJurisdictionOfSubject",
-  has definition "Role 'isUnderJurisdictionOfSubject' in relation 'isUnderJurisdictionOf'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfSubject";
+  $struct_left isa SchemaResource, has typeLabel "ContingentEvent";
+  $struct_right isa SchemaResource, has typeLabel "isTriggeredBy:isTriggeredBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_105 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromObject",
-  has iri "https://github.com/semanticarts/gist#linksFrom:linksFromObject",
-  has typeLabel "linksFrom:linksFromObject",
-  has kind "role",
-  has roleName "linksFromObject",
-  has prefLabel "linksFromObject",
-  has definition "Role 'linksFromObject' in relation 'linksFrom'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromObject";
+  $struct_left isa SchemaResource, has typeLabel "ContingentObligation";
+  $struct_right isa SchemaResource, has typeLabel "isTriggeredBy:isTriggeredBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_106 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromSubject",
-  has iri "https://github.com/semanticarts/gist#linksFrom:linksFromSubject",
-  has typeLabel "linksFrom:linksFromSubject",
-  has kind "role",
-  has roleName "linksFromSubject",
-  has prefLabel "linksFromSubject",
-  has definition "Role 'linksFromSubject' in relation 'linksFrom'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromSubject";
+  $struct_left isa SchemaResource, has typeLabel "Contract";
+  $struct_right isa SchemaResource, has typeLabel "isUnderJurisdictionOf:isUnderJurisdictionOfSubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_107 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#linksRel:linksRelObject",
-  has iri "https://github.com/semanticarts/gist#linksRel:linksRelObject",
-  has typeLabel "linksRel:linksRelObject",
-  has kind "role",
-  has roleName "linksRelObject",
-  has prefLabel "linksRelObject",
-  has definition "Role 'linksRelObject' in relation 'linksRel'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksRel:linksRelObject";
+  $struct_left isa SchemaResource, has typeLabel "ControlledVocabulary";
+  $struct_right isa SchemaResource, has typeLabel "isFirstMemberOf:isFirstMemberOfObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_108 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#linksRel:linksRelSubject",
-  has iri "https://github.com/semanticarts/gist#linksRel:linksRelSubject",
-  has typeLabel "linksRel:linksRelSubject",
-  has kind "role",
-  has roleName "linksRelSubject",
-  has prefLabel "linksRelSubject",
-  has definition "Role 'linksRelSubject' in relation 'linksRel'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksRel:linksRelSubject";
+  $struct_left isa SchemaResource, has typeLabel "ControlledVocabulary";
+  $struct_right isa SchemaResource, has typeLabel "isGovernedBy:isGovernedBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_109 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#linksTo:linksToObject",
-  has iri "https://github.com/semanticarts/gist#linksTo:linksToObject",
-  has typeLabel "linksTo:linksToObject",
-  has kind "role",
-  has roleName "linksToObject",
-  has prefLabel "linksToObject",
-  has definition "Role 'linksToObject' in relation 'linksTo'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksTo:linksToObject";
+  $struct_left isa SchemaResource, has typeLabel "ControlledVocabulary";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf:isMemberOfObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_110 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#linksTo:linksToSubject",
-  has iri "https://github.com/semanticarts/gist#linksTo:linksToSubject",
-  has typeLabel "linksTo:linksToSubject",
-  has kind "role",
-  has roleName "linksToSubject",
-  has prefLabel "linksToSubject",
-  has definition "Role 'linksToSubject' in relation 'linksTo'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksTo:linksToSubject";
+  $struct_left isa SchemaResource, has typeLabel "CountryGovernment";
+  $struct_right isa SchemaResource, has typeLabel "isGovernedBy:isGovernedBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_111 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#occursIn:occursInObject",
-  has iri "https://github.com/semanticarts/gist#occursIn:occursInObject",
-  has typeLabel "occursIn:occursInObject",
-  has kind "role",
-  has roleName "occursInObject",
-  has prefLabel "occursInObject",
-  has definition "Role 'occursInObject' in relation 'occursIn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#occursIn:occursInObject";
+  $struct_left isa SchemaResource, has typeLabel "DegreeOfCommitment";
+  $struct_right isa SchemaResource, has typeLabel "isCategorizedBy:isCategorizedByObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_112 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#occursIn:occursInSubject",
-  has iri "https://github.com/semanticarts/gist#occursIn:occursInSubject",
-  has typeLabel "occursIn:occursInSubject",
-  has kind "role",
-  has roleName "occursInSubject",
-  has prefLabel "occursInSubject",
-  has definition "Role 'occursInSubject' in relation 'occursIn'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#occursIn:occursInSubject";
+  $struct_left isa SchemaResource, has typeLabel "Equipment";
+  $struct_right isa SchemaResource, has typeLabel "isCategorizedBy:isCategorizedBySubject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
 
-put $generated_role_113 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#offersToProvide:offersToProvideObject",
-  has iri "https://github.com/semanticarts/gist#offersToProvide:offersToProvideObject",
-  has typeLabel "offersToProvide:offersToProvideObject",
-  has kind "role",
-  has roleName "offersToProvideObject",
-  has prefLabel "offersToProvideObject",
-  has definition "Role 'offersToProvideObject' in relation 'offersToProvide'.";
 match
-  $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#offersToProvide:offersToProvideObject";
+  $struct_left isa SchemaResource, has typeLabel "EquipmentType";
+  $struct_right isa SchemaResource, has typeLabel "isCategorizedBy:isCategorizedByObject";
   not {
-    (resource: $schema_resource, module: $schema_module) isa inModule;
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
   };
 insert
-  (resource: $schema_resource, module: $schema_module) isa inModule;
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Event";
+  $struct_right isa SchemaResource, has typeLabel "isBasedOn:isBasedOnSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Event";
+  $struct_right isa SchemaResource, has typeLabel "isTriggeredBy:isTriggeredByObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "FormattedContent";
+  $struct_right isa SchemaResource, has typeLabel "isExpressedIn:isExpressedInSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeneralMediaType";
+  $struct_right isa SchemaResource, has typeLabel "isCategorizedBy:isCategorizedByObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "comesFromPlace:comesFromPlaceObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "goesToPlace:goesToPlaceObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "hasPhysicalLocation:hasPhysicalLocationObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "isGeoContainedIn:isGeoContainedInObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "isGeoContainedIn:isGeoContainedInSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "occursIn:occursInObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoLocation";
+  $struct_right isa SchemaResource, has typeLabel "refersTo:refersToObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoPoint";
+  $struct_right isa SchemaResource, has typeLabel "hasMagnitude:hasMagnitudeSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoPoint";
+  $struct_right isa SchemaResource, has typeLabel "isFirstMemberOf:isFirstMemberOfSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoPoint";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf:isMemberOfSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoRegion";
+  $struct_right isa SchemaResource, has typeLabel "hasMagnitude:hasMagnitudeSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoRegion";
+  $struct_right isa SchemaResource, has typeLabel "hasPhysicalLocation:hasPhysicalLocationObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoRegion";
+  $struct_right isa SchemaResource, has typeLabel "isGovernedBy:isGovernedBySubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GeoVolume";
+  $struct_right isa SchemaResource, has typeLabel "hasMagnitude:hasMagnitudeSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GovernmentOrganization";
+  $struct_right isa SchemaResource, has typeLabel "isFirstMemberOf:isFirstMemberOfSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GovernmentOrganization";
+  $struct_right isa SchemaResource, has typeLabel "isMemberOf:isMemberOfSubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "GovernmentOrganization";
+  $struct_right isa SchemaResource, has typeLabel "isUnderJurisdictionOf:isUnderJurisdictionOfObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ID";
+  $struct_right isa SchemaResource, has typeLabel "isAllocatedBy:isAllocatedBySubject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "ID";
+  $struct_right isa SchemaResource, has typeLabel "isIdentifiedBy:isIdentifiedByObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "IntellectualProperty";
+  $struct_right isa SchemaResource, has typeLabel "isAllocatedBy:isAllocatedByObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+
+match
+  $struct_left isa SchemaResource, has typeLabel "Intention";
+  $struct_right isa SchemaResource, has typeLabel "hasGoal:hasGoalObject";
+  not {
+    (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;
+  };
+insert
+  (playerResource: $struct_left, roleResource: $struct_right) isa schemaPlays;

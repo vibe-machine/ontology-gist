@@ -27,8 +27,13 @@ This document summarizes the translator behavior that currently turns vendored g
 ## Inheritance Rules
 
 - The structural emitter selects a deterministic primary supertype when gist presents multiple inheritance pressure.
+- Explicit gist hierarchies are represented structurally when the source resource maps to a TypeDB type:
+  - `rdfs:subClassOf` -> entity subtyping
+  - datatype-property `rdfs:subPropertyOf` -> attribute subtyping
+  - object-property `rdfs:subPropertyOf` -> relation subtyping with role specialization
 - Subtypes do not redundantly redeclare inherited `owns` or `plays`; inherited capability pruning is required for valid TypeDB schema loads.
 - Equivalent-class and restriction structures are preserved in the IR for query-artifact generation even when the structural schema uses a simplified supertype choice.
+- Query helpers may be generated for convenience, but they sit on top of the structural schema rather than replacing hierarchy emission.
 
 ## Restriction and Axiom Rules
 
@@ -48,7 +53,7 @@ This document summarizes the translator behavior that currently turns vendored g
 
 ## Datatype Rules
 
-- xsd date and datetime variants are flattened to TypeDB `datetime`.
+- xsd date and datetime primitive ranges map to TypeDB `datetime` on root attributes; explicit DateTime property hierarchy is preserved with attribute subtyping.
 - numeric XML Schema and OWL numeric datatypes collapse to TypeDB numeric attribute types according to the current emitter heuristics.
 - For datatype restrictions, the generated schema remains the source of value-type enforcement; query artifacts enforce existence and cardinality over attribute ownership.
 

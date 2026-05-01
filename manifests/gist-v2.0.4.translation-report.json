@@ -11,10 +11,19 @@
   "strategy": {
     "unionDomainRange": "emit one relation per OWL object property and allow every named union member to play the appropriate subject/object role",
     "inverseProperties": "emit the inverse property as its own relation; preserve OWL inverse/functionality characteristics as report metadata",
-    "datetimeProperties": "flatten xsd:date and xsd:dateTime variants to TypeDB datetime attributes",
+    "datatypePropertyHierarchy": "emit named datatype-property rdfs:subPropertyOf edges as TypeDB attribute subtyping; root attributes carry primitive value types",
+    "objectPropertyHierarchy": "emit named object-property rdfs:subPropertyOf edges as TypeDB relation subtyping with subject/object role specialization",
+    "datetimeProperties": "map xsd:date and xsd:dateTime primitive ranges to TypeDB datetime values on root attributes; hierarchy is preserved structurally",
     "multipleInheritance": "choose the deterministic first named superclass; preserve equivalent-class restrictions in the IR/report for later axiom-query generation"
   },
   "coverage": {
+    "propertyHierarchy": {
+      "datatypeSubPropertyEdgesDiscovered": 25,
+      "datatypeSubPropertyEdgesEmitted": 25,
+      "objectSubPropertyEdgesDiscovered": 13,
+      "objectSubPropertyEdgesEmitted": 13,
+      "roleSpecializationsEmitted": 26
+    },
     "classesWithoutNamedSupertype": [],
     "propertiesWithoutDomainAfterInference": [
       "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",

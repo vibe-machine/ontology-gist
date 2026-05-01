@@ -6,6 +6,9 @@ import { fileURLToPath } from "node:url";
 import net from "node:net";
 import { spawn, spawnSync } from "node:child_process";
 
+import { loadOntologyModel } from "./model.mjs";
+import { parseTypeQLSchemaStructure } from "../shared/schema_structure.mjs";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
 
@@ -19,6 +22,168 @@ async function readJson(relPath) {
 
 async function assertCondition(condition, message) {
   if (!condition) throw new Error(message);
+}
+
+function iriLocalName(iri) {
+  const hash = iri.lastIndexOf("#");
+  if (hash >= 0) return iri.slice(hash + 1);
+  const slash = iri.lastIndexOf("/");
+  return slash >= 0 ? iri.slice(slash + 1) : iri;
+}
+
+const RESERVED_IDENTIFIERS = new Set([
+  "and",
+  "attribute",
+  "define",
+  "entity",
+  "fetch",
+  "function",
+  "group",
+  "has",
+  "insert",
+  "isa",
+  "is",
+  "label",
+  "links",
+  "match",
+  "not",
+  "offset",
+  "or",
+  "owns",
+  "plays",
+  "reduce",
+  "relation",
+  "relates",
+  "rule",
+  "select",
+  "sort",
+  "sub",
+  "thing",
+  "type",
+  "value"
+]);
+
+function safeIdentifier(name, suffix) {
+  return RESERVED_IDENTIFIERS.has(name) ? `${name}${suffix}` : name;
+}
+
+function buildIdentifierMaps(model) {
+  const relationNames = new Map();
+  const attributeNames = new Map();
+
+  for (const prop of model.resources.objectProperties) {
+    relationNames.set(prop.iri, safeIdentifier(iriLocalName(prop.iri), "Rel"));
+  }
+  for (const prop of model.resources.datatypeProperties) {
+    attributeNames.set(prop.iri, safeIdentifier(iriLocalName(prop.iri), "Attr"));
+  }
+
+  return {
+    relation(iri) {
+      return relationNames.get(iri) ?? safeIdentifier(iriLocalName(iri), "Rel");
+    },
+    attribute(iri) {
+      return attributeNames.get(iri) ?? safeIdentifier(iriLocalName(iri), "Attr");
+    }
+  };
+}
+
+function namedSubPropertyEdges(properties) {
+  const propertyIris = new Set(properties.map((property) => property.iri));
+  return properties.flatMap((property) =>
+    property.subPropertyOf
+      .filter((term) => term.termType === "NamedNode" && propertyIris.has(term.value))
+      .map((term) => ({ subtype: property.iri, supertype: term.value }))
+  );
+}
+
+function edgeKey(subtype, supertype) {
+  return `${subtype}::${supertype}`;
+}
+
+function assertAllEdgesPresent(actualEdges, expectedEdges, label) {
+  const actual = new Set(actualEdges.map((edge) => edgeKey(edge.subtype, edge.supertype)));
+  const missing = expectedEdges
+    .map((edge) => edgeKey(edge.subtype, edge.supertype))
+    .filter((key) => !actual.has(key));
+  if (missing.length) {
+    throw new Error(`missing ${label} structural edges: ${missing.join(", ")}`);
+  }
+}
+
+function countGeneratedDocSubtypeEdges(docsText) {
+  const relationPattern = /\(subtypeResource:\s+\$struct_left,\s+supertypeResource:\s+\$struct_right\)\s+isa\s+schemaSubTypeOf/g;
+  return Array.from(docsText.matchAll(relationPattern)).length / 2;
+}
+
+function generatedDocsContainSubtypeEdge(docsText, edge) {
+  const escapedSubtype = edge.subtype.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const escapedSupertype = edge.supertype.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(
+    `\\$struct_left isa SchemaResource, has typeLabel "${escapedSubtype}";\\s+` +
+    `\\$struct_right isa SchemaResource, has typeLabel "${escapedSupertype}";\\s+` +
+    `not \\{\\s+` +
+    `\\(subtypeResource: \\$struct_left, supertypeResource: \\$struct_right\\) isa schemaSubTypeOf;\\s+` +
+    `\\};\\s+insert\\s+` +
+    `\\(subtypeResource: \\$struct_left, supertypeResource: \\$struct_right\\) isa schemaSubTypeOf;`,
+    "m"
+  );
+  return pattern.test(docsText);
+}
+
+async function assertHierarchyCoverage({ model, schemaText, docsText, translationReport }) {
+  const identifiers = buildIdentifierMaps(model);
+  const structure = parseTypeQLSchemaStructure([schemaText]);
+
+  const datatypeEdges = namedSubPropertyEdges(model.resources.datatypeProperties).map((edge) => ({
+    subtype: identifiers.attribute(edge.subtype),
+    supertype: identifiers.attribute(edge.supertype),
+  }));
+  const objectEdges = namedSubPropertyEdges(model.resources.objectProperties).map((edge) => ({
+    subtype: identifiers.relation(edge.subtype),
+    supertype: identifiers.relation(edge.supertype),
+  }));
+  const roleEdges = namedSubPropertyEdges(model.resources.objectProperties).flatMap((edge) => {
+    const subtype = identifiers.relation(edge.subtype);
+    const supertype = identifiers.relation(edge.supertype);
+    return [
+      { subtype: `${subtype}:${subtype}Subject`, supertype: `${supertype}:${supertype}Subject` },
+      { subtype: `${subtype}:${subtype}Object`, supertype: `${supertype}:${supertype}Object` },
+    ];
+  });
+
+  assertAllEdgesPresent(structure.subtypeEdges, datatypeEdges, "datatype property");
+  assertAllEdgesPresent(structure.subtypeEdges, objectEdges, "object property");
+  assertAllEdgesPresent(structure.subtypeEdges, roleEdges, "role specialization");
+
+  const hierarchy = translationReport.coverage?.propertyHierarchy;
+  await assertCondition(
+    hierarchy?.datatypeSubPropertyEdgesDiscovered === datatypeEdges.length &&
+      hierarchy?.datatypeSubPropertyEdgesEmitted === datatypeEdges.length,
+    "translation report datatype hierarchy counts do not match generated schema"
+  );
+  await assertCondition(
+    hierarchy?.objectSubPropertyEdgesDiscovered === objectEdges.length &&
+      hierarchy?.objectSubPropertyEdgesEmitted === objectEdges.length,
+    "translation report object hierarchy counts do not match generated schema"
+  );
+  await assertCondition(
+    hierarchy?.roleSpecializationsEmitted === roleEdges.length,
+    "translation report role specialization count does not match generated schema"
+  );
+
+  const expectedSubtypeEdges = datatypeEdges.length + objectEdges.length + roleEdges.length;
+  await assertCondition(
+    countGeneratedDocSubtypeEdges(docsText) >= expectedSubtypeEdges,
+    `generated schema docs contain fewer schemaSubTypeOf edges than required hierarchy coverage (${expectedSubtypeEdges})`
+  );
+
+  for (const edge of [...datatypeEdges, ...objectEdges, ...roleEdges]) {
+    await assertCondition(
+      generatedDocsContainSubtypeEdge(docsText, edge),
+      `generated schema docs are missing schemaSubTypeOf metadata for ${edge.subtype} -> ${edge.supertype}`
+    );
+  }
 }
 
 async function assertChecksum(relPath, expected) {
@@ -130,7 +295,7 @@ function extractNamedQueries(text) {
 }
 
 async function startTypedbServer(tempRoot) {
-  const typedb = path.join(process.env.HOME ?? "", ".typedb", "typedb");
+  const typedb = process.env.TYPEDB_BIN ?? path.join(process.env.HOME ?? "", ".typedb", "typedb");
   await fs.access(typedb);
 
   const grpcPort = await getFreePort();
@@ -237,6 +402,10 @@ async function main() {
   await assertCondition(docsText.includes("isa SchemaResource"), "SchemaResource seed missing");
   await assertCondition(docsText.includes("isa inModule"), "inModule seed missing");
 
+  const model = await loadOntologyModel(root);
+  const schemaText = await fs.readFile(path.join(root, "schema/gistCore.tql"), "utf8");
+  await assertHierarchyCoverage({ model, schemaText, docsText, translationReport });
+
   const tmp1 = path.join(os.tmpdir(), `gist-ir-summary-1-${process.pid}.json`);
   const tmp2 = path.join(os.tmpdir(), `gist-ir-summary-2-${process.pid}.json`);
   const run1 = spawnSync("node", ["tools/gist_to_typeql/parse_gist.mjs", "--out", tmp1], { cwd: root, encoding: "utf8" });
@@ -334,7 +503,7 @@ async function main() {
   await writeMergedQueryFile("define", pkg.schemas.map((schema) => schema.file), mergedSchema);
 
   const dbName = `gist_validate_${process.pid}`;
-  const typedbBin = path.join(process.env.HOME ?? "", ".typedb", "typedb");
+  const typedbBin = process.env.TYPEDB_BIN ?? path.join(process.env.HOME ?? "", ".typedb", "typedb");
 
   function runConsoleScript(grpcPort, script) {
     const scriptFile = path.join(typedbTemp, `script-${Date.now()}.tql`);
@@ -403,7 +572,7 @@ async function main() {
       "utf8"
     );
     const query = spawnSync(
-      path.join(process.env.HOME ?? "", ".typedb", "typedb"),
+      typedbBin,
       [
         "console",
         `--address=127.0.0.1:${typedbServer.grpcPort}`,
@@ -458,7 +627,7 @@ async function main() {
       "utf8"
     );
     const axiomQueryRun = spawnSync(
-      path.join(process.env.HOME ?? "", ".typedb", "typedb"),
+      typedbBin,
       [
         "console",
         `--address=127.0.0.1:${typedbServer.grpcPort}`,

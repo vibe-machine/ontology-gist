@@ -2,268 +2,717 @@
 # manifest: manifests/gist-v2.0.4.translation-manifest.json
 # upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
 
-put $gist_core isa SchemaModule,
-  has moduleKey "gist-core",
-  has moduleName "gistCore",
-  has moduleKind "gist-core";
+put $generated_role_1 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#allows:allowsObject",
+  has iri "https://github.com/semanticarts/gist#allows:allowsObject",
+  has typeLabel "allows:allowsObject",
+  has kind "role",
+  has roleName "allowsObject",
+  has prefLabel "allowsObject",
+  has definition "Role 'allowsObject' in relation 'allows'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r168 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
-  has typeLabel "offersToReceive",
-  has kind "relation",
-  has prefLabel "offers to receive",
-  has definition "Relates an offer to the thing expected in return for the offered item.",
-  has scopeNote "This will most often be an amount of money, but could be anything of value, as in swaps.",
-  has example "A vendor makes an offer to receive a particular amount of money in exchange for the offered product; an offer to receive a home in exchange for an amount of money.",
-  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Offer";
-put (resource: $r168, module: $gist_core) isa inModule;
+put $generated_role_97 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedByObject",
+  has iri "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedByObject",
+  has typeLabel "isRecognizedBy:isRecognizedByObject",
+  has kind "role",
+  has roleName "isRecognizedByObject",
+  has prefLabel "isRecognizedByObject",
+  has definition "Role 'isRecognizedByObject' in relation 'isRecognizedBy'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedByObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r169 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/owns",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/owns",
-  has typeLabel "ownsRel",
-  has kind "relation",
-  has prefLabel "owns",
-  has definition "Relates a party to something that it possesses and controls.",
-  has scopeNote "The ultimate form of ownership is the right to destroy.",
-  has scopeNote "There is a long list of potential range classes.";
-put (resource: $r169, module: $gist_core) isa inModule;
+put $generated_role_98 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedBySubject",
+  has iri "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedBySubject",
+  has typeLabel "isRecognizedBy:isRecognizedBySubject",
+  has kind "role",
+  has roleName "isRecognizedBySubject",
+  has prefLabel "isRecognizedBySubject",
+  has definition "Role 'isRecognizedBySubject' in relation 'isRecognizedBy'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRecognizedBy:isRecognizedBySubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r170 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
-  has typeLabel "precedes",
-  has kind "relation",
-  has prefLabel "precedes",
-  has definition "A generic ordering relation indicating that the subject comes before the object.",
-  has scopeNote "The less-than symbol is often used to represent this relation.",
-  has scopeNote "This is the transitive version of gist:precedesDirectly.",
-  has scopeNote "Typically this predicate would be used asymmetricallly and irreflexively, but the ontology does not formalize this.";
-put (resource: $r170, module: $gist_core) isa inModule;
+put $generated_role_99 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnObject",
+  has iri "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnObject",
+  has typeLabel "isRenderedOn:isRenderedOnObject",
+  has kind "role",
+  has roleName "isRenderedOnObject",
+  has prefLabel "isRenderedOnObject",
+  has definition "Role 'isRenderedOnObject' in relation 'isRenderedOn'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r171 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly",
-  has typeLabel "precedesDirectly",
-  has kind "relation",
-  has prefLabel "precedes directly",
-  has definition "A generic ordering relation indicating that the subject comes immediately before the object.",
-  has scopeNote "If two items in an ordered collection share the same position, they both directly precede the following element.",
-  has scopeNote "It is safest to use this property only when the directness has a semantic correspondence with the world. Only break a direct link by inserting an intermediate item when that change corresponds to a change in the world.",
-  has scopeNote "Typically this predicate would be used asymmetricallly and irreflexively, but the ontology does not formalize this.";
-put (resource: $r171, module: $gist_core) isa inModule;
+put $generated_role_100 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnSubject",
+  has iri "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnSubject",
+  has typeLabel "isRenderedOn:isRenderedOnSubject",
+  has kind "role",
+  has roleName "isRenderedOnSubject",
+  has prefLabel "isRenderedOnSubject",
+  has definition "Role 'isRenderedOnSubject' in relation 'isRenderedOn'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isRenderedOn:isRenderedOnSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r172 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/prevents",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/prevents",
-  has typeLabel "prevents",
-  has kind "relation",
-  has prefLabel "prevents",
-  has definition "Relates an intention to behavior that it prohibits.",
-  has example "A city ordinance prohibits jaywalking.";
-put (resource: $r172, module: $gist_core) isa inModule;
+put $generated_role_101 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredByObject",
+  has iri "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredByObject",
+  has typeLabel "isTriggeredBy:isTriggeredByObject",
+  has kind "role",
+  has roleName "isTriggeredByObject",
+  has prefLabel "isTriggeredByObject",
+  has definition "Role 'isTriggeredByObject' in relation 'isTriggeredBy'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredByObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r173 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
-  has typeLabel "providesOrderFor",
-  has kind "relation",
-  has prefLabel "provides order for",
-  has definition "Links a member of an ordered collection to the real-world item it represents in that collection.";
-put (resource: $r173, module: $gist_core) isa inModule;
+put $generated_role_102 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredBySubject",
+  has iri "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredBySubject",
+  has typeLabel "isTriggeredBy:isTriggeredBySubject",
+  has kind "role",
+  has roleName "isTriggeredBySubject",
+  has prefLabel "isTriggeredBySubject",
+  has definition "Role 'isTriggeredBySubject' in relation 'isTriggeredBy'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isTriggeredBy:isTriggeredBySubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r174 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/refersTo",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/refersTo",
-  has typeLabel "refersTo",
-  has kind "relation",
-  has prefLabel "refers to",
-  has definition "Relates something to another resource that it points to, indicates, or references.";
-put (resource: $r174, module: $gist_core) isa inModule;
+put $generated_role_103 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfObject",
+  has iri "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfObject",
+  has typeLabel "isUnderJurisdictionOf:isUnderJurisdictionOfObject",
+  has kind "role",
+  has roleName "isUnderJurisdictionOfObject",
+  has prefLabel "isUnderJurisdictionOfObject",
+  has definition "Role 'isUnderJurisdictionOfObject' in relation 'isUnderJurisdictionOf'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r175 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/requires",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/requires",
-  has typeLabel "requires",
-  has kind "relation",
-  has prefLabel "requires",
-  has definition "The subject needs the object or makes it necessary, mandatory, or compulsory.",
-  has scopeNote "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\n\n\t\t1. To need something or to make something necessary.\n\t\t2. To order or demand something, or to order someone to do something, especially because of a rule or law.\n\t\t3. To make it officially necessary for someone to do something.\n\n\tImplementations requiring a more specific meaning should define subproperties.",
-  has example "Humans require air; solar power requires sunshine.";
-put (resource: $r175, module: $gist_core) isa inModule;
+put $generated_role_104 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfSubject",
+  has iri "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfSubject",
+  has typeLabel "isUnderJurisdictionOf:isUnderJurisdictionOfSubject",
+  has kind "role",
+  has roleName "isUnderJurisdictionOfSubject",
+  has prefLabel "isUnderJurisdictionOfSubject",
+  has definition "Role 'isUnderJurisdictionOfSubject' in relation 'isUnderJurisdictionOf'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isUnderJurisdictionOf:isUnderJurisdictionOfSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r176 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate",
-  has typeLabel "actualEndDate",
-  has kind "attribute",
-  has prefLabel "actual end date",
-  has definition "The actual date that something ended, with precision of one day.",
-  has scopeNote "Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
-  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
-put (resource: $r176, module: $gist_core) isa inModule;
+put $generated_role_105 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromObject",
+  has iri "https://github.com/semanticarts/gist#linksFrom:linksFromObject",
+  has typeLabel "linksFrom:linksFromObject",
+  has kind "role",
+  has roleName "linksFromObject",
+  has prefLabel "linksFromObject",
+  has definition "Role 'linksFromObject' in relation 'linksFrom'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r177 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime",
-  has typeLabel "actualEndDateTime",
-  has kind "attribute",
-  has prefLabel "actual end date time",
-  has definition "The actual date and time that something ended, with no implied precision.",
-  has scopeNote "This is an abstraction over the various precisions of actual end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
-put (resource: $r177, module: $gist_core) isa inModule;
+put $generated_role_106 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromSubject",
+  has iri "https://github.com/semanticarts/gist#linksFrom:linksFromSubject",
+  has typeLabel "linksFrom:linksFromSubject",
+  has kind "role",
+  has roleName "linksFromSubject",
+  has prefLabel "linksFromSubject",
+  has definition "Role 'linksFromSubject' in relation 'linksFrom'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksFrom:linksFromSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r178 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond",
-  has typeLabel "actualEndMicrosecond",
-  has kind "attribute",
-  has prefLabel "actual end microsecond",
-  has definition "The actual time that something ended, expressed as a system time used for timestamps.",
-  has scopeNote "A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed.",
-  has example "'2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime";
-put (resource: $r178, module: $gist_core) isa inModule;
+put $generated_role_107 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#linksRel:linksRelObject",
+  has iri "https://github.com/semanticarts/gist#linksRel:linksRelObject",
+  has typeLabel "linksRel:linksRelObject",
+  has kind "role",
+  has roleName "linksRelObject",
+  has prefLabel "linksRelObject",
+  has definition "Role 'linksRelObject' in relation 'linksRel'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksRel:linksRelObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r179 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute",
-  has typeLabel "actualEndMinute",
-  has kind "attribute",
-  has prefLabel "actual end minute",
-  has definition "The actual date and time that something ended, with precision of one minute.",
-  has scopeNote "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.",
-  has example "'2021-06-01T08:32:00-6:00'^^xsd:dateTime";
-put (resource: $r179, module: $gist_core) isa inModule;
+put $generated_role_108 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#linksRel:linksRelSubject",
+  has iri "https://github.com/semanticarts/gist#linksRel:linksRelSubject",
+  has typeLabel "linksRel:linksRelSubject",
+  has kind "role",
+  has roleName "linksRelSubject",
+  has prefLabel "linksRelSubject",
+  has definition "Role 'linksRelSubject' in relation 'linksRel'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksRel:linksRelSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r180 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear",
-  has typeLabel "actualEndYear",
-  has kind "attribute",
-  has prefLabel "actual end year",
-  has definition "The actual date that something ended, with precision of one year.",
-  has scopeNote "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.",
-  has example "'2021-01-01T00:00:00-6:00'^^xsd:dateTime",
-  has example "The tenure of the previous chairman of the board ended in 2021.";
-put (resource: $r180, module: $gist_core) isa inModule;
+put $generated_role_109 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#linksTo:linksToObject",
+  has iri "https://github.com/semanticarts/gist#linksTo:linksToObject",
+  has typeLabel "linksTo:linksToObject",
+  has kind "role",
+  has roleName "linksToObject",
+  has prefLabel "linksToObject",
+  has definition "Role 'linksToObject' in relation 'linksTo'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksTo:linksToObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r181 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate",
-  has typeLabel "actualStartDate",
-  has kind "attribute",
-  has prefLabel "actual start date",
-  has definition "The actual date that something started, with precision of one day.",
-  has scopeNote "Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
-  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
-put (resource: $r181, module: $gist_core) isa inModule;
+put $generated_role_110 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#linksTo:linksToSubject",
+  has iri "https://github.com/semanticarts/gist#linksTo:linksToSubject",
+  has typeLabel "linksTo:linksToSubject",
+  has kind "role",
+  has roleName "linksToSubject",
+  has prefLabel "linksToSubject",
+  has definition "Role 'linksToSubject' in relation 'linksTo'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#linksTo:linksToSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r182 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime",
-  has typeLabel "actualStartDateTime",
-  has kind "attribute",
-  has prefLabel "actual start date time",
-  has definition "The actual date and time that something started, with no implied precision.",
-  has scopeNote "This is an abstraction over the various precisions of actual start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
-put (resource: $r182, module: $gist_core) isa inModule;
+put $generated_role_111 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#occursIn:occursInObject",
+  has iri "https://github.com/semanticarts/gist#occursIn:occursInObject",
+  has typeLabel "occursIn:occursInObject",
+  has kind "role",
+  has roleName "occursInObject",
+  has prefLabel "occursInObject",
+  has definition "Role 'occursInObject' in relation 'occursIn'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#occursIn:occursInObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r183 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond",
-  has typeLabel "actualStartMicrosecond",
-  has kind "attribute",
-  has prefLabel "actual start microsecond",
-  has definition "The actual time that something started, expressed as a system time used for timestamps.",
-  has scopeNote "A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed. This property is defined for the cases when you do need to capture the runtime of a system process, and is then used in conjunction with gist:actualEndMicrosecond.",
-  has example "'2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime";
-put (resource: $r183, module: $gist_core) isa inModule;
+put $generated_role_112 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#occursIn:occursInSubject",
+  has iri "https://github.com/semanticarts/gist#occursIn:occursInSubject",
+  has typeLabel "occursIn:occursInSubject",
+  has kind "role",
+  has roleName "occursInSubject",
+  has prefLabel "occursInSubject",
+  has definition "Role 'occursInSubject' in relation 'occursIn'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#occursIn:occursInSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r184 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute",
-  has typeLabel "actualStartMinute",
-  has kind "attribute",
-  has prefLabel "actual start minute",
-  has definition "The actual date and time that something started, with precision of one minute.",
-  has scopeNote "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.",
-  has example "'2021-06-01T08:32:00-6:00'^^xsd:dateTime";
-put (resource: $r184, module: $gist_core) isa inModule;
+put $generated_role_113 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#offersToProvide:offersToProvideObject",
+  has iri "https://github.com/semanticarts/gist#offersToProvide:offersToProvideObject",
+  has typeLabel "offersToProvide:offersToProvideObject",
+  has kind "role",
+  has roleName "offersToProvideObject",
+  has prefLabel "offersToProvideObject",
+  has definition "Role 'offersToProvideObject' in relation 'offersToProvide'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#offersToProvide:offersToProvideObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r185 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear",
-  has typeLabel "actualStartYear",
-  has kind "attribute",
-  has prefLabel "actual start year",
-  has definition "The actual date that something started, with precision of one year.",
-  has scopeNote "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.",
-  has example "'2021-01-01T00:00:00-6:00'^^xsd:dateTime",
-  has example "The tenure of the current chairman of the board began in 2021.";
-put (resource: $r185, module: $gist_core) isa inModule;
+put $generated_role_114 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#offersToProvide:offersToProvideSubject",
+  has iri "https://github.com/semanticarts/gist#offersToProvide:offersToProvideSubject",
+  has typeLabel "offersToProvide:offersToProvideSubject",
+  has kind "role",
+  has roleName "offersToProvideSubject",
+  has prefLabel "offersToProvideSubject",
+  has definition "Role 'offersToProvideSubject' in relation 'offersToProvide'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#offersToProvide:offersToProvideSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r186 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
-  has typeLabel "atDateTime",
-  has kind "attribute",
-  has prefLabel "at date time",
-  has definition "The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned.",
-  has scopeNote "This is the top level property for asserting time, and is not expected to be asserted directly.\n\nThe subproperties allow the ontologist to do three things:\n1) Distinguish start and end times.\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\n\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\n\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\n\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\n\nThe conventions for precision that are repeated in each property name are as follows:\n\t- *DateTime is an abstraction over the various precisions of its subproperties.\n\t- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\n\t- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\n\t- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.\n";
-put (resource: $r186, module: $gist_core) isa inModule;
+put $generated_role_115 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#offersToReceive:offersToReceiveObject",
+  has iri "https://github.com/semanticarts/gist#offersToReceive:offersToReceiveObject",
+  has typeLabel "offersToReceive:offersToReceiveObject",
+  has kind "role",
+  has roleName "offersToReceiveObject",
+  has prefLabel "offersToReceiveObject",
+  has definition "Role 'offersToReceiveObject' in relation 'offersToReceive'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#offersToReceive:offersToReceiveObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r187 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/birthDate",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/birthDate",
-  has typeLabel "birthDate",
-  has kind "attribute",
-  has prefLabel "birth date",
-  has definition "The date some living thing was or will be born, with precision of one day.",
-  has scopeNote "This is a subproperty of gist:startDateTime rather than gist:actualStartDate because some living things have yet to be born. This property refers to a calendar date and is assumed to precision of one day (time zone offset is allowed). It is recommended to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a birthdate to the minute can define a subproperty.",
-  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
-put (resource: $r187, module: $gist_core) isa inModule;
+put $generated_role_116 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#offersToReceive:offersToReceiveSubject",
+  has iri "https://github.com/semanticarts/gist#offersToReceive:offersToReceiveSubject",
+  has typeLabel "offersToReceive:offersToReceiveSubject",
+  has kind "role",
+  has roleName "offersToReceiveSubject",
+  has prefLabel "offersToReceiveSubject",
+  has definition "Role 'offersToReceiveSubject' in relation 'offersToReceive'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#offersToReceive:offersToReceiveSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r188 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/containedText",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/containedText",
-  has typeLabel "containedText",
-  has kind "attribute",
-  has prefLabel "contained text",
-  has definition "A string that is closely associated with an individual.",
-  has example "The string associated with a tag or with text content.",
-  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
-  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Text";
-put (resource: $r188, module: $gist_core) isa inModule;
+put $generated_role_117 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#ownsRel:ownsRelObject",
+  has iri "https://github.com/semanticarts/gist#ownsRel:ownsRelObject",
+  has typeLabel "ownsRel:ownsRelObject",
+  has kind "role",
+  has roleName "ownsRelObject",
+  has prefLabel "ownsRelObject",
+  has definition "Role 'ownsRelObject' in relation 'ownsRel'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#ownsRel:ownsRelObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r189 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
-  has typeLabel "conversionFactor",
-  has kind "attribute",
-  has prefLabel "conversion factor",
-  has definition "A value that relates a unit of measure to units of the International System of Units.",
-  has scopeNote "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\n\n\tFor example, to convert 27 feet to yards:\n\n\t\tthe conversion factor of foot is 0.3048\n\t\tthe conversion factor of yard is 0.9144\n\n\t\tso\n\n\t\t27 feet = (27 x 0.3048) / 0.9144 = 9 yards",
-  has example "In the equation 1 inch = 0.0254 meters, the value 0.0254 is the conversion factor of inch.",
-  has seeAlso "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset";
-put (resource: $r189, module: $gist_core) isa inModule;
+put $generated_role_118 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#ownsRel:ownsRelSubject",
+  has iri "https://github.com/semanticarts/gist#ownsRel:ownsRelSubject",
+  has typeLabel "ownsRel:ownsRelSubject",
+  has kind "role",
+  has roleName "ownsRelSubject",
+  has prefLabel "ownsRelSubject",
+  has definition "Role 'ownsRelSubject' in relation 'ownsRel'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#ownsRel:ownsRelSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r190 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset",
-  has typeLabel "conversionOffset",
-  has kind "attribute",
-  has prefLabel "conversion offset",
-  has definition "\n\t\tA value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\n\n\t\ty degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\n\n\t\tTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\n\n\t\tTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset.";
-put (resource: $r190, module: $gist_core) isa inModule;
+put $generated_role_119 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#precedes:precedesObject",
+  has iri "https://github.com/semanticarts/gist#precedes:precedesObject",
+  has typeLabel "precedes:precedesObject",
+  has kind "role",
+  has roleName "precedesObject",
+  has prefLabel "precedesObject",
+  has definition "Role 'precedesObject' in relation 'precedes'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#precedes:precedesObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
 
-put $r191 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/deathDate",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/deathDate",
-  has typeLabel "deathDate",
-  has kind "attribute",
-  has prefLabel "death date",
-  has definition "The date some living thing died.",
-  has scopeNote "Refers to a calendar date and is assumed to have precision of one day (time zone offset is allowed). Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a death date to the minute can define a subproperty.",
-  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
-put (resource: $r191, module: $gist_core) isa inModule;
+put $generated_role_120 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#precedes:precedesSubject",
+  has iri "https://github.com/semanticarts/gist#precedes:precedesSubject",
+  has typeLabel "precedes:precedesSubject",
+  has kind "role",
+  has roleName "precedesSubject",
+  has prefLabel "precedesSubject",
+  has definition "Role 'precedesSubject' in relation 'precedes'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#precedes:precedesSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_121 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#precedesDirectly:precedesDirectlyObject",
+  has iri "https://github.com/semanticarts/gist#precedesDirectly:precedesDirectlyObject",
+  has typeLabel "precedesDirectly:precedesDirectlyObject",
+  has kind "role",
+  has roleName "precedesDirectlyObject",
+  has prefLabel "precedesDirectlyObject",
+  has definition "Role 'precedesDirectlyObject' in relation 'precedesDirectly'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#precedesDirectly:precedesDirectlyObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_122 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#precedesDirectly:precedesDirectlySubject",
+  has iri "https://github.com/semanticarts/gist#precedesDirectly:precedesDirectlySubject",
+  has typeLabel "precedesDirectly:precedesDirectlySubject",
+  has kind "role",
+  has roleName "precedesDirectlySubject",
+  has prefLabel "precedesDirectlySubject",
+  has definition "Role 'precedesDirectlySubject' in relation 'precedesDirectly'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#precedesDirectly:precedesDirectlySubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_123 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#prevents:preventsObject",
+  has iri "https://github.com/semanticarts/gist#prevents:preventsObject",
+  has typeLabel "prevents:preventsObject",
+  has kind "role",
+  has roleName "preventsObject",
+  has prefLabel "preventsObject",
+  has definition "Role 'preventsObject' in relation 'prevents'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#prevents:preventsObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_124 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#prevents:preventsSubject",
+  has iri "https://github.com/semanticarts/gist#prevents:preventsSubject",
+  has typeLabel "prevents:preventsSubject",
+  has kind "role",
+  has roleName "preventsSubject",
+  has prefLabel "preventsSubject",
+  has definition "Role 'preventsSubject' in relation 'prevents'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#prevents:preventsSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_125 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#providesOrderFor:providesOrderForObject",
+  has iri "https://github.com/semanticarts/gist#providesOrderFor:providesOrderForObject",
+  has typeLabel "providesOrderFor:providesOrderForObject",
+  has kind "role",
+  has roleName "providesOrderForObject",
+  has prefLabel "providesOrderForObject",
+  has definition "Role 'providesOrderForObject' in relation 'providesOrderFor'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#providesOrderFor:providesOrderForObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_126 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#providesOrderFor:providesOrderForSubject",
+  has iri "https://github.com/semanticarts/gist#providesOrderFor:providesOrderForSubject",
+  has typeLabel "providesOrderFor:providesOrderForSubject",
+  has kind "role",
+  has roleName "providesOrderForSubject",
+  has prefLabel "providesOrderForSubject",
+  has definition "Role 'providesOrderForSubject' in relation 'providesOrderFor'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#providesOrderFor:providesOrderForSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_127 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#refersTo:refersToObject",
+  has iri "https://github.com/semanticarts/gist#refersTo:refersToObject",
+  has typeLabel "refersTo:refersToObject",
+  has kind "role",
+  has roleName "refersToObject",
+  has prefLabel "refersToObject",
+  has definition "Role 'refersToObject' in relation 'refersTo'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#refersTo:refersToObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_128 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#refersTo:refersToSubject",
+  has iri "https://github.com/semanticarts/gist#refersTo:refersToSubject",
+  has typeLabel "refersTo:refersToSubject",
+  has kind "role",
+  has roleName "refersToSubject",
+  has prefLabel "refersToSubject",
+  has definition "Role 'refersToSubject' in relation 'refersTo'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#refersTo:refersToSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_129 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#requires:requiresObject",
+  has iri "https://github.com/semanticarts/gist#requires:requiresObject",
+  has typeLabel "requires:requiresObject",
+  has kind "role",
+  has roleName "requiresObject",
+  has prefLabel "requiresObject",
+  has definition "Role 'requiresObject' in relation 'requires'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#requires:requiresObject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+put $generated_role_130 isa SchemaResource,
+  has docKey "https://github.com/semanticarts/gist#requires:requiresSubject",
+  has iri "https://github.com/semanticarts/gist#requires:requiresSubject",
+  has typeLabel "requires:requiresSubject",
+  has kind "role",
+  has roleName "requiresSubject",
+  has prefLabel "requiresSubject",
+  has definition "Role 'requiresSubject' in relation 'requires'.";
+match
+  $schema_module isa SchemaModule, has moduleKey "gist-core";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#requires:requiresSubject";
+  not {
+    (resource: $schema_resource, module: $schema_module) isa inModule;
+  };
+insert
+  (resource: $schema_resource, module: $schema_module) isa inModule;
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "atDateTime";
+  not {
+    $schema_resource has valueTypeName "datetime";
+  };
+insert
+  $schema_resource has valueTypeName "datetime";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "containedText";
+  not {
+    $schema_resource has valueTypeName "string";
+  };
+insert
+  $schema_resource has valueTypeName "string";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "conversionFactor";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "conversionOffset";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "description";
+  not {
+    $schema_resource has valueTypeName "string";
+  };
+insert
+  $schema_resource has valueTypeName "string";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfAmpere";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfBit";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfCandela";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfKelvin";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfKilogram";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfMeter";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfMole";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfNumber";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfOther";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";
+
+match
+  $schema_resource isa SchemaResource, has typeLabel "exponentOfRadian";
+  not {
+    $schema_resource has valueTypeName "double";
+  };
+insert
+  $schema_resource has valueTypeName "double";

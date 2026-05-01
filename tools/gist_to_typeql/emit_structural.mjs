@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 import {
   OWL_ALL_VALUES_FROM,
@@ -39,6 +39,8 @@ const MANIFEST_PATH = packageJson.provenance.manifest;
 const MANIFEST_PREFIX = `manifests/gist-v${packageJson.version}`;
 const GENERATOR = "gist-structural-emitter/0.5.0";
 const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
+const SCHEMA_DOCS_PATH = "data/gistCore-schema-docs.tql";
+const SCHEMA_DOCS_APPLY_UNIT_PREFIX = "generated/apply-units/data/gistCore-schema-docs";
 const RESERVED_IDENTIFIERS = new Set([
   "and",
   "attribute",
@@ -147,6 +149,44 @@ function tqlString(value) {
 
 function uniqueSorted(values) {
   return Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
+}
+
+function replaceSchemaDocApplyUnitPaths(paths, applyUnitPaths, { includeSchemaDocsPath = false } = {}) {
+  if (!Array.isArray(paths)) return paths;
+  const next = paths.filter((entry) =>
+    entry !== SCHEMA_DOCS_PATH && !entry.startsWith(`${SCHEMA_DOCS_APPLY_UNIT_PREFIX}/`)
+  );
+  if (includeSchemaDocsPath) next.push(SCHEMA_DOCS_PATH);
+  next.push(...applyUnitPaths);
+  return next;
+}
+
+async function renderSchemaDocApplyUnits(docsText, outputRoot) {
+  const toolingPath = path.join(root, "..", "ontology-tooling", "src/lib/executable-package.mjs");
+  const { testing } = await import(pathToFileURL(toolingPath).href);
+  const chunks = testing.buildContextualChunks(docsText.trim());
+  const outputDir = path.join(outputRoot, SCHEMA_DOCS_APPLY_UNIT_PREFIX);
+  await fs.rm(outputDir, { recursive: true, force: true });
+  await fs.mkdir(outputDir, { recursive: true });
+
+  const paths = [];
+  const artifacts = [];
+  for (const [index, chunk] of chunks.entries()) {
+    const relativePath = `${SCHEMA_DOCS_APPLY_UNIT_PREFIX}/${String(index + 1).padStart(4, "0")}.tql`;
+    const text = testing.renderShardWithHeaders(SCHEMA_DOCS_PATH, chunk, {
+      manifestPath: MANIFEST_PATH,
+      upstreamCommit: packageJson.upstream.commit,
+    });
+    await fs.writeFile(path.join(outputRoot, relativePath), text, "utf8");
+    paths.push(relativePath);
+    artifacts.push({
+      kind: "apply-unit",
+      path: relativePath,
+      sha256: sha256Text(text),
+    });
+  }
+
+  return { paths, artifacts };
 }
 
 function buildIdentifierMaps(model) {
@@ -446,9 +486,81 @@ function inferAttributeValueType(model, property, propertyInfo) {
   return "string";
 }
 
+function buildNamedSuperPropertyMap(properties) {
+  const propertyIris = new Set(properties.map((property) => property.iri));
+  const supertypeByIri = new Map();
+
+  for (const property of properties) {
+    const namedSupertypes = uniqueSorted(
+      property.subPropertyOf
+        .filter((term) => term.termType === "NamedNode" && propertyIris.has(term.value))
+        .map((term) => term.value)
+    );
+    if (namedSupertypes.length > 1) {
+      throw new Error(
+        `multiple named TypeDB-mapped supertypes for ${property.iri}: ${namedSupertypes.join(", ")}`
+      );
+    }
+    if (namedSupertypes.length === 1) supertypeByIri.set(property.iri, namedSupertypes[0]);
+  }
+
+  return supertypeByIri;
+}
+
+function collectPropertyHierarchyStats(model) {
+  const datatypeSupertypeByIri = buildNamedSuperPropertyMap(model.resources.datatypeProperties);
+  const objectSupertypeByIri = buildNamedSuperPropertyMap(model.resources.objectProperties);
+  return {
+    datatypeSupertypeByIri,
+    objectSupertypeByIri,
+    datatypeSubPropertyEdges: datatypeSupertypeByIri.size,
+    objectSubPropertyEdges: objectSupertypeByIri.size,
+    roleSpecializations: objectSupertypeByIri.size * 2,
+  };
+}
+
+function validateAttributeSubtypeValueCompatibility(model, propertyInfo, attributeSupertypeByIri, identifiers) {
+  for (const [propertyIri, supertypeIri] of attributeSupertypeByIri.entries()) {
+    const property = propertyInfo.propertyTypes.get(propertyIri);
+    const supertype = propertyInfo.propertyTypes.get(supertypeIri);
+    const propertyValueType = inferAttributeValueType(model, property, propertyInfo);
+    const supertypeValueType = inferAttributeValueType(model, supertype, propertyInfo);
+    if (propertyValueType !== supertypeValueType) {
+      throw new Error(
+        `attribute subtype value mismatch: ${identifiers.attribute(propertyIri)} (${propertyValueType}) sub ` +
+        `${identifiers.attribute(supertypeIri)} (${supertypeValueType})`
+      );
+    }
+  }
+}
+
+function buildLabelSupertypeMap(supertypeByIri, labelForIri) {
+  const result = new Map();
+  for (const [subtypeIri, supertypeIri] of supertypeByIri.entries()) {
+    result.set(labelForIri(subtypeIri), labelForIri(supertypeIri));
+  }
+  return result;
+}
+
+function hasAncestor(label, ancestorLabel, supertypeByLabel) {
+  let current = supertypeByLabel.get(label);
+  const seen = new Set();
+  while (current && !seen.has(current)) {
+    if (current === ancestorLabel) return true;
+    seen.add(current);
+    current = supertypeByLabel.get(current);
+  }
+  return false;
+}
+
 function buildEntityDefinitions(model, propertyInfo, identifiers) {
   const definitions = new Map();
   const seedInstanceOwners = new Map();
+  const hierarchyStats = collectPropertyHierarchyStats(model);
+  const attributeSupertypeByLabel = buildLabelSupertypeMap(
+    hierarchyStats.datatypeSupertypeByIri,
+    (iri) => identifiers.attribute(iri)
+  );
 
   definitions.set(SYNTHETIC_THING_IRI, {
     name: identifiers.entity(SYNTHETIC_THING_IRI),
@@ -525,12 +637,29 @@ function buildEntityDefinitions(model, propertyInfo, identifiers) {
     const inherited = inheritedCapabilities(classIri);
     for (const item of inherited.owns) definition.owns.delete(item);
     for (const item of inherited.plays) definition.plays.delete(item);
+
+    for (const ownedAttribute of Array.from(definition.owns)) {
+      for (const inheritedAttribute of inherited.owns) {
+        if (hasAncestor(ownedAttribute, inheritedAttribute, attributeSupertypeByLabel)) {
+          definition.owns.delete(ownedAttribute);
+          break;
+        }
+      }
+    }
   }
 
   return definitions;
 }
 
 function renderSchema(model, propertyInfo, entityDefinitions, identifiers) {
+  const hierarchyStats = collectPropertyHierarchyStats(model);
+  validateAttributeSubtypeValueCompatibility(
+    model,
+    propertyInfo,
+    hierarchyStats.datatypeSupertypeByIri,
+    identifiers
+  );
+
   const lines = [
     "# Provenance bootstrap",
     "# upstream-repo: https://github.com/semanticarts/gist",
@@ -548,16 +677,22 @@ function renderSchema(model, propertyInfo, entityDefinitions, identifiers) {
     ""
   ];
 
-  const attributeNames = new Set(["sourceIRI"]);
-  for (const property of model.resources.datatypeProperties) attributeNames.add(identifiers.attribute(property.iri));
+  const attributeDefinitions = [
+    { name: "sourceIRI", line: "attribute sourceIRI value string;" },
+    ...model.resources.datatypeProperties.map((property) => {
+      const localName = identifiers.attribute(property.iri);
+      const supertypeIri = hierarchyStats.datatypeSupertypeByIri.get(property.iri);
+      return {
+        name: localName,
+        line: supertypeIri
+          ? `attribute ${localName} sub ${identifiers.attribute(supertypeIri)};`
+          : `attribute ${localName} value ${inferAttributeValueType(model, property, propertyInfo)};`,
+      };
+    })
+  ];
 
-  for (const attributeName of Array.from(attributeNames).sort((a, b) => a.localeCompare(b))) {
-    if (attributeName === "sourceIRI") {
-      lines.push(`attribute ${attributeName} value string;`);
-      continue;
-    }
-    const property = model.resources.datatypeProperties.find((item) => identifiers.attribute(item.iri) === attributeName);
-    lines.push(`attribute ${attributeName} value ${inferAttributeValueType(model, property, propertyInfo)};`);
+  for (const definition of attributeDefinitions.sort((a, b) => a.name.localeCompare(b.name))) {
+    lines.push(definition.line);
   }
 
   lines.push("");
@@ -572,9 +707,17 @@ function renderSchema(model, propertyInfo, entityDefinitions, identifiers) {
     if (property.types.includes("http://www.w3.org/2002/07/owl#FunctionalProperty")) notes.push("functional in OWL");
     if (property.types.includes("http://www.w3.org/2002/07/owl#InverseFunctionalProperty")) notes.push("inverse-functional in OWL");
     for (const note of notes) lines.push(`# ${localName}: ${note}`);
-    lines.push(`relation ${localName},`);
-    lines.push(`    relates ${localName}Subject,`);
-    lines.push(`    relates ${localName}Object;`);
+    const supertypeIri = hierarchyStats.objectSupertypeByIri.get(property.iri);
+    if (supertypeIri) {
+      const supertypeName = identifiers.relation(supertypeIri);
+      lines.push(`relation ${localName} sub ${supertypeName},`);
+      lines.push(`    relates ${localName}Subject as ${supertypeName}Subject,`);
+      lines.push(`    relates ${localName}Object as ${supertypeName}Object;`);
+    } else {
+      lines.push(`relation ${localName},`);
+      lines.push(`    relates ${localName}Subject,`);
+      lines.push(`    relates ${localName}Object;`);
+    }
     lines.push("");
   }
 
@@ -1103,6 +1246,7 @@ function buildAxiomQueryArtifacts(model, identifiers) {
 
 function renderReport(model, propertyInfo, entityDefinitions, identifiers) {
   const axiomArtifacts = buildAxiomQueryArtifacts(model, identifiers);
+  const hierarchyStats = collectPropertyHierarchyStats(model);
   const renamedRelations = model.resources.objectProperties
     .map((property) => ({
       iri: property.iri,
@@ -1138,10 +1282,19 @@ function renderReport(model, propertyInfo, entityDefinitions, identifiers) {
     strategy: {
       unionDomainRange: "emit one relation per OWL object property and allow every named union member to play the appropriate subject/object role",
       inverseProperties: "emit the inverse property as its own relation; preserve OWL inverse/functionality characteristics as report metadata",
-      datetimeProperties: "flatten xsd:date and xsd:dateTime variants to TypeDB datetime attributes",
+      datatypePropertyHierarchy: "emit named datatype-property rdfs:subPropertyOf edges as TypeDB attribute subtyping; root attributes carry primitive value types",
+      objectPropertyHierarchy: "emit named object-property rdfs:subPropertyOf edges as TypeDB relation subtyping with subject/object role specialization",
+      datetimeProperties: "map xsd:date and xsd:dateTime primitive ranges to TypeDB datetime values on root attributes; hierarchy is preserved structurally",
       multipleInheritance: "choose the deterministic first named superclass; preserve equivalent-class restrictions in the IR/report for later axiom-query generation"
     },
     coverage: {
+      propertyHierarchy: {
+        datatypeSubPropertyEdgesDiscovered: hierarchyStats.datatypeSubPropertyEdges,
+        datatypeSubPropertyEdgesEmitted: hierarchyStats.datatypeSubPropertyEdges,
+        objectSubPropertyEdgesDiscovered: hierarchyStats.objectSubPropertyEdges,
+        objectSubPropertyEdgesEmitted: hierarchyStats.objectSubPropertyEdges,
+        roleSpecializationsEmitted: hierarchyStats.roleSpecializations
+      },
       classesWithoutNamedSupertype: model.resources.classes
         .filter((cls) => entityDefinitions.get(cls.iri).supertype === null)
         .map((cls) => cls.iri),
@@ -1205,7 +1358,7 @@ async function main() {
   const entityDefinitions = buildEntityDefinitions(model, propertyInfo, identifiers);
   const axiomArtifacts = buildAxiomQueryArtifacts(model, identifiers);
   const schemaText = renderSchema(model, propertyInfo, entityDefinitions, identifiers);
-  const docsPath = path.join(outputRoot, "data/gistCore-schema-docs.tql");
+  const docsPath = path.join(outputRoot, SCHEMA_DOCS_PATH);
   const structure = parseTypeQLSchemaStructure([schemaText]);
   const existingDocsText = await fs.readFile(path.join(root, "data/gistCore-schema-docs.tql"), "utf8");
   const docsText = replaceGeneratedStructuralSection(
@@ -1227,6 +1380,7 @@ async function main() {
 
   await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), schemaText, "utf8");
   await fs.writeFile(docsPath, docsText, "utf8");
+  const schemaDocApplyUnits = await renderSchemaDocApplyUnits(docsText, outputRoot);
   await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), seedDataText, "utf8");
   await fs.writeFile(path.join(outputRoot, "queries/gistCore-axioms.tql"), axiomArtifacts.library, "utf8");
   await fs.writeFile(path.join(outputRoot, `${MANIFEST_PREFIX}.axiom-queries.json`), axiomArtifacts.index, "utf8");
@@ -1260,8 +1414,8 @@ async function main() {
     },
     {
       kind: "documentation",
-      path: "data/gistCore-schema-docs.tql",
-      sha256: await sha256File(path.join(root, "data/gistCore-schema-docs.tql")),
+      path: SCHEMA_DOCS_PATH,
+      sha256: sha256Text(docsText),
     },
     {
       kind: "axiom-query-library",
@@ -1329,6 +1483,7 @@ async function main() {
         sha256: sha256Text(provenanceText),
       },
       ...artifactEntries.slice(5),
+      ...schemaDocApplyUnits.artifacts,
     ],
   };
 
@@ -1338,6 +1493,21 @@ async function main() {
     `${JSON.stringify(manifest, null, 2)}\n`,
     "utf8"
   );
+
+  if (outputRoot === root) {
+    const nextPackageJson = structuredClone(packageJson);
+    nextPackageJson.data = replaceSchemaDocApplyUnitPaths(packageJson.data, schemaDocApplyUnits.paths);
+    nextPackageJson.assembly = {
+      ...(packageJson.assembly ?? {}),
+      loadOrder: replaceSchemaDocApplyUnitPaths(packageJson.assembly?.loadOrder, schemaDocApplyUnits.paths),
+      generatedArtifacts: replaceSchemaDocApplyUnitPaths(
+        packageJson.assembly?.generatedArtifacts,
+        schemaDocApplyUnits.paths,
+        { includeSchemaDocsPath: true }
+      ),
+    };
+    await fs.writeFile(path.join(root, "package.json"), `${JSON.stringify(nextPackageJson, null, 2)}\n`, "utf8");
+  }
 }
 
 main().catch((error) => {

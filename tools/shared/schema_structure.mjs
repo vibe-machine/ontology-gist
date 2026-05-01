@@ -62,8 +62,12 @@ function parsePlaysToken(token) {
 }
 
 function parseRelatesToken(token) {
-  const match = /^relates\s+([A-Za-z_][A-Za-z0-9_]*)(?:\s+as\s+[A-Za-z_][A-Za-z0-9_]*)?$/.exec(token);
-  return match?.[1] ?? null;
+  const match = /^relates\s+([A-Za-z_][A-Za-z0-9_]*)(?:\s+as\s+([A-Za-z_][A-Za-z0-9_]*))?$/.exec(token);
+  if (!match) return null;
+  return {
+    roleLabel: match[1],
+    overriddenRoleLabel: match[2] ?? null,
+  };
 }
 
 function roleTypeLabel(relationLabel, roleLabel) {
@@ -147,12 +151,17 @@ function parseTypeQLSchemaStructure(schemaTexts) {
       if (!normalized) continue;
 
       if (normalized.startsWith("attribute ")) {
-        const match = /^attribute\s+([A-Za-z_][A-Za-z0-9_]*)(?:\s*,)?\s+value\s+([A-Za-z_][A-Za-z0-9_]*)$/.exec(normalized);
+        const match = /^attribute\s+([A-Za-z_][A-Za-z0-9_]*)(?:\s+sub\s+([A-Za-z_][A-Za-z0-9_]*))?(?:\s*,)?(?:\s+value\s+([A-Za-z_][A-Za-z0-9_]*))?$/.exec(normalized);
         if (!match) continue;
-        const [, attributeLabel, valueTypeName] = match;
+        const [, attributeLabel, supertypeLabel, valueTypeName] = match;
         structure.attributes.add(attributeLabel);
         structure.typeKinds.set(attributeLabel, "attribute");
-        structure.attributeValueTypes.set(attributeLabel, valueTypeName);
+        if (supertypeLabel) {
+          structure.attributes.add(supertypeLabel);
+          ensureType(structure, supertypeLabel, "attribute");
+          structure.subtypeEdges.add(`${attributeLabel}::${supertypeLabel}`);
+        }
+        if (valueTypeName) structure.attributeValueTypes.set(attributeLabel, valueTypeName);
         continue;
       }
 
@@ -189,9 +198,15 @@ function parseTypeQLSchemaStructure(schemaTexts) {
           structure.subtypeEdges.add(`${relationLabel}::${supertypeLabel}`);
         }
         for (const token of splitCapabilities(capabilityText ?? "")) {
-          const roleLabel = parseRelatesToken(token);
-          if (roleLabel) {
-            structure.relatesEdges.add(`${relationLabel}::${roleLabel}`);
+          const relates = parseRelatesToken(token);
+          if (relates) {
+            structure.relatesEdges.add(`${relationLabel}::${relates.roleLabel}`);
+            if (supertypeLabel && relates.overriddenRoleLabel) {
+              structure.relatesEdges.add(`${supertypeLabel}::${relates.overriddenRoleLabel}`);
+              structure.subtypeEdges.add(
+                `${roleTypeLabel(relationLabel, relates.roleLabel)}::${roleTypeLabel(supertypeLabel, relates.overriddenRoleLabel)}`
+              );
+            }
             continue;
           }
           const ownedAttribute = parseOwnsToken(token);
@@ -226,7 +241,7 @@ function parseTypeQLSchemaStructure(schemaTexts) {
         const relatedRole = parseRelatesToken(token);
         if (relatedRole) {
           ensureType(structure, typeLabel, "relation");
-          structure.relatesEdges.add(`${typeLabel}::${relatedRole}`);
+          structure.relatesEdges.add(`${typeLabel}::${relatedRole.roleLabel}`);
         }
       }
     }

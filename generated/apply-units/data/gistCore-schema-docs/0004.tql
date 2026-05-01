@@ -7,251 +7,516 @@ put $gist_core isa SchemaModule,
   has moduleName "gistCore",
   has moduleKind "gist-core";
 
-put $r72 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Network",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Network",
-  has typeLabel "Network",
-  has kind "entity",
-  has prefLabel "Network",
-  has definition "A composite consisting of nodes connected by links.",
-  has example "A physical network could include connected computers or routers, whereas a social network would consist of related person or organization members (or their proxies, such as accounts).";
-put (resource: $r72, module: $gist_core) isa inModule;
+put $r147 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
+  has typeLabel "isCategorizedBy",
+  has kind "relation",
+  has prefLabel "is categorized by",
+  has definition "Relates something to a taxonomy term or other less formally defined classification.";
+put (resource: $r147, module: $gist_core) isa inModule;
 
-put $r73 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
-  has typeLabel "NetworkLink",
-  has kind "entity",
-  has prefLabel "Network Link",
-  has definition "An abstract representation of the connection between two or more nodes in a network.",
-  has scopeNote "Each newtork link is connected to a network node via the property gist:links or one of its subproperties.",
-  has example "A network link may be physical, such as pipes, wired or wireless networks, but may also be a link in a non-physical network, such as organizational structures or social networks.";
-put (resource: $r73, module: $gist_core) isa inModule;
+put $r148 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+  has typeLabel "isConnectedTo",
+  has kind "relation",
+  has prefLabel "is connected to",
+  has definition "A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship.";
+put (resource: $r148, module: $gist_core) isa inModule;
 
-put $r74 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
-  has typeLabel "NetworkNode",
-  has kind "entity",
-  has prefLabel "Network Node",
-  has definition "A node in a network.",
-  has example "A person's account is a node in a social network; a valve is a node in a network of pipes.";
-put (resource: $r74, module: $gist_core) isa inModule;
+put $r149 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf",
+  has typeLabel "isDirectPartOf",
+  has kind "relation",
+  has prefLabel "is direct part of",
+  has definition "The relationship between a part and a whole where the part has independent existence and there are no other parts in between.",
+  has scopeNote "Because the part has independent existence, there is no cascading delete.",
+  has scopeNote "It is safest to use this property when semantic directness is inherent in the relationship, rather than simply expressing a chosen granularity. For example, a spark plug is a direct part of an engine block; there cannot be any intermediate parts. Otherwise, there is a risk of making an isDirectPartOf assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:isPartOf.";
+put (resource: $r149, module: $gist_core) isa inModule;
 
-put $r75 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
-  has typeLabel "Offer",
-  has kind "entity",
-  has prefLabel "Offer",
-  has definition "A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).",
-  has scopeNote "Dates on an offer represent the time period the offer is valid for, as in '25% off through October 25, 2025'.",
-  has example "An offer to sell a book for a given price; an offer to purchase real estate for a particular price; an offer to swap a sea kayak for a mountain bike; currency exchange. A donation may be modeled as an offer to receive money typically in exchange for $0.00, but sometimes for items of value such as coffee mugs or T-shirts.";
-put (resource: $r75, module: $gist_core) isa inModule;
+put $r150 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
+  has typeLabel "isExpressedIn",
+  has kind "relation",
+  has prefLabel "is expressed in",
+  has definition "Relates something to the language it is expressed in.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Text";
+put (resource: $r150, module: $gist_core) isa inModule;
 
-put $r76 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
-  has typeLabel "OrderedCollection",
-  has kind "entity",
-  has prefLabel "Ordered Collection",
-  has definition "A collection whose members are ordered in some way.",
-  has scopeNote "Includes partially ordered collections as well as collections in which members occupy the same position in a 'tie.' All members of an ordered collection are ordered members.";
-put (resource: $r76, module: $gist_core) isa inModule;
+put $r151 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
+  has typeLabel "isFirstMemberOf",
+  has kind "relation",
+  has prefLabel "is first member of",
+  has definition "Relates the first member of an ordered collection to the collection.",
+  has scopeNote "Given the Open World Assumption, the absence of a predecessor does not entail that an ordered member is the first member of an ordered collection. This property is used to explicitly indicate the first member. Since ordered collections need not be strictly ordered, there can be more than one first member.";
+put (resource: $r151, module: $gist_core) isa inModule;
 
-put $r77 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
-  has typeLabel "OrderedMember",
-  has kind "entity",
-  has prefLabel "Ordered Member",
-  has definition "A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.",
-  has scopeNote "An ordered member points to the real world item via the providesOrderFor property. Ordering information is represented either as a number in a sequence, or by preceding or following another ordered member.",
-  has example "A person may rank 12th in the Boston Marathon but 29th in the New York City Marathon.";
-put (resource: $r77, module: $gist_core) isa inModule;
+put $r152 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn",
+  has typeLabel "isGeoContainedIn",
+  has kind "relation",
+  has prefLabel "is geographically contained in",
+  has definition "Relates one geographic location to another that contains it.";
+put (resource: $r152, module: $gist_core) isa inModule;
 
-put $r78 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
-  has typeLabel "Organization",
-  has kind "entity",
-  has prefLabel "Organization",
-  has definition "A structured entity formed to achieve specific goals, typically involving members with defined roles.",
-  has scopeNote "Not all organizations have members, e.g. shell companies.",
-  has scopeNote "While typically the members of organizations are people, in some cases they are other organizations; e.g., the members of the United Nations are country governments.",
-  has example "Legal entities like companies; non-legal entities like clubs, committees, or departments.";
-put (resource: $r78, module: $gist_core) isa inModule;
+put $r153 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy",
+  has typeLabel "isGovernedBy",
+  has kind "relation",
+  has prefLabel "is governed by",
+  has definition "Relates an entity to another entity that controls, directs, determines or has a guiding influence or authority over it.",
+  has example "A country geographic region is governed by a country government; the installation and use of software is governed by a license.";
+put (resource: $r153, module: $gist_core) isa inModule;
 
-put $r79 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
-  has typeLabel "Permission",
-  has kind "entity",
-  has prefLabel "Permission",
-  has definition "A description of things one is permitted to do.",
-  has example "Permission could be broad, such as free speech, but more often is very specific, such as the right to enter a particular property.";
-put (resource: $r79, module: $gist_core) isa inModule;
+put $r154 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
+  has typeLabel "isIdentifiedBy",
+  has kind "relation",
+  has prefLabel "is identified by",
+  has definition "Relates something to a content object that uniquely identifies it.",
+  has scopeNote "This is like a URI: a thing can have more than one ID, but each ID can refer to only one thing. Note that it is possible to have two IDs with the same text that refer to different things.";
+put (resource: $r154, module: $gist_core) isa inModule;
 
-put $r80 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Person",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Person",
-  has typeLabel "Person",
-  has kind "entity",
-  has prefLabel "Person",
-  has definition "A human being who was or is alive.",
-  has example "Negative example: fictional characters.";
-put (resource: $r80, module: $gist_core) isa inModule;
+put $r155 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf",
+  has typeLabel "isMadeUpOf",
+  has kind "relation",
+  has prefLabel "is made up of",
+  has definition "Relates something to a substance that it is made up of.",
+  has example "A vase is made of clay; water is made up of hydrogen and oxygen.";
+put (resource: $r155, module: $gist_core) isa inModule;
 
-put $r81 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalActionType",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalActionType",
-  has typeLabel "PhysicalActionType",
-  has kind "entity",
-  has prefLabel "Physical Action Type",
-  has definition "A category indicating the type of an action based on its effect in the physical world.",
-  has example "Lifting a garage door, turning off a valve, dropping cadmium rods.";
-put (resource: $r81, module: $gist_core) isa inModule;
+put $r156 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
+  has typeLabel "isMemberOf",
+  has kind "relation",
+  has prefLabel "is member of",
+  has definition "Relates a member individual to the thing, such as a collection or organization, that it is a member of.";
+put (resource: $r156, module: $gist_core) isa inModule;
 
-put $r82 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
-  has typeLabel "PhysicalAddress",
-  has kind "entity",
-  has prefLabel "Physical Address",
-  has definition "An address that refers to a locatable place within the physical universe.",
-  has example "1600 Pennsylvania Avenue NW, Washington, DC 20500; PO Box 7704, San Francisco, CA 94120-7704; Room 317 in the Louvre Museum.";
-put (resource: $r82, module: $gist_core) isa inModule;
+put $r157 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf",
+  has typeLabel "isPartOf",
+  has kind "relation",
+  has prefLabel "is part of",
+  has definition "The relationship between a part and a whole where the part has independent existence.",
+  has scopeNote "Because the part has independent existence, there is no cascading delete.",
+  has scopeNote "The transitive version of gist:isDirectPartOf.";
+put (resource: $r157, module: $gist_core) isa inModule;
 
-put $r83 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddressType",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddressType",
-  has typeLabel "PhysicalAddressType",
-  has kind "entity",
-  has prefLabel "Physical Address Type",
-  has definition "A category indicating local customary characterizations of physical addresses.",
-  has example "Street address, PO box, FPO code.";
-put (resource: $r83, module: $gist_core) isa inModule;
+put $r158 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+  has typeLabel "isProducedBy",
+  has kind "relation",
+  has prefLabel "is produced by",
+  has definition "Relates something to the thing that created, composed, or brought it into existence.",
+  has example "A deliverable is produces by a task.",
+  has example "A measurement is produced by a sensor.",
+  has example "A painting is produced by a person.";
+put (resource: $r158, module: $gist_core) isa inModule;
 
-put $r84 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
-  has typeLabel "PhysicalEvent",
-  has kind "entity",
-  has prefLabel "Physical Event",
-  has definition "An event that can be said to have occurred at some place in space.",
-  has example "A meeting, a car accident.",
-  has example "Negative examples: Excludes events that have no meaningful location, such as financial events or project milestones.";
-put (resource: $r84, module: $gist_core) isa inModule;
+put $r159 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
+  has typeLabel "isRecognizedBy",
+  has kind "relation",
+  has prefLabel "is recognized by",
+  has definition "Relates something to a party that formally acknowledges its existence, validity, or legality.",
+  has example "The existence of a particular company is recognized by the state.";
+put (resource: $r159, module: $gist_core) isa inModule;
 
-put $r85 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
-  has typeLabel "PhysicalIdentifiableItem",
-  has kind "entity",
-  has prefLabel "Physical Identifiable Item",
-  has definition "A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.",
-  has scopeNote "This concept generally corresponds to count nouns in English. By contrast, physical substances, such as an amount of water, flour, or sand, are mass nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a statue is made of bronze. If you divide a physical substance such as an amount of water into parts, you have two amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part is different from the whole.",
-  has example "A computer, a book, a car.";
-put (resource: $r85, module: $gist_core) isa inModule;
+put $r160 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn",
+  has typeLabel "isRenderedOn",
+  has kind "relation",
+  has prefLabel "is rendered on",
+  has definition "Relates content to the media on which it is rendered.",
+  has example "A document is rendered on a computer screen; a piece of music is rendered through speakers.";
+put (resource: $r160, module: $gist_core) isa inModule;
 
-put $r86 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
-  has typeLabel "PhysicalSubstance",
-  has kind "entity",
-  has prefLabel "Physical Substance",
-  has definition "An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.",
-  has scopeNote "An instance of this class has weight and takes up space. We mean the physical gold in a ring, not the concept of gold that shows up in the periodic table. The latter would be an instance of gist:KnowledgeConcept.",
-  has scopeNote "This concept generally corresponds to mass nouns in English. By contrast, instances of PhysicalIdentifiableItem, such as a computer, book, or car, are count nouns. PhysicalIdentifiableItems are made up of PhysicalSubstances; e.g., a cake is made up of butter, flour, and sugar; a ring is made of gold. If you divide a PhysicalSubstance such as an amount of water into parts, you have different amounts of water otherwise indistinguishable from one another; if you divide a PhysicalIdentifiableItem such as a computer into parts, each part will be distinguishable from the original whole.",
-  has example "An amount of water, penicillin, sand, or gold.",
-  has example "Negative example: the concept of gold.";
-put (resource: $r86, module: $gist_core) isa inModule;
+put $r161 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy",
+  has typeLabel "isTriggeredBy",
+  has kind "relation",
+  has prefLabel "is triggered by",
+  has definition "Relates a contingency, such as an event or obligation, to the event that gives rise to it.",
+  has scopeNote "For obligations, this property describes what must happen to trigger the contingent obligation. Other uses include controls, processes, etc.",
+  has example "Fire insurance is contingent on a particular building burning down; the death benefit payout on a life insurance policy is contingent on the death of the insured person.";
+put (resource: $r161, module: $gist_core) isa inModule;
 
-put $r87 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory",
-  has typeLabel "ProductCategory",
-  has kind "entity",
-  has prefLabel "Product Category",
-  has definition "Any of many ways of categorizing products.",
-  has example "Automobile models, NATO product codes.";
-put (resource: $r87, module: $gist_core) isa inModule;
+put $r162 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
+  has typeLabel "isUnderJurisdictionOf",
+  has kind "relation",
+  has prefLabel "is under jurisdiction of",
+  has definition "Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it.";
+put (resource: $r162, module: $gist_core) isa inModule;
 
-put $r88 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
-  has typeLabel "ProductSpecification",
-  has kind "entity",
-  has prefLabel "Product Specification",
-  has definition "Offering something which could be physically warehoused or digitally stored.";
-put (resource: $r88, module: $gist_core) isa inModule;
+put $r163 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/links",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/links",
+  has typeLabel "linksRel",
+  has kind "relation",
+  has prefLabel "links",
+  has definition "Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink";
+put (resource: $r163, module: $gist_core) isa inModule;
 
-put $r89 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Project",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Project",
-  has typeLabel "Project",
-  has kind "entity",
-  has prefLabel "Project",
-  has definition "A task, usually of longer duration, made up of other tasks.",
-  has example "Designing an insurance product; adding a new feature to a software application; assessing the level of risk for a mortgage application.";
-put (resource: $r89, module: $gist_core) isa inModule;
+put $r164 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
+  has typeLabel "linksFrom",
+  has kind "relation",
+  has prefLabel "links from",
+  has definition "Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink";
+put (resource: $r164, module: $gist_core) isa inModule;
 
-put $r90 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ReferenceValue",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ReferenceValue",
-  has typeLabel "ReferenceValue",
-  has kind "entity",
-  has prefLabel "Reference Value",
-  has definition "A magnitude that was neither measured nor estimated but set by fiat.",
-  has example "The sales goal for a company.";
-put (resource: $r90, module: $gist_core) isa inModule;
+put $r165 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
+  has typeLabel "linksTo",
+  has kind "relation",
+  has prefLabel "links to",
+  has definition "Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink";
+put (resource: $r165, module: $gist_core) isa inModule;
 
-put $r91 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
-  has typeLabel "RenderedContent",
-  has kind "entity",
-  has prefLabel "Rendered Content",
-  has definition "Content which has been physically expressed.",
-  has example "Words printed on paper; audio played on speakers; images displayed on monitors.";
-put (resource: $r91, module: $gist_core) isa inModule;
+put $r166 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/occursIn",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/occursIn",
+  has typeLabel "occursIn",
+  has kind "relation",
+  has prefLabel "occurs in",
+  has definition "Relates something, such as an event, to the geographic location where it did, does, or will happen.";
+put (resource: $r166, module: $gist_core) isa inModule;
 
-put $r92 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Requirement",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Requirement",
-  has typeLabel "Requirement",
-  has kind "entity",
-  has prefLabel "Requirement",
-  has definition "The obligation of a person or organization to behave in a certain way.",
-  has example "In the US, drivers must drive on the right side of the road.";
-put (resource: $r92, module: $gist_core) isa inModule;
+put $r167 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
+  has typeLabel "offersToProvide",
+  has kind "relation",
+  has prefLabel "offers to provide",
+  has definition "Relates an offer to the thing being made available for exchange.",
+  has scopeNote "This will most often be a good or service, but could be an amount of money, e.g., for currency exchange.",
+  has example "An offer to provide a specific product in exchange for an amount of money or to pay a certain price for a home that is for sale.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Offer";
+put (resource: $r167, module: $gist_core) isa inModule;
 
-put $r93 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
-  has typeLabel "Restriction",
-  has kind "entity",
-  has prefLabel "Restriction",
-  has definition "A description of things one is prevented from doing.",
-  has example "In the US, tax laws restrict the amount of money a person can put in retirement accounts over the course of a year.";
-put (resource: $r93, module: $gist_core) isa inModule;
+put $r168 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
+  has typeLabel "offersToReceive",
+  has kind "relation",
+  has prefLabel "offers to receive",
+  has definition "Relates an offer to the thing expected in return for the offered item.",
+  has scopeNote "This will most often be an amount of money, but could be anything of value, as in swaps.",
+  has example "A vendor makes an offer to receive a particular amount of money in exchange for the offered product; an offer to receive a home in exchange for an amount of money.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Offer";
+put (resource: $r168, module: $gist_core) isa inModule;
 
-put $r94 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
-  has typeLabel "ScheduledEvent",
-  has kind "entity",
-  has prefLabel "Scheduled Event",
-  has definition "An event with a planned start datetime.",
-  has scopeNote "If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event.";
-put (resource: $r94, module: $gist_core) isa inModule;
+put $r169 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/owns",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/owns",
+  has typeLabel "ownsRel",
+  has kind "relation",
+  has prefLabel "owns",
+  has definition "Relates a party to something that it possesses and controls.",
+  has scopeNote "The ultimate form of ownership is the right to destroy.",
+  has scopeNote "There is a long list of potential range classes.";
+put (resource: $r169, module: $gist_core) isa inModule;
 
-put $r95 isa SchemaResource,
-  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
-  has iri "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
-  has typeLabel "ScheduledTask",
-  has kind "entity",
-  has prefLabel "Scheduled Task",
-  has definition "A task with a planned start datetime.",
-  has scopeNote "If work on the task has already started, but has not yet ended, it will have an actual start datetime. If the task is completed, it will also have an actual end datetime. The task always retains its planned start time, and thus continues to be a scheduled task.";
-put (resource: $r95, module: $gist_core) isa inModule;
+put $r170 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
+  has typeLabel "precedes",
+  has kind "relation",
+  has prefLabel "precedes",
+  has definition "A generic ordering relation indicating that the subject comes before the object.",
+  has scopeNote "The less-than symbol is often used to represent this relation.",
+  has scopeNote "This is the transitive version of gist:precedesDirectly.",
+  has scopeNote "Typically this predicate would be used asymmetricallly and irreflexively, but the ontology does not formalize this.";
+put (resource: $r170, module: $gist_core) isa inModule;
+
+put $r171 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly",
+  has typeLabel "precedesDirectly",
+  has kind "relation",
+  has prefLabel "precedes directly",
+  has definition "A generic ordering relation indicating that the subject comes immediately before the object.",
+  has scopeNote "If two items in an ordered collection share the same position, they both directly precede the following element.",
+  has scopeNote "It is safest to use this property only when the directness has a semantic correspondence with the world. Only break a direct link by inserting an intermediate item when that change corresponds to a change in the world.",
+  has scopeNote "Typically this predicate would be used asymmetricallly and irreflexively, but the ontology does not formalize this.";
+put (resource: $r171, module: $gist_core) isa inModule;
+
+put $r172 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/prevents",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/prevents",
+  has typeLabel "prevents",
+  has kind "relation",
+  has prefLabel "prevents",
+  has definition "Relates an intention to behavior that it prohibits.",
+  has example "A city ordinance prohibits jaywalking.";
+put (resource: $r172, module: $gist_core) isa inModule;
+
+put $r173 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
+  has typeLabel "providesOrderFor",
+  has kind "relation",
+  has prefLabel "provides order for",
+  has definition "Links a member of an ordered collection to the real-world item it represents in that collection.";
+put (resource: $r173, module: $gist_core) isa inModule;
+
+put $r174 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/refersTo",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/refersTo",
+  has typeLabel "refersTo",
+  has kind "relation",
+  has prefLabel "refers to",
+  has definition "Relates something to another resource that it points to, indicates, or references.";
+put (resource: $r174, module: $gist_core) isa inModule;
+
+put $r175 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/requires",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/requires",
+  has typeLabel "requires",
+  has kind "relation",
+  has prefLabel "requires",
+  has definition "The subject needs the object or makes it necessary, mandatory, or compulsory.",
+  has scopeNote "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\n\n\t\t1. To need something or to make something necessary.\n\t\t2. To order or demand something, or to order someone to do something, especially because of a rule or law.\n\t\t3. To make it officially necessary for someone to do something.\n\n\tImplementations requiring a more specific meaning should define subproperties.",
+  has example "Humans require air; solar power requires sunshine.";
+put (resource: $r175, module: $gist_core) isa inModule;
+
+put $r176 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate",
+  has typeLabel "actualEndDate",
+  has kind "attribute",
+  has prefLabel "actual end date",
+  has definition "The actual date that something ended, with precision of one day.",
+  has scopeNote "Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r176, module: $gist_core) isa inModule;
+
+put $r177 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime",
+  has typeLabel "actualEndDateTime",
+  has kind "attribute",
+  has prefLabel "actual end date time",
+  has definition "The actual date and time that something ended, with no implied precision.",
+  has scopeNote "This is an abstraction over the various precisions of actual end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
+put (resource: $r177, module: $gist_core) isa inModule;
+
+put $r178 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond",
+  has typeLabel "actualEndMicrosecond",
+  has kind "attribute",
+  has prefLabel "actual end microsecond",
+  has definition "The actual time that something ended, expressed as a system time used for timestamps.",
+  has scopeNote "A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed.",
+  has example "'2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime";
+put (resource: $r178, module: $gist_core) isa inModule;
+
+put $r179 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute",
+  has typeLabel "actualEndMinute",
+  has kind "attribute",
+  has prefLabel "actual end minute",
+  has definition "The actual date and time that something ended, with precision of one minute.",
+  has scopeNote "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.",
+  has example "'2021-06-01T08:32:00-6:00'^^xsd:dateTime";
+put (resource: $r179, module: $gist_core) isa inModule;
+
+put $r180 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear",
+  has typeLabel "actualEndYear",
+  has kind "attribute",
+  has prefLabel "actual end year",
+  has definition "The actual date that something ended, with precision of one year.",
+  has scopeNote "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.",
+  has example "'2021-01-01T00:00:00-6:00'^^xsd:dateTime",
+  has example "The tenure of the previous chairman of the board ended in 2021.";
+put (resource: $r180, module: $gist_core) isa inModule;
+
+put $r181 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate",
+  has typeLabel "actualStartDate",
+  has kind "attribute",
+  has prefLabel "actual start date",
+  has definition "The actual date that something started, with precision of one day.",
+  has scopeNote "Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r181, module: $gist_core) isa inModule;
+
+put $r182 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime",
+  has typeLabel "actualStartDateTime",
+  has kind "attribute",
+  has prefLabel "actual start date time",
+  has definition "The actual date and time that something started, with no implied precision.",
+  has scopeNote "This is an abstraction over the various precisions of actual start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
+put (resource: $r182, module: $gist_core) isa inModule;
+
+put $r183 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond",
+  has typeLabel "actualStartMicrosecond",
+  has kind "attribute",
+  has prefLabel "actual start microsecond",
+  has definition "The actual time that something started, expressed as a system time used for timestamps.",
+  has scopeNote "A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed. This property is defined for the cases when you do need to capture the runtime of a system process, and is then used in conjunction with gist:actualEndMicrosecond.",
+  has example "'2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime";
+put (resource: $r183, module: $gist_core) isa inModule;
+
+put $r184 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute",
+  has typeLabel "actualStartMinute",
+  has kind "attribute",
+  has prefLabel "actual start minute",
+  has definition "The actual date and time that something started, with precision of one minute.",
+  has scopeNote "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.",
+  has example "'2021-06-01T08:32:00-6:00'^^xsd:dateTime";
+put (resource: $r184, module: $gist_core) isa inModule;
+
+put $r185 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear",
+  has typeLabel "actualStartYear",
+  has kind "attribute",
+  has prefLabel "actual start year",
+  has definition "The actual date that something started, with precision of one year.",
+  has scopeNote "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.",
+  has example "'2021-01-01T00:00:00-6:00'^^xsd:dateTime",
+  has example "The tenure of the current chairman of the board began in 2021.";
+put (resource: $r185, module: $gist_core) isa inModule;
+
+put $r186 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
+  has typeLabel "atDateTime",
+  has kind "attribute",
+  has prefLabel "at date time",
+  has definition "The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned.",
+  has scopeNote "This is the top level property for asserting time, and is not expected to be asserted directly.\n\nThe subproperties allow the ontologist to do three things:\n1) Distinguish start and end times.\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\n\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\n\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\n\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\n\nThe conventions for precision that are repeated in each property name are as follows:\n\t- *DateTime is an abstraction over the various precisions of its subproperties.\n\t- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\n\t- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\n\t- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.\n";
+put (resource: $r186, module: $gist_core) isa inModule;
+
+put $r187 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/birthDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/birthDate",
+  has typeLabel "birthDate",
+  has kind "attribute",
+  has prefLabel "birth date",
+  has definition "The date some living thing was or will be born, with precision of one day.",
+  has scopeNote "This is a subproperty of gist:startDateTime rather than gist:actualStartDate because some living things have yet to be born. This property refers to a calendar date and is assumed to precision of one day (time zone offset is allowed). It is recommended to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a birthdate to the minute can define a subproperty.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r187, module: $gist_core) isa inModule;
+
+put $r188 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/containedText",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/containedText",
+  has typeLabel "containedText",
+  has kind "attribute",
+  has prefLabel "contained text",
+  has definition "A string that is closely associated with an individual.",
+  has example "The string associated with a tag or with text content.",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+  has domainIncludes "https://w3id.org/semanticarts/ns/ontology/gist/Text";
+put (resource: $r188, module: $gist_core) isa inModule;
+
+put $r189 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
+  has typeLabel "conversionFactor",
+  has kind "attribute",
+  has prefLabel "conversion factor",
+  has definition "A value that relates a unit of measure to units of the International System of Units.",
+  has scopeNote "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\n\n\tFor example, to convert 27 feet to yards:\n\n\t\tthe conversion factor of foot is 0.3048\n\t\tthe conversion factor of yard is 0.9144\n\n\t\tso\n\n\t\t27 feet = (27 x 0.3048) / 0.9144 = 9 yards",
+  has example "In the equation 1 inch = 0.0254 meters, the value 0.0254 is the conversion factor of inch.",
+  has seeAlso "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset";
+put (resource: $r189, module: $gist_core) isa inModule;
+
+put $r190 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset",
+  has typeLabel "conversionOffset",
+  has kind "attribute",
+  has prefLabel "conversion offset",
+  has definition "\n\t\tA value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\n\n\t\ty degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\n\n\t\tTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\n\n\t\tTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset.";
+put (resource: $r190, module: $gist_core) isa inModule;
+
+put $r191 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/deathDate",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/deathDate",
+  has typeLabel "deathDate",
+  has kind "attribute",
+  has prefLabel "death date",
+  has definition "The date some living thing died.",
+  has scopeNote "Refers to a calendar date and is assumed to have precision of one day (time zone offset is allowed). Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a death date to the minute can define a subproperty.",
+  has example "'2021-06-01T00:00:00-6:00'^^xsd:dateTime";
+put (resource: $r191, module: $gist_core) isa inModule;
+
+put $r192 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/description",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/description",
+  has typeLabel "description",
+  has kind "attribute",
+  has prefLabel "description",
+  has definition "A statement about someone or something's attributes or characteristics.",
+  has scopeNote "This property is used to describe instance data which is not part of the ontology. A definition and a description have different semantics. Use skos:definition for a statement of the meaning of a thing and gist:description to describe a thing's attributes, characteristics, or features.",
+  has example "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+  has example "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition.";
+put (resource: $r192, module: $gist_core) isa inModule;
+
+put $r193 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText",
+  has typeLabel "encryptedText",
+  has kind "attribute",
+  has prefLabel "encrypted text",
+  has definition "Encoded text produced from readable data by an algorithm so that it can only be understood or restored with a decryption key.";
+put (resource: $r193, module: $gist_core) isa inModule;
+
+put $r194 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime",
+  has typeLabel "endDateTime",
+  has kind "attribute",
+  has prefLabel "end date time",
+  has definition "The date and time that something ends.",
+  has scopeNote "This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals).",
+  has scopeNote "Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.";
+put (resource: $r194, module: $gist_core) isa inModule;
+
+put $r195 isa SchemaResource,
+  has docKey "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
+  has iri "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
+  has typeLabel "exponentOfAmpere",
+  has kind "attribute",
+  has prefLabel "exponent of ampere",
+  has definition "The exponent of ampere in a product of powers of base units.",
+  has example "In the equation '1 milliampere = 0.001 x ampere'\n\n\t\tthe conversionFactor for milliampere is 0.001\n\t\tthe exponent of ampere is 1\n\t\tall other exponents are zero\n\n\t\tEvery member of a unit group containing milliampere must be a multiple of ampere.";
+put (resource: $r195, module: $gist_core) isa inModule;
