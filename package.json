@@ -1,10 +1,10 @@
 {
   "name": "gist",
   "displayName": "gist Upper Ontology",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
   "scripts": {
-    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v2.0.4.ir-summary.json",
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v3.0.0.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
     "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
@@ -66,8 +66,8 @@
     "queries/gistCore-axioms.tql"
   ],
   "manifests": [
-    "manifests/gist-v2.0.4.translation-manifest.json",
-    "manifests/gist-v2.0.4.axiom-queries.json"
+    "manifests/gist-v3.0.0.translation-manifest.json",
+    "manifests/gist-v3.0.0.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
@@ -106,10 +106,10 @@
       "data/gistCore-domain-seeds.tql",
       "data/gistCore-provenance.tql",
       "queries/gistCore-axioms.tql",
-      "manifests/gist-v2.0.4.axiom-queries.json",
-      "manifests/gist-v2.0.4.translation-manifest.json",
-      "manifests/gist-v2.0.4.translation-report.json",
-      "manifests/gist-v2.0.4.ir-summary.json",
+      "manifests/gist-v3.0.0.axiom-queries.json",
+      "manifests/gist-v3.0.0.translation-manifest.json",
+      "manifests/gist-v3.0.0.translation-report.json",
+      "manifests/gist-v3.0.0.ir-summary.json",
       "data/gistCore-schema-docs.tql",
       "generated/apply-units/data/gistCore-schema-docs/0001.tql",
       "generated/apply-units/data/gistCore-schema-docs/0002.tql",
@@ -145,8 +145,37 @@
     ]
   },
   "provenance": {
-    "manifest": "manifests/gist-v2.0.4.translation-manifest.json",
+    "manifest": "manifests/gist-v3.0.0.translation-manifest.json",
     "status": "bootstrap"
+  },
+  "migration": {
+    "format": 1,
+    "supportsUpgradeFrom": [
+      "2.0.x"
+    ],
+    "plans": [
+      {
+        "id": "gist-structural-property-hierarchy",
+        "from": "2.0.4",
+        "to": "3.0.0",
+        "mode": "compatible",
+        "snapshot": {
+          "required": false,
+          "label": "pre-gist-3.0.0-migration"
+        },
+        "phases": [
+          {
+            "id": "schema",
+            "units": [
+              {
+                "kind": "schema",
+                "path": "migrations/structural-property-hierarchy-schema.tql"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "n3": "^2.0.3"
