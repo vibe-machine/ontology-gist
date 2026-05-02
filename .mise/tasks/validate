@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Validate package manifest, checksums, structural hierarchy coverage, and TypeDB bootstrap"
+set -euo pipefail
+
+node tools/gist_to_typeql/validate_bootstrap.mjs

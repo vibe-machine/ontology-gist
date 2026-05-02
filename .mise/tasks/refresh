@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Regenerate gist translation artifacts and package contract"
+#MISE depends=["update-headers", "parse-ir", "emit-schema-docs", "emit-structural"]
+set -euo pipefail
+
+echo "refresh ok"

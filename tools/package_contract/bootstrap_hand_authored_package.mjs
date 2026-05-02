@@ -424,6 +424,12 @@ async function bootstrap(repoRoot) {
       !relativePath.endsWith("-provenance.tql") &&
       !relativePath.endsWith("-schema-docs.tql")
   );
+  const hasSplitSchemaDocApplyUnits = sourceDataFiles.some((relativePath) =>
+    relativePath.startsWith(`generated/apply-units/data/${packageJson.name}-schema-docs/`)
+  );
+  const generatedWriteDataFiles = hasSplitSchemaDocApplyUnits
+    ? [provenancePath]
+    : [provenancePath, docsPath];
   const sourceArtifacts = ["package.json", ...packageSchemas.map((s) => s.file), ...sourceDataFiles];
 
   const legacyFiles = [legacyTypedoc, "data/domains.tql", "data/categorize.tql"].filter(
@@ -462,7 +468,7 @@ async function bootstrap(repoRoot) {
       { name: "administrative-operations", file: "schema/administrative-operations.tql" },
       ...packageSchemas,
     ],
-    data: [...sourceDataFiles, provenancePath, docsPath],
+    data: [...sourceDataFiles, ...generatedWriteDataFiles],
     manifests: [manifestPath],
     assembly: {
       loadOrder: [
@@ -471,8 +477,7 @@ async function bootstrap(repoRoot) {
         "schema/administrative-operations.tql",
         ...packageSchemas.map((s) => s.file),
         ...sourceDataFiles,
-        provenancePath,
-        docsPath
+        ...generatedWriteDataFiles
       ],
       generatedArtifacts: [
         "schema/self-describing-schema.tql",

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Emit schema documentation artifacts from translation metadata"
+set -euo pipefail
+
+node tools/gist_to_typeql/emit_schema_docs.mjs

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Parse vendored gist TTL into the translation IR summary"
+set -euo pipefail
+
+node tools/gist_to_typeql/parse_gist.mjs --out "manifests/gist-v$(node -p 'require("./package.json").version').ir-summary.json"

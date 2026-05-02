@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Refresh generated file headers"
+set -euo pipefail
+
+node tools/gist_to_typeql/update_headers.mjs

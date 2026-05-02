@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Emit structural TypeQL schema, data, query artifacts, and schema-doc apply units"
+set -euo pipefail
+
+node tools/gist_to_typeql/emit_structural.mjs
