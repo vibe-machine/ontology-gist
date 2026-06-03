@@ -57,8 +57,8 @@ Both new relations specialize gist `isBasedOn`.
 
 ```typeql
 relation ontologyModuleVersionOf sub isBasedOn,
-  relates version as isBasedOnSubject,
-  relates module as isBasedOnObject;
+  relates version as derivedThing,
+  relates module as basis;
 ```
 
 Meaning:
@@ -69,8 +69,8 @@ Meaning:
 
 ```typeql
 relation installationOfOntologyModuleVersion sub isBasedOn,
-  relates installation as isBasedOnSubject,
-  relates version as isBasedOnObject;
+  relates installation as derivedThing,
+  relates version as basis;
 ```
 
 Meaning:
@@ -110,12 +110,12 @@ entity OntologyModuleInstallation sub Event,
   plays installationOfOntologyModuleVersion:installation;
 
 relation ontologyModuleVersionOf sub isBasedOn,
-  relates version as isBasedOnSubject,
-  relates module as isBasedOnObject;
+  relates version as derivedThing,
+  relates module as basis;
 
 relation installationOfOntologyModuleVersion sub isBasedOn,
-  relates installation as isBasedOnSubject,
-  relates version as isBasedOnObject;
+  relates installation as derivedThing,
+  relates version as basis;
 ```
 
 ## Explicit Replacement

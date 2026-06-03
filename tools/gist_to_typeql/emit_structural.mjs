@@ -42,10 +42,74 @@ const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
 const SCHEMA_DOCS_PATH = "data/gistCore-schema-docs.tql";
 const SCHEMA_DOCS_APPLY_UNIT_PREFIX = "generated/apply-units/data/gistCore-schema-docs";
 const SEMANTIC_ROLE_OVERRIDES = new Map([
+  ["https://w3id.org/semanticarts/ns/ontology/gist/allows", { subject: "permission", object: "allowedActivity" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent", { subject: "transfer", object: "originatingAgent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace", { subject: "thing", object: "originPlace" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/conformsTo", { subject: "conformingThing", object: "standard" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/contributesTo", { subject: "contributorPart", object: "contributedSystem" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent", { subject: "transfer", object: "receivingAgent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace", { subject: "thing", object: "destinationPlace" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy", { subject: "measuredMagnitude", object: "accuracyMagnitude" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAddend", { subject: "sumAspect", object: "addend" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAddress", { subject: "addressedThing", object: "address" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAspect", { subject: "magnitude", object: "aspect" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent", { subject: "child", object: "biologicalParent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasBroader", { subject: "narrowerThing", object: "broaderThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader", { subject: "narrowerThing", object: "directBroaderThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor", { subject: "dividendThing", object: "divisor" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasGiver", { subject: "exchange", object: "giver" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasGoal", { subject: "directedThing", object: "goal" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent", { subject: "position", object: "incumbent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude", { subject: "measuredThing", object: "magnitude" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier", { subject: "factoredThing", object: "multiplier" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent", { subject: "childCategory", object: "parentCategory" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant", { subject: "participationContext", object: "participant" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasParty", { subject: "partyContext", object: "party" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation", { subject: "locatedThing", object: "physicalLocation" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient", { subject: "exchange", object: "recipient" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend", { subject: "differenceAspect", object: "subtrahend" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader", { subject: "narrowerThing", object: "uniqueBroaderThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent", { subject: "childCategory", object: "uniqueParentCategory" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup", { subject: "aspect", object: "unitGroup" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure", { subject: "magnitude", object: "unitOfMeasure" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAbout", { subject: "content", object: "subjectMatter" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy", { subject: "affectedThing", object: "effectSource" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy", { subject: "allocatedThing", object: "allocator" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf", { subject: "assignment", object: "assignedResource" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo", { subject: "assignment", object: "assignmentTarget" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn", { subject: "derivedThing", object: "basis" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy", { subject: "categorizedThing", object: "category" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo", { subject: "endpoint", object: "endpoint" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf", { subject: "part", object: "whole" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn", { subject: "expressedThing", object: "language" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf", { subject: "firstMember", object: "orderedCollection" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn", { subject: "containedPlace", object: "containingPlace" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy", { subject: "governedThing", object: "governingAuthority" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy", { subject: "identifiedThing", object: "identifier" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf", { subject: "madeThing", object: "substance" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf", { subject: "member", object: "collection" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isPartOf", { subject: "part", object: "whole" }],
   [
     "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
     { subject: "product", object: "producer" }
-  ]
+  ],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy", { subject: "recognizedThing", object: "recognizingParty" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn", { subject: "content", object: "renderingMedium" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy", { subject: "triggeredThing", object: "triggeringEvent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf", { subject: "jurisdictionalThing", object: "jurisdiction" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/links", { subject: "networkLink", object: "networkNode" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/linksFrom", { subject: "networkLink", object: "originNode" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/linksTo", { subject: "networkLink", object: "destinationNode" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/occursIn", { subject: "occurrence", object: "place" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide", { subject: "offer", object: "providedThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive", { subject: "offer", object: "expectedThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/owns", { subject: "owner", object: "ownedThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/precedes", { subject: "predecessor", object: "successor" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly", { subject: "predecessor", object: "successor" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/prevents", { subject: "intention", object: "prohibitedBehavior" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor", { subject: "orderedMember", object: "orderedItem" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/refersTo", { subject: "referringThing", object: "referent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/requires", { subject: "requiringThing", object: "requirement" }]
 ]);
 const RESERVED_IDENTIFIERS = new Set([
   "and",
@@ -156,6 +220,45 @@ function roleNamesForProperty(propertyIri, relationName) {
     subject: `${relationName}Subject`,
     object: `${relationName}Object`
   };
+}
+
+function roleEntries(roles) {
+  return roles.subject === roles.object ? [roles.subject] : [roles.subject, roles.object];
+}
+
+function roleSpecializationEntries(roles, supertypeRoles) {
+  const entries = [{ role: roles.subject, supertypeRole: supertypeRoles.subject }];
+  if (roles.object !== roles.subject || supertypeRoles.object !== supertypeRoles.subject) {
+    entries.push({ role: roles.object, supertypeRole: supertypeRoles.object });
+  }
+  return entries.filter((entry, index, all) =>
+    entry.role !== entry.supertypeRole &&
+    all.findIndex((candidate) =>
+      candidate.role === entry.role && candidate.supertypeRole === entry.supertypeRole
+    ) === index
+  );
+}
+
+function relationRelatesLines(roles, supertypeRoles = null) {
+  const entries = supertypeRoles
+    ? roleSpecializationEntries(roles, supertypeRoles).map((entry) => `${entry.role} as ${entry.supertypeRole}`)
+    : roleEntries(roles);
+  return entries.map((entry, index) =>
+    `    relates ${entry}${index === entries.length - 1 ? ";" : ","}`
+  );
+}
+
+function playedRoleForProperty(propertyIri, relationName, direction, hierarchyStats, identifiers) {
+  const roles = roleNamesForProperty(propertyIri, relationName);
+  const role = roles[direction];
+  const supertypeIri = hierarchyStats.objectSupertypeByIri.get(propertyIri);
+  if (!supertypeIri) return `${relationName}:${role}`;
+
+  const supertypeName = identifiers.relation(supertypeIri);
+  const supertypeRoles = roleNamesForProperty(supertypeIri, supertypeName);
+  return role === supertypeRoles[direction]
+    ? `${supertypeName}:${supertypeRoles[direction]}`
+    : `${relationName}:${role}`;
 }
 
 function tqlString(value) {
@@ -525,12 +628,20 @@ function buildNamedSuperPropertyMap(properties) {
 function collectPropertyHierarchyStats(model) {
   const datatypeSupertypeByIri = buildNamedSuperPropertyMap(model.resources.datatypeProperties);
   const objectSupertypeByIri = buildNamedSuperPropertyMap(model.resources.objectProperties);
+  const roleSpecializations = Array.from(objectSupertypeByIri.entries())
+    .reduce((count, [propertyIri, supertypeIri]) => {
+      const relationName = safeIdentifier(iriLocalName(propertyIri), "Rel");
+      const supertypeName = safeIdentifier(iriLocalName(supertypeIri), "Rel");
+      const roles = roleNamesForProperty(propertyIri, relationName);
+      const supertypeRoles = roleNamesForProperty(supertypeIri, supertypeName);
+      return count + roleSpecializationEntries(roles, supertypeRoles).length;
+    }, 0);
   return {
     datatypeSupertypeByIri,
     objectSupertypeByIri,
     datatypeSubPropertyEdges: datatypeSupertypeByIri.size,
     objectSubPropertyEdges: objectSupertypeByIri.size,
-    roleSpecializations: objectSupertypeByIri.size * 2,
+    roleSpecializations,
   };
 }
 
@@ -622,12 +733,15 @@ function buildEntityDefinitions(model, propertyInfo, identifiers) {
   for (const property of model.resources.objectProperties) {
     const localName = identifiers.relation(property.iri);
     const info = propertyInfo.propertyInfo.get(property.iri);
-    const roles = roleNamesForProperty(property.iri, localName);
     for (const owner of info.domain) {
-      if (definitions.has(owner)) definitions.get(owner).plays.add(`${localName}:${roles.subject}`);
+      if (definitions.has(owner)) {
+        definitions.get(owner).plays.add(playedRoleForProperty(property.iri, localName, "subject", hierarchyStats, identifiers));
+      }
     }
     for (const owner of info.range) {
-      if (definitions.has(owner)) definitions.get(owner).plays.add(`${localName}:${roles.object}`);
+      if (definitions.has(owner)) {
+        definitions.get(owner).plays.add(playedRoleForProperty(property.iri, localName, "object", hierarchyStats, identifiers));
+      }
     }
   }
 
@@ -726,13 +840,16 @@ function renderSchema(model, propertyInfo, entityDefinitions, identifiers) {
     if (supertypeIri) {
       const supertypeName = identifiers.relation(supertypeIri);
       const supertypeRoles = roleNamesForProperty(supertypeIri, supertypeName);
-      lines.push(`relation ${localName} sub ${supertypeName},`);
-      lines.push(`    relates ${roles.subject} as ${supertypeRoles.subject},`);
-      lines.push(`    relates ${roles.object} as ${supertypeRoles.object};`);
+      const relatesLines = relationRelatesLines(roles, supertypeRoles);
+      if (relatesLines.length) {
+        lines.push(`relation ${localName} sub ${supertypeName},`);
+        lines.push(...relatesLines);
+      } else {
+        lines.push(`relation ${localName} sub ${supertypeName};`);
+      }
     } else {
       lines.push(`relation ${localName},`);
-      lines.push(`    relates ${roles.subject},`);
-      lines.push(`    relates ${roles.object};`);
+      lines.push(...relationRelatesLines(roles));
     }
     lines.push("");
   }

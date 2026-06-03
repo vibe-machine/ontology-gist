@@ -1,8 +1,8 @@
 # Semantic Role Inventory
 
-This inventory tracks gist object-property relations whose generated TypeDB roles may be too generic when emitted as `<relation>Subject` and `<relation>Object`.
+This inventory tracks gist object-property relations whose generated TypeDB roles were too generic when emitted as `<relation>Subject` and `<relation>Object`.
 
-The translator now supports explicit semantic role overrides. In this release, only `gist:isProducedBy` is overridden:
+The translator now supports explicit semantic role overrides. As of gist `5.0.0`, every relation in this inventory is emitted with semantic role names. Migrations are additive: they define the semantic roles without deleting previous generic compatibility roles.
 
 ```typeql
 relation isProducedBy,
@@ -10,7 +10,7 @@ relation isProducedBy,
     relates producer;
 ```
 
-The inventory below is intentionally conservative. A candidate appears here when the upstream label, definition, or examples suggest stable participant names that would make downstream schema extensions and queries read more naturally.
+The inventory below records the role names now used by the translator and the evidence that motivated each rename.
 
 ## Implemented Override
 
@@ -18,9 +18,9 @@ The inventory below is intentionally conservative. A candidate appears here when
 | --- | --- | --- | --- |
 | `isProducedBy` | `isProducedBySubject`, `isProducedByObject` | `product`, `producer` | Upstream defines the subject as something created, composed, or brought into existence by the object. |
 
-## High-Confidence Candidates
+## Implemented High-Confidence Roles
 
-These relations have clear natural-language participants and are likely good candidates for future explicit role overrides.
+These relations have clear natural-language participants and now have explicit semantic role overrides.
 
 | Relation | Suggested subject role | Suggested object role | Evidence |
 | --- | --- | --- | --- |
@@ -71,9 +71,9 @@ These relations have clear natural-language participants and are likely good can
 | `prevents` | `intention` | `prohibitedBehavior` | Relates an intention to behavior that it prohibits. |
 | `providesOrderFor` | `orderedMember` | `orderedItem` | Links an ordered collection member to the real-world item it represents. |
 
-## Needs Modeling Decision
+## Implemented Formerly Deferred Roles
 
-These relations also suffer from generic role names, but their best semantic roles are less obvious because the relationship is symmetric, very general, or intentionally abstract.
+These relations were originally deferred because their best semantic roles were less obvious. They are now implemented as explicit role overrides too.
 
 | Relation | Possible roles | Reason to defer |
 | --- | --- | --- |
@@ -95,4 +95,3 @@ These relations also suffer from generic role names, but their best semantic rol
 | `precedesDirectly` | `predecessor`, `successor` | Should be handled with `precedes`. |
 | `refersTo` | `referringThing`, `referent` | Very broad relation; role names are plausible but generic. |
 | `requires` | `requiringThing`, `requirement` | Clear enough for many uses, but object may be mandatory, necessary, or prerequisite. |
-

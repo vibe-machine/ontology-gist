@@ -1,5 +1,5 @@
 # Generated executable apply unit from data/gistCore-schema-docs.tql
-# manifest: manifests/gist-v4.0.0.translation-manifest.json
+# manifest: manifests/gist-v5.0.0.translation-manifest.json
 # upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
 
 put $gist_core isa SchemaModule,
@@ -19,16 +19,16 @@ put (resource: $r245, module: $gist_core) isa inModule;
 # Generated from authoritative schema definitions. Do not hand-edit this section.
 
 put $generated_role_1 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#allows:allowsObject",
-  has iri "https://github.com/semanticarts/gist#allows:allowsObject",
-  has typeLabel "allows:allowsObject",
+  has docKey "https://github.com/semanticarts/gist#allows:allowedActivity",
+  has iri "https://github.com/semanticarts/gist#allows:allowedActivity",
+  has typeLabel "allows:allowedActivity",
   has kind "role",
-  has roleName "allowsObject",
-  has prefLabel "allowsObject",
-  has definition "Role 'allowsObject' in relation 'allows'.";
+  has roleName "allowedActivity",
+  has prefLabel "allowedActivity",
+  has definition "Role 'allowedActivity' in relation 'allows'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowedActivity";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -36,16 +36,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_2 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#allows:allowsSubject",
-  has iri "https://github.com/semanticarts/gist#allows:allowsSubject",
-  has typeLabel "allows:allowsSubject",
+  has docKey "https://github.com/semanticarts/gist#allows:permission",
+  has iri "https://github.com/semanticarts/gist#allows:permission",
+  has typeLabel "allows:permission",
   has kind "role",
-  has roleName "allowsSubject",
-  has prefLabel "allowsSubject",
-  has definition "Role 'allowsSubject' in relation 'allows'.";
+  has roleName "permission",
+  has prefLabel "permission",
+  has definition "Role 'permission' in relation 'allows'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:allowsSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#allows:permission";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -53,16 +53,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_3 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#comesFromAgent:comesFromAgentObject",
-  has iri "https://github.com/semanticarts/gist#comesFromAgent:comesFromAgentObject",
-  has typeLabel "comesFromAgent:comesFromAgentObject",
+  has docKey "https://github.com/semanticarts/gist#comesFromAgent:originatingAgent",
+  has iri "https://github.com/semanticarts/gist#comesFromAgent:originatingAgent",
+  has typeLabel "comesFromAgent:originatingAgent",
   has kind "role",
-  has roleName "comesFromAgentObject",
-  has prefLabel "comesFromAgentObject",
-  has definition "Role 'comesFromAgentObject' in relation 'comesFromAgent'.";
+  has roleName "originatingAgent",
+  has prefLabel "originatingAgent",
+  has definition "Role 'originatingAgent' in relation 'comesFromAgent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromAgent:comesFromAgentObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromAgent:originatingAgent";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -70,16 +70,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_4 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#comesFromAgent:comesFromAgentSubject",
-  has iri "https://github.com/semanticarts/gist#comesFromAgent:comesFromAgentSubject",
-  has typeLabel "comesFromAgent:comesFromAgentSubject",
+  has docKey "https://github.com/semanticarts/gist#comesFromAgent:transfer",
+  has iri "https://github.com/semanticarts/gist#comesFromAgent:transfer",
+  has typeLabel "comesFromAgent:transfer",
   has kind "role",
-  has roleName "comesFromAgentSubject",
-  has prefLabel "comesFromAgentSubject",
-  has definition "Role 'comesFromAgentSubject' in relation 'comesFromAgent'.";
+  has roleName "transfer",
+  has prefLabel "transfer",
+  has definition "Role 'transfer' in relation 'comesFromAgent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromAgent:comesFromAgentSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromAgent:transfer";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -87,16 +87,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_5 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#comesFromPlace:comesFromPlaceObject",
-  has iri "https://github.com/semanticarts/gist#comesFromPlace:comesFromPlaceObject",
-  has typeLabel "comesFromPlace:comesFromPlaceObject",
+  has docKey "https://github.com/semanticarts/gist#comesFromPlace:originPlace",
+  has iri "https://github.com/semanticarts/gist#comesFromPlace:originPlace",
+  has typeLabel "comesFromPlace:originPlace",
   has kind "role",
-  has roleName "comesFromPlaceObject",
-  has prefLabel "comesFromPlaceObject",
-  has definition "Role 'comesFromPlaceObject' in relation 'comesFromPlace'.";
+  has roleName "originPlace",
+  has prefLabel "originPlace",
+  has definition "Role 'originPlace' in relation 'comesFromPlace'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromPlace:comesFromPlaceObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromPlace:originPlace";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -104,16 +104,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_6 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#comesFromPlace:comesFromPlaceSubject",
-  has iri "https://github.com/semanticarts/gist#comesFromPlace:comesFromPlaceSubject",
-  has typeLabel "comesFromPlace:comesFromPlaceSubject",
+  has docKey "https://github.com/semanticarts/gist#comesFromPlace:thing",
+  has iri "https://github.com/semanticarts/gist#comesFromPlace:thing",
+  has typeLabel "comesFromPlace:thing",
   has kind "role",
-  has roleName "comesFromPlaceSubject",
-  has prefLabel "comesFromPlaceSubject",
-  has definition "Role 'comesFromPlaceSubject' in relation 'comesFromPlace'.";
+  has roleName "thing",
+  has prefLabel "thing",
+  has definition "Role 'thing' in relation 'comesFromPlace'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromPlace:comesFromPlaceSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#comesFromPlace:thing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -121,16 +121,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_7 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#conformsTo:conformsToObject",
-  has iri "https://github.com/semanticarts/gist#conformsTo:conformsToObject",
-  has typeLabel "conformsTo:conformsToObject",
+  has docKey "https://github.com/semanticarts/gist#conformsTo:conformingThing",
+  has iri "https://github.com/semanticarts/gist#conformsTo:conformingThing",
+  has typeLabel "conformsTo:conformingThing",
   has kind "role",
-  has roleName "conformsToObject",
-  has prefLabel "conformsToObject",
-  has definition "Role 'conformsToObject' in relation 'conformsTo'.";
+  has roleName "conformingThing",
+  has prefLabel "conformingThing",
+  has definition "Role 'conformingThing' in relation 'conformsTo'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#conformsTo:conformsToObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#conformsTo:conformingThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -138,16 +138,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_8 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#conformsTo:conformsToSubject",
-  has iri "https://github.com/semanticarts/gist#conformsTo:conformsToSubject",
-  has typeLabel "conformsTo:conformsToSubject",
+  has docKey "https://github.com/semanticarts/gist#conformsTo:standard",
+  has iri "https://github.com/semanticarts/gist#conformsTo:standard",
+  has typeLabel "conformsTo:standard",
   has kind "role",
-  has roleName "conformsToSubject",
-  has prefLabel "conformsToSubject",
-  has definition "Role 'conformsToSubject' in relation 'conformsTo'.";
+  has roleName "standard",
+  has prefLabel "standard",
+  has definition "Role 'standard' in relation 'conformsTo'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#conformsTo:conformsToSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#conformsTo:standard";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -155,16 +155,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_9 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#contributesTo:contributesToObject",
-  has iri "https://github.com/semanticarts/gist#contributesTo:contributesToObject",
-  has typeLabel "contributesTo:contributesToObject",
+  has docKey "https://github.com/semanticarts/gist#contributesTo:contributedSystem",
+  has iri "https://github.com/semanticarts/gist#contributesTo:contributedSystem",
+  has typeLabel "contributesTo:contributedSystem",
   has kind "role",
-  has roleName "contributesToObject",
-  has prefLabel "contributesToObject",
-  has definition "Role 'contributesToObject' in relation 'contributesTo'.";
+  has roleName "contributedSystem",
+  has prefLabel "contributedSystem",
+  has definition "Role 'contributedSystem' in relation 'contributesTo'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#contributesTo:contributesToObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#contributesTo:contributedSystem";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -172,16 +172,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_10 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#contributesTo:contributesToSubject",
-  has iri "https://github.com/semanticarts/gist#contributesTo:contributesToSubject",
-  has typeLabel "contributesTo:contributesToSubject",
+  has docKey "https://github.com/semanticarts/gist#contributesTo:contributorPart",
+  has iri "https://github.com/semanticarts/gist#contributesTo:contributorPart",
+  has typeLabel "contributesTo:contributorPart",
   has kind "role",
-  has roleName "contributesToSubject",
-  has prefLabel "contributesToSubject",
-  has definition "Role 'contributesToSubject' in relation 'contributesTo'.";
+  has roleName "contributorPart",
+  has prefLabel "contributorPart",
+  has definition "Role 'contributorPart' in relation 'contributesTo'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#contributesTo:contributesToSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#contributesTo:contributorPart";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -189,16 +189,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_11 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#goesToAgent:goesToAgentObject",
-  has iri "https://github.com/semanticarts/gist#goesToAgent:goesToAgentObject",
-  has typeLabel "goesToAgent:goesToAgentObject",
+  has docKey "https://github.com/semanticarts/gist#goesToAgent:receivingAgent",
+  has iri "https://github.com/semanticarts/gist#goesToAgent:receivingAgent",
+  has typeLabel "goesToAgent:receivingAgent",
   has kind "role",
-  has roleName "goesToAgentObject",
-  has prefLabel "goesToAgentObject",
-  has definition "Role 'goesToAgentObject' in relation 'goesToAgent'.";
+  has roleName "receivingAgent",
+  has prefLabel "receivingAgent",
+  has definition "Role 'receivingAgent' in relation 'goesToAgent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToAgent:goesToAgentObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToAgent:receivingAgent";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -206,16 +206,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_12 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#goesToAgent:goesToAgentSubject",
-  has iri "https://github.com/semanticarts/gist#goesToAgent:goesToAgentSubject",
-  has typeLabel "goesToAgent:goesToAgentSubject",
+  has docKey "https://github.com/semanticarts/gist#goesToAgent:transfer",
+  has iri "https://github.com/semanticarts/gist#goesToAgent:transfer",
+  has typeLabel "goesToAgent:transfer",
   has kind "role",
-  has roleName "goesToAgentSubject",
-  has prefLabel "goesToAgentSubject",
-  has definition "Role 'goesToAgentSubject' in relation 'goesToAgent'.";
+  has roleName "transfer",
+  has prefLabel "transfer",
+  has definition "Role 'transfer' in relation 'goesToAgent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToAgent:goesToAgentSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToAgent:transfer";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -223,16 +223,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_13 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#goesToPlace:goesToPlaceObject",
-  has iri "https://github.com/semanticarts/gist#goesToPlace:goesToPlaceObject",
-  has typeLabel "goesToPlace:goesToPlaceObject",
+  has docKey "https://github.com/semanticarts/gist#goesToPlace:destinationPlace",
+  has iri "https://github.com/semanticarts/gist#goesToPlace:destinationPlace",
+  has typeLabel "goesToPlace:destinationPlace",
   has kind "role",
-  has roleName "goesToPlaceObject",
-  has prefLabel "goesToPlaceObject",
-  has definition "Role 'goesToPlaceObject' in relation 'goesToPlace'.";
+  has roleName "destinationPlace",
+  has prefLabel "destinationPlace",
+  has definition "Role 'destinationPlace' in relation 'goesToPlace'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToPlace:goesToPlaceObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToPlace:destinationPlace";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -240,16 +240,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_14 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#goesToPlace:goesToPlaceSubject",
-  has iri "https://github.com/semanticarts/gist#goesToPlace:goesToPlaceSubject",
-  has typeLabel "goesToPlace:goesToPlaceSubject",
+  has docKey "https://github.com/semanticarts/gist#goesToPlace:thing",
+  has iri "https://github.com/semanticarts/gist#goesToPlace:thing",
+  has typeLabel "goesToPlace:thing",
   has kind "role",
-  has roleName "goesToPlaceSubject",
-  has prefLabel "goesToPlaceSubject",
-  has definition "Role 'goesToPlaceSubject' in relation 'goesToPlace'.";
+  has roleName "thing",
+  has prefLabel "thing",
+  has definition "Role 'thing' in relation 'goesToPlace'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToPlace:goesToPlaceSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#goesToPlace:thing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -257,16 +257,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_15 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAccuracy:hasAccuracyObject",
-  has iri "https://github.com/semanticarts/gist#hasAccuracy:hasAccuracyObject",
-  has typeLabel "hasAccuracy:hasAccuracyObject",
+  has docKey "https://github.com/semanticarts/gist#hasAccuracy:accuracyMagnitude",
+  has iri "https://github.com/semanticarts/gist#hasAccuracy:accuracyMagnitude",
+  has typeLabel "hasAccuracy:accuracyMagnitude",
   has kind "role",
-  has roleName "hasAccuracyObject",
-  has prefLabel "hasAccuracyObject",
-  has definition "Role 'hasAccuracyObject' in relation 'hasAccuracy'.";
+  has roleName "accuracyMagnitude",
+  has prefLabel "accuracyMagnitude",
+  has definition "Role 'accuracyMagnitude' in relation 'hasAccuracy'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAccuracy:hasAccuracyObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAccuracy:accuracyMagnitude";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -274,16 +274,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_16 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAccuracy:hasAccuracySubject",
-  has iri "https://github.com/semanticarts/gist#hasAccuracy:hasAccuracySubject",
-  has typeLabel "hasAccuracy:hasAccuracySubject",
+  has docKey "https://github.com/semanticarts/gist#hasAccuracy:measuredMagnitude",
+  has iri "https://github.com/semanticarts/gist#hasAccuracy:measuredMagnitude",
+  has typeLabel "hasAccuracy:measuredMagnitude",
   has kind "role",
-  has roleName "hasAccuracySubject",
-  has prefLabel "hasAccuracySubject",
-  has definition "Role 'hasAccuracySubject' in relation 'hasAccuracy'.";
+  has roleName "measuredMagnitude",
+  has prefLabel "measuredMagnitude",
+  has definition "Role 'measuredMagnitude' in relation 'hasAccuracy'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAccuracy:hasAccuracySubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAccuracy:measuredMagnitude";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -291,16 +291,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_17 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddend:hasAddendObject",
-  has iri "https://github.com/semanticarts/gist#hasAddend:hasAddendObject",
-  has typeLabel "hasAddend:hasAddendObject",
+  has docKey "https://github.com/semanticarts/gist#hasAddend:addend",
+  has iri "https://github.com/semanticarts/gist#hasAddend:addend",
+  has typeLabel "hasAddend:addend",
   has kind "role",
-  has roleName "hasAddendObject",
-  has prefLabel "hasAddendObject",
-  has definition "Role 'hasAddendObject' in relation 'hasAddend'.";
+  has roleName "addend",
+  has prefLabel "addend",
+  has definition "Role 'addend' in relation 'hasAddend'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddend:hasAddendObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddend:addend";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -308,16 +308,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_18 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddend:hasAddendSubject",
-  has iri "https://github.com/semanticarts/gist#hasAddend:hasAddendSubject",
-  has typeLabel "hasAddend:hasAddendSubject",
+  has docKey "https://github.com/semanticarts/gist#hasAddend:sumAspect",
+  has iri "https://github.com/semanticarts/gist#hasAddend:sumAspect",
+  has typeLabel "hasAddend:sumAspect",
   has kind "role",
-  has roleName "hasAddendSubject",
-  has prefLabel "hasAddendSubject",
-  has definition "Role 'hasAddendSubject' in relation 'hasAddend'.";
+  has roleName "sumAspect",
+  has prefLabel "sumAspect",
+  has definition "Role 'sumAspect' in relation 'hasAddend'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddend:hasAddendSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddend:sumAspect";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -325,16 +325,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_19 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressObject",
-  has iri "https://github.com/semanticarts/gist#hasAddress:hasAddressObject",
-  has typeLabel "hasAddress:hasAddressObject",
+  has docKey "https://github.com/semanticarts/gist#hasAddress:address",
+  has iri "https://github.com/semanticarts/gist#hasAddress:address",
+  has typeLabel "hasAddress:address",
   has kind "role",
-  has roleName "hasAddressObject",
-  has prefLabel "hasAddressObject",
-  has definition "Role 'hasAddressObject' in relation 'hasAddress'.";
+  has roleName "address",
+  has prefLabel "address",
+  has definition "Role 'address' in relation 'hasAddress'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddress:address";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -342,16 +342,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_20 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressSubject",
-  has iri "https://github.com/semanticarts/gist#hasAddress:hasAddressSubject",
-  has typeLabel "hasAddress:hasAddressSubject",
+  has docKey "https://github.com/semanticarts/gist#hasAddress:addressedThing",
+  has iri "https://github.com/semanticarts/gist#hasAddress:addressedThing",
+  has typeLabel "hasAddress:addressedThing",
   has kind "role",
-  has roleName "hasAddressSubject",
-  has prefLabel "hasAddressSubject",
-  has definition "Role 'hasAddressSubject' in relation 'hasAddress'.";
+  has roleName "addressedThing",
+  has prefLabel "addressedThing",
+  has definition "Role 'addressedThing' in relation 'hasAddress'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddress:hasAddressSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAddress:addressedThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -359,16 +359,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_21 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectObject",
-  has iri "https://github.com/semanticarts/gist#hasAspect:hasAspectObject",
-  has typeLabel "hasAspect:hasAspectObject",
+  has docKey "https://github.com/semanticarts/gist#hasAspect:aspect",
+  has iri "https://github.com/semanticarts/gist#hasAspect:aspect",
+  has typeLabel "hasAspect:aspect",
   has kind "role",
-  has roleName "hasAspectObject",
-  has prefLabel "hasAspectObject",
-  has definition "Role 'hasAspectObject' in relation 'hasAspect'.";
+  has roleName "aspect",
+  has prefLabel "aspect",
+  has definition "Role 'aspect' in relation 'hasAspect'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAspect:aspect";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -376,16 +376,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_22 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectSubject",
-  has iri "https://github.com/semanticarts/gist#hasAspect:hasAspectSubject",
-  has typeLabel "hasAspect:hasAspectSubject",
+  has docKey "https://github.com/semanticarts/gist#hasAspect:magnitude",
+  has iri "https://github.com/semanticarts/gist#hasAspect:magnitude",
+  has typeLabel "hasAspect:magnitude",
   has kind "role",
-  has roleName "hasAspectSubject",
-  has prefLabel "hasAspectSubject",
-  has definition "Role 'hasAspectSubject' in relation 'hasAspect'.";
+  has roleName "magnitude",
+  has prefLabel "magnitude",
+  has definition "Role 'magnitude' in relation 'hasAspect'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAspect:hasAspectSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasAspect:magnitude";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -393,16 +393,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_23 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentObject",
-  has iri "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentObject",
-  has typeLabel "hasBiologicalParent:hasBiologicalParentObject",
+  has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:biologicalParent",
+  has iri "https://github.com/semanticarts/gist#hasBiologicalParent:biologicalParent",
+  has typeLabel "hasBiologicalParent:biologicalParent",
   has kind "role",
-  has roleName "hasBiologicalParentObject",
-  has prefLabel "hasBiologicalParentObject",
-  has definition "Role 'hasBiologicalParentObject' in relation 'hasBiologicalParent'.";
+  has roleName "biologicalParent",
+  has prefLabel "biologicalParent",
+  has definition "Role 'biologicalParent' in relation 'hasBiologicalParent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:biologicalParent";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -410,16 +410,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_24 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentSubject",
-  has iri "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentSubject",
-  has typeLabel "hasBiologicalParent:hasBiologicalParentSubject",
+  has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:child",
+  has iri "https://github.com/semanticarts/gist#hasBiologicalParent:child",
+  has typeLabel "hasBiologicalParent:child",
   has kind "role",
-  has roleName "hasBiologicalParentSubject",
-  has prefLabel "hasBiologicalParentSubject",
-  has definition "Role 'hasBiologicalParentSubject' in relation 'hasBiologicalParent'.";
+  has roleName "child",
+  has prefLabel "child",
+  has definition "Role 'child' in relation 'hasBiologicalParent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:hasBiologicalParentSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBiologicalParent:child";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -427,16 +427,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_25 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderObject",
-  has iri "https://github.com/semanticarts/gist#hasBroader:hasBroaderObject",
-  has typeLabel "hasBroader:hasBroaderObject",
+  has docKey "https://github.com/semanticarts/gist#hasBroader:broaderThing",
+  has iri "https://github.com/semanticarts/gist#hasBroader:broaderThing",
+  has typeLabel "hasBroader:broaderThing",
   has kind "role",
-  has roleName "hasBroaderObject",
-  has prefLabel "hasBroaderObject",
-  has definition "Role 'hasBroaderObject' in relation 'hasBroader'.";
+  has roleName "broaderThing",
+  has prefLabel "broaderThing",
+  has definition "Role 'broaderThing' in relation 'hasBroader'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBroader:broaderThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -444,16 +444,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_26 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderSubject",
-  has iri "https://github.com/semanticarts/gist#hasBroader:hasBroaderSubject",
-  has typeLabel "hasBroader:hasBroaderSubject",
+  has docKey "https://github.com/semanticarts/gist#hasBroader:narrowerThing",
+  has iri "https://github.com/semanticarts/gist#hasBroader:narrowerThing",
+  has typeLabel "hasBroader:narrowerThing",
   has kind "role",
-  has roleName "hasBroaderSubject",
-  has prefLabel "hasBroaderSubject",
-  has definition "Role 'hasBroaderSubject' in relation 'hasBroader'.";
+  has roleName "narrowerThing",
+  has prefLabel "narrowerThing",
+  has definition "Role 'narrowerThing' in relation 'hasBroader'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBroader:hasBroaderSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasBroader:narrowerThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -461,16 +461,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_27 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderObject",
-  has iri "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderObject",
-  has typeLabel "hasDirectBroader:hasDirectBroaderObject",
+  has docKey "https://github.com/semanticarts/gist#hasDirectBroader:directBroaderThing",
+  has iri "https://github.com/semanticarts/gist#hasDirectBroader:directBroaderThing",
+  has typeLabel "hasDirectBroader:directBroaderThing",
   has kind "role",
-  has roleName "hasDirectBroaderObject",
-  has prefLabel "hasDirectBroaderObject",
-  has definition "Role 'hasDirectBroaderObject' in relation 'hasDirectBroader'.";
+  has roleName "directBroaderThing",
+  has prefLabel "directBroaderThing",
+  has definition "Role 'directBroaderThing' in relation 'hasDirectBroader'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDirectBroader:directBroaderThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -478,16 +478,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_28 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderSubject",
-  has iri "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderSubject",
-  has typeLabel "hasDirectBroader:hasDirectBroaderSubject",
+  has docKey "https://github.com/semanticarts/gist#hasDivisor:dividendThing",
+  has iri "https://github.com/semanticarts/gist#hasDivisor:dividendThing",
+  has typeLabel "hasDivisor:dividendThing",
   has kind "role",
-  has roleName "hasDirectBroaderSubject",
-  has prefLabel "hasDirectBroaderSubject",
-  has definition "Role 'hasDirectBroaderSubject' in relation 'hasDirectBroader'.";
+  has roleName "dividendThing",
+  has prefLabel "dividendThing",
+  has definition "Role 'dividendThing' in relation 'hasDivisor'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDirectBroader:hasDirectBroaderSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDivisor:dividendThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -495,16 +495,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_29 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorObject",
-  has iri "https://github.com/semanticarts/gist#hasDivisor:hasDivisorObject",
-  has typeLabel "hasDivisor:hasDivisorObject",
+  has docKey "https://github.com/semanticarts/gist#hasDivisor:divisor",
+  has iri "https://github.com/semanticarts/gist#hasDivisor:divisor",
+  has typeLabel "hasDivisor:divisor",
   has kind "role",
-  has roleName "hasDivisorObject",
-  has prefLabel "hasDivisorObject",
-  has definition "Role 'hasDivisorObject' in relation 'hasDivisor'.";
+  has roleName "divisor",
+  has prefLabel "divisor",
+  has definition "Role 'divisor' in relation 'hasDivisor'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDivisor:divisor";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -512,16 +512,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_30 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorSubject",
-  has iri "https://github.com/semanticarts/gist#hasDivisor:hasDivisorSubject",
-  has typeLabel "hasDivisor:hasDivisorSubject",
+  has docKey "https://github.com/semanticarts/gist#hasGiver:exchange",
+  has iri "https://github.com/semanticarts/gist#hasGiver:exchange",
+  has typeLabel "hasGiver:exchange",
   has kind "role",
-  has roleName "hasDivisorSubject",
-  has prefLabel "hasDivisorSubject",
-  has definition "Role 'hasDivisorSubject' in relation 'hasDivisor'.";
+  has roleName "exchange",
+  has prefLabel "exchange",
+  has definition "Role 'exchange' in relation 'hasGiver'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasDivisor:hasDivisorSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGiver:exchange";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -529,16 +529,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_31 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverObject",
-  has iri "https://github.com/semanticarts/gist#hasGiver:hasGiverObject",
-  has typeLabel "hasGiver:hasGiverObject",
+  has docKey "https://github.com/semanticarts/gist#hasGiver:giver",
+  has iri "https://github.com/semanticarts/gist#hasGiver:giver",
+  has typeLabel "hasGiver:giver",
   has kind "role",
-  has roleName "hasGiverObject",
-  has prefLabel "hasGiverObject",
-  has definition "Role 'hasGiverObject' in relation 'hasGiver'.";
+  has roleName "giver",
+  has prefLabel "giver",
+  has definition "Role 'giver' in relation 'hasGiver'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGiver:giver";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -546,16 +546,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_32 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverSubject",
-  has iri "https://github.com/semanticarts/gist#hasGiver:hasGiverSubject",
-  has typeLabel "hasGiver:hasGiverSubject",
+  has docKey "https://github.com/semanticarts/gist#hasGoal:directedThing",
+  has iri "https://github.com/semanticarts/gist#hasGoal:directedThing",
+  has typeLabel "hasGoal:directedThing",
   has kind "role",
-  has roleName "hasGiverSubject",
-  has prefLabel "hasGiverSubject",
-  has definition "Role 'hasGiverSubject' in relation 'hasGiver'.";
+  has roleName "directedThing",
+  has prefLabel "directedThing",
+  has definition "Role 'directedThing' in relation 'hasGoal'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGiver:hasGiverSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGoal:directedThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -563,16 +563,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_33 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalObject",
-  has iri "https://github.com/semanticarts/gist#hasGoal:hasGoalObject",
-  has typeLabel "hasGoal:hasGoalObject",
+  has docKey "https://github.com/semanticarts/gist#hasGoal:goal",
+  has iri "https://github.com/semanticarts/gist#hasGoal:goal",
+  has typeLabel "hasGoal:goal",
   has kind "role",
-  has roleName "hasGoalObject",
-  has prefLabel "hasGoalObject",
-  has definition "Role 'hasGoalObject' in relation 'hasGoal'.";
+  has roleName "goal",
+  has prefLabel "goal",
+  has definition "Role 'goal' in relation 'hasGoal'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGoal:goal";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -580,16 +580,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_34 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalSubject",
-  has iri "https://github.com/semanticarts/gist#hasGoal:hasGoalSubject",
-  has typeLabel "hasGoal:hasGoalSubject",
+  has docKey "https://github.com/semanticarts/gist#hasIncumbent:incumbent",
+  has iri "https://github.com/semanticarts/gist#hasIncumbent:incumbent",
+  has typeLabel "hasIncumbent:incumbent",
   has kind "role",
-  has roleName "hasGoalSubject",
-  has prefLabel "hasGoalSubject",
-  has definition "Role 'hasGoalSubject' in relation 'hasGoal'.";
+  has roleName "incumbent",
+  has prefLabel "incumbent",
+  has definition "Role 'incumbent' in relation 'hasIncumbent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasGoal:hasGoalSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasIncumbent:incumbent";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -597,16 +597,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_35 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentObject",
-  has iri "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentObject",
-  has typeLabel "hasIncumbent:hasIncumbentObject",
+  has docKey "https://github.com/semanticarts/gist#hasIncumbent:position",
+  has iri "https://github.com/semanticarts/gist#hasIncumbent:position",
+  has typeLabel "hasIncumbent:position",
   has kind "role",
-  has roleName "hasIncumbentObject",
-  has prefLabel "hasIncumbentObject",
-  has definition "Role 'hasIncumbentObject' in relation 'hasIncumbent'.";
+  has roleName "position",
+  has prefLabel "position",
+  has definition "Role 'position' in relation 'hasIncumbent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasIncumbent:position";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -614,16 +614,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_36 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentSubject",
-  has iri "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentSubject",
-  has typeLabel "hasIncumbent:hasIncumbentSubject",
+  has docKey "https://github.com/semanticarts/gist#hasMagnitude:magnitude",
+  has iri "https://github.com/semanticarts/gist#hasMagnitude:magnitude",
+  has typeLabel "hasMagnitude:magnitude",
   has kind "role",
-  has roleName "hasIncumbentSubject",
-  has prefLabel "hasIncumbentSubject",
-  has definition "Role 'hasIncumbentSubject' in relation 'hasIncumbent'.";
+  has roleName "magnitude",
+  has prefLabel "magnitude",
+  has definition "Role 'magnitude' in relation 'hasMagnitude'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasIncumbent:hasIncumbentSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMagnitude:magnitude";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -631,16 +631,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_37 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeObject",
-  has iri "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeObject",
-  has typeLabel "hasMagnitude:hasMagnitudeObject",
+  has docKey "https://github.com/semanticarts/gist#hasMagnitude:measuredThing",
+  has iri "https://github.com/semanticarts/gist#hasMagnitude:measuredThing",
+  has typeLabel "hasMagnitude:measuredThing",
   has kind "role",
-  has roleName "hasMagnitudeObject",
-  has prefLabel "hasMagnitudeObject",
-  has definition "Role 'hasMagnitudeObject' in relation 'hasMagnitude'.";
+  has roleName "measuredThing",
+  has prefLabel "measuredThing",
+  has definition "Role 'measuredThing' in relation 'hasMagnitude'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMagnitude:measuredThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -648,16 +648,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_38 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeSubject",
-  has iri "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeSubject",
-  has typeLabel "hasMagnitude:hasMagnitudeSubject",
+  has docKey "https://github.com/semanticarts/gist#hasMultiplier:factoredThing",
+  has iri "https://github.com/semanticarts/gist#hasMultiplier:factoredThing",
+  has typeLabel "hasMultiplier:factoredThing",
   has kind "role",
-  has roleName "hasMagnitudeSubject",
-  has prefLabel "hasMagnitudeSubject",
-  has definition "Role 'hasMagnitudeSubject' in relation 'hasMagnitude'.";
+  has roleName "factoredThing",
+  has prefLabel "factoredThing",
+  has definition "Role 'factoredThing' in relation 'hasMultiplier'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMagnitude:hasMagnitudeSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMultiplier:factoredThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -665,16 +665,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_39 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierObject",
-  has iri "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierObject",
-  has typeLabel "hasMultiplier:hasMultiplierObject",
+  has docKey "https://github.com/semanticarts/gist#hasMultiplier:multiplier",
+  has iri "https://github.com/semanticarts/gist#hasMultiplier:multiplier",
+  has typeLabel "hasMultiplier:multiplier",
   has kind "role",
-  has roleName "hasMultiplierObject",
-  has prefLabel "hasMultiplierObject",
-  has definition "Role 'hasMultiplierObject' in relation 'hasMultiplier'.";
+  has roleName "multiplier",
+  has prefLabel "multiplier",
+  has definition "Role 'multiplier' in relation 'hasMultiplier'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMultiplier:multiplier";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -682,16 +682,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_40 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierSubject",
-  has iri "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierSubject",
-  has typeLabel "hasMultiplier:hasMultiplierSubject",
+  has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:childCategory",
+  has iri "https://github.com/semanticarts/gist#hasNavigationalParent:childCategory",
+  has typeLabel "hasNavigationalParent:childCategory",
   has kind "role",
-  has roleName "hasMultiplierSubject",
-  has prefLabel "hasMultiplierSubject",
-  has definition "Role 'hasMultiplierSubject' in relation 'hasMultiplier'.";
+  has roleName "childCategory",
+  has prefLabel "childCategory",
+  has definition "Role 'childCategory' in relation 'hasNavigationalParent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasMultiplier:hasMultiplierSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:childCategory";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -699,16 +699,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_41 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentObject",
-  has iri "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentObject",
-  has typeLabel "hasNavigationalParent:hasNavigationalParentObject",
+  has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:parentCategory",
+  has iri "https://github.com/semanticarts/gist#hasNavigationalParent:parentCategory",
+  has typeLabel "hasNavigationalParent:parentCategory",
   has kind "role",
-  has roleName "hasNavigationalParentObject",
-  has prefLabel "hasNavigationalParentObject",
-  has definition "Role 'hasNavigationalParentObject' in relation 'hasNavigationalParent'.";
+  has roleName "parentCategory",
+  has prefLabel "parentCategory",
+  has definition "Role 'parentCategory' in relation 'hasNavigationalParent'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:parentCategory";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -716,16 +716,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_42 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentSubject",
-  has iri "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentSubject",
-  has typeLabel "hasNavigationalParent:hasNavigationalParentSubject",
+  has docKey "https://github.com/semanticarts/gist#hasParticipant:participant",
+  has iri "https://github.com/semanticarts/gist#hasParticipant:participant",
+  has typeLabel "hasParticipant:participant",
   has kind "role",
-  has roleName "hasNavigationalParentSubject",
-  has prefLabel "hasNavigationalParentSubject",
-  has definition "Role 'hasNavigationalParentSubject' in relation 'hasNavigationalParent'.";
+  has roleName "participant",
+  has prefLabel "participant",
+  has definition "Role 'participant' in relation 'hasParticipant'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasNavigationalParent:hasNavigationalParentSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParticipant:participant";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -733,16 +733,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_43 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasParticipant:hasParticipantObject",
-  has iri "https://github.com/semanticarts/gist#hasParticipant:hasParticipantObject",
-  has typeLabel "hasParticipant:hasParticipantObject",
+  has docKey "https://github.com/semanticarts/gist#hasParticipant:participationContext",
+  has iri "https://github.com/semanticarts/gist#hasParticipant:participationContext",
+  has typeLabel "hasParticipant:participationContext",
   has kind "role",
-  has roleName "hasParticipantObject",
-  has prefLabel "hasParticipantObject",
-  has definition "Role 'hasParticipantObject' in relation 'hasParticipant'.";
+  has roleName "participationContext",
+  has prefLabel "participationContext",
+  has definition "Role 'participationContext' in relation 'hasParticipant'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParticipant:hasParticipantObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParticipant:participationContext";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -750,16 +750,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_44 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasParticipant:hasParticipantSubject",
-  has iri "https://github.com/semanticarts/gist#hasParticipant:hasParticipantSubject",
-  has typeLabel "hasParticipant:hasParticipantSubject",
+  has docKey "https://github.com/semanticarts/gist#hasParty:party",
+  has iri "https://github.com/semanticarts/gist#hasParty:party",
+  has typeLabel "hasParty:party",
   has kind "role",
-  has roleName "hasParticipantSubject",
-  has prefLabel "hasParticipantSubject",
-  has definition "Role 'hasParticipantSubject' in relation 'hasParticipant'.";
+  has roleName "party",
+  has prefLabel "party",
+  has definition "Role 'party' in relation 'hasParty'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParticipant:hasParticipantSubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParty:party";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -767,16 +767,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_45 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasParty:hasPartyObject",
-  has iri "https://github.com/semanticarts/gist#hasParty:hasPartyObject",
-  has typeLabel "hasParty:hasPartyObject",
+  has docKey "https://github.com/semanticarts/gist#hasParty:partyContext",
+  has iri "https://github.com/semanticarts/gist#hasParty:partyContext",
+  has typeLabel "hasParty:partyContext",
   has kind "role",
-  has roleName "hasPartyObject",
-  has prefLabel "hasPartyObject",
-  has definition "Role 'hasPartyObject' in relation 'hasParty'.";
+  has roleName "partyContext",
+  has prefLabel "partyContext",
+  has definition "Role 'partyContext' in relation 'hasParty'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParty:hasPartyObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParty:partyContext";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -784,16 +784,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_46 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasParty:hasPartySubject",
-  has iri "https://github.com/semanticarts/gist#hasParty:hasPartySubject",
-  has typeLabel "hasParty:hasPartySubject",
+  has docKey "https://github.com/semanticarts/gist#hasPhysicalLocation:locatedThing",
+  has iri "https://github.com/semanticarts/gist#hasPhysicalLocation:locatedThing",
+  has typeLabel "hasPhysicalLocation:locatedThing",
   has kind "role",
-  has roleName "hasPartySubject",
-  has prefLabel "hasPartySubject",
-  has definition "Role 'hasPartySubject' in relation 'hasParty'.";
+  has roleName "locatedThing",
+  has prefLabel "locatedThing",
+  has definition "Role 'locatedThing' in relation 'hasPhysicalLocation'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasParty:hasPartySubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasPhysicalLocation:locatedThing";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -801,16 +801,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_47 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#hasPhysicalLocation:hasPhysicalLocationObject",
-  has iri "https://github.com/semanticarts/gist#hasPhysicalLocation:hasPhysicalLocationObject",
-  has typeLabel "hasPhysicalLocation:hasPhysicalLocationObject",
+  has docKey "https://github.com/semanticarts/gist#hasPhysicalLocation:physicalLocation",
+  has iri "https://github.com/semanticarts/gist#hasPhysicalLocation:physicalLocation",
+  has typeLabel "hasPhysicalLocation:physicalLocation",
   has kind "role",
-  has roleName "hasPhysicalLocationObject",
-  has prefLabel "hasPhysicalLocationObject",
-  has definition "Role 'hasPhysicalLocationObject' in relation 'hasPhysicalLocation'.";
+  has roleName "physicalLocation",
+  has prefLabel "physicalLocation",
+  has definition "Role 'physicalLocation' in relation 'hasPhysicalLocation'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasPhysicalLocation:hasPhysicalLocationObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#hasPhysicalLocation:physicalLocation";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };

@@ -12,10 +12,74 @@ import { parseTypeQLSchemaStructure } from "../shared/schema_structure.mjs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
 const SEMANTIC_ROLE_OVERRIDES = new Map([
+  ["https://w3id.org/semanticarts/ns/ontology/gist/allows", { subject: "permission", object: "allowedActivity" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent", { subject: "transfer", object: "originatingAgent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace", { subject: "thing", object: "originPlace" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/conformsTo", { subject: "conformingThing", object: "standard" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/contributesTo", { subject: "contributorPart", object: "contributedSystem" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent", { subject: "transfer", object: "receivingAgent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace", { subject: "thing", object: "destinationPlace" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy", { subject: "measuredMagnitude", object: "accuracyMagnitude" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAddend", { subject: "sumAspect", object: "addend" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAddress", { subject: "addressedThing", object: "address" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasAspect", { subject: "magnitude", object: "aspect" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent", { subject: "child", object: "biologicalParent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasBroader", { subject: "narrowerThing", object: "broaderThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader", { subject: "narrowerThing", object: "directBroaderThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor", { subject: "dividendThing", object: "divisor" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasGiver", { subject: "exchange", object: "giver" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasGoal", { subject: "directedThing", object: "goal" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent", { subject: "position", object: "incumbent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude", { subject: "measuredThing", object: "magnitude" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier", { subject: "factoredThing", object: "multiplier" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent", { subject: "childCategory", object: "parentCategory" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant", { subject: "participationContext", object: "participant" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasParty", { subject: "partyContext", object: "party" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation", { subject: "locatedThing", object: "physicalLocation" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient", { subject: "exchange", object: "recipient" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend", { subject: "differenceAspect", object: "subtrahend" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader", { subject: "narrowerThing", object: "uniqueBroaderThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent", { subject: "childCategory", object: "uniqueParentCategory" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup", { subject: "aspect", object: "unitGroup" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure", { subject: "magnitude", object: "unitOfMeasure" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAbout", { subject: "content", object: "subjectMatter" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy", { subject: "affectedThing", object: "effectSource" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy", { subject: "allocatedThing", object: "allocator" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf", { subject: "assignment", object: "assignedResource" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo", { subject: "assignment", object: "assignmentTarget" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn", { subject: "derivedThing", object: "basis" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy", { subject: "categorizedThing", object: "category" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo", { subject: "endpoint", object: "endpoint" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf", { subject: "part", object: "whole" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn", { subject: "expressedThing", object: "language" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf", { subject: "firstMember", object: "orderedCollection" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn", { subject: "containedPlace", object: "containingPlace" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy", { subject: "governedThing", object: "governingAuthority" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy", { subject: "identifiedThing", object: "identifier" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf", { subject: "madeThing", object: "substance" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf", { subject: "member", object: "collection" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isPartOf", { subject: "part", object: "whole" }],
   [
     "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
     { subject: "product", object: "producer" }
-  ]
+  ],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy", { subject: "recognizedThing", object: "recognizingParty" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn", { subject: "content", object: "renderingMedium" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy", { subject: "triggeredThing", object: "triggeringEvent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf", { subject: "jurisdictionalThing", object: "jurisdiction" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/links", { subject: "networkLink", object: "networkNode" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/linksFrom", { subject: "networkLink", object: "originNode" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/linksTo", { subject: "networkLink", object: "destinationNode" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/occursIn", { subject: "occurrence", object: "place" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide", { subject: "offer", object: "providedThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive", { subject: "offer", object: "expectedThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/owns", { subject: "owner", object: "ownedThing" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/precedes", { subject: "predecessor", object: "successor" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly", { subject: "predecessor", object: "successor" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/prevents", { subject: "intention", object: "prohibitedBehavior" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor", { subject: "orderedMember", object: "orderedItem" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/refersTo", { subject: "referringThing", object: "referent" }],
+  ["https://w3id.org/semanticarts/ns/ontology/gist/requires", { subject: "requiringThing", object: "requirement" }]
 ]);
 
 function sha256(buffer) {
@@ -80,6 +144,19 @@ function roleNamesForProperty(propertyIri, relationName) {
     subject: `${relationName}Subject`,
     object: `${relationName}Object`
   };
+}
+
+function roleSpecializationEntries(roles, supertypeRoles) {
+  const entries = [{ role: roles.subject, supertypeRole: supertypeRoles.subject }];
+  if (roles.object !== roles.subject || supertypeRoles.object !== supertypeRoles.subject) {
+    entries.push({ role: roles.object, supertypeRole: supertypeRoles.object });
+  }
+  return entries.filter((entry, index, all) =>
+    entry.role !== entry.supertypeRole &&
+    all.findIndex((candidate) =>
+      candidate.role === entry.role && candidate.supertypeRole === entry.supertypeRole
+    ) === index
+  );
 }
 
 function buildIdentifierMaps(model) {
@@ -163,10 +240,11 @@ async function assertHierarchyCoverage({ model, schemaText, docsText, translatio
     const supertype = identifiers.relation(edge.supertype);
     const subtypeRoles = roleNamesForProperty(edge.subtype, subtype);
     const supertypeRoles = roleNamesForProperty(edge.supertype, supertype);
-    return [
-      { subtype: `${subtype}:${subtypeRoles.subject}`, supertype: `${supertype}:${supertypeRoles.subject}` },
-      { subtype: `${subtype}:${subtypeRoles.object}`, supertype: `${supertype}:${supertypeRoles.object}` },
-    ];
+    return roleSpecializationEntries(subtypeRoles, supertypeRoles)
+      .map((entry) => ({
+        subtype: `${subtype}:${entry.role}`,
+        supertype: `${supertype}:${entry.supertypeRole}`,
+      }));
   });
 
   assertAllEdgesPresent(structure.subtypeEdges, datatypeEdges, "datatype property");

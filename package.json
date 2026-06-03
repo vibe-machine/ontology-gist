@@ -1,10 +1,10 @@
 {
   "name": "gist",
   "displayName": "gist Upper Ontology",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Semantic Arts foundational types for enterprise knowledge graphs. Provides core abstractions like Event, Task, Category, Organization, and Person.",
   "scripts": {
-    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v4.0.0.ir-summary.json",
+    "parse:ir": "node tools/gist_to_typeql/parse_gist.mjs --out manifests/gist-v5.0.0.ir-summary.json",
     "emit:structural": "node tools/gist_to_typeql/emit_structural.mjs",
     "emit:schema-docs": "node tools/gist_to_typeql/emit_schema_docs.mjs",
     "update:headers": "node tools/gist_to_typeql/update_headers.mjs",
@@ -59,15 +59,14 @@
     "generated/apply-units/data/gistCore-schema-docs/0016.tql",
     "generated/apply-units/data/gistCore-schema-docs/0017.tql",
     "generated/apply-units/data/gistCore-schema-docs/0018.tql",
-    "generated/apply-units/data/gistCore-schema-docs/0019.tql",
-    "generated/apply-units/data/gistCore-schema-docs/0020.tql"
+    "generated/apply-units/data/gistCore-schema-docs/0019.tql"
   ],
   "queries": [
     "queries/gistCore-axioms.tql"
   ],
   "manifests": [
-    "manifests/gist-v4.0.0.translation-manifest.json",
-    "manifests/gist-v4.0.0.axiom-queries.json"
+    "manifests/gist-v5.0.0.translation-manifest.json",
+    "manifests/gist-v5.0.0.axiom-queries.json"
   ],
   "assembly": {
     "loadOrder": [
@@ -95,8 +94,7 @@
       "generated/apply-units/data/gistCore-schema-docs/0016.tql",
       "generated/apply-units/data/gistCore-schema-docs/0017.tql",
       "generated/apply-units/data/gistCore-schema-docs/0018.tql",
-      "generated/apply-units/data/gistCore-schema-docs/0019.tql",
-      "generated/apply-units/data/gistCore-schema-docs/0020.tql"
+      "generated/apply-units/data/gistCore-schema-docs/0019.tql"
     ],
     "generatedArtifacts": [
       "schema/self-describing-schema.tql",
@@ -106,10 +104,10 @@
       "data/gistCore-domain-seeds.tql",
       "data/gistCore-provenance.tql",
       "queries/gistCore-axioms.tql",
-      "manifests/gist-v4.0.0.axiom-queries.json",
-      "manifests/gist-v4.0.0.translation-manifest.json",
-      "manifests/gist-v4.0.0.translation-report.json",
-      "manifests/gist-v4.0.0.ir-summary.json",
+      "manifests/gist-v5.0.0.axiom-queries.json",
+      "manifests/gist-v5.0.0.translation-manifest.json",
+      "manifests/gist-v5.0.0.translation-report.json",
+      "manifests/gist-v5.0.0.ir-summary.json",
       "data/gistCore-schema-docs.tql",
       "generated/apply-units/data/gistCore-schema-docs/0001.tql",
       "generated/apply-units/data/gistCore-schema-docs/0002.tql",
@@ -129,8 +127,7 @@
       "generated/apply-units/data/gistCore-schema-docs/0016.tql",
       "generated/apply-units/data/gistCore-schema-docs/0017.tql",
       "generated/apply-units/data/gistCore-schema-docs/0018.tql",
-      "generated/apply-units/data/gistCore-schema-docs/0019.tql",
-      "generated/apply-units/data/gistCore-schema-docs/0020.tql"
+      "generated/apply-units/data/gistCore-schema-docs/0019.tql"
     ]
   },
   "upstream": {
@@ -145,23 +142,24 @@
     ]
   },
   "provenance": {
-    "manifest": "manifests/gist-v4.0.0.translation-manifest.json",
+    "manifest": "manifests/gist-v5.0.0.translation-manifest.json",
     "status": "bootstrap"
   },
   "migration": {
     "format": 1,
     "supportsUpgradeFrom": [
-      "3.0.x"
+      "3.0.x",
+      "4.0.x"
     ],
     "plans": [
       {
-        "id": "gist-3.0.0-to-4.0.0",
+        "id": "gist-3.0.0-to-5.0.0",
         "from": "3.0.x",
-        "to": "4.0.0",
+        "to": "5.0.0",
         "mode": "compatible",
         "snapshot": {
           "required": false,
-          "label": "pre-gist-4.0.0-migration"
+          "label": "pre-gist-5.0.0-migration"
         },
         "phases": [
           {
@@ -169,16 +167,28 @@
             "units": [
               {
                 "kind": "schema",
-                "path": "migrations/is-produced-by-role-schema.tql"
+                "path": "migrations/semantic-role-overrides-schema.tql"
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "id": "gist-4.0.0-to-5.0.0",
+        "from": "4.0.x",
+        "to": "5.0.0",
+        "mode": "compatible",
+        "snapshot": {
+          "required": false,
+          "label": "pre-gist-5.0.0-migration"
+        },
+        "phases": [
           {
-            "id": "migrate",
+            "id": "schema",
             "units": [
               {
-                "kind": "write",
-                "path": "migrations/v3.0.0-to-v4.0.0.tql"
+                "kind": "schema",
+                "path": "migrations/semantic-role-overrides-schema.tql"
               }
             ]
           }

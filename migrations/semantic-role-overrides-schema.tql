@@ -1,0 +1,215 @@
+# Migration: add semantic gist role names for gist 5.0.0
+# This migration is intentionally additive. It defines the semantic roles
+# emitted by gist 5.0.0 without deleting previous generic roles, so
+# downstream schema extensions that specialize old roles do not block upgrade.
+
+define
+relation allows,
+    relates permission,
+    relates allowedActivity;
+relation comesFromAgent sub hasParticipant,
+    relates transfer as participationContext,
+    relates originatingAgent as participant;
+relation comesFromPlace,
+    relates thing,
+    relates originPlace;
+relation conformsTo,
+    relates conformingThing,
+    relates standard;
+relation contributesTo,
+    relates contributorPart,
+    relates contributedSystem;
+relation goesToAgent sub hasParticipant,
+    relates transfer as participationContext,
+    relates receivingAgent as participant;
+relation goesToPlace,
+    relates thing,
+    relates destinationPlace;
+relation hasAccuracy,
+    relates measuredMagnitude,
+    relates accuracyMagnitude;
+relation hasAddend,
+    relates sumAspect,
+    relates addend;
+relation hasAddress,
+    relates addressedThing,
+    relates address;
+relation hasAspect,
+    relates magnitude,
+    relates aspect;
+relation hasBiologicalParent,
+    relates child,
+    relates biologicalParent;
+relation hasBroader,
+    relates narrowerThing,
+    relates broaderThing;
+relation hasDirectBroader sub hasBroader,
+    relates directBroaderThing as broaderThing;
+relation hasDivisor,
+    relates dividendThing,
+    relates divisor;
+relation hasGiver sub hasParticipant,
+    relates exchange as participationContext,
+    relates giver as participant;
+relation hasGoal,
+    relates directedThing,
+    relates goal;
+relation hasIncumbent,
+    relates position,
+    relates incumbent;
+relation hasMagnitude,
+    relates measuredThing,
+    relates magnitude;
+relation hasMultiplier,
+    relates factoredThing,
+    relates multiplier;
+relation hasNavigationalParent,
+    relates childCategory,
+    relates parentCategory;
+relation hasParticipant,
+    relates participationContext,
+    relates participant;
+relation hasParty sub hasParticipant,
+    relates partyContext as participationContext,
+    relates party as participant;
+relation hasPhysicalLocation,
+    relates locatedThing,
+    relates physicalLocation;
+relation hasRecipient sub hasParticipant,
+    relates exchange as participationContext,
+    relates recipient as participant;
+relation hasSubtrahend,
+    relates differenceAspect,
+    relates subtrahend;
+relation hasUniqueBroader sub hasBroader,
+    relates uniqueBroaderThing as broaderThing;
+relation hasUniqueNavigationalParent sub hasNavigationalParent,
+    relates uniqueParentCategory as parentCategory;
+relation hasUnitGroup,
+    relates aspect,
+    relates unitGroup;
+relation hasUnitOfMeasure,
+    relates magnitude,
+    relates unitOfMeasure;
+relation isAbout,
+    relates content,
+    relates subjectMatter;
+relation isAffectedBy,
+    relates affectedThing,
+    relates effectSource;
+relation isAllocatedBy,
+    relates allocatedThing,
+    relates allocator;
+relation isAssignmentOf,
+    relates assignment,
+    relates assignedResource;
+relation isAssignmentTo,
+    relates assignment,
+    relates assignmentTarget;
+relation isBasedOn,
+    relates derivedThing,
+    relates basis;
+relation isCategorizedBy,
+    relates categorizedThing,
+    relates category;
+relation isConnectedTo,
+    relates endpoint;
+relation isDirectPartOf sub isPartOf;
+relation isExpressedIn,
+    relates expressedThing,
+    relates language;
+relation isFirstMemberOf sub isMemberOf,
+    relates firstMember as member,
+    relates orderedCollection as collection;
+relation isGeoContainedIn,
+    relates containedPlace,
+    relates containingPlace;
+relation isGovernedBy,
+    relates governedThing,
+    relates governingAuthority;
+relation isIdentifiedBy,
+    relates identifiedThing,
+    relates identifier;
+relation isMadeUpOf,
+    relates madeThing,
+    relates substance;
+relation isMemberOf,
+    relates member,
+    relates collection;
+relation isPartOf,
+    relates part,
+    relates whole;
+relation isProducedBy,
+    relates product,
+    relates producer;
+relation isRecognizedBy,
+    relates recognizedThing,
+    relates recognizingParty;
+relation isRenderedOn,
+    relates content,
+    relates renderingMedium;
+relation isTriggeredBy,
+    relates triggeredThing,
+    relates triggeringEvent;
+relation isUnderJurisdictionOf,
+    relates jurisdictionalThing,
+    relates jurisdiction;
+relation linksRel,
+    relates networkLink,
+    relates networkNode;
+relation linksFrom sub linksRel,
+    relates originNode as networkNode;
+relation linksTo sub linksRel,
+    relates destinationNode as networkNode;
+relation occursIn,
+    relates occurrence,
+    relates place;
+relation offersToProvide,
+    relates offer,
+    relates providedThing;
+relation offersToReceive,
+    relates offer,
+    relates expectedThing;
+relation ownsRel,
+    relates owner,
+    relates ownedThing;
+relation precedes,
+    relates predecessor,
+    relates successor;
+relation precedesDirectly sub precedes;
+relation prevents,
+    relates intention,
+    relates prohibitedBehavior;
+relation providesOrderFor,
+    relates orderedMember,
+    relates orderedItem;
+relation refersTo,
+    relates referringThing,
+    relates referent;
+relation requires,
+    relates requiringThing,
+    relates requirement;
+
+redefine
+relation ontologyModuleVersionOf relates version as derivedThing;
+
+redefine
+relation ontologyModuleVersionOf relates module as basis;
+
+redefine
+relation ontologyModuleVersionBasedOnSourceArtifact relates version as derivedThing;
+
+redefine
+relation ontologyModuleVersionBasedOnSourceArtifact relates sourceArtifact as basis;
+
+redefine
+relation generatedArtifactForOntologyModuleVersion relates generatedArtifact as content;
+
+redefine
+relation generatedArtifactForOntologyModuleVersion relates version as subjectMatter;
+
+redefine
+relation installationOfOntologyModuleVersion relates installation as derivedThing;
+
+redefine
+relation installationOfOntologyModuleVersion relates version as basis;
