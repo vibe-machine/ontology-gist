@@ -1,0 +1,11 @@
+# Migration: rename isProducedBy roles for gist 4.0.0
+# Changes the generated TypeDB roles for gist:isProducedBy from generic
+# subject/object labels to semantic product/producer labels.
+
+undefine
+relates isProducedBySubject from isProducedBy;
+relates isProducedByObject from isProducedBy;
+
+define
+relation isProducedBy relates product;
+relation isProducedBy relates producer;

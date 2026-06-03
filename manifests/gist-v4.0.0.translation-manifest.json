@@ -3,162 +3,162 @@
     {
       "kind": "meta-schema",
       "path": "schema/self-describing-schema.tql",
-      "sha256": "e0091520c7b6afd0f502225e32a6678b1c1fb3831fee31bff2bd84ffbb3ed8b5"
+      "sha256": "a131836eb7244431803b739b47847cb0d7016c61084e573e4d95a08b4520e53c"
     },
     {
       "kind": "provenance-schema",
       "path": "schema/package-provenance.tql",
-      "sha256": "0ce4e691ce45fd00c02da4e9a0ae0266d57922478c3432caa97ff717ba092698"
+      "sha256": "ee7ac32674c7a3039e97a9631d05f1b4fb4840915a483f9e6c96a873c607ce5a"
     },
     {
       "kind": "administrative-schema",
       "path": "schema/administrative-operations.tql",
-      "sha256": "88fc6605dcd3b8295a5b51e9ae0992c657ec430d3b25bb603cdaf8307f274fdc"
+      "sha256": "9480453ea4f578ecccab3197273aa2e6b7b34814d6b9ac4871a0f02bf0524971"
     },
     {
       "kind": "schema",
       "path": "schema/gistCore.tql",
-      "sha256": "05b359609d20072f2d0501eb5a219753da70a1b01a390df9d1a0735c0e67d714"
+      "sha256": "d92ae6c8d06c6fb70f82899e8c3167b671e4212cd424761ad3ff884113cfa35b"
     },
     {
       "kind": "domain-seeds",
       "path": "data/gistCore-domain-seeds.tql",
-      "sha256": "2ff09259204bab1e7ca447b08dab8ebf8ec132fbdd28bb28c075f67c4c543920"
+      "sha256": "3c3f883356d924ec15e64135ef6da9f080e7b30202049eb3022c0343269fe984"
     },
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "ebf7de4ff87e982321faab3596a7584d9cdd31716735ec8b9f414ce92ed59f59"
+      "sha256": "a8ce1d461fe0a2afae4c109db434102e128a4cbc6fd4f87c70b5fc8d93d8f91a"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "7abccccfc71e417670f8805ab4751d6b4e545a5ab0b56a0adfbe01cc4681fcc0"
+      "sha256": "682cf8646eebf333fbfe9a826723ad30c34e10237cd08b71da3b1fa9d165223a"
     },
     {
       "kind": "axiom-query-library",
       "path": "queries/gistCore-axioms.tql",
-      "sha256": "75ce16ffe5fd5dbf8173b6d16f6919293a9ccfccb52bb70e57574ad95a9938f8"
+      "sha256": "c5a340daa68d49b75d6ed0086a959046a1a8a22925de43b9859411dffabd0b03"
     },
     {
       "kind": "axiom-query-index",
-      "path": "manifests/gist-v3.0.0.axiom-queries.json",
-      "sha256": "034f5ad383c92e8da10bbc7d5339be05eec4737eb83768deb153f3f5d4ab7042"
+      "path": "manifests/gist-v4.0.0.axiom-queries.json",
+      "sha256": "919722d4623c1239b6ccd8af736d3882bfdbf067215a4fcdb488a819e9f9d57f"
     },
     {
       "kind": "ir-summary",
-      "path": "manifests/gist-v3.0.0.ir-summary.json",
+      "path": "manifests/gist-v4.0.0.ir-summary.json",
       "sha256": "b15fa74fd8be260dc84b9f3aa0d6755934ceb8fb90589bd558277be12f73f54b"
     },
     {
       "kind": "translation-report",
-      "path": "manifests/gist-v3.0.0.translation-report.json",
-      "sha256": "a11ae0b57acac0f39a598d11f290a662822414686d85263230da5bdc4b1a8711"
+      "path": "manifests/gist-v4.0.0.translation-report.json",
+      "sha256": "d529beb0e22bac3f2b64002c6eadc3c95b6fcc0a2b4dd67f83dc592b8a2aaa81"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0001.tql",
-      "sha256": "9b7866311b17a445eee32e1cbffe22f1ce75adfd1b6fe10944850aa3b2cffdd5"
+      "sha256": "5972464152568e726fd445d91abef4a13db6b0dbb6fec1dfa5ba2c1f6555be20"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0002.tql",
-      "sha256": "7ec3175d0184f23e3890c54a47618c521f41f3169c3bfa2604ed3fbe0faba5af"
+      "sha256": "644d546614bcea816149cc02e1624dc48eb9db322b8c4a0e0ea07027946f49f5"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0003.tql",
-      "sha256": "de041f20a2d18eefe0b280b39abdba5d7a5aec4b6b5aae03408b3122958779e7"
+      "sha256": "481a35385629b4ca0021b833958a4455d4acf4e52e8153a2aa7f20cf2b5d9944"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0004.tql",
-      "sha256": "a2f5c3ca8a185da778bab9c2cfb51ddea45c917c73504dd891527a7ee8b5b698"
+      "sha256": "ed38a909da2afa5a6895231620f398c069508acab5aecb7329e52ee5455360f2"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0005.tql",
-      "sha256": "e42d641f242a3a847ff6a659abec34989b12e944dc7802997f29d0f9f817d231"
+      "sha256": "d5d974e56b62572c957d343bbe796d6f8e35479dde8e06597ca1623d9a929587"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0006.tql",
-      "sha256": "6d55ad7ebb36c5c7fa37f74ced606c74a90e1ec83a186f2e86d4259b469a0834"
+      "sha256": "a060c9f335c9eaf5cd25959b3b54fe37e7b7b6b66d8dccd2f86a0bd2c996efe5"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0007.tql",
-      "sha256": "755fdaa3237bd91d900d82cfda90a20acb5a1ad4f15b7eb8aad3a7a8c2fef309"
+      "sha256": "230f5fc1ac5a59bde4b1db7808bcbe081c2a4090352e454984140560fe0b6ea4"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0008.tql",
-      "sha256": "561c0d58c567f5855a25eafcad6c6fe34e884afaf127871a3347bf1ec49b7ed6"
+      "sha256": "6286484f0cca3251f5b9a1329f716b62183a8b5aaf9a30c6823f49f5dff21782"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0009.tql",
-      "sha256": "96bff9e6b348ecf566dbb4e78868bdccb6d641acf893a272f703bc5633286e6a"
+      "sha256": "4b8042b3bbde1f5db3c7c9f24f3369c9a36791967b7103c0976eea8170b35213"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0010.tql",
-      "sha256": "68c9c9fe42c2dd48fc23a7072ba78c2a5fd0cf89d8b03da0ae542888bef1224c"
+      "sha256": "caf5fff9762fc888903c5f5b64f46b2b6d03386ea2ff14f4e4f381c50bed0be1"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0011.tql",
-      "sha256": "ad59b28eb20d8517ba37475e7b11c49ca3041bdba9a1495799213852126cf72e"
+      "sha256": "9ef17feec26f2316c08363b501afde42aca05e7fdd4a1d7ee51fcb227fdd58c7"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0012.tql",
-      "sha256": "e8b08f7bcb343a149d919b17ec3fca39099a756d2d459f0667680d99fc35e3ef"
+      "sha256": "44781ed7db1310a1071cfbf81d284b494d94f45873c3b945a76b3277ab39756d"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0013.tql",
-      "sha256": "3c71c41d81ed267a74b28d99f75584a78c887e26cd1de68dd1d29a0a6775dd65"
+      "sha256": "a2d4733f0b058c1e7f4957831f02d3604c6156ae94faf29d77a15582f5ea6825"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0014.tql",
-      "sha256": "e002ade9ceddd9eeca2a6261ae73fadebd589f974342fad7b314a9e57af9bdda"
+      "sha256": "018f1cd2e7063e2bc27ad6c585f3ce360d3c5c92bba626a8d7d90191512b2828"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0015.tql",
-      "sha256": "17c5fb9cb18e3a08edac67fd3776afe91902754f222415d023038c8550258d22"
+      "sha256": "43574f2990f3fdc35172ae6e47e3435f95b80f0ef5ef9dcba75ae5f1ef44f15d"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0016.tql",
-      "sha256": "c918c4c592cc47799ec9144ef7f7a0411940f106df238f84010730c0bdd92aac"
+      "sha256": "fb710d16c07d6bb36fbf5dac924509a69c38999cbe43f8d28fcb645531b166f1"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0017.tql",
-      "sha256": "3810cbec156719b0b879037cbc4d77b340847b79484b602f3d20299a078ad325"
+      "sha256": "43b551e5876ee72eae71f0a95f2fbbe0cf5236ce9ac6ac9950866d1d2d1529ef"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0018.tql",
-      "sha256": "91c2e3a386a21c19dc1f1f73e65da1c646e1b1ad47ffbda4dea18c461bd0218c"
+      "sha256": "0104a58329b19b01682c1ced9f2a8e8cf516db481e2cf2ddfa002baea5ef843f"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0019.tql",
-      "sha256": "33c0ff9ee8f69baf8e8b7b753565a760e2e20afbebf5fc0b5267185acdb4a7a7"
+      "sha256": "7c1df2e4bfddfc22b97d80acb1c8e8eff9cb4506f3e9b65b4d67feb661adfed0"
     },
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0020.tql",
-      "sha256": "0110ff5c9ee40660cd58c3516572a1a4bc409ac40bffaf32e1f2abc0c0eb6e04"
+      "sha256": "fa2b7a072658ffabe7341bdea5cfc3796f232b53f5064818b0ceadfd7ed447d8"
     }
   ],
   "package": {
     "name": "gist",
-    "version": "3.0.0"
+    "version": "4.0.0"
   },
   "upstream": {
     "repoUrl": "https://github.com/semanticarts/gist",
@@ -186,6 +186,6 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-06-03T02:34:02Z"
+    "generatedAt": "2026-06-03T02:36:44Z"
   }
 }
