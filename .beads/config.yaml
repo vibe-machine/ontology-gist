@@ -3,3 +3,5 @@ repos:
   additional:
     - "/Users/kenpo/SoftwareProjects/collection-one/OneWorkspace/.claude/worktrees/serene-roentgen-c11f28"
     - "/Users/kenpo/SoftwareProjects/collection-vibe-machine/ontology-tooling"
+
+sync.remote: "git+ssh://git@github.com/vibe-machine/ontology-gist.git"
