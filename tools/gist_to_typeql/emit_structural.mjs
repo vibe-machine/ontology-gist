@@ -41,6 +41,12 @@ const GENERATOR = "gist-structural-emitter/0.5.0";
 const SYNTHETIC_THING_IRI = "http://www.w3.org/2002/07/owl#Thing";
 const SCHEMA_DOCS_PATH = "data/gistCore-schema-docs.tql";
 const SCHEMA_DOCS_APPLY_UNIT_PREFIX = "generated/apply-units/data/gistCore-schema-docs";
+const SEMANTIC_ROLE_OVERRIDES = new Map([
+  [
+    "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+    { subject: "product", object: "producer" }
+  ]
+]);
 const RESERVED_IDENTIFIERS = new Set([
   "and",
   "attribute",
@@ -141,6 +147,15 @@ function iriLocalName(iri) {
 
 function safeIdentifier(name, suffix) {
   return RESERVED_IDENTIFIERS.has(name) ? `${name}${suffix}` : name;
+}
+
+function roleNamesForProperty(propertyIri, relationName) {
+  const override = SEMANTIC_ROLE_OVERRIDES.get(propertyIri);
+  if (override) return override;
+  return {
+    subject: `${relationName}Subject`,
+    object: `${relationName}Object`
+  };
 }
 
 function tqlString(value) {
@@ -607,13 +622,12 @@ function buildEntityDefinitions(model, propertyInfo, identifiers) {
   for (const property of model.resources.objectProperties) {
     const localName = identifiers.relation(property.iri);
     const info = propertyInfo.propertyInfo.get(property.iri);
-    const subjectRole = `${localName}Subject`;
-    const objectRole = `${localName}Object`;
+    const roles = roleNamesForProperty(property.iri, localName);
     for (const owner of info.domain) {
-      if (definitions.has(owner)) definitions.get(owner).plays.add(`${localName}:${subjectRole}`);
+      if (definitions.has(owner)) definitions.get(owner).plays.add(`${localName}:${roles.subject}`);
     }
     for (const owner of info.range) {
-      if (definitions.has(owner)) definitions.get(owner).plays.add(`${localName}:${objectRole}`);
+      if (definitions.has(owner)) definitions.get(owner).plays.add(`${localName}:${roles.object}`);
     }
   }
 
@@ -708,15 +722,17 @@ function renderSchema(model, propertyInfo, entityDefinitions, identifiers) {
     if (property.types.includes("http://www.w3.org/2002/07/owl#InverseFunctionalProperty")) notes.push("inverse-functional in OWL");
     for (const note of notes) lines.push(`# ${localName}: ${note}`);
     const supertypeIri = hierarchyStats.objectSupertypeByIri.get(property.iri);
+    const roles = roleNamesForProperty(property.iri, localName);
     if (supertypeIri) {
       const supertypeName = identifiers.relation(supertypeIri);
+      const supertypeRoles = roleNamesForProperty(supertypeIri, supertypeName);
       lines.push(`relation ${localName} sub ${supertypeName},`);
-      lines.push(`    relates ${localName}Subject as ${supertypeName}Subject,`);
-      lines.push(`    relates ${localName}Object as ${supertypeName}Object;`);
+      lines.push(`    relates ${roles.subject} as ${supertypeRoles.subject},`);
+      lines.push(`    relates ${roles.object} as ${supertypeRoles.object};`);
     } else {
       lines.push(`relation ${localName},`);
-      lines.push(`    relates ${localName}Subject,`);
-      lines.push(`    relates ${localName}Object;`);
+      lines.push(`    relates ${roles.subject},`);
+      lines.push(`    relates ${roles.object};`);
     }
     lines.push("");
   }
@@ -978,8 +994,9 @@ function buildAxiomQueryArtifacts(model, identifiers) {
       const propertyLabel = iriLocalName(expr.property);
 
       if (objectPropertyIris.has(expr.property)) {
-        const selfRole = `${relationName}${expr.inverse ? "Object" : "Subject"}`;
-        const otherRole = `${relationName}${expr.inverse ? "Subject" : "Object"}`;
+        const roles = roleNamesForProperty(expr.property, relationName);
+        const selfRole = expr.inverse ? roles.object : roles.subject;
+        const otherRole = expr.inverse ? roles.subject : roles.object;
         const relationPattern = (targetVar) => `(${selfRole}: ${subjectVar}, ${otherRole}: ${targetVar}) isa ${relationName};`;
         const compileTargetClauses = (targetVar, target = targetExpr) => {
           const compiledTarget = target ? compileExpression(target, targetVar, ctx) : { clauses: [], warnings: [] };

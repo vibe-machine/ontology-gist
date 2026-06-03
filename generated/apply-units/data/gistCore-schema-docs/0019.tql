@@ -337,7 +337,7 @@ insert
 
 match
   $struct_left isa SchemaResource, has typeLabel "isProducedBy";
-  $struct_right isa SchemaResource, has typeLabel "isProducedBy:isProducedByObject";
+  $struct_right isa SchemaResource, has typeLabel "isProducedBy:producer";
   not {
     (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
@@ -346,7 +346,7 @@ insert
 
 match
   $struct_left isa SchemaResource, has typeLabel "isProducedBy";
-  $struct_right isa SchemaResource, has typeLabel "isProducedBy:isProducedBySubject";
+  $struct_right isa SchemaResource, has typeLabel "isProducedBy:product";
   not {
     (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };

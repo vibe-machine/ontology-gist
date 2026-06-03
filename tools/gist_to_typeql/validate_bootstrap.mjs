@@ -11,6 +11,12 @@ import { parseTypeQLSchemaStructure } from "../shared/schema_structure.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
+const SEMANTIC_ROLE_OVERRIDES = new Map([
+  [
+    "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+    { subject: "product", object: "producer" }
+  ]
+]);
 
 function sha256(buffer) {
   return crypto.createHash("sha256").update(buffer).digest("hex");
@@ -65,6 +71,15 @@ const RESERVED_IDENTIFIERS = new Set([
 
 function safeIdentifier(name, suffix) {
   return RESERVED_IDENTIFIERS.has(name) ? `${name}${suffix}` : name;
+}
+
+function roleNamesForProperty(propertyIri, relationName) {
+  const override = SEMANTIC_ROLE_OVERRIDES.get(propertyIri);
+  if (override) return override;
+  return {
+    subject: `${relationName}Subject`,
+    object: `${relationName}Object`
+  };
 }
 
 function buildIdentifierMaps(model) {
@@ -146,9 +161,11 @@ async function assertHierarchyCoverage({ model, schemaText, docsText, translatio
   const roleEdges = namedSubPropertyEdges(model.resources.objectProperties).flatMap((edge) => {
     const subtype = identifiers.relation(edge.subtype);
     const supertype = identifiers.relation(edge.supertype);
+    const subtypeRoles = roleNamesForProperty(edge.subtype, subtype);
+    const supertypeRoles = roleNamesForProperty(edge.supertype, supertype);
     return [
-      { subtype: `${subtype}:${subtype}Subject`, supertype: `${supertype}:${supertype}Subject` },
-      { subtype: `${subtype}:${subtype}Object`, supertype: `${supertype}:${supertype}Object` },
+      { subtype: `${subtype}:${subtypeRoles.subject}`, supertype: `${supertype}:${supertypeRoles.subject}` },
+      { subtype: `${subtype}:${subtypeRoles.object}`, supertype: `${supertype}:${supertypeRoles.object}` },
     ];
   });
 

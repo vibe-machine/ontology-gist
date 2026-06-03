@@ -18,7 +18,7 @@
     {
       "kind": "schema",
       "path": "schema/gistCore.tql",
-      "sha256": "9d6c56f99ed22fb616170fba6634fc009a13d18ab21cc60a7afda3cee4fe4a91"
+      "sha256": "05b359609d20072f2d0501eb5a219753da70a1b01a390df9d1a0735c0e67d714"
     },
     {
       "kind": "domain-seeds",
@@ -28,12 +28,12 @@
     {
       "kind": "provenance-seeds",
       "path": "data/gistCore-provenance.tql",
-      "sha256": "e5bae13ae9d9ded7c341612ed07ec8f10491b78aa740d2f54b76b13d3e1c5c91"
+      "sha256": "ebf7de4ff87e982321faab3596a7584d9cdd31716735ec8b9f414ce92ed59f59"
     },
     {
       "kind": "documentation",
       "path": "data/gistCore-schema-docs.tql",
-      "sha256": "e61283d0a38e636375bf5f455071aec2e5fe0b68da9aeaec33d7c643f701e8be"
+      "sha256": "7abccccfc71e417670f8805ab4751d6b4e545a5ab0b56a0adfbe01cc4681fcc0"
     },
     {
       "kind": "axiom-query-library",
@@ -88,7 +88,7 @@
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0007.tql",
-      "sha256": "cda2681126c594f481d0b6027e788e76c6542d59c711ba454558ea848fce16cc"
+      "sha256": "755fdaa3237bd91d900d82cfda90a20acb5a1ad4f15b7eb8aad3a7a8c2fef309"
     },
     {
       "kind": "apply-unit",
@@ -148,7 +148,7 @@
     {
       "kind": "apply-unit",
       "path": "generated/apply-units/data/gistCore-schema-docs/0019.tql",
-      "sha256": "5d2fd6b8ae95cf435738557bfc61001808d93cd384bee64c79b12896287abc2f"
+      "sha256": "33c0ff9ee8f69baf8e8b7b753565a760e2e20afbebf5fc0b5267185acdb4a7a7"
     },
     {
       "kind": "apply-unit",
@@ -186,6 +186,6 @@
   "generator": {
     "name": "gist-structural-emitter",
     "version": "0.5.0",
-    "generatedAt": "2026-05-01T03:02:40Z"
+    "generatedAt": "2026-06-03T02:34:02Z"
   }
 }

@@ -4143,16 +4143,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_95 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedByObject",
-  has iri "https://github.com/semanticarts/gist#isProducedBy:isProducedByObject",
-  has typeLabel "isProducedBy:isProducedByObject",
+  has docKey "https://github.com/semanticarts/gist#isProducedBy:producer",
+  has iri "https://github.com/semanticarts/gist#isProducedBy:producer",
+  has typeLabel "isProducedBy:producer",
   has kind "role",
-  has roleName "isProducedByObject",
-  has prefLabel "isProducedByObject",
-  has definition "Role 'isProducedByObject' in relation 'isProducedBy'.";
+  has roleName "producer",
+  has prefLabel "producer",
+  has definition "Role 'producer' in relation 'isProducedBy'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedByObject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isProducedBy:producer";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -4160,16 +4160,16 @@ insert
   (resource: $schema_resource, module: $schema_module) isa inModule;
 
 put $generated_role_96 isa SchemaResource,
-  has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedBySubject",
-  has iri "https://github.com/semanticarts/gist#isProducedBy:isProducedBySubject",
-  has typeLabel "isProducedBy:isProducedBySubject",
+  has docKey "https://github.com/semanticarts/gist#isProducedBy:product",
+  has iri "https://github.com/semanticarts/gist#isProducedBy:product",
+  has typeLabel "isProducedBy:product",
   has kind "role",
-  has roleName "isProducedBySubject",
-  has prefLabel "isProducedBySubject",
-  has definition "Role 'isProducedBySubject' in relation 'isProducedBy'.";
+  has roleName "product",
+  has prefLabel "product",
+  has definition "Role 'product' in relation 'isProducedBy'.";
 match
   $schema_module isa SchemaModule, has moduleKey "gist-core";
-  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isProducedBy:isProducedBySubject";
+  $schema_resource isa SchemaResource, has docKey "https://github.com/semanticarts/gist#isProducedBy:product";
   not {
     (resource: $schema_resource, module: $schema_module) isa inModule;
   };
@@ -9599,7 +9599,7 @@ insert
 
 match
   $struct_left isa SchemaResource, has typeLabel "isProducedBy";
-  $struct_right isa SchemaResource, has typeLabel "isProducedBy:isProducedByObject";
+  $struct_right isa SchemaResource, has typeLabel "isProducedBy:producer";
   not {
     (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };
@@ -9608,7 +9608,7 @@ insert
 
 match
   $struct_left isa SchemaResource, has typeLabel "isProducedBy";
-  $struct_right isa SchemaResource, has typeLabel "isProducedBy:isProducedBySubject";
+  $struct_right isa SchemaResource, has typeLabel "isProducedBy:product";
   not {
     (relationResource: $struct_left, roleResource: $struct_right) isa schemaRelates;
   };

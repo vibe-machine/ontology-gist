@@ -312,8 +312,8 @@ relation isPartOf,
 
 # isProducedBy: Relates something to the thing that created, composed, or brought it into existence.
 relation isProducedBy,
-    relates isProducedBySubject,
-    relates isProducedByObject;
+    relates product,
+    relates producer;
 
 # isRecognizedBy: Relates something to a party that formally acknowledges its existence, validity, or legality.
 relation isRecognizedBy,

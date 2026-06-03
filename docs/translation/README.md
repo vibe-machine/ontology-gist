@@ -42,6 +42,7 @@ In-repo translation references:
 
 - `mapping-summary.md`: concise statement of the implemented OWL/RDF -> TypeQL mapping rules
 - `semantic-gaps.md`: explicit list of places where gist semantics do not map one-to-one into current package artifacts
+- `semantic-role-inventory.md`: inventory of object-property relations whose generated roles may need semantic names
 - `package-assembly.md`: package load order, generated artifacts, validation flow, and downstream-consumer contract
 - `provenance-model.md`: manifest/header/queryable provenance contract
 - `schema-resource-query-examples.tql`: example documentation queries against the self-describing schema model

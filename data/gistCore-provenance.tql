@@ -21,7 +21,7 @@ put $version isa OntologyModuleVersion,
   has manifestPath "manifests/gist-v3.0.0.translation-manifest.json",
   has generatorName "gist-structural-emitter",
   has generatorVersion "0.5.0",
-  has generatedAt "2026-05-01T03:02:40Z";
+  has generatedAt "2026-06-03T02:34:02Z";
 put (version: $version, module: $module) isa ontologyModuleVersionOf;
 
 put $s1 isa SourceArtifactRecord,
@@ -65,7 +65,7 @@ put (generatedArtifact: $g3, version: $version) isa generatedArtifactForOntology
 put $g4 isa GeneratedArtifactRecord,
   has artifactPath "schema/gistCore.tql",
   has artifactKind "schema",
-  has artifactSha256 "9d6c56f99ed22fb616170fba6634fc009a13d18ab21cc60a7afda3cee4fe4a91";
+  has artifactSha256 "05b359609d20072f2d0501eb5a219753da70a1b01a390df9d1a0735c0e67d714";
 put (generatedArtifact: $g4, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g5 isa GeneratedArtifactRecord,
@@ -77,7 +77,7 @@ put (generatedArtifact: $g5, version: $version) isa generatedArtifactForOntology
 put $g6 isa GeneratedArtifactRecord,
   has artifactPath "data/gistCore-schema-docs.tql",
   has artifactKind "documentation",
-  has artifactSha256 "e61283d0a38e636375bf5f455071aec2e5fe0b68da9aeaec33d7c643f701e8be";
+  has artifactSha256 "7abccccfc71e417670f8805ab4751d6b4e545a5ab0b56a0adfbe01cc4681fcc0";
 put (generatedArtifact: $g6, version: $version) isa generatedArtifactForOntologyModuleVersion;
 
 put $g7 isa GeneratedArtifactRecord,
