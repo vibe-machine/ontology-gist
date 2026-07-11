@@ -389,9 +389,23 @@ function extractNamedQueries(text) {
   return blocks;
 }
 
+async function resolveTypedbBinary() {
+  const candidates = [
+    process.env.TYPEDB_BIN,
+    ...(process.env.PATH ?? "").split(path.delimiter).filter(Boolean).map((directory) => path.join(directory, "typedb")),
+    path.join(process.env.HOME ?? "", ".typedb", "typedb"),
+  ].filter(Boolean);
+  for (const candidate of candidates) {
+    try {
+      await fs.access(candidate);
+      return candidate;
+    } catch {}
+  }
+  throw new Error("TypeDB executable not found. Install it on PATH or set TYPEDB_BIN.");
+}
+
 async function startTypedbServer(tempRoot) {
-  const typedb = process.env.TYPEDB_BIN ?? path.join(process.env.HOME ?? "", ".typedb", "typedb");
-  await fs.access(typedb);
+  const typedb = await resolveTypedbBinary();
 
   const grpcPort = await getFreePort();
   const httpPort = await getFreePort();
@@ -401,6 +415,8 @@ async function startTypedbServer(tempRoot) {
     `127.0.0.1:${grpcPort}`,
     "--server.http.address",
     `127.0.0.1:${httpPort}`,
+    "--server.admin.enabled",
+    "false",
     "--storage.data-directory",
     path.join(tempRoot, "data"),
     "--logging.directory",
@@ -598,7 +614,7 @@ async function main() {
   await writeMergedQueryFile("define", pkg.schemas.map((schema) => schema.file), mergedSchema);
 
   const dbName = `gist_validate_${process.pid}`;
-  const typedbBin = process.env.TYPEDB_BIN ?? path.join(process.env.HOME ?? "", ".typedb", "typedb");
+  const typedbBin = await resolveTypedbBinary();
 
   function runConsoleScript(grpcPort, script) {
     const scriptFile = path.join(typedbTemp, `script-${Date.now()}.tql`);
