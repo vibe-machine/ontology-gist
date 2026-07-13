@@ -30,6 +30,7 @@ import {
   renderStructuralMetadataSection,
   replaceGeneratedStructuralSection,
 } from "../shared/schema_structure.mjs";
+import { generationTimestamp } from "../shared/reproducible_time.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..", "..");
@@ -1505,7 +1506,7 @@ async function main() {
   );
   const seedDataText = renderSeedData(model, identifiers);
   const reportText = renderReport(model, propertyInfo, entityDefinitions, identifiers);
-  const generatedAt = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+  const generatedAt = generationTimestamp();
 
   await fs.mkdir(path.join(outputRoot, "schema"), { recursive: true });
   await fs.mkdir(path.join(outputRoot, "data"), { recursive: true });

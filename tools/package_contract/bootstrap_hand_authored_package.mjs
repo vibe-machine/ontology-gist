@@ -8,6 +8,7 @@ import {
   renderStructuralMetadataSection,
   replaceGeneratedStructuralSection,
 } from "../shared/schema_structure.mjs";
+import { generationTimestamp } from "../shared/reproducible_time.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -416,7 +417,7 @@ async function bootstrap(repoRoot) {
   const manifestPath = `manifests/${packageJson.name}-v${packageJson.version}.package-manifest.json`;
 
   const currentCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: repoRoot, encoding: "utf8" }).trim();
-  const generatedAt = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+  const generatedAt = generationTimestamp();
 
   const sourceDataFiles = (packageJson.data || []).filter(
     (relativePath) =>
