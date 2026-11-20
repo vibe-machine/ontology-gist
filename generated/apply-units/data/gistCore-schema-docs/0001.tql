@@ -1,5 +1,5 @@
 # Generated executable apply unit from data/gistCore-schema-docs.tql
-# manifest: manifests/gist-v5.0.0.translation-manifest.json
+# manifest: manifests/gist-v5.1.0.translation-manifest.json
 # upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
 
 # Provenance bootstrap
@@ -11,7 +11,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v5.0.0.translation-manifest.json
+# manifest: manifests/gist-v5.1.0.translation-manifest.json
 # generator: gist-schema-docs-emitter/1.0.0
 
 put $gist_core isa SchemaModule,

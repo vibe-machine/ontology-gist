@@ -1,7 +1,8 @@
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 
 import {
   OWL_ALL_VALUES_FROM,
@@ -280,31 +281,20 @@ function replaceSchemaDocApplyUnitPaths(paths, applyUnitPaths, { includeSchemaDo
   return next;
 }
 
-async function renderSchemaDocApplyUnits(docsText, outputRoot) {
-  const toolingPath = path.join(root, "..", "ontology-tooling", "src/lib/executable-package.mjs");
-  const { testing } = await import(pathToFileURL(toolingPath).href);
-  const chunks = testing.buildContextualChunks(docsText.trim());
-  const outputDir = path.join(outputRoot, SCHEMA_DOCS_APPLY_UNIT_PREFIX);
-  await fs.rm(outputDir, { recursive: true, force: true });
-  await fs.mkdir(outputDir, { recursive: true });
-
-  const paths = [];
-  const artifacts = [];
-  for (const [index, chunk] of chunks.entries()) {
-    const relativePath = `${SCHEMA_DOCS_APPLY_UNIT_PREFIX}/${String(index + 1).padStart(4, "0")}.tql`;
-    const text = testing.renderShardWithHeaders(SCHEMA_DOCS_PATH, chunk, {
-      manifestPath: MANIFEST_PATH,
-      upstreamCommit: packageJson.upstream.commit,
-    });
-    await fs.writeFile(path.join(outputRoot, relativePath), text, "utf8");
-    paths.push(relativePath);
-    artifacts.push({
-      kind: "apply-unit",
-      path: relativePath,
-      sha256: sha256Text(text),
-    });
-  }
-
+// Splitting into apply units is done by the ont CLI (ontology-tooling), the
+// same code that validates and applies them. Expects the docs text already
+// written to SCHEMA_DOCS_PATH under outputRoot.
+function renderSchemaDocApplyUnits(outputRoot) {
+  const ont = path.join(root, "..", "ontology-tooling", "bin", "ont");
+  const stdout = execFileSync(ont, [
+    "--format", "json",
+    "split-apply-units",
+    "--root", outputRoot,
+    "--source", SCHEMA_DOCS_PATH,
+    "--manifest", MANIFEST_PATH,
+    "--upstream-commit", packageJson.upstream.commit,
+  ], { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] });
+  const { paths, artifacts } = JSON.parse(stdout);
   return { paths, artifacts };
 }
 
@@ -1515,7 +1505,7 @@ async function main() {
 
   await fs.writeFile(path.join(outputRoot, "schema/gistCore.tql"), schemaText, "utf8");
   await fs.writeFile(docsPath, docsText, "utf8");
-  const schemaDocApplyUnits = await renderSchemaDocApplyUnits(docsText, outputRoot);
+  const schemaDocApplyUnits = renderSchemaDocApplyUnits(outputRoot);
   await fs.writeFile(path.join(outputRoot, "data/gistCore-domain-seeds.tql"), seedDataText, "utf8");
   await fs.writeFile(path.join(outputRoot, "queries/gistCore-axioms.tql"), axiomArtifacts.library, "utf8");
   await fs.writeFile(path.join(outputRoot, `${MANIFEST_PREFIX}.axiom-queries.json`), axiomArtifacts.index, "utf8");

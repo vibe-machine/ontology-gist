@@ -7,7 +7,7 @@
 # - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
 # - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
 # - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
-# manifest: manifests/gist-v5.0.0.translation-manifest.json
+# manifest: manifests/gist-v5.1.0.translation-manifest.json
 # generator: administrative-operations-schema/0.1.0
 
 define
@@ -25,3 +25,21 @@ relation installationOfOntologyModuleVersion sub isBasedOn,
     relates version as basis;
 
 OntologyModuleVersion plays installationOfOntologyModuleVersion:version;
+
+# Optional install-record fields (gist 5.1.0). All optional, so records
+# written before 5.1.0 stay valid. A failed install has no
+# installationOfOntologyModuleVersion link, so the record names its package
+# (installedModuleRepoUrl) and version (targetModuleVersion) itself.
+attribute previousModuleVersion, value string;
+attribute targetModuleVersion, value string;
+attribute installedModuleRepoUrl, value string;
+attribute installationTrigger, value string @values("install", "upgrade", "rebuild", "migration");
+attribute installationOutcome, value string @values("succeeded", "failed");
+attribute installationError, value string;
+
+OntologyModuleInstallation owns previousModuleVersion @card(0..1),
+    owns targetModuleVersion @card(0..1),
+    owns installedModuleRepoUrl @card(0..1),
+    owns installationTrigger @card(0..1),
+    owns installationOutcome @card(0..1),
+    owns installationError @card(0..1);

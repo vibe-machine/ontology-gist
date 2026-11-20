@@ -1,0 +1,119 @@
+# Provenance bootstrap
+# upstream-repo: https://github.com/semanticarts/gist
+# upstream-tag: v14.0.0
+# upstream-commit: 6ab80c158a7fa56a1b5d3d824b125b92107e8f08
+# source-artifacts:
+# - upstream/gist/v14.0.0/ontologies/gistCore.ttl
+# - upstream/gist/v14.0.0/ontologies/gistMediaTypes.ttl
+# - upstream/gist/v14.0.0/ontologies/gistPrefixDeclarations.ttl
+# - upstream/gist/v14.0.0/ontologies/gistValidationAnnotations.ttl
+# manifest: manifests/gist-v5.1.0.translation-manifest.json
+# generator: administrative-operations-schema-docs/0.1.0
+#
+# Hand-authored documentation rows for schema/administrative-operations.tql.
+# The SchemaModule put matches the one in data/gistCore-schema-docs.tql, so
+# this file loads correctly before or after the generated schema docs.
+
+put $gist_core isa SchemaModule,
+  has moduleKey "gist-core",
+  has moduleName "gistCore",
+  has moduleKind "gist-core";
+
+put $a1 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#OntologyModuleInstallation",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#OntologyModuleInstallation",
+  has typeLabel "OntologyModuleInstallation",
+  has kind "entity",
+  has prefLabel "Ontology Module Installation",
+  has definition "A record that the app tried to install a version of an ontology package into this database, written when the install ran.",
+  has scopeNote "A successful install is linked to the version it installed; a failed install is not linked and names its package and version itself.";
+put (resource: $a1, module: $gist_core) isa inModule;
+
+put $a2 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installationOfOntologyModuleVersion",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installationOfOntologyModuleVersion",
+  has typeLabel "installationOfOntologyModuleVersion",
+  has kind "relation",
+  has prefLabel "installation of ontology module version",
+  has definition "Links an install record to the package version it installed; only successful installs have this link.";
+put (resource: $a2, module: $gist_core) isa inModule;
+
+put $a3 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installationKey",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installationKey",
+  has typeLabel "installationKey",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "installation key",
+  has definition "The unique identifier of an install record.";
+put (resource: $a3, module: $gist_core) isa inModule;
+
+put $a4 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installedAt",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installedAt",
+  has typeLabel "installedAt",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "installed at",
+  has definition "When the install ran, as an ISO 8601 date and time in UTC.";
+put (resource: $a4, module: $gist_core) isa inModule;
+
+put $a5 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#previousModuleVersion",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#previousModuleVersion",
+  has typeLabel "previousModuleVersion",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "previous module version",
+  has definition "The package version that was installed before this install ran; absent on a first install.";
+put (resource: $a5, module: $gist_core) isa inModule;
+
+put $a6 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#targetModuleVersion",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#targetModuleVersion",
+  has typeLabel "targetModuleVersion",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "target module version",
+  has definition "The package version this install set out to install, recorded whether or not it succeeded.";
+put (resource: $a6, module: $gist_core) isa inModule;
+
+put $a7 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installedModuleRepoUrl",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installedModuleRepoUrl",
+  has typeLabel "installedModuleRepoUrl",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "installed module repository URL",
+  has definition "The repository address of the package this install was for, so a failed install still says which package it was.";
+put (resource: $a7, module: $gist_core) isa inModule;
+
+put $a8 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installationTrigger",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installationTrigger",
+  has typeLabel "installationTrigger",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "installation trigger",
+  has definition "Why the install ran: install (first time), upgrade (a newer version), rebuild (the database was rebuilt), or migration (a migration plan ran).";
+put (resource: $a8, module: $gist_core) isa inModule;
+
+put $a9 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installationOutcome",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installationOutcome",
+  has typeLabel "installationOutcome",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "installation outcome",
+  has definition "Whether the install succeeded or failed.";
+put (resource: $a9, module: $gist_core) isa inModule;
+
+put $a10 isa SchemaResource,
+  has docKey "https://vibe-machine.github.io/schema/administrative-operations#installationError",
+  has iri "https://vibe-machine.github.io/schema/administrative-operations#installationError",
+  has typeLabel "installationError",
+  has kind "attribute",
+  has valueTypeName "string",
+  has prefLabel "installation error",
+  has definition "The error message a failed install reported.";
+put (resource: $a10, module: $gist_core) isa inModule;

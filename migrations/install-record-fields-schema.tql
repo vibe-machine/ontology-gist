@@ -1,0 +1,19 @@
+# Migration: optional install-record fields for gist 5.1.0
+# Additive only. Adds optional attributes to OntologyModuleInstallation so an
+# install record can say which version it replaced, why it ran, whether it
+# succeeded, and the error when it failed. Existing records stay valid.
+
+define
+attribute previousModuleVersion, value string;
+attribute targetModuleVersion, value string;
+attribute installedModuleRepoUrl, value string;
+attribute installationTrigger, value string @values("install", "upgrade", "rebuild", "migration");
+attribute installationOutcome, value string @values("succeeded", "failed");
+attribute installationError, value string;
+
+OntologyModuleInstallation owns previousModuleVersion @card(0..1),
+    owns targetModuleVersion @card(0..1),
+    owns installedModuleRepoUrl @card(0..1),
+    owns installationTrigger @card(0..1),
+    owns installationOutcome @card(0..1),
+    owns installationError @card(0..1);

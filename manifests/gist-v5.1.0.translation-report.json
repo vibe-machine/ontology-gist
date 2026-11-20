@@ -1,0 +1,2944 @@
+{
+  "package": "gist",
+  "version": "5.1.0",
+  "generatedBy": "gist-structural-emitter/0.5.0",
+  "summary": {
+    "classes": 96,
+    "objectProperties": 65,
+    "datatypeProperties": 50,
+    "seedInstances": 20
+  },
+  "strategy": {
+    "unionDomainRange": "emit one relation per OWL object property and allow every named union member to play the appropriate subject/object role",
+    "inverseProperties": "emit the inverse property as its own relation; preserve OWL inverse/functionality characteristics as report metadata",
+    "datatypePropertyHierarchy": "emit named datatype-property rdfs:subPropertyOf edges as TypeDB attribute subtyping; root attributes carry primitive value types",
+    "objectPropertyHierarchy": "emit named object-property rdfs:subPropertyOf edges as TypeDB relation subtyping with subject/object role specialization",
+    "datetimeProperties": "map xsd:date and xsd:dateTime primitive ranges to TypeDB datetime values on root attributes; hierarchy is preserved structurally",
+    "multipleInheritance": "choose the deterministic first named superclass; preserve equivalent-class restrictions in the IR/report for later axiom-query generation"
+  },
+  "coverage": {
+    "propertyHierarchy": {
+      "datatypeSubPropertyEdgesDiscovered": 25,
+      "datatypeSubPropertyEdgesEmitted": 25,
+      "objectSubPropertyEdgesDiscovered": 13,
+      "objectSubPropertyEdgesEmitted": 13,
+      "roleSpecializationsEmitted": 17
+    },
+    "classesWithoutNamedSupertype": [],
+    "propertiesWithoutDomainAfterInference": [
+      "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
+      "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
+      "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
+      "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasAddress",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
+      "https://w3id.org/semanticarts/ns/ontology/gist/requires",
+      "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
+      "https://w3id.org/semanticarts/ns/ontology/gist/description",
+      "https://w3id.org/semanticarts/ns/ontology/gist/idText",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
+      "https://w3id.org/semanticarts/ns/ontology/gist/name",
+      "https://w3id.org/semanticarts/ns/ontology/gist/symbol"
+    ],
+    "propertiesWithoutRangeAfterInference": [
+      "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
+      "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
+      "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isAbout",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+      "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+      "https://w3id.org/semanticarts/ns/ontology/gist/owns",
+      "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
+      "https://w3id.org/semanticarts/ns/ontology/gist/requires",
+      "https://w3id.org/semanticarts/ns/ontology/gist/description",
+      "https://w3id.org/semanticarts/ns/ontology/gist/name",
+      "https://w3id.org/semanticarts/ns/ontology/gist/symbol"
+    ],
+    "equivalentClassAxiomsPending": [],
+    "queryableProvenanceSeedDataPending": false,
+    "axiomQueryCoverage": {
+      "classesCovered": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+        "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+        "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+        "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+        "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/System",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Text"
+      ],
+      "approximations": []
+    },
+    "renamedIdentifiers": {
+      "relations": [
+        {
+          "iri": "https://w3id.org/semanticarts/ns/ontology/gist/links",
+          "typeLabel": "links",
+          "generatedLabel": "linksRel"
+        },
+        {
+          "iri": "https://w3id.org/semanticarts/ns/ontology/gist/owns",
+          "typeLabel": "owns",
+          "generatedLabel": "ownsRel"
+        }
+      ],
+      "attributes": [],
+      "classes": []
+    }
+  },
+  "classes": [
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+      "typeLabel": "Account",
+      "generatedLabel": "Account",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+      "owns": [],
+      "plays": [
+        "hasMagnitude:measuredThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+      "typeLabel": "Address",
+      "generatedLabel": "Address",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Content",
+      "owns": [],
+      "plays": [
+        "comesFromPlace:originPlace",
+        "goesToPlace:destinationPlace",
+        "hasAddress:address"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/AddressUsageType",
+      "typeLabel": "AddressUsageType",
+      "generatedLabel": "AddressUsageType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+      "typeLabel": "Agreement",
+      "generatedLabel": "Agreement",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": [
+        "hasParty:partyContext",
+        "isPartOf:whole"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Aspect",
+      "typeLabel": "Aspect",
+      "generatedLabel": "Aspect",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [
+        "description",
+        "name",
+        "sourceIRI"
+      ],
+      "plays": [
+        "hasAspect:aspect",
+        "hasUnitGroup:aspect"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+      "typeLabel": "Assignment",
+      "generatedLabel": "Assignment",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+      "owns": [],
+      "plays": [
+        "isAssignmentOf:assignment",
+        "isAssignmentTo:assignment"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Behavior",
+      "typeLabel": "Behavior",
+      "generatedLabel": "Behavior",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": [
+        "allows:allowedActivity",
+        "prevents:prohibitedBehavior"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Building",
+      "typeLabel": "Building",
+      "generatedLabel": "Building",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+      "typeLabel": "BundledCatalogItem",
+      "generatedLabel": "BundledCatalogItem",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
+      "owns": [],
+      "plays": [
+        "isPartOf:whole"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
+      "typeLabel": "CatalogItem",
+      "generatedLabel": "CatalogItem",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
+      "owns": [],
+      "plays": [
+        "isPartOf:part"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "typeLabel": "Category",
+      "generatedLabel": "Category",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "isAllocatedBy:allocatedThing",
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
+      "typeLabel": "Collection",
+      "generatedLabel": "Collection",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+      "typeLabel": "Commitment",
+      "generatedLabel": "Commitment",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": [
+        "hasGiver:exchange",
+        "isCategorizedBy:categorizedThing",
+        "isPartOf:part"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Component",
+      "typeLabel": "Component",
+      "generatedLabel": "Component",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "isPartOf:part"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
+      "typeLabel": "Composite",
+      "generatedLabel": "Composite",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+      "typeLabel": "ContemporaryEvent",
+      "generatedLabel": "ContemporaryEvent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [
+        "actualEndDate",
+        "actualEndDateTime",
+        "actualEndMicrosecond",
+        "actualEndMinute",
+        "actualEndYear",
+        "actualStartDate",
+        "actualStartDateTime",
+        "actualStartMicrosecond",
+        "actualStartMinute",
+        "actualStartYear",
+        "deathDate"
+      ],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Content",
+      "typeLabel": "Content",
+      "generatedLabel": "Content",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "isAbout:content"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
+      "typeLabel": "ContentExpression",
+      "generatedLabel": "ContentExpression",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Content",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:categorizedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+      "typeLabel": "ContingentEvent",
+      "generatedLabel": "ContingentEvent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [],
+      "plays": [
+        "hasMagnitude:measuredThing",
+        "isTriggeredBy:triggeredThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+      "typeLabel": "ContingentObligation",
+      "generatedLabel": "ContingentObligation",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+      "owns": [],
+      "plays": [
+        "isTriggeredBy:triggeredThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
+      "typeLabel": "Contract",
+      "generatedLabel": "Contract",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+      "owns": [],
+      "plays": [
+        "isUnderJurisdictionOf:jurisdictionalThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ContractTerm",
+      "typeLabel": "ContractTerm",
+      "generatedLabel": "ContractTerm",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+      "typeLabel": "ControlledVocabulary",
+      "generatedLabel": "ControlledVocabulary",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:orderedCollection",
+        "isGovernedBy:governedThing",
+        "isMemberOf:collection"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
+      "typeLabel": "CountryGeoRegion",
+      "generatedLabel": "CountryGeoRegion",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+      "typeLabel": "CountryGovernment",
+      "generatedLabel": "CountryGovernment",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+      "owns": [],
+      "plays": [
+        "isGovernedBy:governedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/DegreeOfCommitment",
+      "typeLabel": "DegreeOfCommitment",
+      "generatedLabel": "DegreeOfCommitment",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:category"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Determination",
+      "typeLabel": "Determination",
+      "generatedLabel": "Determination",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Discipline",
+      "typeLabel": "Discipline",
+      "generatedLabel": "Discipline",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddress",
+      "typeLabel": "ElectronicAddress",
+      "generatedLabel": "ElectronicAddress",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddressType",
+      "typeLabel": "ElectronicAddressType",
+      "generatedLabel": "ElectronicAddressType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
+      "typeLabel": "Equipment",
+      "generatedLabel": "Equipment",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:categorizedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/EquipmentType",
+      "typeLabel": "EquipmentType",
+      "generatedLabel": "EquipmentType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:category"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "typeLabel": "Event",
+      "generatedLabel": "Event",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "isBasedOn:derivedThing",
+        "isTriggeredBy:triggeringEvent"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/EventSpecification",
+      "typeLabel": "EventSpecification",
+      "generatedLabel": "EventSpecification",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+      "typeLabel": "FormattedContent",
+      "generatedLabel": "FormattedContent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
+      "owns": [],
+      "plays": [
+        "isExpressedIn:expressedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Function",
+      "typeLabel": "Function",
+      "generatedLabel": "Function",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
+      "typeLabel": "GeneralMediaType",
+      "generatedLabel": "GeneralMediaType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:category"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+      "typeLabel": "GeoLocation",
+      "generatedLabel": "GeoLocation",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "comesFromPlace:originPlace",
+        "goesToPlace:destinationPlace",
+        "hasPhysicalLocation:physicalLocation",
+        "isGeoContainedIn:containedPlace",
+        "isGeoContainedIn:containingPlace",
+        "occursIn:place",
+        "refersTo:referent"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+      "typeLabel": "GeoPoint",
+      "generatedLabel": "GeoPoint",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+      "owns": [
+        "latitude",
+        "longitude"
+      ],
+      "plays": [
+        "hasMagnitude:measuredThing",
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+      "typeLabel": "GeoRegion",
+      "generatedLabel": "GeoRegion",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "hasMagnitude:measuredThing",
+        "hasPhysicalLocation:physicalLocation",
+        "isGovernedBy:governedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+      "typeLabel": "GeoRoute",
+      "generatedLabel": "GeoRoute",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+      "typeLabel": "GeoVolume",
+      "generatedLabel": "GeoVolume",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+      "owns": [],
+      "plays": [
+        "hasMagnitude:measuredThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+      "typeLabel": "GovernedGeoRegion",
+      "generatedLabel": "GovernedGeoRegion",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+      "typeLabel": "GovernmentOrganization",
+      "generatedLabel": "GovernmentOrganization",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member",
+        "isUnderJurisdictionOf:jurisdiction"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+      "typeLabel": "HistoricalEvent",
+      "generatedLabel": "HistoricalEvent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [
+        "actualEndDate",
+        "actualEndDateTime",
+        "actualEndMicrosecond",
+        "actualEndMinute",
+        "actualEndYear",
+        "actualStartDate",
+        "actualStartDateTime",
+        "actualStartMicrosecond",
+        "actualStartMinute",
+        "actualStartYear",
+        "deathDate"
+      ],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+      "typeLabel": "ID",
+      "generatedLabel": "ID",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Content",
+      "owns": [
+        "uniqueText"
+      ],
+      "plays": [
+        "isAllocatedBy:allocatedThing",
+        "isIdentifiedBy:identifier"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+      "typeLabel": "IntellectualProperty",
+      "generatedLabel": "IntellectualProperty",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "isAllocatedBy:allocator"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "typeLabel": "Intention",
+      "generatedLabel": "Intention",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "hasGoal:goal",
+        "prevents:intention"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+      "typeLabel": "IntergovernmentalOrganization",
+      "generatedLabel": "IntergovernmentalOrganization",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:orderedCollection",
+        "isMemberOf:collection"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept",
+      "typeLabel": "KnowledgeConcept",
+      "generatedLabel": "KnowledgeConcept",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
+      "typeLabel": "Landmark",
+      "generatedLabel": "Landmark",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+      "owns": [],
+      "plays": [
+        "hasPhysicalLocation:locatedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Language",
+      "typeLabel": "Language",
+      "generatedLabel": "Language",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "isExpressedIn:language"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+      "typeLabel": "LivingThing",
+      "generatedLabel": "LivingThing",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+      "owns": [
+        "birthDate"
+      ],
+      "plays": [
+        "hasBiologicalParent:biologicalParent",
+        "hasBiologicalParent:child"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+      "typeLabel": "Magnitude",
+      "generatedLabel": "Magnitude",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [
+        "numericValue"
+      ],
+      "plays": [
+        "hasAccuracy:accuracyMagnitude",
+        "hasAspect:magnitude",
+        "hasMagnitude:magnitude",
+        "hasUnitOfMeasure:magnitude"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+      "typeLabel": "MediaType",
+      "generatedLabel": "MediaType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [
+        "name",
+        "sourceIRI",
+        "uniqueText"
+      ],
+      "plays": [
+        "isExpressedIn:language"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Medium",
+      "typeLabel": "Medium",
+      "generatedLabel": "Medium",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": [
+        "isRenderedOn:renderingMedium"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+      "typeLabel": "Message",
+      "generatedLabel": "Message",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
+      "owns": [],
+      "plays": [
+        "comesFromAgent:transfer",
+        "goesToAgent:transfer"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+      "typeLabel": "Network",
+      "generatedLabel": "Network",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:orderedCollection",
+        "isMemberOf:collection"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+      "typeLabel": "NetworkLink",
+      "generatedLabel": "NetworkLink",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Component",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member",
+        "linksRel:networkLink"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
+      "typeLabel": "NetworkNode",
+      "generatedLabel": "NetworkNode",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Component",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member",
+        "linksFrom:originNode",
+        "linksRel:networkNode",
+        "linksTo:destinationNode"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+      "typeLabel": "Offer",
+      "generatedLabel": "Offer",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+      "owns": [
+        "plannedEndDate",
+        "plannedEndDateTime",
+        "plannedEndMinute",
+        "plannedEndYear",
+        "plannedStartDate",
+        "plannedStartDateTime",
+        "plannedStartMinute",
+        "plannedStartYear"
+      ],
+      "plays": [
+        "offersToProvide:offer",
+        "offersToReceive:offer"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+      "typeLabel": "OrderedCollection",
+      "generatedLabel": "OrderedCollection",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
+      "owns": [],
+      "plays": [
+        "isFirstMemberOf:orderedCollection",
+        "isMemberOf:collection"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+      "typeLabel": "OrderedMember",
+      "generatedLabel": "OrderedMember",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Component",
+      "owns": [
+        "sequence"
+      ],
+      "plays": [
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member",
+        "precedes:predecessor",
+        "precedes:successor",
+        "providesOrderFor:orderedMember"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+      "typeLabel": "Organization",
+      "generatedLabel": "Organization",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "comesFromAgent:originatingAgent",
+        "goesToAgent:receivingAgent",
+        "hasParty:party",
+        "isAllocatedBy:allocator",
+        "isGovernedBy:governingAuthority",
+        "isRecognizedBy:recognizingParty",
+        "ownsRel:owner"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
+      "typeLabel": "Permission",
+      "generatedLabel": "Permission",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": [
+        "allows:permission"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+      "typeLabel": "Person",
+      "generatedLabel": "Person",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+      "owns": [],
+      "plays": [
+        "comesFromAgent:originatingAgent",
+        "goesToAgent:receivingAgent",
+        "hasParty:party",
+        "isAllocatedBy:allocator",
+        "isGovernedBy:governingAuthority",
+        "isRecognizedBy:recognizingParty",
+        "ownsRel:owner"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalActionType",
+      "typeLabel": "PhysicalActionType",
+      "generatedLabel": "PhysicalActionType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
+      "typeLabel": "PhysicalAddress",
+      "generatedLabel": "PhysicalAddress",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+      "owns": [],
+      "plays": [
+        "refersTo:referringThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddressType",
+      "typeLabel": "PhysicalAddressType",
+      "generatedLabel": "PhysicalAddressType",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
+      "typeLabel": "PhysicalEvent",
+      "generatedLabel": "PhysicalEvent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [],
+      "plays": [
+        "occursIn:occurrence"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+      "typeLabel": "PhysicalIdentifiableItem",
+      "generatedLabel": "PhysicalIdentifiableItem",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "hasMagnitude:measuredThing",
+        "isMadeUpOf:madeThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
+      "typeLabel": "PhysicalSubstance",
+      "generatedLabel": "PhysicalSubstance",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": [
+        "hasMagnitude:measuredThing",
+        "isMadeUpOf:substance"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory",
+      "typeLabel": "ProductCategory",
+      "generatedLabel": "ProductCategory",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:category"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
+      "typeLabel": "ProductSpecification",
+      "generatedLabel": "ProductSpecification",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
+      "owns": [],
+      "plays": [
+        "isCategorizedBy:categorizedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+      "typeLabel": "Project",
+      "generatedLabel": "Project",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+      "owns": [],
+      "plays": [
+        "isPartOf:whole"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ReferenceValue",
+      "typeLabel": "ReferenceValue",
+      "generatedLabel": "ReferenceValue",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
+      "typeLabel": "RenderedContent",
+      "generatedLabel": "RenderedContent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+      "owns": [],
+      "plays": [
+        "isRenderedOn:content"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Requirement",
+      "typeLabel": "Requirement",
+      "generatedLabel": "Requirement",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
+      "typeLabel": "Restriction",
+      "generatedLabel": "Restriction",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+      "typeLabel": "ScheduledEvent",
+      "generatedLabel": "ScheduledEvent",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [
+        "plannedStartDate",
+        "plannedStartDateTime",
+        "plannedStartMinute",
+        "plannedStartYear"
+      ],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
+      "typeLabel": "ScheduledTask",
+      "generatedLabel": "ScheduledTask",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
+      "typeLabel": "SchemaMetaData",
+      "generatedLabel": "SchemaMetaData",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
+      "typeLabel": "ServiceSpecification",
+      "generatedLabel": "ServiceSpecification",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
+      "owns": [],
+      "plays": [
+        "isBasedOn:basis"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
+      "typeLabel": "Specification",
+      "generatedLabel": "Specification",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
+      "typeLabel": "SubCountryGovernment",
+      "generatedLabel": "SubCountryGovernment",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+      "owns": [],
+      "plays": [
+        "isGovernedBy:governedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/System",
+      "typeLabel": "System",
+      "generatedLabel": "System",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
+      "owns": [],
+      "plays": [
+        "isPartOf:whole"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+      "typeLabel": "Tag",
+      "generatedLabel": "Tag",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+      "owns": [
+        "containedText",
+        "encryptedText",
+        "uniqueText"
+      ],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+      "typeLabel": "Task",
+      "generatedLabel": "Task",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [],
+      "plays": [
+        "hasGoal:directedThing",
+        "isPartOf:part"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
+      "typeLabel": "TaskTemplate",
+      "generatedLabel": "TaskTemplate",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Template",
+      "owns": [],
+      "plays": [
+        "hasGoal:directedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Template",
+      "typeLabel": "Template",
+      "generatedLabel": "Template",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+      "typeLabel": "TemporalRelation",
+      "generatedLabel": "TemporalRelation",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [
+        "actualStartDate",
+        "actualStartDateTime",
+        "actualStartMicrosecond",
+        "actualStartMinute",
+        "actualStartYear",
+        "birthDate",
+        "plannedStartDate",
+        "plannedStartDateTime",
+        "plannedStartMinute",
+        "plannedStartYear",
+        "startDateTime"
+      ],
+      "plays": [
+        "comesFromAgent:transfer",
+        "goesToAgent:transfer",
+        "hasGiver:exchange",
+        "hasParticipant:participationContext",
+        "hasParty:partyContext",
+        "hasRecipient:exchange"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Text",
+      "typeLabel": "Text",
+      "generatedLabel": "Text",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
+      "owns": [
+        "containedText",
+        "encryptedText",
+        "uniqueText"
+      ],
+      "plays": [
+        "isExpressedIn:expressedThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
+      "typeLabel": "TimeInterval",
+      "generatedLabel": "TimeInterval",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [
+        "actualEndDate",
+        "actualEndDateTime",
+        "actualEndMicrosecond",
+        "actualEndMinute",
+        "actualEndYear",
+        "actualStartDate",
+        "actualStartDateTime",
+        "actualStartMicrosecond",
+        "actualStartMinute",
+        "actualStartYear",
+        "birthDate",
+        "deathDate",
+        "endDateTime",
+        "plannedEndDate",
+        "plannedEndDateTime",
+        "plannedEndMinute",
+        "plannedEndYear",
+        "plannedStartDate",
+        "plannedStartDateTime",
+        "plannedStartMinute",
+        "plannedStartYear",
+        "startDateTime"
+      ],
+      "plays": [
+        "hasMagnitude:measuredThing"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/Transaction",
+      "typeLabel": "Transaction",
+      "generatedLabel": "Transaction",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
+      "owns": [],
+      "plays": []
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+      "typeLabel": "UnitGroup",
+      "generatedLabel": "UnitGroup",
+      "supertype": "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
+      "owns": [
+        "exponentOfAmpere",
+        "exponentOfBit",
+        "exponentOfCandela",
+        "exponentOfKelvin",
+        "exponentOfKilogram",
+        "exponentOfMeter",
+        "exponentOfMole",
+        "exponentOfNumber",
+        "exponentOfOther",
+        "exponentOfRadian",
+        "exponentOfSecond",
+        "exponentOfSteradian",
+        "exponentOfUSDollar"
+      ],
+      "plays": [
+        "hasUnitGroup:unitGroup",
+        "isFirstMemberOf:orderedCollection",
+        "isMemberOf:collection"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
+      "typeLabel": "UnitOfMeasure",
+      "generatedLabel": "UnitOfMeasure",
+      "supertype": "http://www.w3.org/2002/07/owl#Thing",
+      "owns": [
+        "conversionFactor",
+        "conversionOffset",
+        "exponentOfAmpere",
+        "exponentOfBit",
+        "exponentOfCandela",
+        "exponentOfKelvin",
+        "exponentOfKilogram",
+        "exponentOfMeter",
+        "exponentOfMole",
+        "exponentOfNumber",
+        "exponentOfOther",
+        "exponentOfRadian",
+        "exponentOfSecond",
+        "exponentOfSteradian",
+        "exponentOfUSDollar"
+      ],
+      "plays": [
+        "hasUnitOfMeasure:unitOfMeasure",
+        "isFirstMemberOf:firstMember",
+        "isMemberOf:member"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/allows",
+      "typeLabel": "allows",
+      "generatedLabel": "allows",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Permission"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Behavior"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent",
+      "typeLabel": "comesFromAgent",
+      "generatedLabel": "comesFromAgent",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
+      "typeLabel": "comesFromPlace",
+      "generatedLabel": "comesFromPlace",
+      "domain": [],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
+      "typeLabel": "conformsTo",
+      "generatedLabel": "conformsTo",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
+      "typeLabel": "contributesTo",
+      "generatedLabel": "contributesTo",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent",
+      "typeLabel": "goesToAgent",
+      "generatedLabel": "goesToAgent",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Message",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
+      "typeLabel": "goesToPlace",
+      "generatedLabel": "goesToPlace",
+      "domain": [],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Address",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
+      "typeLabel": "hasAccuracy",
+      "generatedLabel": "hasAccuracy",
+      "domain": [],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#FunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
+      "typeLabel": "hasAddend",
+      "generatedLabel": "hasAddend",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAddress",
+      "typeLabel": "hasAddress",
+      "generatedLabel": "hasAddress",
+      "domain": [],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Address"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAspect",
+      "typeLabel": "hasAspect",
+      "generatedLabel": "hasAspect",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Aspect"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#FunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent",
+      "typeLabel": "hasBiologicalParent",
+      "generatedLabel": "hasBiologicalParent",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader",
+      "typeLabel": "hasBroader",
+      "generatedLabel": "hasBroader",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty",
+        "http://www.w3.org/2002/07/owl#TransitiveProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader",
+      "typeLabel": "hasDirectBroader",
+      "generatedLabel": "hasDirectBroader",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor",
+      "typeLabel": "hasDivisor",
+      "generatedLabel": "hasDivisor",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasGiver",
+      "typeLabel": "hasGiver",
+      "generatedLabel": "hasGiver",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation"
+      ],
+      "range": [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasGoal",
+      "typeLabel": "hasGoal",
+      "generatedLabel": "hasGoal",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Task",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Intention"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent",
+      "typeLabel": "hasIncumbent",
+      "generatedLabel": "hasIncumbent",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude",
+      "typeLabel": "hasMagnitude",
+      "generatedLabel": "hasMagnitude",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Account",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier",
+      "typeLabel": "hasMultiplier",
+      "generatedLabel": "hasMultiplier",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent",
+      "typeLabel": "hasNavigationalParent",
+      "generatedLabel": "hasNavigationalParent",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant",
+      "typeLabel": "hasParticipant",
+      "generatedLabel": "hasParticipant",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation"
+      ],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasParty",
+      "typeLabel": "hasParty",
+      "generatedLabel": "hasParty",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation",
+      "typeLabel": "hasPhysicalLocation",
+      "generatedLabel": "hasPhysicalLocation",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Landmark"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty",
+        "http://www.w3.org/2002/07/owl#TransitiveProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient",
+      "typeLabel": "hasRecipient",
+      "generatedLabel": "hasRecipient",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation"
+      ],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend",
+      "typeLabel": "hasSubtrahend",
+      "generatedLabel": "hasSubtrahend",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
+      "typeLabel": "hasUniqueBroader",
+      "generatedLabel": "hasUniqueBroader",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#FunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
+      "typeLabel": "hasUniqueNavigationalParent",
+      "generatedLabel": "hasUniqueNavigationalParent",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#FunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup",
+      "typeLabel": "hasUnitGroup",
+      "generatedLabel": "hasUnitGroup",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Aspect"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure",
+      "typeLabel": "hasUnitOfMeasure",
+      "generatedLabel": "hasUnitOfMeasure",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isAbout",
+      "typeLabel": "isAbout",
+      "generatedLabel": "isAbout",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Content"
+      ],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy",
+      "typeLabel": "isAffectedBy",
+      "generatedLabel": "isAffectedBy",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy",
+      "typeLabel": "isAllocatedBy",
+      "generatedLabel": "isAllocatedBy",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ID"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf",
+      "typeLabel": "isAssignmentOf",
+      "generatedLabel": "isAssignmentOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Assignment"
+      ],
+      "range": [
+        "http://www.w3.org/2002/07/owl#Thing"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo",
+      "typeLabel": "isAssignmentTo",
+      "generatedLabel": "isAssignmentTo",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Assignment"
+      ],
+      "range": [
+        "http://www.w3.org/2002/07/owl#Thing"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn",
+      "typeLabel": "isBasedOn",
+      "generatedLabel": "isBasedOn",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Event"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
+      "typeLabel": "isCategorizedBy",
+      "generatedLabel": "isCategorizedBy",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/DegreeOfCommitment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/EquipmentType",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
+      "typeLabel": "isConnectedTo",
+      "generatedLabel": "isConnectedTo",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty",
+        "http://www.w3.org/2002/07/owl#SymmetricProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf",
+      "typeLabel": "isDirectPartOf",
+      "generatedLabel": "isDirectPartOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Component",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Task"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
+        "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Project",
+        "https://w3id.org/semanticarts/ns/ontology/gist/System"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
+      "typeLabel": "isExpressedIn",
+      "generatedLabel": "isExpressedIn",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Text"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Language",
+        "https://w3id.org/semanticarts/ns/ontology/gist/MediaType"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
+      "typeLabel": "isFirstMemberOf",
+      "generatedLabel": "isFirstMemberOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+        "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#FunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn",
+      "typeLabel": "isGeoContainedIn",
+      "generatedLabel": "isGeoContainedIn",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty",
+        "http://www.w3.org/2002/07/owl#TransitiveProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy",
+      "typeLabel": "isGovernedBy",
+      "generatedLabel": "isGovernedBy",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+        "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
+        "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person",
+        "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
+      "typeLabel": "isIdentifiedBy",
+      "generatedLabel": "isIdentifiedBy",
+      "domain": [],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ID"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf",
+      "typeLabel": "isMadeUpOf",
+      "generatedLabel": "isMadeUpOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
+      "typeLabel": "isMemberOf",
+      "generatedLabel": "isMemberOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Category",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
+        "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Network",
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf",
+      "typeLabel": "isPartOf",
+      "generatedLabel": "isPartOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Task"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Project"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty",
+        "http://www.w3.org/2002/07/owl#TransitiveProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
+      "typeLabel": "isProducedBy",
+      "generatedLabel": "isProducedBy",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
+      "typeLabel": "isRecognizedBy",
+      "generatedLabel": "isRecognizedBy",
+      "domain": [],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn",
+      "typeLabel": "isRenderedOn",
+      "generatedLabel": "isRenderedOn",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Medium"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy",
+      "typeLabel": "isTriggeredBy",
+      "generatedLabel": "isTriggeredBy",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Event"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
+      "typeLabel": "isUnderJurisdictionOf",
+      "generatedLabel": "isUnderJurisdictionOf",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Contract"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/links",
+      "typeLabel": "links",
+      "generatedLabel": "linksRel",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
+      "typeLabel": "linksFrom",
+      "generatedLabel": "linksFrom",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
+      "typeLabel": "linksTo",
+      "generatedLabel": "linksTo",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/occursIn",
+      "typeLabel": "occursIn",
+      "generatedLabel": "occursIn",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
+      "typeLabel": "offersToProvide",
+      "generatedLabel": "offersToProvide",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer"
+      ],
+      "range": [
+        "http://www.w3.org/2002/07/owl#Thing"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
+      "typeLabel": "offersToReceive",
+      "generatedLabel": "offersToReceive",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer"
+      ],
+      "range": [
+        "http://www.w3.org/2002/07/owl#Thing"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/owns",
+      "typeLabel": "owns",
+      "generatedLabel": "ownsRel",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Person"
+      ],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
+      "typeLabel": "precedes",
+      "generatedLabel": "precedes",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty",
+        "http://www.w3.org/2002/07/owl#TransitiveProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly",
+      "typeLabel": "precedesDirectly",
+      "generatedLabel": "precedesDirectly",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/prevents",
+      "typeLabel": "prevents",
+      "generatedLabel": "prevents",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Restriction"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Behavior"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
+      "typeLabel": "providesOrderFor",
+      "generatedLabel": "providesOrderFor",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember"
+      ],
+      "range": [
+        "http://www.w3.org/2002/07/owl#Thing"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#FunctionalProperty",
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/refersTo",
+      "typeLabel": "refersTo",
+      "generatedLabel": "refersTo",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress"
+      ],
+      "range": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/requires",
+      "typeLabel": "requires",
+      "generatedLabel": "requires",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#ObjectProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate",
+      "typeLabel": "actualEndDate",
+      "generatedLabel": "actualEndDate",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime",
+      "typeLabel": "actualEndDateTime",
+      "generatedLabel": "actualEndDateTime",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond",
+      "typeLabel": "actualEndMicrosecond",
+      "generatedLabel": "actualEndMicrosecond",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute",
+      "typeLabel": "actualEndMinute",
+      "generatedLabel": "actualEndMinute",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear",
+      "typeLabel": "actualEndYear",
+      "generatedLabel": "actualEndYear",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate",
+      "typeLabel": "actualStartDate",
+      "generatedLabel": "actualStartDate",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime",
+      "typeLabel": "actualStartDateTime",
+      "generatedLabel": "actualStartDateTime",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond",
+      "typeLabel": "actualStartMicrosecond",
+      "generatedLabel": "actualStartMicrosecond",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute",
+      "typeLabel": "actualStartMinute",
+      "generatedLabel": "actualStartMinute",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear",
+      "typeLabel": "actualStartYear",
+      "generatedLabel": "actualStartYear",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
+      "typeLabel": "atDateTime",
+      "generatedLabel": "atDateTime",
+      "domain": [],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/birthDate",
+      "typeLabel": "birthDate",
+      "generatedLabel": "birthDate",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/containedText",
+      "typeLabel": "containedText",
+      "generatedLabel": "containedText",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Text"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
+      "typeLabel": "conversionFactor",
+      "generatedLabel": "conversionFactor",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal",
+        "http://www.w3.org/2001/XMLSchema#double"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty",
+        "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset",
+      "typeLabel": "conversionOffset",
+      "generatedLabel": "conversionOffset",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty",
+        "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/deathDate",
+      "typeLabel": "deathDate",
+      "generatedLabel": "deathDate",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/description",
+      "typeLabel": "description",
+      "generatedLabel": "description",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText",
+      "typeLabel": "encryptedText",
+      "generatedLabel": "encryptedText",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Text"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime",
+      "typeLabel": "endDateTime",
+      "generatedLabel": "endDateTime",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
+      "typeLabel": "exponentOfAmpere",
+      "generatedLabel": "exponentOfAmpere",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
+      "typeLabel": "exponentOfBit",
+      "generatedLabel": "exponentOfBit",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
+      "typeLabel": "exponentOfCandela",
+      "generatedLabel": "exponentOfCandela",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
+      "typeLabel": "exponentOfKelvin",
+      "generatedLabel": "exponentOfKelvin",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
+      "typeLabel": "exponentOfKilogram",
+      "generatedLabel": "exponentOfKilogram",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
+      "typeLabel": "exponentOfMeter",
+      "generatedLabel": "exponentOfMeter",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
+      "typeLabel": "exponentOfMole",
+      "generatedLabel": "exponentOfMole",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
+      "typeLabel": "exponentOfNumber",
+      "generatedLabel": "exponentOfNumber",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
+      "typeLabel": "exponentOfOther",
+      "generatedLabel": "exponentOfOther",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
+      "typeLabel": "exponentOfRadian",
+      "generatedLabel": "exponentOfRadian",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
+      "typeLabel": "exponentOfSecond",
+      "generatedLabel": "exponentOfSecond",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
+      "typeLabel": "exponentOfSteradian",
+      "generatedLabel": "exponentOfSteradian",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
+      "typeLabel": "exponentOfUSDollar",
+      "generatedLabel": "exponentOfUSDollar",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
+        "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#decimal"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/idText",
+      "typeLabel": "idText",
+      "generatedLabel": "idText",
+      "domain": [],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
+      "typeLabel": "isRecordedAt",
+      "generatedLabel": "isRecordedAt",
+      "domain": [],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/latitude",
+      "typeLabel": "latitude",
+      "generatedLabel": "latitude",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#double"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/longitude",
+      "typeLabel": "longitude",
+      "generatedLabel": "longitude",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#double"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/name",
+      "typeLabel": "name",
+      "generatedLabel": "name",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
+      "typeLabel": "numericValue",
+      "generatedLabel": "numericValue",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude"
+      ],
+      "range": [
+        "http://www.w3.org/2000/01/rdf-schema#Literal",
+        "http://www.w3.org/2001/XMLSchema#byte",
+        "http://www.w3.org/2001/XMLSchema#decimal",
+        "http://www.w3.org/2001/XMLSchema#double",
+        "http://www.w3.org/2001/XMLSchema#float",
+        "http://www.w3.org/2001/XMLSchema#int",
+        "http://www.w3.org/2001/XMLSchema#integer",
+        "http://www.w3.org/2001/XMLSchema#long",
+        "http://www.w3.org/2001/XMLSchema#negativeInteger",
+        "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "http://www.w3.org/2001/XMLSchema#nonPositiveInteger",
+        "http://www.w3.org/2001/XMLSchema#positiveInteger",
+        "http://www.w3.org/2001/XMLSchema#short",
+        "http://www.w3.org/2001/XMLSchema#unsignedByte",
+        "http://www.w3.org/2001/XMLSchema#unsignedInt",
+        "http://www.w3.org/2001/XMLSchema#unsignedLong",
+        "http://www.w3.org/2001/XMLSchema#unsignedShort",
+        "http://www.w3.org/2002/07/owl#rational",
+        "http://www.w3.org/2002/07/owl#real"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate",
+      "typeLabel": "plannedEndDate",
+      "generatedLabel": "plannedEndDate",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime",
+      "typeLabel": "plannedEndDateTime",
+      "generatedLabel": "plannedEndDateTime",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndMinute",
+      "typeLabel": "plannedEndMinute",
+      "generatedLabel": "plannedEndMinute",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndYear",
+      "typeLabel": "plannedEndYear",
+      "generatedLabel": "plannedEndYear",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDate",
+      "typeLabel": "plannedStartDate",
+      "generatedLabel": "plannedStartDate",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime",
+      "typeLabel": "plannedStartDateTime",
+      "generatedLabel": "plannedStartDateTime",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartMinute",
+      "typeLabel": "plannedStartMinute",
+      "generatedLabel": "plannedStartMinute",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartYear",
+      "typeLabel": "plannedStartYear",
+      "generatedLabel": "plannedStartYear",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
+        "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/sequence",
+      "typeLabel": "sequence",
+      "generatedLabel": "sequence",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#integer"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/startDateTime",
+      "typeLabel": "startDateTime",
+      "generatedLabel": "startDateTime",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
+        "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/symbol",
+      "typeLabel": "symbol",
+      "generatedLabel": "symbol",
+      "domain": [],
+      "range": [],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/semanticarts/ns/ontology/gist/uniqueText",
+      "typeLabel": "uniqueText",
+      "generatedLabel": "uniqueText",
+      "domain": [
+        "https://w3id.org/semanticarts/ns/ontology/gist/ID",
+        "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
+        "https://w3id.org/semanticarts/ns/ontology/gist/Text"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "owlTypes": [
+        "http://www.w3.org/2002/07/owl#DatatypeProperty",
+        "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      ]
+    }
+  ]
+}

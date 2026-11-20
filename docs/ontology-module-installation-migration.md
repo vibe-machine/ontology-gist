@@ -49,6 +49,20 @@ This change starts in `ontology-gist` and propagates through:
 - `installationKey` — stable identifier for an installation record
 - `installedAt` — timestamp when a module version was installed into the current database
 
+Added in gist 5.1.0, all optional on `OntologyModuleInstallation` (`@card(0..1)`), so
+records written earlier stay valid:
+
+- `previousModuleVersion` — the version installed before this install ran (absent on a first install)
+- `targetModuleVersion` — the version this install set out to install
+- `installedModuleRepoUrl` — the package's repository URL; a failed install is not linked to
+  its version, so the record names the package itself (not `moduleRepoUrl`, which is the
+  `@key` of `OntologyModule`)
+- `installationTrigger` — why it ran: `install`, `upgrade`, `rebuild` or `migration`
+- `installationOutcome` — `succeeded` or `failed`
+- `installationError` — the error a failed install reported
+
+Their documentation rows are in `data/administrative-operations-schema-docs.tql`.
+
 ### Relations
 
 Both new relations specialize gist `isBasedOn`.
