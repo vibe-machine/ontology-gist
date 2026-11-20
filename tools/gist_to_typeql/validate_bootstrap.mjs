@@ -404,6 +404,28 @@ async function resolveTypedbBinary() {
   throw new Error("TypeDB executable not found. Install it on PATH or set TYPEDB_BIN.");
 }
 
+async function waitForTcpPort(port, host = "127.0.0.1", timeoutMs = 15000) {
+  const deadline = Date.now() + timeoutMs;
+  for (;;) {
+    const connected = await new Promise((resolve) => {
+      const socket = net.connect({ port, host });
+      socket.once("connect", () => {
+        socket.destroy();
+        resolve(true);
+      });
+      socket.once("error", () => {
+        socket.destroy();
+        resolve(false);
+      });
+    });
+    if (connected) return;
+    if (Date.now() >= deadline) {
+      throw new Error(`TypeDB printed "Ready!" but ${host}:${port} did not accept connections within ${timeoutMs} ms.`);
+    }
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+}
+
 async function startTypedbServer(tempRoot) {
   const typedb = await resolveTypedbBinary();
 
@@ -456,6 +478,13 @@ async function startTypedbServer(tempRoot) {
       reject(error);
     });
   });
+
+  try {
+    await waitForTcpPort(grpcPort);
+  } catch (error) {
+    child.kill("SIGKILL");
+    throw error;
+  }
 
   return { child, grpcPort };
 }
