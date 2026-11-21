@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code when working in this repository.
 
+Before changing or releasing this package, follow the `ontology-extend` skill (installed through `apm.yml`; refresh with `apm install`, never edit `.claude/skills/` by hand).
+
 ## Project Overview
 
 This repo is the canonical `gist` TypeDB package lifecycle workspace. It stages pinned upstream Turtle artifacts from Semantic Arts gist `v14.0.0`, translates them into TypeQL schema/data/query outputs, and publishes self-describing documentation plus provenance metadata for downstream ontology consumers.
