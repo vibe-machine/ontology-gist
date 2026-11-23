@@ -79,3 +79,6 @@ last_pull
 proxieddb/
 dolt-server-config.yaml
 proxied_server_client_info.json
+
+# Issue snapshot (auto-exported by bd; the issues live in the Dolt database, not in git)
+issues.jsonl
